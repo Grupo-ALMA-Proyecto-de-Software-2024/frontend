@@ -1,0 +1,20 @@
+.container{
+    height: 100px;
+    display: flex;
+    padding-left: 50px;
+    padding-right: 50px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg1);
+}
+
+.logo{
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+
+.logoImage{
+    flex: 1;
+    position: relative;
+}

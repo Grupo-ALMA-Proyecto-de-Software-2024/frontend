@@ -1,0 +1,18 @@
+.container{
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: var(--textSoft);
+    background-color: var(--bg1);
+}
+
+.logo{
+    font-weight: bold;
+}
+
+.text{
+    font-size: 12px;
+}

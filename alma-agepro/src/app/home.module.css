@@ -1,0 +1,62 @@
+.container{
+    display: block;
+}
+
+.textContainer{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+}
+
+.title{
+    font-size: 96px;
+}
+
+.description{
+    font-size: 20px;
+}
+
+.buttons{
+    display: flex;
+    gap: 20px;
+}
+
+.button{
+    padding: 20px;
+    min-width: 120px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+.button:first-child{
+    background-color: var(--btn);
+    color: var(--text);
+}
+
+.brands{
+    width: 400px;
+    height: 50px;
+    position: relative;
+}
+
+.carrusellContainer{
+    width: 100%;
+    display: flex;
+}
+
+.carrusell{
+    flex: 1;
+    position: relative;
+    display: flex;
+    width: 600px;
+    height: 400px;
+    background-color: black;
+}
+
+.planetDisk{
+    object-fit: contain;
+    z-index: 2;
+}
