@@ -12,12 +12,32 @@ interface LinkItem {
 
 const links: LinkItem[] = [
     {
-        title: "HomePage",
+        title: "Home",
         path: "/",
     },
     {
-        title: "About",
-        path: "/about",
+        title: "Overview",
+        path: "/overview",
+    },
+    {
+        title: "Disks",
+        path: "/disks",
+    },
+    {
+        title: "Visualizations",
+        path: "/visualizations",
+    },
+    {
+        title: "Publications",
+        path: "/publications",
+    },
+    {
+        title: "Press",
+        path: "/press",
+    },
+    {
+        title: "Team",
+        path: "/team",
     },
     {
         title: "Data",

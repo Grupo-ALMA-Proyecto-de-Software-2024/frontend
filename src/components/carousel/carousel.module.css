@@ -1,0 +1,66 @@
+.carouselContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    position: relative; /* Position relative for absolute positioning of dots */
+    transition: opacity 0.5s ease-in-out; /*  Add transition to the carousel container */
+  }
+  
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 800px; /* width for carousel */
+    height: 500px; /* height of carousel */
+    position: relative;
+    overflow: hidden;
+}
+
+.carouselImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+  
+.lbutton, .rbutton {
+    color: var(--bg2);
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.1;
+    transition: opacity 0.3s, color 0.3s;
+}
+  
+.lbutton:hover, .rbutton:hover {
+    opacity: 0.8;
+}
+  
+.icon {
+    font-size: 5rem;
+}
+  
+  
+.dotsContainer {
+    position: absolute; 
+    bottom: 10px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    display: flex;
+    z-index: 1; 
+}
+  
+.dot {
+    width: 15px;
+    height: 15px;
+    background-color: var(--bg2); /* Inactive color */
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    opacity: 0.3;
+}
+  
+.activeDot {
+    background-color: var(--bg2); /* Active color */
+    opacity: 0.9;
+}
