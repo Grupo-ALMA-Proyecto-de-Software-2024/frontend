@@ -42,16 +42,18 @@
     position: relative;
 }
 
-.carrusellContainer{
-    width: 100%;
+.carrusellContainer {
     display: flex;
+    align-items: center; /* Centra verticalmente los elementos del carrusel */
+    justify-content: center; /* Centra horizontalmente el carrusel */
+    gap: 10px; /* Añade espacio entre los botones y el carrusel si es necesario */
+    background-color: black;
 }
 
-.carrusell{
-    flex: 1;
+.carrusell {
+    flex: 0 0 auto; /* No permitir que el carrusel crezca o se encoja */
     position: relative;
-    display: flex;
-    width: 600px;
+    width: 500px; /* Ajusta a tu valor deseado */
     height: 400px;
     background-color: black;
 }
