@@ -1,5 +1,5 @@
 .container{
-    height: 100px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -7,6 +7,9 @@
     padding-right: 50px;
     color: var(--textSoft);
     background-color: var(--bg1);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .logo{
