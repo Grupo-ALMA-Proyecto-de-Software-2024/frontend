@@ -1,0 +1,5 @@
+.navbar {
+    background-color: var(--bg1);
+    color: var(--textSoft);
+    padding: 20px;
+}
