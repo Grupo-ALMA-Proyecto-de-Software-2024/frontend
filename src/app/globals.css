@@ -30,6 +30,8 @@ a{
   width: 100%;
   position: sticky;
   top: 0;
+  z-index: 1000;
+  background-color: rgba(227, 227, 227, 0.8); 
 }
 
 .container{
@@ -38,10 +40,10 @@ a{
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .footer{
-  width: 100%;
-  position: absolute;
   bottom: 0;
+  position: relative;
 }
