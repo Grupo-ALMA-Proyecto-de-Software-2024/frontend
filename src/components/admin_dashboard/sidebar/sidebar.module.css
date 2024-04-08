@@ -1,0 +1,49 @@
+.sidebar {
+    width: 100%;
+    background-color: var(--bg1);
+    color: var(--textSoft);
+    padding: 20px;
+}
+
+.sidebarList {
+    list-style: none;
+}
+
+.sidebarItem {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 10px 0px;
+    color: var(--textSoft);
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--bgSoft);
+    color: var(--textSoft);
+    object-fit: cover;
+}
+
+.userDetail {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 5px;
+    color: var(--textSoft);
+}
+
+.name {
+    font-weight: bold;
+}
+
+.occupation {
+    font-size: 12px;
+    color: var(--textSoft);
+}
+

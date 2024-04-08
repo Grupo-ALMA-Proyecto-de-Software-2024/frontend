@@ -5,6 +5,7 @@ TailWind no es muy bonito para aplicaciones grandes */
 :root{
   --bg1:#000723;
   --bg2:#E7EFEF;
+  --bgSoft:#182237;
   --text: black;
   --textSoft: white;
 }
