@@ -1,0 +1,47 @@
+.container{
+    padding: 50px;
+    line-height: 20px;
+    margin: 50px;
+    margin-top: 20px;
+}
+
+.header{
+    margin-bottom: 30px;
+}
+
+.paragraph{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.datalist{
+    font-size: 15px;
+    margin-left: 20px;
+    list-style-type: disc;
+    display: list-item;
+}
+
+.dataSearcher{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 50px;
+    background-color: aquamarine;
+}
+
+.dataSearcher li {
+   padding: 10px;
+}
+
+.dataSearcher button {
+    margin-left: 10px;
+}
+
+.dataSearcher ul {
+   list-style-type: none;
+}
+
+.buttonsSearcher {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
