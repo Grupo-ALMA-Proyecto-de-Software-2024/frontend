@@ -8,15 +8,16 @@ import Image from 'next/image';
 const Home: React.FC = () => {
   // Images for carousel
   const carouselImages = [
-    { src: "/protoplanetDisk.gif", alt: "Protoplanet Disk" },
+    { src: "/protoplanetDisk.jpg", alt: "Protoplanet Disk" },
     { src: "/agn.jpg", alt: "Active Galactic Nucleus" },
     { src: "/Sistema-solar.jpg", alt: "Sistema Solar" },
   ];
 
   return (
     <main>
-      <Carousel images={carouselImages} />
-      
+      <div className={styles.carouselContainer}>
+        <Carousel images={carouselImages} />
+      </div>
       <div className={styles.content}>
         <div className={styles.leftContent}>
           <section className={styles.section}>

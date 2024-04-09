@@ -24,20 +24,20 @@
 .section h1 {
     font-size: 24px;
     margin-bottom: 10px;
-    color: #333; /* Color de texto oscuro */
+    color: #333; 
 }
 
 .section h2 {
     font-size: 20px;
-    font-style: italic; /* Formato cursivo para el subtítulo */
+    font-style: italic; 
     margin-bottom: 20px;
-    color: #666; /* Color de texto más claro */
+    color: #666; 
 }
 
 .section p {
     font-size: 16px;
-    line-height: 1.5; /* Espaciado de línea para mejorar la legibilidad */
-    color: #666; /* Color de texto más claro */
+    line-height: 1.5; 
+    color: #666; 
 }
   
 .cardContainer {
@@ -69,7 +69,7 @@
 .card h3 {
     font-size: 18px;
     margin-bottom: 10px;
-    color: #333; /* Cambiar color del título */
+    color: #333; 
 }
   
 .card p {
@@ -86,9 +86,19 @@
 }
   
 .gifImage {
-    width: 50%; /* Ajusta el ancho según sea necesario */
-    height: auto; /* Esto garantiza que el alto se ajuste automáticamente para mantener la proporción */
+    width: 50%; 
+    height: auto; 
     border-radius: 10px;
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 768px) {
+    .content{
+        flex-direction: column;
+    }
+
+    .carouselContainer{
+        width: 100%;
+    }
 }

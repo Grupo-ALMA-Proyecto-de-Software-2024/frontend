@@ -6,7 +6,7 @@ const Footer = () => {
         <div className={styles.container}>
             <div className={styles.logo}>
                 <Image 
-                  src="/logos/logo2.png" 
+                  src="/logos/logo.png" 
                   alt="AGE-Pro Icon" 
                   width={75} 
                   height={75} 

@@ -19,12 +19,14 @@
 
 /* Menu Button */
 .menuButton {
+    margin-right: 40px;
     display: none;
 }
 
 .menuIcon{
     width: 50px;
     height: 50px;
+    transition: transform 0.3s ease;
 }
 
 /* Mobile Links Container */
@@ -35,6 +37,7 @@
     margin-right: 5px;
 }
 
+/*Responsive Design*/
 @media (max-width: 1300px) {
     /* Hide Main Links */
     .links {
@@ -43,7 +46,6 @@
 
     /* Display Menu Button */
     .menuButton {
-        margin-right: 50px;
         width: 50px;
         height: 50px;
         display: block;
@@ -56,34 +58,40 @@
     /* Mobile Links Styling */
     .mobileLinks {
         position: absolute;
+        top: 105px; 
+        width: 170px;
+        height: 460px;
         right: 0;
-        top: 100px; /* Adjust as needed */
-        width: 175px;
-        height: 450px; /* Adjust as needed */
         background-color: var(--bg1);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 10px;
-        transition: height 0.5s ease-in-out;
-        z-index: 10; 
+        z-index: 10;
         color: var(--textSoft);
+        opacity: 0; 
+        visibility: hidden; 
+        transition: opacity 0.3s ease, visibility 0s linear 0.3s; 
+    }
+    
+    .mobileLinks.open {
+        opacity: 0.95; 
+        visibility: visible; 
+        transition: opacity 0.3s ease, visibility 0s linear;    
     }
 }
+
 
 /* Hover Effect for Links */
 .links a:hover,
 .mobileLinks a:hover {
     font-size: 1.1em; /* Increase font size on hover */
     font-weight: bold; /* Make font bold on hover */
-    /* Add additional styling as desired */
 }
 
 /* Active Link Styling */
 .links a.active,
 .mobileLinks a.active {
-    /* Add styling for active links */
-    /* For example, you can add a border or change the background color */
     border-bottom: 2px solid var(--textSoft);
 }
