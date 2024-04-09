@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from '../../components/admin_dashboard/navbar/navbar';
-import Sidebar from '../../components/admin_dashboard/sidebar/sidebar';
-import styles from '../../components/admin_dashboard/dashboard.module.css';
+import Navbar from '../../components/admin/navbar/navbar';
+import Sidebar from '../../components/admin/sidebar/sidebar';
+import styles from '../../components/admin/dashboard.module.css';
 
 const Layout = ({ children }) => {
     return (
