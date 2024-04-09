@@ -7,6 +7,9 @@
     padding-right: 50px;
     color: var(--textSoft);
     background-color: var(--bg1);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .logo{
