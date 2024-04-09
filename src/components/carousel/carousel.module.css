@@ -64,3 +64,14 @@
     background-color: var(--bg2); /* Active color */
     opacity: 0.9;
 }
+
+/*Responsive Design*/
+@media (max-width: 768px) {
+    .carouselContainer{
+        height: 300px;
+    }
+    
+    .carousel{
+        height: 300px;
+    }
+}

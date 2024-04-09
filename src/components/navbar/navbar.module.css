@@ -1,6 +1,6 @@
 /* Navbar Container */
 .container {
-    height: 100px;
+    height: 85px;
     display: flex;
     padding-left: 20px; /* Adjust padding for smaller screens */
     padding-right: 20px; /* Adjust padding for smaller screens */
@@ -16,8 +16,8 @@
 
 /* Logo Styles */
 .logo {
-    width: 150px;
-    height: 150px;
+    height: 80px;
+    width: 80px;
     position: relative;
 }
 
@@ -31,14 +31,14 @@
 @media (max-width: 768px) {
     /* Navbar adjustments for small screens */
     .container {
-        flex-direction: column; /* Stack elements on small screens */
-        height: auto; /* Automatic height to fit content */
-        padding: 20px; /* Adjust padding for small screens */
+        flex-direction: row; /* Stack elements on small screens */
         text-align: center; /* Center content on small screens */
+        height: 100px;
     }
 
     /* Margin between logo and links on small screens */
     .logo {
-        margin-bottom: 20px;
+        width: 100px;
+        height: 100px;
     }
 }
