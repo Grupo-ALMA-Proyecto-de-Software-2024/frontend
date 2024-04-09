@@ -1,20 +1,44 @@
-.container{
+/* Navbar Container */
+.container {
     height: 100px;
     display: flex;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 20px; /* Adjust padding for smaller screens */
+    padding-right: 20px; /* Adjust padding for smaller screens */
     align-items: center;
     justify-content: space-between;
     background-color: var(--bg1);
 }
 
-.logo{
+/* Links Container */
+.linksContainer {
+    display: flex; /* Display links in a row */
+}
+
+/* Logo Styles */
+.logo {
     width: 150px;
     height: 150px;
     position: relative;
 }
 
-.logoImage{
+/* Logo Image Styles */
+.logoImage {
     flex: 1;
     position: relative;
+}
+
+/* Styles for Small Screens */
+@media (max-width: 768px) {
+    /* Navbar adjustments for small screens */
+    .container {
+        flex-direction: column; /* Stack elements on small screens */
+        height: auto; /* Automatic height to fit content */
+        padding: 20px; /* Adjust padding for small screens */
+        text-align: center; /* Center content on small screens */
+    }
+
+    /* Margin between logo and links on small screens */
+    .logo {
+        margin-bottom: 20px;
+    }
 }

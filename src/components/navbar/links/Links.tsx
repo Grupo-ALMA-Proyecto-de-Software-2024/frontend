@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import styles from "./links.module.css";
-import NavLink from "./navLink/navLink"; // Asegúrate de que la ruta es correcta.
+import NavLink from "./navLink/navLink";
 
-// Definimos el tipo para los objetos link.
+/* MUI ICONS */
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 interface LinkItem {
     title: string;
     path: string;
@@ -71,7 +72,7 @@ const Links = () => {
                     <NavLink item={{ title: "Sign in", path: "/login" }} /> /*This si temporary, just change it if u want*/
                 )}
             </div>
-            <button className={styles.menuButton} onClick={() => setOpen((prev) => !prev)}>Menu</button>
+            <button className={styles.menuButton} onClick={() => setOpen((prev) => !prev)}><MenuRoundedIcon className={styles.menuIcon}> </MenuRoundedIcon></button>
             {open && (
                 <div className={styles.mobileLinks}>
                     {links.map((link) => (
