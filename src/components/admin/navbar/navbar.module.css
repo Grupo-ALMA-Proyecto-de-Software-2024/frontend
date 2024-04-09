@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #2e274a;
+    border-radius: 10px;
+}
+
+.title {
+    color: white;
+    font-size: 18px;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #2e274a;
+    padding: 10px;
+    width: max-content;
+    border-radius: 10px;
+}
+
+.input {
+    border: none;
+    color: var(--text);
+    background-color: transparent;
+    outline: none;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+}

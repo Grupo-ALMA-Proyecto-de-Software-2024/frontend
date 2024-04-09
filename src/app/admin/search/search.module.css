@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #2e274a;
+    padding: 10px;
+    width: max-content;
+    border-radius: 10px;
+}
+
+.input {
+    border: none;
+    color: var(--text);
+    background-color: transparent;
+    outline: none;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}

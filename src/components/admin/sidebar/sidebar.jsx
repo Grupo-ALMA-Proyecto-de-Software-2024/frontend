@@ -11,8 +11,8 @@ const sidebarItems = [
         icon: <FaDatabase />,
     },
     {
-        label: 'Add Admins',
-        link: '/admin/add-admins',
+        label: 'Users',
+        link: '/admin/users',
         icon: <FaUserPlus />,
     },
     {

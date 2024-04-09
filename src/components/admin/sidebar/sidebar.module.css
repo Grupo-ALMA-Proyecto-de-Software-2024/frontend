@@ -21,7 +21,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    justify-content: space-between;
     padding: 10px;
     border-radius: 5px;
     background-color: var(--bgSoft);
@@ -31,7 +30,7 @@
 
 .userDetail {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     justify-content: space-between;
     border-radius: 5px;
@@ -46,4 +45,3 @@
     font-size: 12px;
     color: var(--textSoft);
 }
-

@@ -66,7 +66,7 @@ const Links = () => {
                 ))}
                 {session ? (
                     <>
-                        {isAdmin && <NavLink item={{ title: "Admin", path: "/admin_dashboard" }} />}
+                        {isAdmin && <NavLink item={{ title: "Admin", path: "/admin" }} />}
                         <button className={styles.logout}>Log out</button>
                     </>
                 ) : (
