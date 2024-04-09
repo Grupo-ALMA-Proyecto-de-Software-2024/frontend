@@ -35,7 +35,7 @@ a{
 }
 
 .container{
-  width: 100%;
+  min-width: 100vh;
   margin: auto;
   min-height: 100vh;
   display: flex;
@@ -46,4 +46,5 @@ a{
 .footer{
   bottom: 0;
   position: relative;
+  width: 100%;
 }

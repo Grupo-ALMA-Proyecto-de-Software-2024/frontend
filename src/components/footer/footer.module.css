@@ -7,7 +7,6 @@
     padding-right: 50px;
     color: var(--textSoft);
     background-color: var(--bg1);
-    position: fixed;
     bottom: 0;
     width: 100%;
 }
@@ -31,11 +30,11 @@
 }
 
 .mainImage {
-    height: 90%;
+    height: 100%;
 }
 
 .image {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     object-fit: contain; 
 }

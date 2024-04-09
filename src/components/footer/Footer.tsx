@@ -8,8 +8,8 @@ const Footer = () => {
                 <Image 
                   src="/logos/logo2.png" 
                   alt="AGE-Pro Icon" 
-                  width={100} 
-                  height={100} 
+                  width={75} 
+                  height={75} 
                   className={styles.mainImage}
                 />
             </div>
