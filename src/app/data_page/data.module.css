@@ -24,6 +24,7 @@
 .dataSearcher{
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     gap: 50px;
     background-color: aquamarine;
 }
@@ -40,8 +41,19 @@
    list-style-type: none;
 }
 
+.secondDataSearcher{
+    margin-top: 10px;
+    background-color: rgb(86, 150, 210);
+}
+
 .buttonsSearcher {
     display: flex;
     flex-direction: column;
     margin: 10px;
+}
+
+.buttonsSearcherColumns {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
