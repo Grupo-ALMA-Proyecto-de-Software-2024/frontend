@@ -28,7 +28,7 @@ const Sidebar = () => {
     return (
         <aside className={styles.sidebar}>
             <div className={styles.user}>
-                <Image src="/logo2.png" alt="User Avatar" width={50} height={50} />
+                <Image src="/logos/logo2.png" alt="User Avatar" width={50} height={50} />
                 <div className={styles.userDetail}>
                     <p className={styles.name}>Name: John Doe</p>
                     <p className={styles.occupation}>Occupation: Admin</p>
