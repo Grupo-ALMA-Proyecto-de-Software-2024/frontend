@@ -3,6 +3,7 @@ import Search from '../search/search';
 import Link from 'next/link';
 import styles from './users.module.css';
 import Image from 'next/image';
+import Pagination from '../pagination/pagination';
 
 const UsersPage = () => {
     return (
@@ -28,7 +29,7 @@ const UsersPage = () => {
                         <tr>
                             <td>
                                 <div className={styles.user}>
-                                    <Image src="/avatar.png" alt="User Avatar" width={50} height={50} />
+                                    <Image className={styles.userImage} src="/avatar.png" alt="User Avatar" width={35} height={35} />
                                     <span>John Doe</span>
                                 </div>
                             </td>
@@ -37,16 +38,23 @@ const UsersPage = () => {
                             <td>Admin</td>
                             <td>Active</td>
                             <td>
-                                <Link href="/admin/users/edit-user">
-                                    <button className={`${styles.button} ${styles.edit}`}>Edit</button>
-                                </Link>
-                                <Link href="/admin/users/delete-user">
-                                    <button className={`${styles.button} ${styles.delete}`}>Delete</button>
-                                </Link>
+                                <div className={styles.buttons_container}>
+                                    <Link href="/admin/users/edit-user">
+                                        <button className={`${styles.button} ${styles.edit}`}>
+                                            Edit
+                                        </button>
+                                    </Link>
+                                    <Link href="/admin/users/delete-user">
+                                        <button className={`${styles.button} ${styles.delete}`}>
+                                            Delete
+                                        </button>
+                                    </Link>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <Pagination />
             </div>
     );
 };

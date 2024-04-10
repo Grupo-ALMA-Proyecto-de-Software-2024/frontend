@@ -15,13 +15,12 @@
 .table {
     width: 100%;
     margin-top: 10px;
-    border-collapse: collapse;  
+    border-collapse: collapse;
 }
 
 .table th, .table td {
     padding: 8px;
     text-align: left; /* Updated to align all columns to the left */
-
 }
 
 .user {

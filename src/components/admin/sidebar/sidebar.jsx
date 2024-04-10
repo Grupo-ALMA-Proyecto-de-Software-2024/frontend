@@ -7,7 +7,7 @@ import { FaDatabase, FaUserPlus, FaEdit } from 'react-icons/fa';
 const sidebarItems = [
     {
         label: 'Data Entry',
-        link: '/admin/data-entry',
+        link: '/admin/entries',
         icon: <FaDatabase />,
     },
     {
