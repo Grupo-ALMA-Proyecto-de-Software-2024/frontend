@@ -3,6 +3,7 @@ import { useState } from "react";
 import styles from "./Carousel.module.css";
 import NavigateBeforeRoundedIcon from '@mui/icons-material/NavigateBeforeRounded';
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
+import almaClient from '@api/client';
 
 interface CarouselProps {
   images: { src: string; alt: string }[];
