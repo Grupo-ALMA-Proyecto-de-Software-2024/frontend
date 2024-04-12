@@ -4,19 +4,13 @@ import Link from 'next/link';
 import Carousel from "@/components/carousel/Carousel";
 import styles from "./home.module.css";
 import Image from 'next/image';
+import CarouselContainer from '@app/carouselContainer';
 
 const Home: React.FC = () => {
-  // Images for carousel
-  const carouselImages = [
-    { src: "/protoplanetDisk.jpg", alt: "Protoplanet Disk" },
-    { src: "/agn.jpg", alt: "Active Galactic Nucleus" },
-    { src: "/Sistema-solar.jpg", alt: "Sistema Solar" },
-  ];
-
   return (
     <main>
       <div className={styles.carouselContainer}>
-        <Carousel images={carouselImages} />
+        <CarouselContainer />
       </div>
       <div className={styles.content}>
         <div className={styles.leftContent}>

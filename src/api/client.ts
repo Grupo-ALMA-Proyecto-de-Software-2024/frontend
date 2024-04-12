@@ -2,21 +2,23 @@ import axios from 'axios';
 import { CarouselImageDto } from './dto';
 
 
-const HOST = 'localhost';
-const PORT = 8000;
-const NAMESPACE = 'api';
-const BASE_URL = `http://${HOST}:${PORT}/${NAMESPACE}`;
+const host = 'localhost';
+const port = 8000;
+const namespace = 'api';
+const baseUrl = `http://${host}:${port}/${namespace}`;
 
 const client = axios.create({
-  baseURL: BASE_URL,
+  baseURL: baseUrl,
 });
+
+const getFullImageUrl = (imageUrl: string) => `http://${host}:${port}/${imageUrl}`;
 
 
 class AlmaClient {
   async getCarouselImages(): Promise<CarouselImageDto[]> {
     const response = await client.get('/carousel');
     return response.data.map((item: any) => ({
-      imageUrl: item.imageUrl,
+      imageUrl: getFullImageUrl(item.imageUrl),
       title: item.title,
       description: item.description,
     }));

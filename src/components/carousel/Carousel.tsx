@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { useState } from "react";
-import styles from "./Carousel.module.css";
+import styles from "./carousel.module.css";
 import NavigateBeforeRoundedIcon from '@mui/icons-material/NavigateBeforeRounded';
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
-import almaClient from '@api/client';
+import { CarouselImageDto } from "@api/dto";
 
 interface CarouselProps {
-  images: { src: string; alt: string }[];
+  images: CarouselImageDto[];
 }
 
 const Carousel: React.FC<CarouselProps> = ({ images }) => {
@@ -29,8 +29,8 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
         <button onClick={goToPrev} className={styles.lbutton}><NavigateBeforeRoundedIcon className={styles.icon}/></button>
         <div className={styles.carousel}>
           <Image 
-            src={images[currentIndex].src}
-            alt={images[currentIndex].alt}
+            src={images[currentIndex].imageUrl}
+            alt={images[currentIndex].title}
             fill
             className={styles.carouselImage}
             unoptimized
