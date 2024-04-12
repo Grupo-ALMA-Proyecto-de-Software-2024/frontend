@@ -13,7 +13,7 @@ const Overview = () => {
             and the outcome of this process is intimately linked to the disk chemistry and structure.
             </h2>
             <p className={styles.description}>
-            Molecules with ALMA at Planet-forming Scales' (MAPS) is an ALMA Large Program (2018.1.01055.L) 
+            &apos;Molecules with ALMA at Planet-forming Scales&apos; (MAPS) is an ALMA Large Program (2018.1.01055.L) 
             designed to expand our understanding of the chemistry of planet formation by exploring protoplanetary 
             disk chemical structures down to 10 au scales.
 
