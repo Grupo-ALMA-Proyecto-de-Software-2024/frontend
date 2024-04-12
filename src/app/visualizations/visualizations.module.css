@@ -2,7 +2,7 @@
     display: flex;
     position: relative;
     top: 0;
-    margin: 20px 30px;
+    margin: 20px auto;
     max-width: 100%;
     padding: 20px;
     flex-direction: column;
@@ -65,4 +65,26 @@
     font-size: 12px;
     text-align: center;
     margin-bottom: 5px;
+}
+
+.videoContainer{
+    width: 35%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.fitText {
+    width: 50%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    min-width: 992px;
+    float:left;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px
 }
