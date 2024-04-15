@@ -36,7 +36,3 @@
     cursor: pointer;
     background-color: var(--bg2);
 }
-
-.expanded {
-    height: auto;
-}
