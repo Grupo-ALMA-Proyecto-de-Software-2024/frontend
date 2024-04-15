@@ -30,8 +30,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
           <Image 
             src={images[currentIndex].src}
             alt={images[currentIndex].alt}
-            width={800}
-            height={500}
+            fill
             className={styles.carouselImage}
             unoptimized
           />

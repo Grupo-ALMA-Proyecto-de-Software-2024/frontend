@@ -10,3 +10,9 @@
     background-color: var(--bg2);
     color: var(--text); 
 }
+
+@media (max-width: 1300px){
+    .active{
+        color: var(--text);
+    }
+}

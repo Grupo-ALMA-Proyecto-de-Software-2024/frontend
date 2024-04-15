@@ -7,9 +7,9 @@ const Navbar = () => {
     return (
         <div className={styles.container}>
             <Link href="/" passHref className={styles.logo}>
-                <Image src="/logos/logo2.png" alt="" fill sizes="(max-width: 100px) 100vw, 100px" className={styles.logoImage}></Image>
+                <Image src="/logos/logo.png" alt="" fill sizes="(max-width: 100px) 100vw, 100px" className={styles.logoImage}></Image>
             </Link>
-            <div>
+            <div className={styles.linksContainer}>
                 <Links />
             </div>
         </div>

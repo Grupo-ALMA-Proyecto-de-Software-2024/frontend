@@ -3,8 +3,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
     color: var(--textSoft);
     background-color: var(--bg1);
     bottom: 0;
@@ -37,4 +37,30 @@
     width: 60px;
     height: 60px;
     object-fit: contain; 
+}
+
+/*Responsive Design*/
+@media (max-width: 768px) {
+      .container{
+        padding-left: 10px;
+        padding-right: 10px;
+        gap: 5px;
+      }
+
+      .text{
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 488px) {
+    .container{
+        display: block;
+        height: 100%;
+    }
+
+    .text{
+        padding: 5px 0;
+        font-size: 8px;
+        text-align: center;
+    }
 }

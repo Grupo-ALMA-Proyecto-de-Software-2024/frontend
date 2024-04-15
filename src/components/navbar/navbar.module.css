@@ -1,20 +1,44 @@
-.container{
-    height: 100px;
+/* Navbar Container */
+.container {
+    height: 85px;
     display: flex;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 20px; /* Adjust padding for smaller screens */
+    padding-right: 20px; /* Adjust padding for smaller screens */
     align-items: center;
     justify-content: space-between;
     background-color: var(--bg1);
 }
 
-.logo{
-    width: 150px;
-    height: 150px;
+/* Links Container */
+.linksContainer {
+    display: flex; /* Display links in a row */
+}
+
+/* Logo Styles */
+.logo {
+    height: 80px;
+    width: 80px;
     position: relative;
 }
 
-.logoImage{
+/* Logo Image Styles */
+.logoImage {
     flex: 1;
     position: relative;
+}
+
+/* Styles for Small Screens */
+@media (max-width: 768px) {
+    /* Navbar adjustments for small screens */
+    .container {
+        flex-direction: row; /* Stack elements on small screens */
+        text-align: center; /* Center content on small screens */
+        height: 100px;
+    }
+
+    /* Margin between logo and links on small screens */
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
 }
