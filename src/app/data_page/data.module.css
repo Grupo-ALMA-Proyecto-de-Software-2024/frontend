@@ -23,37 +23,23 @@
 
 .dataSearcher{
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    gap: 50px;
-    background-color: aquamarine;
-}
-
-.dataSearcher li {
-   padding: 10px;
-}
-
-.dataSearcher button {
-    margin-left: 10px;
-}
-
-.dataSearcher ul {
-   list-style-type: none;
-}
-
-.secondDataSearcher{
-    margin-top: 10px;
-    background-color: rgb(86, 150, 210);
-}
-
-.buttonsSearcher {
-    display: flex;
     flex-direction: column;
-    margin: 10px;
+    gap: 20px;
+    background-color: aquamarine;
+    margin: 20px;
 }
 
-.buttonsSearcherColumns {
+.dataSearcher h4 {
+    text-align: center;
+}
+
+.dataSearcherRadio{
     display: flex;
-    justify-content: space-evenly;
     flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.dataSearcherRadio li span {
+    display: inline-block;
+    width: 6em;
 }

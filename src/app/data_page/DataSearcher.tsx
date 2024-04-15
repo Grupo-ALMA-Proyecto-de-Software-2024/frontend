@@ -1,118 +1,79 @@
 "use client";
 import { useState } from 'react';
 import styles from "./data.module.css";
-import { ASTypes, GMTypes, HDTypes, IMTypes, MWCTypes, AuxTypes } from './DataTypes';
-import { AS_Images, AS_VADP, AS_Measurement } from './data_sections/ASSections';
-import { GM_Images, GM_VADP, GM_Measurement } from './data_sections/GMSections';
-import { HD_Images, HD_VADP, HD_Measurement } from './data_sections/HDSections';
-import { IM_Images, IM_VADP, IM_Measurement } from './data_sections/IMSections';
-import { MWC_Images, MWC_VADP, MWC_Measurement } from './data_sections/MWCSections';
+import ImageSearcher from './TypesSearcher/ImagesSearcher';
+import VADPSearcher from './TypesSearcher/VADPSearcher';
+import MeasurementSetSearcher from './TypesSearcher/MeasurementSetSearcher';
+import SevenGroupSearcher from './MoleculeSearcher/SevenGroupSearcher';
+import SixGroupSearcher from './MoleculeSearcher/SixGroupSearcher';
+import FiveGroupSearcher from './MoleculeSearcher/SevenGroupSearcher';
 
 const DataSearcher = () => {
 
-    const [showImageAS, setShowImageAS] = useState(false);
-    const [showVADPAS, setShowVADPAS] = useState(false);
-    const [showMeasurementAS, setShowMeasurementAS] = useState(false);
+    const [showImage, setShowImage] = useState(false);
+    const [showVADP, setShowVADP] = useState(false);
+    const [showMeasurement, setShowMeasurement] = useState(false);
 
-    const [showImageGM, setShowImageGM] = useState(false);
-    const [showVADPGM, setShowVADPGM] = useState(false);
-    const [showMeasurementGM, setShowMeasurementGM] = useState(false);
-
-    const [showImageHD, setShowImageHD] = useState(false);
-    const [showVADPHD, setShowVADPHD] = useState(false);
-    const [showMeasurementHD, setShowMeasurementHD] = useState(false);
-
-    const [showImageIM, setShowImageIM] = useState(false);
-    const [showVADPIM, setShowVADPIM] = useState(false);
-    const [showMeasurementIM, setShowMeasurementIM] = useState(false);
-
-    const [showImageMWC, setShowImageMWC] = useState(false);
-    const [showVADPMWC, setShowVADPMWC] = useState(false);
-    const [showMeasurementMWC, setShowMeasurementMWC] = useState(false);
-
-    const handleSetAllFalseAS = () => {
-        setShowImageAS(false);
-        setShowVADPAS(false);
-        setShowMeasurementAS(false);
+    const setOnlyImage = () => {
+        setShowImage(true)
+        setShowVADP(false)
+        setShowMeasurement(false)
+    }
+    
+    const setOnlyVADP = () => {
+        setShowImage(false)
+        setShowVADP(true)
+        setShowMeasurement(false)
+    }
+    
+    const setOnlyMeasurement = () => {
+        setShowImage(false)
+        setShowVADP(false)
+        setShowMeasurement(true)
     }
 
-    const handleSetAllFalseGM = () => {
-        setShowImageGM(false);
-        setShowVADPGM(false);
-        setShowMeasurementGM(false);
-    }
-
-    const handleSetAllFalseHD = () => {
-        setShowImageHD(false);
-        setShowVADPHD(false);
-        setShowMeasurementHD(false);
-    }
-
-    const handleSetAllFalseIM = () => {
-        setShowImageIM(false);
-        setShowVADPIM(false);
-        setShowMeasurementIM(false);
-    }
-
-    const handleSetAllFalseMWC = () => {
-        setShowImageMWC(false);
-        setShowVADPMWC(false);
-        setShowMeasurementMWC(false);
-    }
-
+    const [showSeven, setShowSeven] = useState(false)
+    const [showSix, setShowSix] = useState(false)
+    const [showFive, setShowFive] = useState(false)
+    
     return (
         <div>
-            <div className={styles.dataSearcher}>
-                <div>
-                    <h5>AS_209</h5>
-                    <ASTypes showImageAS={showImageAS} showVADPAS={showVADPAS} showMeasurementAS={showMeasurementAS} 
-                    setShowImageAS={setShowImageAS} setShowVADPAS={setShowVADPAS} setShowMeasurementAS={setShowMeasurementAS}
-                    onSetAllFalseGM={handleSetAllFalseGM} onSetAllFalseHD={handleSetAllFalseHD} onSetAllFalseIM={handleSetAllFalseIM} onSetAllFalseMWC={handleSetAllFalseMWC} />
+            <form className={styles.dataSearcher}>
+                <h4>Select category: </h4>
+                <div className={styles.dataSearcherRadio}>
+                    <span><input type="radio" id="AS" name="category" value="AS_209"></input></span>
+                    <label htmlFor="AS">AS_209</label>
+                    <span><input type="radio" id="GM" name="category" value="GM_Aur"></input></span>
+                    <label htmlFor="GM">GM_Aur</label>
+                    <span><input type="radio" id="HD" name="category" value="HD_163296"></input></span>
+                    <label htmlFor="HD">HD_163296</label>
+                    <span><input type="radio" id="IM" name="category" value="IM_Lup"></input></span>
+                    <label htmlFor="IM">IM_Lup</label>
+                    <span><input type="radio" id="MWC" name="category" value="MWC_480"></input></span>
+                    <label htmlFor="MWC">MWC_480</label>
+                    <span><input type="radio" id="aux" name="category" value="Aux"></input></span>
+                    <label htmlFor="aux">Aux</label>
                 </div>
-                <div>
-                    <h5>GM_Aur</h5>
-                    <GMTypes showImageGM={showImageGM} showVADPGM={showVADPGM} showMeasurementGM={showMeasurementGM} 
-                    setShowImageGM={setShowImageGM} setShowVADPGM={setShowVADPGM} setShowMeasurementGM={setShowMeasurementGM}
-                    onSetAllFalseAS={handleSetAllFalseAS} onSetAllFalseHD={handleSetAllFalseHD} onSetAllFalseIM={handleSetAllFalseIM} onSetAllFalseMWC={handleSetAllFalseMWC} />
+            </form>
+            <form className={styles.dataSearcher}>
+                <h4>Select type of data: </h4>
+                <div className={styles.dataSearcherRadio}>
+                    <span><input type="radio" onChange={()=>setOnlyImage()} id="images" name="category" value="Images"></input></span>
+                    <label htmlFor="images">Images</label>
+                    <span><input type="radio" onChange={()=>setOnlyVADP()} id="vadp" name="category" value="VADP"></input></span>
+                    <label htmlFor="vadp">VADP</label>
+                    <span><input type="radio" onChange={()=>setOnlyMeasurement()} id="measurement" name="category" value="Measurement Sets"></input></span>
+                    <label htmlFor="measurement">Measurement Sets</label>
                 </div>
-                <div>
-                    <h5>HD_163296</h5>
-                    <HDTypes showImageHD={showImageHD} showVADPHD={showVADPHD} showMeasurementHD={showMeasurementHD} 
-                    setShowImageHD={setShowImageHD} setShowVADPHD={setShowVADPHD} setShowMeasurementHD={setShowMeasurementHD}
-                    onSetAllFalseAS={handleSetAllFalseAS} onSetAllFalseGM={handleSetAllFalseGM} onSetAllFalseIM={handleSetAllFalseIM} onSetAllFalseMWC={handleSetAllFalseMWC} />
-                </div>
-                <div>
-                    <h5>IM_Lup</h5>
-                    <IMTypes showImageIM={showImageIM} showVADPIM={showVADPIM} showMeasurementIM={showMeasurementIM} 
-                    setShowImageIM={setShowImageIM} setShowVADPIM={setShowVADPIM} setShowMeasurementIM={setShowMeasurementIM}
-                    onSetAllFalseAS={handleSetAllFalseAS} onSetAllFalseGM={handleSetAllFalseGM} onSetAllFalseHD={handleSetAllFalseHD} onSetAllFalseMWC={handleSetAllFalseMWC} />
-                </div>
-                <div>
-                    <h5>MWC_480</h5>
-                    <MWCTypes showImageMWC={showImageMWC} showVADPMWC={showVADPMWC} showMeasurementMWC={showMeasurementMWC} 
-                    setShowImageMWC={setShowImageMWC} setShowVADPMWC={setShowVADPMWC} setShowMeasurementMWC={setShowMeasurementMWC}
-                    onSetAllFalseAS={handleSetAllFalseAS} onSetAllFalseGM={handleSetAllFalseGM} onSetAllFalseHD={handleSetAllFalseHD} onSetAllFalseIM={handleSetAllFalseIM} />
-                </div>
-                <div>
-                    <h5>Aux</h5>
-                    <AuxTypes />
-                </div>
-            </div>
-            { showImageAS ? <AS_Images /> : null }
-            { showVADPAS ? <AS_VADP /> : null }
-            { showMeasurementAS ? <AS_Measurement /> : null }
-            { showImageGM ? <GM_Images /> : null }
-            { showVADPGM ? <GM_VADP /> : null }
-            { showMeasurementGM ? <GM_Measurement /> : null }
-            { showImageHD ? <HD_Images /> : null }
-            { showVADPHD ? <HD_VADP /> : null }
-            { showMeasurementHD ? <HD_Measurement /> : null }
-            { showImageIM ? <IM_Images /> : null }
-            { showVADPIM ? <IM_VADP /> : null }
-            { showMeasurementIM ? <IM_Measurement /> : null }
-            { showImageMWC ? <MWC_Images /> : null }
-            { showVADPMWC ? <MWC_VADP /> : null }
-            { showMeasurementMWC ? <MWC_Measurement /> : null }
+            </form>
+            { showImage ? <div><ImageSearcher showSeven={showSeven} showSix={showSix} showFive={showFive} 
+                            setShowSeven={setShowSeven} setShowSix={setShowSix} setShowFive={setShowFive}/> 
+                            { showSeven ? <SevenGroupSearcher /> : null} 
+                            { showSix ? <SixGroupSearcher /> : null} 
+                            { showFive ? <FiveGroupSearcher /> : null} 
+                            </div> : null }
+            { showVADP ? <VADPSearcher /> : null }
+            { showMeasurement ? <MeasurementSetSearcher /> : null }
         </div>
     )
 }
