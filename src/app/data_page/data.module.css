@@ -21,25 +21,18 @@
     display: list-item;
 }
 
-.dataSearcher{
+.regionSelectorColumn {
+    margin: 25px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    gap: 20px;
-    background-color: aquamarine;
-    margin: 20px;
 }
 
-.dataSearcher h4 {
-    text-align: center;
-}
-
-.dataSearcherRadio{
+.regionSelectorRow {
+    margin: 5px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-.dataSearcherRadio li span {
-    display: inline-block;
-    width: 6em;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }

@@ -8,19 +8,22 @@ import {
     Chip,
     Select,
     FormControl,
-    Container
+    Container,
+    Button
 } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check"
 import CancelIcon from "@mui/icons-material/Cancel"
+import DownloadIcon from '@mui/icons-material/Download'
 import styles from "./data.module.css";
 
 interface ElementsInSelect {
     title: string; 
     values: string[];
+    onChange?: (elements: string[]) => void;
 }
 
-let regiones: ElementsInSelect = {
-    title: "Regiones",
+let regions: ElementsInSelect = {
+    title: "Regions",
     values: [
         "Ophiucus",
         "Lupus",
@@ -28,8 +31,8 @@ let regiones: ElementsInSelect = {
     ]
 }
 
-let discos: ElementsInSelect = {
-    title: "Discos",
+let disks: ElementsInSelect = {
+    title: "Disks",
     values: [
         "Disco 1",
         "Disco 2",
@@ -40,8 +43,8 @@ let discos: ElementsInSelect = {
     ]
 }
 
-let bandas: ElementsInSelect = {
-    title: "Bandas",
+let bands: ElementsInSelect = {
+    title: "Bands",
     values: [
         "Banda 6",
         "Banda 7",
@@ -50,8 +53,8 @@ let bandas: ElementsInSelect = {
     ]
 }
 
-let datos: ElementsInSelect = {
-    title: "Datos",
+let data: ElementsInSelect = {
+    title: "Data",
     values: [
         "Contínuo",
         "Molécula 1",
@@ -62,8 +65,8 @@ let datos: ElementsInSelect = {
     ]
 }
 
-let archivos: ElementsInSelect = {
-    title: "Archivos",
+let files: ElementsInSelect = {
+    title: "Files",
     values: [
         "Measurement Set",
         "Mapa",
@@ -73,70 +76,111 @@ let archivos: ElementsInSelect = {
     ]
 }
 
-const MultiSelect: FC<ElementsInSelect> = ({ title, values }) => {
-    const [selectedNames, setSelectedNames] = useState([]);
+
+const MultiSelect: FC<ElementsInSelect> = ({ title, values, onChange }) => {
+    const [selectedNames, setSelectedNames] = useState<string[]>([]);
+    const handleChange = (newSelection: string[]) => {
+        setSelectedNames(newSelection);
+        if (onChange) {
+            onChange(newSelection);
+        }
+    }
     return (
-        <FormControl sx={{ m: 4, width: 500 }}>
-            <InputLabel>{title}</InputLabel>
-            <Select
-                multiple
-                value={selectedNames}
-                onChange={(e) => setSelectedNames(e.target.value)}
-                input={<OutlinedInput label="Multiple Select" />}
-                renderValue={(selected) => (
-                    <Stack gap={1} direction="row" flexWrap="wrap">
-                        {selected.map((value) => (
-                            <Chip
+        <div className={styles.regionSelectorColumn}>
+            <FormControl sx={{ m: 0, width: 385}}>
+                <InputLabel>Select {title}</InputLabel>
+                <Select
+                    multiple
+                    value={selectedNames}
+                    onChange={(e) => handleChange(e.target.value as string[])}
+                    input={<OutlinedInput label="Multiple Select" />}
+                    sx={{ backgroundColor: "#E7EFEF" }}
+                    renderValue={(selected) => (
+                        <Stack gap={1} direction="row" flexWrap="wrap">
+                            {selected.map((value) => (
+                                <Chip
                                 key={value}
                                 label={value}
-                                onDelete={() =>
-                                    setSelectedNames(
-                                        selectedNames.filter((item) => item !== value)
-                                    )
-                                }
-                                deleteIcon={
-                                    <CancelIcon
+                                onDelete={() => {
+                                    const newSelection = selectedNames.filter((item) => item !== value);
+                                    setSelectedNames(newSelection);
+                                    handleChange(newSelection);
+                                }}
+                                    deleteIcon={
+                                        <CancelIcon
                                         onMouseDown={(event) => event.stopPropagation()}
+                                        />
+                                    }
                                     />
-                                }
-                            />
-                        ))}
-                    </Stack>
-                )}
-            >
-                {values.map((value) => (
-                    <MenuItem
+                                ))}
+                        </Stack>
+                    )}
+                    >
+                    {values.map((value) => (
+                        <MenuItem
                         key={value}
                         value={value}
                         sx={{ 
-                            justifyContent: "space-between",
-                        }}
-                    >
-                        {value}
-                        {selectedNames.includes(value) ? <CheckIcon color="info" /> : null}
-                    </MenuItem>
-                ))}
-            </Select>
-        </FormControl>
+                                justifyContent: "space-between",
+                                backgroundColor: 'white',
+                            }}
+                            >
+                            {value}
+                            {selectedNames.includes(value) ? <CheckIcon color="info" /> : null}
+                        </MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+        </div>
     );
 };
 
-const DataSearcher = () => {
-    
+interface ContainerBuilderProps {
+    title: string;
+    select1: ElementsInSelect;
+    select2: ElementsInSelect;
+}
+
+const ContainerBuilder: FC<ContainerBuilderProps> = ({ title, select1, select2 }) => {
     return (
-        <Container
-            sx={{ 
+        <div className={styles.regionSelectorRow}>
+            <Container sx={{
                 border: 1,
                 borderRadius: '16px',
-                justifyContent: "center",
-            }}
-        >
-            <MultiSelect title={regiones.title} values={regiones.values} />
-            <MultiSelect title={discos.title} values={discos.values} />
-            <MultiSelect title={bandas.title} values={bandas.values} />
-            <MultiSelect title={datos.title} values={datos.values} />
-            <MultiSelect title={archivos.title} values={archivos.values} />
-        </Container>
+                margin: '15px',
+                width: '1100px',
+                justifyContent: 'flex-start',
+            }}>
+                <div className={styles.regionSelectorRow}>
+                    <h2>{title}</h2>
+                    <MultiSelect title={select1.title} values={select1.values} />
+                    <MultiSelect title={select2.title} values={select2.values} />
+                </div>
+            </Container>
+            <Button variant="outlined">Selected Files {<DownloadIcon></DownloadIcon>}</Button>
+        </div>
+    )
+}
+
+const DataSearcher = () => {
+    const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
+    const handleRegionChange = (regions: string[]) => {
+        setSelectedRegions(regions);
+    }
+    return (
+        <div className={styles.regionSelectorColumn}>
+            <h4>Select one or more regions</h4>
+            <MultiSelect title={regions.title} values={regions.values} onChange={handleRegionChange} />
+            {selectedRegions.includes("Ophiucus") && (
+                <ContainerBuilder title="Ophiucus" select1={disks} select2={bands} />
+            )}
+            {selectedRegions.includes("Lupus") && (    
+                <ContainerBuilder title="Lupus" select1={disks} select2={bands} />
+            )}
+            {selectedRegions.includes("Upper Scorpius") && (
+                <ContainerBuilder title="Upper Scorpius" select1={disks} select2={bands} />
+            )}
+        </div>
     )
 }
 
