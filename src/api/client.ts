@@ -11,14 +11,17 @@ const client = axios.create({
   baseURL: baseUrl,
 });
 
-const getFullImageUrl = (imageUrl: string) => `http://${host}:${port}/${imageUrl}`;
+
+function getFullImageUrl(imageUrl: string) {
+  return `http://${host}:${port}/${imageUrl}`;
+}
 
 
 class AlmaClient {
   async getCarouselImages(): Promise<CarouselImageDto[]> {
     const response = await client.get('/carousel');
     return response.data.map((item: any) => ({
-      imageUrl: getFullImageUrl(item.imageUrl),
+      imageUrl: getFullImageUrl(item.image),
       title: item.title,
       description: item.description,
     }));
