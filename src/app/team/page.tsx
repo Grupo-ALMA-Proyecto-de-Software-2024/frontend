@@ -31,7 +31,7 @@ const Team = () => {
             </div>
             <div className={styles.memberGrid}>
                 {teamMembers.map(member => (
-                    <Collapse>
+                    <Collapse key={member.name}>
                         <CollapsePanel
                             header={
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
