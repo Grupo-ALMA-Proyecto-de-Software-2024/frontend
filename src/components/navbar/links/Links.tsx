@@ -22,16 +22,13 @@ const links: LinkItem[] = [
         path: "/overview",
     },
     {
-        title: "Disks",
-        path: "/disks",
+        title: "Regions",
+        path: "/regions",
     },
     {
-        title: "Visualizations",
-        path: "/visualizations",
-    },
-    {
-        title: "Publications",
-        path: "/publications",
+        title: "News",
+        path: "/news",
+
     },
     {
         title: "Press",
