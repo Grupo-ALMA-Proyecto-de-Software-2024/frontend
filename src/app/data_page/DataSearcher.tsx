@@ -15,6 +15,7 @@ import CheckIcon from "@mui/icons-material/Check"
 import CancelIcon from "@mui/icons-material/Cancel"
 import DownloadIcon from '@mui/icons-material/Download'
 import styles from "./data.module.css";
+import CollapsibleTable from './CollapsibleTable';
 
 interface ElementsInSelect {
     title: string; 
@@ -34,34 +35,34 @@ let regions: ElementsInSelect = {
 let disks: ElementsInSelect = {
     title: "Disks",
     values: [
-        "Disco 1",
-        "Disco 2",
-        "Disco 3",
-        "Disco 4",
-        "Disco 5",
-        "Disco N"
+        "Disk 1",
+        "Disk 2",
+        "Disk 3",
+        "Disk 4",
+        "Disk 5",
+        "Disk N"
     ]
 }
 
 let bands: ElementsInSelect = {
     title: "Bands",
     values: [
-        "Banda 6",
-        "Banda 7",
-        "Banda 8",
-        "Banda N"
+        "Band 6",
+        "Band 7",
+        "Band 8",
+        "Band N"
     ]
 }
 
 let data: ElementsInSelect = {
     title: "Data",
     values: [
-        "Contínuo",
-        "Molécula 1",
-        "Molécula 2",
-        "Molécula 3",
-        "Molécula 4",
-        "Molécula N",
+        "Continuous",
+        "Molecule 1",
+        "Molecule 2",
+        "Molecule 3",
+        "Molecule 4",
+        "Molecule N",
     ]
 }
 
@@ -69,8 +70,8 @@ let files: ElementsInSelect = {
     title: "Files",
     values: [
         "Measurement Set",
-        "Mapa",
-        "Cubo de canales",
+        "Map",
+        "Cube",
         "Momento 0",
         "Momento 1"
     ]
@@ -135,6 +136,12 @@ const MultiSelect: FC<ElementsInSelect> = ({ title, values, onChange }) => {
     );
 };
 
+interface ElementsInSelect {
+    title: string; 
+    values: string[];
+    onChange?: (elements: string[]) => void; // Cambiamos la firma de la función
+}
+
 interface ContainerBuilderProps {
     title: string;
     select1: ElementsInSelect;
@@ -142,6 +149,20 @@ interface ContainerBuilderProps {
 }
 
 const ContainerBuilder: FC<ContainerBuilderProps> = ({ title, select1, select2 }) => {
+    const [selectedDisk, setSelectedDisk] = useState<string>("");
+    const [selectedBand, setSelectedBand] = useState<string>("");
+
+    const handleChange = (elements: string[]) => { // Usamos la misma firma de función para onChange
+        setSelectedDisk(elements[0]); // El primer elemento es el disco
+        setSelectedBand(elements[1]); // El segundo elemento es la banda
+        if (select1.onChange) {
+            select1.onChange(elements); // Llamamos al onChange del primer select
+        }
+        if (select2.onChange) {
+            select2.onChange(elements); // Llamamos al onChange del segundo select
+        }
+    }
+
     return (
         <div className={styles.regionSelectorRow}>
             <Container sx={{
@@ -153,8 +174,8 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title, select1, select2 }
             }}>
                 <div className={styles.regionSelectorRow}>
                     <h2>{title}</h2>
-                    <MultiSelect title={select1.title} values={select1.values} />
-                    <MultiSelect title={select2.title} values={select2.values} />
+                    <MultiSelect title={select1.title} values={select1.values} onChange={handleChange} />
+                    <MultiSelect title={select2.title} values={select2.values} onChange={handleChange} />
                 </div>
             </Container>
             <Button variant="outlined">Selected Files {<DownloadIcon></DownloadIcon>}</Button>
@@ -162,11 +183,25 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title, select1, select2 }
     )
 }
 
+
+
 const DataSearcher = () => {
     const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
+    const [selectedDisk, setSelectedDisk] = useState<string[]>([]);
+    const [selectedBand, setSelectedBand] = useState<string[]>([]);
+
     const handleRegionChange = (regions: string[]) => {
         setSelectedRegions(regions);
     }
+
+    const handleDiskChange = (disk: string[]) => {
+        setSelectedDisk(disk);
+    }
+
+    const handleBandChange = (band: string[]) => {
+        setSelectedBand(band);
+    }
+
     return (
         <div className={styles.regionSelectorColumn}>
             <h4>Select one or more regions</h4>
@@ -180,8 +215,12 @@ const DataSearcher = () => {
             {selectedRegions.includes("Upper Scorpius") && (
                 <ContainerBuilder title="Upper Scorpius" select1={disks} select2={bands} />
             )}
+            {(selectedDisk.length > 0 && selectedBand.length > 0) && (
+                <CollapsibleTable />
+            )}
         </div>
     )
 }
+
 
 export default DataSearcher;
