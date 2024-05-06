@@ -65,53 +65,36 @@ const Home: React.FC = () => {
         </div>
         </Link>
 
-        {/* Disks Card */}
-        <Link href="/disks">
+        {/* Regions Card */}
+        <Link href="/regions">
           <div className={styles.card}>
             <div className={styles.cardImage}>
               <Image
-                src="/cards/DisksIcon.png" 
-                alt="Disks Card" 
+                src="/cards/RegionsIcon.png" 
+                alt="Regions Card" 
                 width={150}
                 height={150}  
                 style={{objectFit: 'cover'}} 
               />
             </div>
-            <h3>Disks</h3>
+            <h3>Regions</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
         </Link>
 
-        {/* Visualizations Card */}
-        <Link href="/visualizations">
+        {/* News Card */}
+        <Link href="/news">
           <div className={styles.card}>
             <div className={styles.cardImage}>
               <Image
-                src="/cards/VisualizationsIcon.png" 
-                alt="Visualizations Card" 
-                width={150}
-                height={150}  
-                style={{objectFit: 'cover'}}
-              />
-            </div>
-            <h3>Visualizations</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </Link>
-
-        {/* Publications Card */}
-        <Link href="/publications">
-          <div className={styles.card}>
-            <div className={styles.cardImage}>
-              <Image
-                src="/cards/PublicationsIcon.png" 
-                alt="Publications Card" 
+                src="/cards/NewsIcon.png" 
+                alt="News Card" 
                 width={150}
                 height={150}  
                 style={{objectFit: 'cover'}} 
               />
             </div>
-            <h3>Publications</h3>
+            <h3>News</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
         </Link>
