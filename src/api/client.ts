@@ -20,7 +20,7 @@ const port = 8000;
 const namespace = "api";
 const baseUrl = `http://${host}:${port}/${namespace}`;
 
-const client = axios.create({
+export const client = axios.create({
   baseURL: baseUrl,
 });
 
@@ -28,7 +28,7 @@ function getFullImageUrl(imageUrl: string) {
   return `http://${host}:${port}/${imageUrl}`;
 }
 
-class AlmaClient {
+class almaClient {
   async getCarouselImages(): Promise<CarouselImageDto[]> {
     const response = await client.get("/carousel");
     return response.data.map((item: any) => ({
@@ -64,4 +64,4 @@ class AlmaClient {
   }
 }
 
-export default new AlmaClient();
+export default new almaClient();
