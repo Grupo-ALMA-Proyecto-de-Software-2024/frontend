@@ -12,25 +12,27 @@ describe("AlmaClient", () => {
   describe("getRegions", () => {
     it("fetches regions correctly", async () => {
       const mockData = { regions: [{ name: "North", disks: [] }] };
-      mock.onGet("/regions").reply(200, mockData);
-      const response = await almaClient.getRegions({});
+      const params = { region: "North" };
+      mock.onGet("/regions", { params }).reply(200, mockData);
+      const response = await almaClient.getRegions(params);
       expect(response).toEqual(mockData.regions);
     });
   });
 
   describe("getDisks", () => {
-    it("fetches disks correctly", async () => {
+    it("fetches disks correctly with filter parameters", async () => {
       const mockData = {
         disks: [{ name: "Disk1", regionName: "North", bands: [] }],
       };
-      mock.onGet("/disks").reply(200, mockData);
-      const response = await almaClient.getDisks({});
+      const params = { region: "North", disk: "Disk1" };
+      mock.onGet("/disks", { params }).reply(200, mockData);
+      const response = await almaClient.getDisks(params);
       expect(response).toEqual(mockData.disks);
     });
   });
 
   describe("getBands", () => {
-    it("fetches bands correctly", async () => {
+    it("fetches bands correctly with multiple filter parameters", async () => {
       const mockData = {
         bands: [
           {
@@ -41,14 +43,15 @@ describe("AlmaClient", () => {
           },
         ],
       };
-      mock.onGet("/bands").reply(200, mockData);
-      const response = await almaClient.getBands({});
+      const params = { region: "North", disk: "Disk1", band: "Band1" };
+      mock.onGet("/bands", { params }).reply(200, mockData);
+      const response = await almaClient.getBands(params);
       expect(response).toEqual(mockData.bands);
     });
   });
 
   describe("getMolecules", () => {
-    it("fetches molecules correctly", async () => {
+    it("fetches molecules correctly using all filter parameters", async () => {
       const mockData = {
         molecules: [
           {
@@ -60,14 +63,20 @@ describe("AlmaClient", () => {
           },
         ],
       };
-      mock.onGet("/molecules").reply(200, mockData);
-      const response = await almaClient.getMolecules({});
+      const params = {
+        region: "North",
+        disk: "Disk1",
+        band: "Band1",
+        molecule: "Molecule1",
+      };
+      mock.onGet("/molecules", { params }).reply(200, mockData);
+      const response = await almaClient.getMolecules(params);
       expect(response).toEqual(mockData.molecules);
     });
   });
 
   describe("getData", () => {
-    it("fetches data correctly", async () => {
+    it("fetches data correctly with comprehensive filter parameters", async () => {
       const mockData = {
         data: [
           {
@@ -82,8 +91,15 @@ describe("AlmaClient", () => {
           },
         ],
       };
-      mock.onGet("/data").reply(200, mockData);
-      const response = await almaClient.getData({});
+      const params = {
+        region: "North",
+        disk: "Disk1",
+        band: "Band1",
+        molecule: "Molecule1",
+        data: "Data1",
+      };
+      mock.onGet("/data", { params }).reply(200, mockData);
+      const response = await almaClient.getData(params);
       expect(response).toEqual(mockData.data);
     });
   });
