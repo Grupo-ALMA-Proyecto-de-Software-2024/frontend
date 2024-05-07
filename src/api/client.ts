@@ -38,27 +38,27 @@ class almaClient {
     }));
   }
 
-  async getRegions(params: GetRegionsParams): Promise<RegionDto[]> {
+  async getRegions(params?: GetRegionsParams): Promise<RegionDto[]> {
     const response = await client.get("/regions", { params });
     return response.data.regions;
   }
 
-  async getDisks(params: GetDisksParams): Promise<DiskDto[]> {
+  async getDisks(params?: GetDisksParams): Promise<DiskDto[]> {
     const response = await client.get("/disks", { params });
     return response.data.disks;
   }
 
-  async getBands(params: GetBandsParams): Promise<BandDto[]> {
+  async getBands(params?: GetBandsParams): Promise<BandDto[]> {
     const response = await client.get("/bands", { params });
     return response.data.bands;
   }
 
-  async getMolecules(params: GetMoleculesParams): Promise<MoleculeDto[]> {
+  async getMolecules(params?: GetMoleculesParams): Promise<MoleculeDto[]> {
     const response = await client.get("/molecules", { params });
     return response.data.molecules;
   }
 
-  async getData(params: GetDataParams): Promise<DataDto[]> {
+  async getData(params?: GetDataParams): Promise<DataDto[]> {
     const response = await client.get("/data", { params });
     return response.data.data;
   }
