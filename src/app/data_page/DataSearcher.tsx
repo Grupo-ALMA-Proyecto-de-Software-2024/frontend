@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, FC } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import {
     Stack,
     OutlinedInput,
@@ -15,67 +15,14 @@ import CheckIcon from "@mui/icons-material/Check"
 import CancelIcon from "@mui/icons-material/Cancel"
 import DownloadIcon from '@mui/icons-material/Download'
 import styles from "./data.module.css";
+import { DiskDto, BandDto, RegionDto } from '@api/dto';
+import almaClient from '@api/client';
 
 interface ElementsInSelect {
     title: string; 
     values: string[];
     onChange?: (elements: string[]) => void;
 }
-
-let regions: ElementsInSelect = {
-    title: "Regions",
-    values: [
-        "Ophiucus",
-        "Lupus",
-        "Upper Scorpius"
-    ]
-}
-
-let disks: ElementsInSelect = {
-    title: "Disks",
-    values: [
-        "Disco 1",
-        "Disco 2",
-        "Disco 3",
-        "Disco 4",
-        "Disco 5",
-        "Disco N"
-    ]
-}
-
-let bands: ElementsInSelect = {
-    title: "Bands",
-    values: [
-        "Banda 6",
-        "Banda 7",
-        "Banda 8",
-        "Banda N"
-    ]
-}
-
-let data: ElementsInSelect = {
-    title: "Data",
-    values: [
-        "Contínuo",
-        "Molécula 1",
-        "Molécula 2",
-        "Molécula 3",
-        "Molécula 4",
-        "Molécula N",
-    ]
-}
-
-let files: ElementsInSelect = {
-    title: "Files",
-    values: [
-        "Measurement Set",
-        "Mapa",
-        "Cubo de canales",
-        "Momento 0",
-        "Momento 1"
-    ]
-}
-
 
 const MultiSelect: FC<ElementsInSelect> = ({ title, values, onChange }) => {
     const [selectedNames, setSelectedNames] = useState<string[]>([]);
@@ -137,11 +84,50 @@ const MultiSelect: FC<ElementsInSelect> = ({ title, values, onChange }) => {
 
 interface ContainerBuilderProps {
     title: string;
-    select1: ElementsInSelect;
-    select2: ElementsInSelect;
 }
 
-const ContainerBuilder: FC<ContainerBuilderProps> = ({ title, select1, select2 }) => {
+const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
+    
+    const [disks, setDisks] = useState<DiskDto[]>([]);
+    const [bands, setBands] = useState<BandDto[]>([]);
+
+    const [selectedDisks, setSelectedDisks] = useState<string[]>([]);
+    const handleDisksChange = (disks: string[]) => {
+        setSelectedDisks(disks);
+    }
+
+    const [selectedBands, setSelectedBands] = useState<string[]>([]);
+    const handleBandsChange = (bands: string[]) => {
+        setSelectedBands(bands);
+    }
+
+    var diskValues: string[] = [];
+    var bandValues: string[] = [];
+
+    useEffect(() => {
+        const fetchDisks = async () => {
+            const disks = await almaClient.getDisks( {region: title} );
+            setDisks(disks);
+        };
+
+        fetchDisks();
+    }, []);
+    
+    disks.forEach(disk => {
+        diskValues.push(disk.name);
+    });
+
+    useEffect(() => {
+        const fetchBands = async (disk: string) => {
+            const bands = await almaClient.getBands( {disk: disk} );
+            setBands(bands)
+        };
+        fetchBands(selectedDisks[0]);
+    })
+    bands.forEach(band => {
+        bandValues.push(band.name);
+    });
+
     return (
         <div className={styles.regionSelectorRow}>
             <Container sx={{
@@ -153,8 +139,8 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title, select1, select2 }
             }}>
                 <div className={styles.regionSelectorRow}>
                     <h2>{title}</h2>
-                    <MultiSelect title={select1.title} values={select1.values} />
-                    <MultiSelect title={select2.title} values={select2.values} />
+                    <MultiSelect title={"Disks"} values={diskValues} onChange={handleDisksChange} />
+                    <MultiSelect title={"Bands"} values={bandValues} onChange={handleBandsChange} />
                 </div>
             </Container>
             <Button variant="outlined">Selected Files {<DownloadIcon></DownloadIcon>}</Button>
@@ -163,22 +149,41 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title, select1, select2 }
 }
 
 const DataSearcher = () => {
+    
+    const [regions, setRegions] = useState<RegionDto[]>([]);
+
     const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
     const handleRegionChange = (regions: string[]) => {
         setSelectedRegions(regions);
     }
+
+    var regionValues: string[] = [];
+
+    useEffect(() => {
+            const fetchRegions = async () => {
+                const regions = await almaClient.getRegions();
+                setRegions(regions);
+            };
+    
+            fetchRegions();
+    }, []);
+
+    regions.forEach(region => {
+        regionValues.push(region.name);
+    });
+
     return (
         <div className={styles.regionSelectorColumn}>
             <h4>Select one or more regions</h4>
-            <MultiSelect title={regions.title} values={regions.values} onChange={handleRegionChange} />
+            <MultiSelect title={"Regions"} values={regionValues} onChange={handleRegionChange} />
             {selectedRegions.includes("Ophiucus") && (
-                <ContainerBuilder title="Ophiucus" select1={disks} select2={bands} />
+                <ContainerBuilder title="Ophiucus" />
             )}
             {selectedRegions.includes("Lupus") && (    
-                <ContainerBuilder title="Lupus" select1={disks} select2={bands} />
+                <ContainerBuilder title="Lupus" />
             )}
             {selectedRegions.includes("Upper Scorpius") && (
-                <ContainerBuilder title="Upper Scorpius" select1={disks} select2={bands} />
+                <ContainerBuilder title="Upper Scorpius" />
             )}
         </div>
     )
