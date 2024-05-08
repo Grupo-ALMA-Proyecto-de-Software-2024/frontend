@@ -1,0 +1,38 @@
+.container {
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+
+.heading {
+    width: 150px;
+}
+
+.textBox {
+    width: 550px;
+}
+
+.detailsContainer {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.expand {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cardBox.expand{
+    height: auto; /* Este selector no existe, probablemente debería ser .container.expanded */
+}
+
+.checkBox {
+    cursor: pointer;
+    background-color: var(--bg2);
+}

@@ -9,76 +9,68 @@ import {
     Select,
     FormControl,
     Container,
-    Button
+    Button,
+    SelectChangeEvent
 } from "@mui/material";
-import CheckIcon from "@mui/icons-material/Check"
-import CancelIcon from "@mui/icons-material/Cancel"
-import DownloadIcon from '@mui/icons-material/Download'
+import CheckIcon from "@mui/icons-material/Check";
+import CancelIcon from "@mui/icons-material/Cancel";
+import DownloadIcon from '@mui/icons-material/Download';
 import styles from "./data.module.css";
+import CollapsibleTable from './CollapsibleTable';
 import { DiskDto, BandDto, RegionDto } from '@api/dto';
 import almaClient from '@api/client';
 
 interface ElementsInSelect {
-    title: string; 
+    title: string;
     values: string[];
     onChange?: (elements: string[]) => void;
 }
 
-const MultiSelect: FC<ElementsInSelect> = ({ title, values, onChange }) => {
+const MultiSelect: FC<ElementsInSelect> = ({ title, values = [], onChange }) => {
     const [selectedNames, setSelectedNames] = useState<string[]>([]);
-    const handleChange = (newSelection: string[]) => {
+
+    const handleChange = (event: SelectChangeEvent<string[]>) => {
+        const newSelection = event.target.value as string[];
         setSelectedNames(newSelection);
         if (onChange) {
             onChange(newSelection);
         }
-    }
+    };
+
     return (
-        <div className={styles.regionSelectorColumn}>
-            <FormControl sx={{ m: 0, width: 385}}>
-                <InputLabel>Select {title}</InputLabel>
-                <Select
-                    multiple
-                    value={selectedNames}
-                    onChange={(e) => handleChange(e.target.value as string[])}
-                    input={<OutlinedInput label="Multiple Select" />}
-                    sx={{ backgroundColor: "#E7EFEF" }}
-                    renderValue={(selected) => (
-                        <Stack gap={1} direction="row" flexWrap="wrap">
-                            {selected.map((value) => (
-                                <Chip
+        <FormControl sx={{ m: 0, width: 300 }}>
+            <InputLabel>{title}</InputLabel>
+            <Select
+                multiple
+                value={selectedNames}
+                onChange={handleChange}
+                input={<OutlinedInput label={title} />}
+                renderValue={(selected) => (
+                    <Stack direction="row" gap={1} flexWrap="wrap">
+                        {selected.map((value) => (
+                            <Chip
                                 key={value}
                                 label={value}
                                 onDelete={() => {
                                     const newSelection = selectedNames.filter((item) => item !== value);
                                     setSelectedNames(newSelection);
-                                    handleChange(newSelection);
-                                }}
-                                    deleteIcon={
-                                        <CancelIcon
-                                        onMouseDown={(event) => event.stopPropagation()}
-                                        />
+                                    if (onChange) {
+                                        onChange(newSelection);
                                     }
-                                    />
-                                ))}
-                        </Stack>
-                    )}
-                    >
-                    {values.map((value) => (
-                        <MenuItem
-                        key={value}
-                        value={value}
-                        sx={{ 
-                                justifyContent: "space-between",
-                                backgroundColor: 'white',
-                            }}
-                            >
-                            {value}
-                            {selectedNames.includes(value) ? <CheckIcon color="info" /> : null}
-                        </MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
-        </div>
+                                }}
+                                deleteIcon={<CancelIcon onMouseDown={(event) => event.stopPropagation()} />}
+                            />
+                        ))}
+                    </Stack>
+                )}
+            >
+                {values.map((value) => (
+                    <MenuItem key={value} value={value}>
+                        {value} {selectedNames.includes(value) ? <CheckIcon color="info" /> : null}
+                    </MenuItem>
+                ))}
+            </Select>
+        </FormControl>
     );
 };
 
@@ -100,6 +92,8 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     const handleBandsChange = (bands: string[]) => {
         setSelectedBands(bands);
     }
+  
+    const shouldShowTable = selectedDisk.length > 0 && selectedBand.length > 0;
 
     var diskValues: string[] = [];
     var bandValues: string[] = [];
@@ -144,6 +138,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
                 </div>
             </Container>
             <Button variant="outlined">Selected Files {<DownloadIcon></DownloadIcon>}</Button>
+            {shouldShowTable && <CollapsibleTable />}
         </div>
     )
 }
@@ -186,7 +181,7 @@ const DataSearcher = () => {
                 <ContainerBuilder title="Upper Scorpius" />
             )}
         </div>
-    )
-}
+    );
+};
 
 export default DataSearcher;
