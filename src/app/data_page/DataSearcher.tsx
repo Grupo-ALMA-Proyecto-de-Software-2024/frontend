@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, FC } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import {
     Stack,
     OutlinedInput,
@@ -17,37 +17,14 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import DownloadIcon from '@mui/icons-material/Download';
 import styles from "./data.module.css";
 import CollapsibleTable from './CollapsibleTable';
+import { DiskDto, BandDto, RegionDto } from '@api/dto';
+import almaClient from '@api/client';
 
 interface ElementsInSelect {
     title: string;
     values: string[];
     onChange?: (elements: string[]) => void;
 }
-
-const regions: ElementsInSelect = {
-    title: "Regions",
-    values: ["Ophiucus", "Lupus", "Upper Scorpius"]
-};
-
-const disks: ElementsInSelect = {
-    title: "Disks",
-    values: ["Disk 1", "Disk 2", "Disk 3", "Disk 4", "Disk 5", "Disk N"]
-};
-
-const bands: ElementsInSelect = {
-    title: "Bands",
-    values: ["Band 6", "Band 7", "Band 8", "Band N"]
-};
-
-const data: ElementsInSelect = {
-    title: "Data",
-    values: ["Continuous", "Molecule 1", "Molecule 2", "Molecule 3", "Molecule 4", "Molecule N"]
-};
-
-const files: ElementsInSelect = {
-    title: "Files",
-    values: ["Measurement Set", "Map", "Cube", "Momento 0", "Momento 1"]
-};
 
 const MultiSelect: FC<ElementsInSelect> = ({ title, values = [], onChange }) => {
     const [selectedNames, setSelectedNames] = useState<string[]>([]);
@@ -99,56 +76,109 @@ const MultiSelect: FC<ElementsInSelect> = ({ title, values = [], onChange }) => 
 
 interface ContainerBuilderProps {
     title: string;
-    select1: ElementsInSelect;
-    select2: ElementsInSelect;
-    shouldShowTable: boolean;
 }
 
-const ContainerBuilder: FC<ContainerBuilderProps> = ({ title, select1, select2, shouldShowTable }) => {
+const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
+    
+    const [disks, setDisks] = useState<DiskDto[]>([]);
+    const [bands, setBands] = useState<BandDto[]>([]);
+
+    const [selectedDisks, setSelectedDisks] = useState<string[]>([]);
+    const handleDisksChange = (disks: string[]) => {
+        setSelectedDisks(disks);
+    }
+
+    const [selectedBands, setSelectedBands] = useState<string[]>([]);
+    const handleBandsChange = (bands: string[]) => {
+        setSelectedBands(bands);
+    }
+  
+    const shouldShowTable = selectedDisk.length > 0 && selectedBand.length > 0;
+
+    var diskValues: string[] = [];
+    var bandValues: string[] = [];
+
+    useEffect(() => {
+        const fetchDisks = async () => {
+            const disks = await almaClient.getDisks( {region: title} );
+            setDisks(disks);
+        };
+
+        fetchDisks();
+    }, []);
+    
+    disks.forEach(disk => {
+        diskValues.push(disk.name);
+    });
+
+    useEffect(() => {
+        const fetchBands = async (disk: string) => {
+            const bands = await almaClient.getBands( {disk: disk} );
+            setBands(bands)
+        };
+        fetchBands(selectedDisks[0]);
+    })
+    bands.forEach(band => {
+        bandValues.push(band.name);
+    });
+
     return (
-        <Container sx={{ border: 1, borderRadius: '16px', margin: '15px', width: '1100px', justifyContent: 'flex-start' }}>
-            <div className={styles.regionSelectorRow}>
-                <h2>{title}</h2>
-                <MultiSelect {...select1} />
-                <MultiSelect {...select2} />
-            </div>
-            <Button variant="outlined">Selected Files {<DownloadIcon />}</Button>
+        <div className={styles.regionSelectorRow}>
+            <Container sx={{
+                border: 1,
+                borderRadius: '16px',
+                margin: '15px',
+                width: '1100px',
+                justifyContent: 'flex-start',
+            }}>
+                <div className={styles.regionSelectorRow}>
+                    <h2>{title}</h2>
+                    <MultiSelect title={"Disks"} values={diskValues} onChange={handleDisksChange} />
+                    <MultiSelect title={"Bands"} values={bandValues} onChange={handleBandsChange} />
+                </div>
+            </Container>
+            <Button variant="outlined">Selected Files {<DownloadIcon></DownloadIcon>}</Button>
             {shouldShowTable && <CollapsibleTable />}
-        </Container>
-    );
-};
+        </div>
+    )
+}
 
-const DataSearcher: FC = () => {
+const DataSearcher = () => {
+    
+    const [regions, setRegions] = useState<RegionDto[]>([]);
+
     const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
-    const [selectedDisk, setSelectedDisk] = useState<string[]>([]);
-    const [selectedBand, setSelectedBand] = useState<string[]>([]);
-
     const handleRegionChange = (regions: string[]) => {
         setSelectedRegions(regions);
-    };
+    }
 
-    const handleDiskChange = (disk: string[]) => {
-        setSelectedDisk(disk);
-    };
+    var regionValues: string[] = [];
 
-    const handleBandChange = (band: string[]) => {
-        setSelectedBand(band);
-    };
+    useEffect(() => {
+            const fetchRegions = async () => {
+                const regions = await almaClient.getRegions();
+                setRegions(regions);
+            };
+    
+            fetchRegions();
+    }, []);
 
-    const shouldShowTable = selectedDisk.length > 0 && selectedBand.length > 0;
+    regions.forEach(region => {
+        regionValues.push(region.name);
+    });
 
     return (
         <div className={styles.regionSelectorColumn}>
             <h4>Select one or more regions</h4>
-            <MultiSelect title={regions.title} values={regions.values} onChange={handleRegionChange} />
+            <MultiSelect title={"Regions"} values={regionValues} onChange={handleRegionChange} />
             {selectedRegions.includes("Ophiucus") && (
-                <ContainerBuilder title="Ophiucus" select1={{...disks, onChange: handleDiskChange}} select2={{...bands, onChange: handleBandChange}} shouldShowTable={shouldShowTable} />
+                <ContainerBuilder title="Ophiucus" />
             )}
-            {selectedRegions.includes("Lupus") && (
-                <ContainerBuilder title="Lupus" select1={{...disks, onChange: handleDiskChange}} select2={{...bands, onChange: handleBandChange}} shouldShowTable={shouldShowTable} />
+            {selectedRegions.includes("Lupus") && (    
+                <ContainerBuilder title="Lupus" />
             )}
             {selectedRegions.includes("Upper Scorpius") && (
-                <ContainerBuilder title="Upper Scorpius" select1={{...disks, onChange: handleDiskChange}} select2={{...bands, onChange: handleBandChange}} shouldShowTable={shouldShowTable} />
+                <ContainerBuilder title="Upper Scorpius" />
             )}
         </div>
     );
