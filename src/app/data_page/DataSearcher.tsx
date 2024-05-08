@@ -38,7 +38,7 @@ const MultiSelect: FC<ElementsInSelect> = ({ title, values = [], onChange }) => 
     };
 
     return (
-        <FormControl sx={{ m: 0, width: 300 }}>
+        <FormControl sx={{ m: 2, width: 400 }}>
             <InputLabel>{title}</InputLabel>
             <Select
                 multiple
@@ -93,7 +93,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
         setSelectedBands(bands);
     }
   
-    const shouldShowTable = selectedDisk.length > 0 && selectedBand.length > 0;
+    const shouldShowTable = selectedDisks.length > 0 && selectedBands.length > 0;
 
     var diskValues: string[] = [];
     var bandValues: string[] = [];
@@ -123,7 +123,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     });
 
     return (
-        <div className={styles.regionSelectorRow}>
+        <div className={styles.dataSelectorRow}>
             <Container sx={{
                 border: 1,
                 borderRadius: '16px',
@@ -131,14 +131,14 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
                 width: '1100px',
                 justifyContent: 'flex-start',
             }}>
-                <div className={styles.regionSelectorRow}>
+                <div className={styles.dataSelectorRow}>
                     <h2>{title}</h2>
                     <MultiSelect title={"Disks"} values={diskValues} onChange={handleDisksChange} />
                     <MultiSelect title={"Bands"} values={bandValues} onChange={handleBandsChange} />
                 </div>
+                {shouldShowTable && <CollapsibleTable />}
             </Container>
             <Button variant="outlined">Selected Files {<DownloadIcon></DownloadIcon>}</Button>
-            {shouldShowTable && <CollapsibleTable />}
         </div>
     )
 }

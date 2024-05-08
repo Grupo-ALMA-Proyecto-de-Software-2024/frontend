@@ -74,7 +74,12 @@ const rows = [
 
 const CollapsibleTable: React.FC = () => {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{
+        border: 1,
+        borderRadius: '16px',
+        marginRight: '20px',
+        marginBottom: '20px',
+    }}>
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
