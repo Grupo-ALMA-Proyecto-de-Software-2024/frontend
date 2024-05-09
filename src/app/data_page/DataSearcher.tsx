@@ -17,6 +17,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import DownloadIcon from '@mui/icons-material/Download';
 import styles from "./data.module.css";
 import CollapsibleTable from './CollapsibleTable';
+import DataContainer from './DataContainer';
 
 interface ElementsInSelect {
     title: string;
@@ -49,54 +50,63 @@ const files: ElementsInSelect = {
     values: ["Measurement Set", "Map", "Cube", "Momento 0", "Momento 1"]
 };
 
-const MultiSelect: FC<ElementsInSelect> = ({ title, values = [], onChange }) => {
+const MultiSelect: FC<ElementsInSelect> = ({ title, values, onChange }) => {
     const [selectedNames, setSelectedNames] = useState<string[]>([]);
-
-    const handleChange = (event: SelectChangeEvent<string[]>) => {
-        const newSelection = event.target.value as string[];
+    const handleChange = (newSelection: string[]) => {
         setSelectedNames(newSelection);
         if (onChange) {
             onChange(newSelection);
         }
-    };
-
+    }
     return (
-        <FormControl sx={{ m: 0, width: 300 }}>
-            <InputLabel>{title}</InputLabel>
-            <Select
-                multiple
-                value={selectedNames}
-                onChange={handleChange}
-                input={<OutlinedInput label={title} />}
-                renderValue={(selected) => (
-                    <Stack direction="row" gap={1} flexWrap="wrap">
-                        {selected.map((value) => (
-                            <Chip
+        <div className={styles.regionSelectorColumn}>
+            <FormControl sx={{ m: 0, width: 385}}>
+                <InputLabel>Select {title}</InputLabel>
+                <Select
+                    multiple
+                    value={selectedNames}
+                    onChange={(e) => handleChange(e.target.value as string[])}
+                    input={<OutlinedInput label="Multiple Select" />}
+                    sx={{ backgroundColor: "#E7EFEF" }}
+                    renderValue={(selected) => (
+                        <Stack gap={1} direction="row" flexWrap="wrap">
+                            {selected.map((value) => (
+                                <Chip
                                 key={value}
                                 label={value}
                                 onDelete={() => {
                                     const newSelection = selectedNames.filter((item) => item !== value);
                                     setSelectedNames(newSelection);
-                                    if (onChange) {
-                                        onChange(newSelection);
-                                    }
+                                    handleChange(newSelection);
                                 }}
-                                deleteIcon={<CancelIcon onMouseDown={(event) => event.stopPropagation()} />}
-                            />
-                        ))}
-                    </Stack>
-                )}
-            >
-                {values.map((value) => (
-                    <MenuItem key={value} value={value}>
-                        {value} {selectedNames.includes(value) ? <CheckIcon color="info" /> : null}
-                    </MenuItem>
-                ))}
-            </Select>
-        </FormControl>
+                                    deleteIcon={
+                                        <CancelIcon
+                                        onMouseDown={(event) => event.stopPropagation()}
+                                        />
+                                    }
+                                    />
+                                ))}
+                        </Stack>
+                    )}
+                    >
+                    {values.map((value) => (
+                        <MenuItem
+                        key={value}
+                        value={value}
+                        sx={{ 
+                                justifyContent: "space-between",
+                                backgroundColor: 'white',
+                            }}
+                            >
+                            {value}
+                            {selectedNames.includes(value) ? <CheckIcon color="info" /> : null}
+                        </MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+        </div>
     );
 };
-
 interface ContainerBuilderProps {
     title: string;
     select1: ElementsInSelect;
@@ -106,19 +116,22 @@ interface ContainerBuilderProps {
 
 const ContainerBuilder: FC<ContainerBuilderProps> = ({ title, select1, select2, shouldShowTable }) => {
     return (
-        <Container sx={{ border: 1, borderRadius: '16px', margin: '15px', width: '1100px', justifyContent: 'flex-start' }}>
-            <div className={styles.regionSelectorRow}>
-                <h2>{title}</h2>
-                <MultiSelect {...select1} />
-                <MultiSelect {...select2} />
-            </div>
+        <div className={styles.regionSelectorRow}>
+            <Container sx={{ border: 1, borderRadius: '16px', margin: '15px', width: '1100px', justifyContent: 'space-between' }}>
+                <div className={styles.regionSelectorRow}>
+                    <h2>{title}</h2>
+                    <MultiSelect {...select1} />
+                    <MultiSelect {...select2} />
+                </div>
+                {shouldShowTable && <DataContainer />}
+            </Container>
             <Button variant="outlined">Selected Files {<DownloadIcon />}</Button>
-            {shouldShowTable && <CollapsibleTable />}
-        </Container>
+        </div>
     );
 };
 
 const DataSearcher: FC = () => {
+    /* States to activate de visualizations of info */
     const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
     const [selectedDisk, setSelectedDisk] = useState<string[]>([]);
     const [selectedBand, setSelectedBand] = useState<string[]>([]);
