@@ -57,7 +57,7 @@ const DataContainer: React.FC = () => {
                     <span>Disk X</span>
                 </div>
                 <div className={styles.bandList}>
-                <span>Band X</span>
+                    <span>Band X</span>
                 </div>
                 <div className={styles.dataList}>
                 <Box sx={{ height: 400, width: '100%' }}>
