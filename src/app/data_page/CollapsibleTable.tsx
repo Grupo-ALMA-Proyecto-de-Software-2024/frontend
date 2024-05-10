@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import {
   Box,
   Table,
@@ -14,6 +14,8 @@ import {
 } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { DiskDto } from '@api/dto';
+import almaClient from '@api/client';
 
 interface RowProps {
   row: {
@@ -21,6 +23,12 @@ interface RowProps {
     band: string;
     spectroscopy: string;
   };
+}
+
+interface TableBuilderProps {
+  region: string;
+  disks: string[];
+  bands: string[];
 }
 
 const Row: React.FC<RowProps> = ({ row }) => {
@@ -72,7 +80,31 @@ const rows = [
   { disk: 'Disk X', band: 'Band X', spectroscopy: 'Molecule 2' },
 ];
 
-const CollapsibleTable: React.FC = () => {
+const CollapsibleTable: FC<TableBuilderProps> = ({ region, disks, bands }) => {
+
+  const [data, setData] = useState<DiskDto[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+        const data = await almaClient.getDisks( {region: region, disk: disks[0] } );
+        setData(data);
+    };
+
+    fetchData();
+  }, []);
+
+  // const rows = Array();
+
+  // data.forEach(newDisk => {
+  //   newDisk.bands.forEach(newBand => {
+  //     newBand.molecules.forEach(molecule => {
+  //       rows.push( { disk: newDisk, band: newBand, spectroscopy: molecule } )
+  //     })
+  //   })
+  // });
+
+  console.log(data);
+
   return (
     <TableContainer component={Paper} sx={{
         border: 1,

@@ -136,7 +136,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
                     <MultiSelect title={"Disks"} values={diskValues} onChange={handleDisksChange} />
                     <MultiSelect title={"Bands"} values={bandValues} onChange={handleBandsChange} />
                 </div>
-                {shouldShowTable && <CollapsibleTable />}
+                {shouldShowTable && <CollapsibleTable region={title} disks={selectedDisks} bands={selectedBands} />}
             </Container>
             <Button variant="outlined">Selected Files {<DownloadIcon></DownloadIcon>}</Button>
         </div>
