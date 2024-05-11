@@ -14,7 +14,7 @@ import {
 import CheckIcon from "@mui/icons-material/Check"
 import CancelIcon from "@mui/icons-material/Cancel"
 import DownloadIcon from '@mui/icons-material/Download'
-import styles from "./data.module.css";
+import styles from "./dataSearcher.module.css";
 import { DiskDto, BandDto, RegionDto } from '@api/dto';
 import almaClient from '@api/client';
 
