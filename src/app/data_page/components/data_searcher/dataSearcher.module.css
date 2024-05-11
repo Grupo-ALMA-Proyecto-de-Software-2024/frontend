@@ -1,0 +1,31 @@
+.header{
+    margin-bottom: 30px;
+}
+
+.paragraph{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.datalist{
+    font-size: 15px;
+    margin-left: 20px;
+    list-style-type: disc;
+    display: list-item;
+}
+
+.regionSelectorColumn {
+    margin: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.regionSelectorRow {
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
