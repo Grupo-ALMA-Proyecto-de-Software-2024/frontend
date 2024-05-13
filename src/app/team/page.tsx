@@ -24,6 +24,10 @@ const Team = () => {
             <div className={styles.teamDescription}>
                 <h1>Our Team</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h2>Institutions & Funding</h2>
+                <Image src="/institutions/uchilelogo.jpg" alt="Institution 1" width={300} height={120} />
+                <Image src="/institutions/ulondonlogo.png" alt="Institution 2" width={300} height={140} />
+                <Image src="/institutions/uarizonalogo.png" alt="Institution 3" width={280} height={160} />
             </div>
             <div className={styles.memberGrid}>
                 {teamMembers.map(member => (

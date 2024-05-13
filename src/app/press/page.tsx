@@ -1,6 +1,49 @@
 import type { Metadata } from "next";
 import Image from 'next/image';
-import styles from './press.module.css'
+import React from 'react';
+import styles from './press.module.css';
+
+interface PressRelease {
+  id: number;
+  title: string;
+  source: string;
+  url: string;
+}
+
+// Sample data array, you'd replace this with your actual press release data
+const pressReleases: PressRelease[] = [
+  { id: 1, title: "Press Release 1", source: "Source 1", url: "https://example.com/press-release-1" },
+  { id: 2, title: "Press Release 2", source: "Source 2", url: "https://example.com/press-release-2" },
+  { id: 3, title: "Press Release 3", source: "Source 3", url: "https://example.com/press-release-3" },
+  { id: 4, title: "Press Release 4", source: "Source 4", url: "https://example.com/press-release-4" },
+  { id: 5, title: "Press Release 5", source: "Source 5", url: "https://example.com/press-release-5" },
+  { id: 6, title: "Press Release 6", source: "Source 6", url: "https://example.com/press-release-6" },
+  { id: 7, title: "Press Release 7", source: "Source 7", url: "https://example.com/press-release-7" },
+  { id: 8, title: "Press Release 8", source: "Source 8", url: "https://example.com/press-release-8" },
+  { id: 9, title: "Press Release 9", source: "Source 9", url: "https://example.com/press-release-9" },
+  { id: 10, title: "Press Release 10", source: "Source 10", url: "https://example.com/press-release-10" },
+];
+
+interface NewsArticle {
+  id: number;
+  title: string;
+  source: string;
+  url: string;
+}
+
+// Sample data array, you'd replace this with your actual news article data
+const newsArticles: NewsArticle[] = [
+  { id: 1, title: "News Article 1", source: "Source 1", url: "https://example.com/news-article-1" },
+  { id: 2, title: "News Article 2", source: "Source 2", url: "https://example.com/news-article-2" },
+  { id: 3, title: "News Article 3", source: "Source 3", url: "https://example.com/news-article-3" },
+  { id: 4, title: "News Article 4", source: "Source 4", url: "https://example.com/news-article-4" },
+  { id: 5, title: "News Article 5", source: "Source 5", url: "https://example.com/news-article-5" },
+  { id: 6, title: "News Article 6", source: "Source 6", url: "https://example.com/news-article-6" },
+  { id: 7, title: "News Article 7", source: "Source 7", url: "https://example.com/news-article-7" },
+  { id: 8, title: "News Article 8", source: "Source 8", url: "https://example.com/news-article-8" },
+  { id: 9, title: "News Article 9", source: "Source 9", url: "https://example.com/news-article-9" },
+  { id: 10, title: "News Article 10", source: "Source 10", url: "https://example.com/news-article-10" },
+];
 
 export const metadata: Metadata = {
     title: "Alma: Age-PRO - Press",
@@ -9,8 +52,65 @@ export const metadata: Metadata = {
 
 const Press = () => {
     return (
-        <div>Press</div>
-    );
+      <div className={styles.container}>
+        <h1 className={styles.header}>Press</h1>
+        <p className={styles.description}>
+          The MAPS project has been covered extensively in the international press. See below for a collection of these articles.
+        </p>
+  
+        <section>
+          <h2 className={styles.subHeader}>Official Press Releases</h2>
+          <div className={styles.pressContainer}>
+            <div className={styles.pressList}>
+              <ul>
+                {pressReleases.map((release) => (
+                  <li key={release.id}>
+                    <a href={release.url} target="_blank" rel="noopener noreferrer">
+                      {release.title} ({release.source})
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className={styles.pressImage}>
+              <Image src="/Protoplanetary_disk.jpg" alt="Press Releases" width={550} height={300} />
+              <p className={styles.imageDescription}>
+                Proto-planetary disks are the birthplaces of planets. They are made up of gas and dust that surround young stars. 
+                These disks are the remnants of the star formation process and are where planets form. 
+                The study of proto-planetary disks is crucial to understanding the formation and evolution of planetary systems.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2 className={styles.subHeader}>AGE-PRO in the News</h2>
+          <div className={styles.newsArticles}>
+            <div className={styles.pressList}>
+              <ul>
+                {newsArticles.map((article) => (
+                  <li key={article.id}>
+                    <a href={article.url} target="_blank" rel="noopener noreferrer">
+                      {article.title} ({article.source})
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2 className={styles.subHeader}>Contact Us</h2>
+          <div className={styles.contactUs}>
+            <p className={styles.contactDescription}>
+              For any inquiries or further information, please contact us at agepro@alma.edu.
+            </p>
+          </div>
+        </section>
+  
+      </div>
+      );
 };
+
+
 
 export default Press;
