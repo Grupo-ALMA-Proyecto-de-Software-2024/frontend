@@ -17,7 +17,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import DownloadIcon from '@mui/icons-material/Download';
 import styles from "./data.module.css";
 import CollapsibleTable from './CollapsibleTable';
-import { DiskDto, BandDto, RegionDto } from '@api/dto';
+import { DiskDto, BandDto, RegionDto, MoleculeDto } from '@api/dto';
 import almaClient from '@api/client';
 
 interface ElementsInSelect {
@@ -82,6 +82,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     
     const [disks, setDisks] = useState<DiskDto[]>([]);
     const [bands, setBands] = useState<BandDto[]>([]);
+    const [molecules, setMolecules] = useState<MoleculeDto[]>([]);
 
     const [selectedDisks, setSelectedDisks] = useState<string[]>([]);
     const handleDisksChange = (disks: string[]) => {
@@ -92,11 +93,17 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     const handleBandsChange = (bands: string[]) => {
         setSelectedBands(bands);
     }
+
+    const [selectedMolecules, setSelectedMolecules] = useState<string[]>([]);
+    const handleMoleculesChange = (molecules: string[]) => {
+        setSelectedMolecules(molecules);
+    }
   
-    const shouldShowTable = selectedDisks.length > 0 && selectedBands.length > 0;
+    const shouldShowTable = selectedDisks.length > 0 && selectedBands.length > 0 && selectedMolecules.length > 0;
 
     var diskValues: string[] = [];
     var bandValues: string[] = [];
+    var moleculeValues: string[] = [];
 
     useEffect(() => {
         const fetchDisks = async () => {
@@ -111,16 +118,35 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
         diskValues.push(disk.name);
     });
 
+    diskValues = diskValues.filter((item, index) => diskValues.indexOf(item) === index);
+
     useEffect(() => {
-        const fetchBands = async (disk: string) => {
-            const bands = await almaClient.getBands( {disks: [disk]} );
+        const fetchBands = async (disks: string[]) => {
+            const bands = await almaClient.getBands( {regions: [title], disks: disks} );
             setBands(bands)
         };
-        fetchBands(selectedDisks[0]);
+        fetchBands(diskValues);
     })
+
     bands.forEach(band => {
         bandValues.push(band.name);
     });
+
+    bandValues = bandValues.filter((item, index) => bandValues.indexOf(item) === index);
+
+    useEffect(() => {
+        const fetchMolecules = async (disks: string[], bands: string[]) => {
+            const molecules = await almaClient.getMolecules( {region: [title], disk: disks, bands: bands} );
+            setMolecules(molecules)
+        };
+        fetchMolecules(diskValues, bandValues);
+    })
+
+    molecules.forEach(molecule => {
+        moleculeValues.push(molecule.name);
+    });
+
+    moleculeValues = moleculeValues.filter((item, index) => moleculeValues.indexOf(item) === index);
 
     return (
         <div className={styles.dataSelectorRow}>
@@ -135,6 +161,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
                     <h2>{title}</h2>
                     <MultiSelect title={"Disks"} values={diskValues} onChange={handleDisksChange} />
                     <MultiSelect title={"Bands"} values={bandValues} onChange={handleBandsChange} />
+                    <MultiSelect title={"Molecules"} values={moleculeValues} onChange={handleMoleculesChange} />
                 </div>
                 {shouldShowTable && <CollapsibleTable region={title} disks={selectedDisks} bands={selectedBands} />}
             </Container>
