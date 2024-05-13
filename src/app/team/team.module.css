@@ -19,6 +19,14 @@
     overflow: auto;
 }
 
+.teamDescription h1 {
+    margin-bottom: 20px;
+}
+
+.teamDescription h2 {
+    margin-top: 200px;
+}
+
 .memberGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
