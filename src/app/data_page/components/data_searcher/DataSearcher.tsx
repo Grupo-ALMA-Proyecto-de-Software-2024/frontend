@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, FC } from 'react';
+import React, { useState, useEffect, FC, useRef} from 'react';
 import {
     Stack,
     OutlinedInput,
@@ -17,6 +17,7 @@ import DownloadIcon from '@mui/icons-material/Download'
 import styles from "./dataSearcher.module.css";
 import { DiskDto, BandDto, RegionDto } from '@api/dto';
 import almaClient from '@api/client';
+import DataContainer from '../data_container/DataContainer';
 
 interface ElementsInSelect {
     title: string; 
@@ -86,47 +87,69 @@ interface ContainerBuilderProps {
     title: string;
 }
 
+interface DataItem {
+    id: number;
+    Disk: string;
+    Band: string;
+    Data: number | null;
+}
+
 const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     
     const [disks, setDisks] = useState<DiskDto[]>([]);
     const [bands, setBands] = useState<BandDto[]>([]);
-
     const [selectedDisks, setSelectedDisks] = useState<string[]>([]);
-    const handleDisksChange = (disks: string[]) => {
-        setSelectedDisks(disks);
-    }
-
     const [selectedBands, setSelectedBands] = useState<string[]>([]);
-    const handleBandsChange = (bands: string[]) => {
-        setSelectedBands(bands);
-    }
-
-    var diskValues: string[] = [];
-    var bandValues: string[] = [];
+    const [dataRows, setDataRows] = useState<any[]>([]); // Estado para almacenar los datos en el formato requerido
+    const dataRowsRef = useRef<DataItem[]>([]);
+    const idCounterRef = useRef<number>(0);
 
     useEffect(() => {
         const fetchDisks = async () => {
-            const disks = await almaClient.getDisks( {region: title} );
+            const disks = await almaClient.getDisks({ region: title });
+            console.log(disks)
             setDisks(disks);
         };
 
         fetchDisks();
-    }, []);
-    
-    disks.forEach(disk => {
-        diskValues.push(disk.name);
-    });
+    }, [title]);
 
     useEffect(() => {
-        const fetchBands = async (disk: string) => {
-            const bands = await almaClient.getBands( {disk: disk} );
-            setBands(bands)
-        };
-        fetchBands(selectedDisks[0]);
-    })
-    bands.forEach(band => {
-        bandValues.push(band.name);
-    });
+        if (selectedDisks.length > 0) {
+            const fetchBands = async () => {
+                const bands = await almaClient.getBands({ disk: selectedDisks[0] });
+                console.log(bands)
+                setBands(bands);
+            };
+            fetchBands();
+        }
+    }, [selectedDisks]);
+
+    useEffect(() => {
+        if (selectedDisks.length > 0 && selectedBands.length > 0) {
+            const newDataItem: DataItem = {
+                id: idCounterRef.current,
+                Disk: selectedDisks[0],
+                Band: selectedBands[0],
+                Data: null,
+            };
+            // Reinicializamos el array de datos con el nuevo elemento
+            dataRowsRef.current = [newDataItem];
+            idCounterRef.current += 1;
+        } else {
+            // Si no hay discos o bandas seleccionadas, reinicializamos el array de datos vacío
+            dataRowsRef.current = [];
+        }
+    }, [selectedDisks, selectedBands]);
+
+    const handleDisksChange = (disks: string[]) => {
+        setSelectedDisks(disks);
+    };
+
+    const handleBandsChange = (bands: string[]) => {
+        setSelectedBands(bands);
+    };
+
 
     return (
         <div className={styles.regionSelectorRow}>
@@ -139,11 +162,12 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
             }}>
                 <div className={styles.regionSelectorRow}>
                     <h2>{title}</h2>
-                    <MultiSelect title={"Disks"} values={diskValues} onChange={handleDisksChange} />
-                    <MultiSelect title={"Bands"} values={bandValues} onChange={handleBandsChange} />
+                    <MultiSelect title="Disks" values={disks.map(disk => disk.name)} onChange={handleDisksChange} />
+                    <MultiSelect title="Bands" values={bands.map(band => band.name)} onChange={handleBandsChange} />
                 </div>
+                {dataRowsRef.current.length > 0 && <DataContainer dataProps={dataRowsRef.current} />}
             </Container>
-            <Button variant="outlined">Selected Files {<DownloadIcon></DownloadIcon>}</Button>
+            <Button variant="outlined">Selected Files {<DownloadIcon/>}</Button>
         </div>
     )
 }
@@ -176,8 +200,8 @@ const DataSearcher = () => {
         <div className={styles.regionSelectorColumn}>
             <h4>Select one or more regions</h4>
             <MultiSelect title={"Regions"} values={regionValues} onChange={handleRegionChange} />
-            {selectedRegions.includes("Ophiucus") && (
-                <ContainerBuilder title="Ophiucus" />
+            {selectedRegions.includes("Ophiuchus") && (
+                <ContainerBuilder title="Ophiuchus" />
             )}
             {selectedRegions.includes("Lupus") && (    
                 <ContainerBuilder title="Lupus" />
