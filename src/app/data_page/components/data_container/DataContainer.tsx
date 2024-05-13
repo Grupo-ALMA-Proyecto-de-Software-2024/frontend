@@ -3,66 +3,62 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import styles from "./dataContainer.module.css";
+import { DiskDto, BandDto, RegionDto } from '@api/dto';
 
 /* Data de la documentacion de datagrid */
 /* https://mui.com/x/react-data-grid/ */
 const columns: GridColDef<(typeof rows)[number]>[] = [
     { field: 'id', headerName: 'ID', width: 90 },
     {
-      field: 'firstName',
-      headerName: 'First name',
+      field: 'Disk',
+      headerName: 'Disk',
       width: 150,
       editable: true,
     },
     {
-      field: 'lastName',
-      headerName: 'Last name',
+      field: 'Band',
+      headerName: 'Band',
       width: 150,
       editable: true,
     },
     {
-      field: 'age',
-      headerName: 'Age',
-      type: 'number',
+      field: 'Data',
+      headerName: 'Data',
       width: 110,
       editable: true,
-    },
-    {
-      field: 'fullName',
-      headerName: 'Full name',
-      description: 'This column has a value getter and is not sortable.',
-      sortable: false,
-      width: 160,
-      valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
     },
   ];
   
   const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 14 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 31 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 31 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 11 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+    { id: 1, Disk: 'Snow', Band: 'Jon', Data: 14 },
+    { id: 2, Disk: 'Lannister', Band: 'Cersei', Data: 31 },
+    { id: 3, Disk: 'Lannister', Band: 'Jaime', Data: 31 },
+    { id: 4, Disk: 'Stark', Band: 'Arya', Data: 11 },
+    { id: 5, Disk: 'Targaryen', Band: 'Daenerys', Data: null },
+    { id: 6, Disk: 'Melisandre', Band: null, Data: 150 },
+    { id: 7, Disk: 'Clifford', Band: 'Ferrara', Data: 44 },
+    { id: 8, Disk: 'Frances', Band: 'Rossini', Data: 36 },
+    { id: 9, Disk: 'Roxie', Band: 'Harvey', Data: 65 },
   ];
 
-const DataContainer: React.FC = () => {
+interface DataItem {
+    id: number;
+    Disk: string;
+    Band: string;
+    Data: number | null; // Ajusta el tipo de datos según corresponda
+}
+interface DataContainerProps {
+    dataProps: DataItem[];
+}
+
+const DataContainer: React.FC<DataContainerProps> = ({ dataProps }) => {
+    console.log(dataProps)
     return(
         <div className={styles.DataContainerExt}>
             <div className={styles.DataContainerInt}>
-                <div className={styles.diskList}>
-                    <span>Disk X</span>
-                </div>
-                <div className={styles.bandList}>
-                    <span>Band X</span>
-                </div>
-                <div className={styles.dataList}>
                 <Box sx={{ height: 400, width: '100%' }}>
                     <DataGrid
-                        rows={rows}
+                        rows={dataProps}
                         columns={columns}
                         initialState={{pagination: {
                                 paginationModel: {
@@ -75,7 +71,6 @@ const DataContainer: React.FC = () => {
                         disableRowSelectionOnClick
                         />
                 </Box>
-                </div>
             </div>
         </div>
     );
