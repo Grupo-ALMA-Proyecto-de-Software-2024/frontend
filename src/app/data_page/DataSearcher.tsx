@@ -106,7 +106,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
 
     useEffect(() => {
         const fetchDisks = async () => {
-            const disks = await almaClient.getDisks( {region: title} );
+            const disks = await almaClient.getDisks( {regions: [title]} );
             setDisks(disks);
         };
 
@@ -119,7 +119,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
 
     useEffect(() => {
         const fetchBands = async (disk: string) => {
-            const bands = await almaClient.getBands( {disk: disk} );
+            const bands = await almaClient.getBands( {disks: [disk]} );
             setBands(bands)
         };
         fetchBands(selectedDisks[0]);
