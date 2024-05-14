@@ -116,7 +116,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     
     disks.forEach(disk => {
         diskValues.push(disk.name);
-    });
+    }, []);
 
     diskValues = diskValues.filter((item, index) => diskValues.indexOf(item) === index);
 
@@ -130,7 +130,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
 
     bands.forEach(band => {
         bandValues.push(band.name);
-    });
+    }, []);
 
     bandValues = bandValues.filter((item, index) => bandValues.indexOf(item) === index);
 
@@ -144,7 +144,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
 
     molecules.forEach(molecule => {
         moleculeValues.push(molecule.name);
-    });
+    }, []);
 
     moleculeValues = moleculeValues.filter((item, index) => moleculeValues.indexOf(item) === index);
 
@@ -194,19 +194,19 @@ const DataSearcher = () => {
         regionValues.push(region.name);
     });
 
+    const render = regionValues.map((region) =>
+        <div>
+        {selectedRegions.includes(region) && (
+            <ContainerBuilder title={region} />
+        )}
+        </div>
+    );
+
     return (
         <div className={styles.regionSelectorColumn}>
             <h4>Select one or more regions</h4>
             <MultiSelect title={"Regions"} values={regionValues} onChange={handleRegionChange} />
-            {selectedRegions.includes("Ophiucus") && (
-                <ContainerBuilder title="Ophiucus" />
-            )}
-            {selectedRegions.includes("Lupus") && (    
-                <ContainerBuilder title="Lupus" />
-            )}
-            {selectedRegions.includes("Upper Scorpius") && (
-                <ContainerBuilder title="Upper Scorpius" />
-            )}
+            {render}
         </div>
     );
 };
