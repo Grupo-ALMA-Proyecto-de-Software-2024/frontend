@@ -1,7 +1,9 @@
 .publicationContainer {
   display: flex;
-  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
   align-items: flex-start;
+  
 }
 
 .imageGallery {
@@ -10,15 +12,10 @@
   flex-wrap: wrap;
   margin-right: 20px;
 }
-.publicationImage {
-  margin-top: 10px;
-  width: 100%; /* Adjust size as needed */
-  max-width: 200px;
-  transition: filter 0.3s ease;
-}
 
-.publicationImage:hover {
-  filter: brightness(1.3);
+.publicationImage {
+  width: 100%; /* Adjust size as needed */
+  margin-bottom: 10px;
 }
 
 .publicationTitle {

@@ -5,33 +5,22 @@ import styles from './publication.module.css';
 import { Button, Collapse } from 'antd';
 import CollapsePanel from "antd/es/collapse/CollapsePanel";
 
-
 interface Props {
     publication: PublicationType;
 }
 
 const Publication = ({ publication }: Props) => {
+
     return (
         <div className={ styles.publicationContainer }>
             <div className={ styles.imageGallery }>
-                <a href={publication.imageUrl} target="_blank" rel="noopener noreferrer">
-                    <img src={publication.imageUrl} alt="Visualization" className={styles.publicationImage} />
-                </a>
+                <img src={publication.image} alt="Visualization" className={styles.publicationImage} />
             </div>
             <div className={styles.publicationInfo}>
                 <h3 className={styles.publicationTitle}>{publication.title}</h3>
-                <Collapse
-                    ghost
-                    expandIconPosition='end'
-                    bordered={false}
-                    size="small"
-                >
-                    <CollapsePanel 
-                        header={`${publication.authors} ${publication.journalInfo}`}
-                        key="1"
-                        className={styles.publicationAuthors}
-                    >
-                        <p className={styles.publicationDetails}>{publication.fullAuthors}</p>
+                <Collapse ghost expandIconPosition='end' bordered={false} size="small" >
+                    <CollapsePanel className={styles.publicationAuthors} header={`${publication.authors} ${publication.journalInfo}`} key="2">
+                        <p className={styles.publicationDetails}>{publication.full_authors}</p>
                     </CollapsePanel>
                 </Collapse>
                 <p className={styles.publicationDetails}>{publication.summary}</p>
