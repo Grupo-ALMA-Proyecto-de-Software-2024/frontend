@@ -5,6 +5,7 @@ import Publication from './components/Publication';
 import publicationsData from './data/publications';
 import styles from './components/page.module.css';
 import { Divider } from 'antd';
+import React from 'react';
 
 
 const Home: NextPage = () => {
@@ -21,7 +22,10 @@ const Home: NextPage = () => {
       </p>
       <div className={styles.publcationContainer}>
         {publicationsData.map((publication, index) => (
-            <Publication key={index} publication={publication} />
+          <React.Fragment key={index}>
+            <Publication publication={publication} />
+            {index < publicationsData.length - 1 && <Divider />}
+          </React.Fragment>
         ))} 
       </div>
     </div>
