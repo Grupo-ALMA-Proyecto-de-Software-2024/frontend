@@ -14,7 +14,9 @@ const Publication = ({ publication }: Props) => {
     return (
         <div className={ styles.publicationContainer }>
             <div className={ styles.imageGallery }>
-                <img src={publication.image} alt="Visualization" className={styles.publicationImage} />
+                <a href={publication.image} target="_blank" rel="noopener noreferrer">
+                    <img src={publication.image} alt="Visualization" className={styles.publicationImage} />
+                </a>
             </div>
             <div className={styles.publicationInfo}>
                 <h3 className={styles.publicationTitle}>{publication.title}</h3>
