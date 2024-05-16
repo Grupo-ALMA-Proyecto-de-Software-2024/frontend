@@ -1,54 +1,22 @@
-.tableContainer {
+.TableContainer{
     margin: 25px 0;
-    border-radius: 5px;
-    background-color: var(--bg1); /*Color momentaneo*/
-    padding: 2px;
+    border-radius: 10px;
 }
-  
-.tableExt {
+
+.DataContainerExt{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    border-radius: 10%;
+    background-color: red; /*Color momentaneo*/
 }
-  
-.tableInt {
+.DataContainerInt{
     display: flex;
     flex-direction: row;
-    background-color: snow; /*Color momentaneo*/
+    background-color:aquamarine; /*Color momentaneo*/
     justify-content: space-between;
-    width: 100%;
-    height: 100px;
-}
-  
-.diskColumn, .bandColumn, .spectroscopyColumn, .dataColumn {
-    width: 200px; /*Valor momentaneo*/
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    border: 1px solid #ccc;
 }
 
-.spectroscopyColumn{
-    overflow-y:auto;
-}
-  
-.bandColumn, .spectroscopyColumn, .dataColumn {
-    flex: 1;
-}
-  
-.eachDisk, .eachBand, .eachMolecule{
+.diskList, .bandList{
     display: flex;
-    width: 100%;
-    height: 100%;
-    padding: 4px 0;
-    justify-content: center;
     align-items: center;
-    cursor: pointer;
-    transition: ease 0.2s;
+    justify-items: center;
 }
-
-.eachBand:hover, .eachMolecule:hover{
-    background-color: var(--bg1);
-    color: #ccc;
-} 
