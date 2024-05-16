@@ -1,4 +1,5 @@
 import axios from "axios";
+import qs from "qs";  
 import {
   CarouselImageDto,
   RegionDto,
@@ -22,6 +23,9 @@ const baseUrl = `http://${host}:${port}/${namespace}`;
 
 export const client = axios.create({
   baseURL: baseUrl,
+  paramsSerializer: (params) => {
+    return qs.stringify(params, { arrayFormat: "repeat" });
+  },
 });
 
 function getFullImageUrl(imageUrl: string) {

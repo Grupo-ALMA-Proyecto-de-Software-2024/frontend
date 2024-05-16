@@ -106,12 +106,8 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
 
     useEffect(() => {
         const fetchDisks = async () => {
-<<<<<<< HEAD
-            const disks = await almaClient.getDisks({ region: title });
+            const disks = await almaClient.getDisks({ region: [title] });
             console.log(disks)
-=======
-            const disks = await almaClient.getDisks( {regions: [title]} );
->>>>>>> e91f04fbaa64947e85ca83119bca091e2212c627
             setDisks(disks);
         };
 
@@ -121,11 +117,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     useEffect(() => {
         if (selectedDisks.length > 0) {
             const fetchBands = async () => {
-<<<<<<< HEAD
-                const bands = await almaClient.getBands({ disk: selectedDisks[0] });
-=======
-                const bands = await almaClient.getBands( {disks: selectedDisks} );
->>>>>>> e91f04fbaa64947e85ca83119bca091e2212c627
+                const bands = await almaClient.getBands( {disk: selectedDisks} );
                 console.log(bands)
                 setBands(bands);
             };
