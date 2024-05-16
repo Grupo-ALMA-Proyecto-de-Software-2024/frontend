@@ -34,7 +34,7 @@ const Team = () => {
                     <Collapse>
                         <CollapsePanel
                             header={
-                                <>
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                                     <Image src={member.image}
                                         alt={member.name}
                                         width={170}
@@ -43,7 +43,7 @@ const Team = () => {
                                     />
                                     <div className={styles.memberName}>{member.name}</div>
                                     <div className={styles.memberRole}>{member.role}</div>
-                                </>
+                                </div>
                             }
                             key={member.name}
                             showArrow={false}
