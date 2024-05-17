@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import styles from "./dataContainer.module.css";
+import FilterListIcon from '@mui/icons-material/FilterList';
 
 // Tipos de datos
 interface DataItem {
@@ -108,6 +109,7 @@ const dummyData: Disk[] = [
 const DataContainer: React.FC = () => {
   const [selectedBands, setSelectedBands] = useState<{ [key: string]: string | null }>({});
   const [selectedCategories, setSelectedCategories] = useState<{ [key: string]: string | null }>({});
+  const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' }>({ key: '', direction: 'asc' });
 
   const handleBandClick = (diskId: string, bandName: string) => {
     setSelectedBands((prev) => ({
@@ -127,22 +129,68 @@ const DataContainer: React.FC = () => {
     }));
   };
 
-  // Uso de useEffect para depuración
-  useEffect(() => {
-    console.log('selectedBands:', selectedBands);
-    console.log('selectedCategories:', selectedCategories);
-  }, [selectedBands, selectedCategories]);
+  const handleSort = (key: string) => {
+    let direction: 'asc' | 'desc' = 'asc';
+    if (sortConfig.key === key && sortConfig.direction === 'asc') {
+      direction = 'desc';
+    }
+    if (sortConfig.key !== key) {
+      direction = 'asc';
+    }
+    setSortConfig({ key, direction });
+  };
+
+  const sortedData = <T extends Record<string, any>>(data: T[], key: string, direction: 'asc' | 'desc'): T[] => {
+    if (!key) return data;
+    return [...data].sort((a, b) => {
+      if (a[key] < b[key]) return direction === 'asc' ? -1 : 1;
+      if (a[key] > b[key]) return direction === 'asc' ? 1 : -1;
+      return 0;
+    });
+  };
 
   return (
     <div className={styles.tableContainer}>
-      {dummyData.map((disk) => (
+      <div className={styles.tableHeader}>
+        <div
+          className={`${styles.headerCell} ${sortConfig.key === 'disk' ? (sortConfig.direction === 'asc' ? styles.sortAsc : styles.sortDesc) : ''}`}
+          onClick={() => handleSort('disk')}
+        >
+          Disk
+          <FilterListIcon className={`${sortConfig.key === 'disk' ? styles.rotate : ''} ${styles.icon}`} />
+        </div>
+        <div
+          className={`${styles.headerCell} ${sortConfig.key === 'band' ? (sortConfig.direction === 'asc' ? styles.sortAsc : styles.sortDesc) : ''}`}
+          onClick={() => handleSort('band')}
+        >
+          Band
+          <FilterListIcon className={`${sortConfig.key === 'band' ? styles.rotate : ''} ${styles.icon}`} />
+        </div>
+        <div
+          className={`${styles.headerCell} ${sortConfig.key === 'molecule' ? (sortConfig.direction === 'asc' ? styles.sortAsc : styles.sortDesc) : ''}`}
+          onClick={() => handleSort('molecule')}
+        >
+          Molecule
+          <FilterListIcon className={`${sortConfig.key === 'molecule' ? styles.rotate : ''} ${styles.icon}`} />
+        </div>
+        <div
+          className={`${styles.headerCell} ${sortConfig.key === 'data' ? (sortConfig.direction === 'asc' ? styles.sortAsc : styles.sortDesc) : ''}`}
+          onClick={() => handleSort('data')}
+        >
+          Data Item
+          <div className={styles.icon}>
+            <FilterListIcon className={`${sortConfig.key === 'data' ? styles.rotate : ''}`} />
+          </div>
+        </div>
+      </div>
+      {sortedData(dummyData, sortConfig.key, sortConfig.direction).map((disk) => (
         <div className={styles.tableExt} key={disk.id}>
           <div className={styles.tableInt}>
             <div className={styles.diskColumn}>
               <div className={styles.eachDisk}>{disk.disk}</div>
             </div>
             <div className={styles.bandColumn}>
-              {disk.bands.map((band) => (
+              {sortedData(disk.bands, sortConfig.key === 'band' ? 'name' : '', sortConfig.direction).map((band) => (
                 <div
                   key={band.name}
                   onClick={() => handleBandClick(disk.id, band.name)}
@@ -154,26 +202,21 @@ const DataContainer: React.FC = () => {
             </div>
             <div className={styles.spectroscopyColumn}>
               {selectedBands[disk.id] &&
-                disk.bands
-                  .find((b) => b.name === selectedBands[disk.id])
-                  ?.molecules.map((molecule) => (
-                    <div
-                      key={molecule.name}
-                      onClick={() => handleCategoryClick(disk.id, molecule.name)}
-                      className={styles.eachMolecule}
-                    >
-                      {molecule.name}
-                    </div>
-                  ))}
+                sortedData(disk.bands.find((b) => b.name === selectedBands[disk.id])?.molecules || [], sortConfig.key === 'molecule' ? 'name' : '', sortConfig.direction).map((molecule) => (
+                  <div
+                    key={molecule.name}
+                    onClick={() => handleCategoryClick(disk.id, molecule.name)}
+                    className={styles.eachMolecule}
+                  >
+                    {molecule.name}
+                  </div>
+                ))}
             </div>
             <div className={styles.dataColumn}>
               {selectedCategories[disk.id] &&
-                disk.bands
-                  .find((b) => b.name === selectedBands[disk.id])
-                  ?.molecules.find((m) => m.name === selectedCategories[disk.id])
-                  ?.data.map((dataItem) => (
-                    <div key={dataItem.name}>{dataItem.name}</div>
-                  ))}
+                sortedData(disk.bands.find((b) => b.name === selectedBands[disk.id])?.molecules.find((m) => m.name === selectedCategories[disk.id])?.data || [], sortConfig.key === 'data' ? 'name' : '', sortConfig.direction).map((dataItem) => (
+                  <div key={dataItem.name}>{dataItem.name}</div>
+                ))}
             </div>
           </div>
         </div>
