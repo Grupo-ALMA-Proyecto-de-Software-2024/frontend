@@ -29,8 +29,8 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
         <button onClick={goToPrev} className={styles.lbutton}><NavigateBeforeRoundedIcon className={styles.icon}/></button>
         <div className={styles.carousel}>
           <Image 
-            src={images[currentIndex].imageUrl}
-            alt={images[currentIndex].title}
+            src={images[currentIndex].src}
+            alt={images[currentIndex].alt}
             fill
             className={styles.carouselImage}
             unoptimized

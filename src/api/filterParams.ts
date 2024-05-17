@@ -1,29 +1,29 @@
 export interface GetRegionsParams {
-  regions?: string[];
+  region?: string[];
 }
 
 export interface GetDisksParams {
-  regions?: string[];
-  disks?: string[];
+  region?: string[];
+  disk?: string[];
 }
 
 export interface GetBandsParams {
-  regions?: string[];
-  disks?: string[];
-  bands?: string[];
+  region?: string[];
+  disk?: string[];
+  band?: string[];
 }
 
 export interface GetMoleculesParams {
   region?: string[];
   disk?: string[];
-  bands?: string[];
-  molecules?: string[];
+  band?: string[];
+  molecule?: string[];
 }
 
 export interface GetDataParams {
-  regions?: string[];
-  disks?: string[];
-  bands?: string[];
-  molecules?: string[];
+  region?: string[];
+  disk?: string[];
+  band?: string[];
+  molecule?: string[];
   data?: string[];
 }
