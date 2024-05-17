@@ -125,7 +125,12 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
             const bands = await almaClient.getBands( {region: [title], disk: disks} );
             setBands(bands)
         };
-        fetchBands(selectedDisks);
+
+        if (selectedDisks.length > 0) {
+            fetchBands(selectedDisks);
+        } else {
+            setBands([]);
+        }
     }, [selectedDisks])
 
     bands.forEach(band => {
@@ -139,7 +144,12 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
             const molecules = await almaClient.getMolecules( {region: [title], disk: disks, band: bands} );
             setMolecules(molecules)
         };
+
+        if (selectedDisks.length > 0 && selectedBands.length > 0) {
         fetchMolecules(selectedDisks, selectedBands);
+        } else {
+            setMolecules([]);
+        }
     }, [selectedDisks, selectedBands])
 
     molecules.forEach(molecule => {
