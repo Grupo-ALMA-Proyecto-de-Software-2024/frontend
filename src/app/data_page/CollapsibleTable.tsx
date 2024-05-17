@@ -86,7 +86,7 @@ const CollapsibleTable: FC<TableBuilderProps> = ({ region, disks, bands }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-        const data = await almaClient.getDisks( {regions: [region], disks: disks } );
+        const data = await almaClient.getDisks( {region: [region], disk: disks } );
         setData(data);
     };
 

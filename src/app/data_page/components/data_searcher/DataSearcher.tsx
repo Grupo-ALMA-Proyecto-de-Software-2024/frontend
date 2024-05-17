@@ -15,8 +15,8 @@ import {
 import CheckIcon from "@mui/icons-material/Check";
 import CancelIcon from "@mui/icons-material/Cancel";
 import DownloadIcon from '@mui/icons-material/Download';
-import styles from "./data.module.css";
-import CollapsibleTable from './CollapsibleTable';
+import styles from "./dataSearcher.module.css";
+import DataContainer from '../data_container/DataContainer';
 import { DiskDto, BandDto, RegionDto, MoleculeDto } from '@api/dto';
 import almaClient from '@api/client';
 
@@ -76,6 +76,13 @@ const MultiSelect: FC<ElementsInSelect> = ({ title, values = [], onChange }) => 
 
 interface ContainerBuilderProps {
     title: string;
+}
+
+interface DataItem {
+    id: number;
+    Disk: string;
+    Band: string;
+    Data: number | null;
 }
 
 const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
@@ -173,7 +180,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
                     <MultiSelect title={"Bands"} values={bandValues} onChange={handleBandsChange} />
                     <MultiSelect title={"Molecules"} values={moleculeValues} onChange={handleMoleculesChange} />
                 </div>
-                {shouldShowTable && <CollapsibleTable region={title} disks={selectedDisks} bands={selectedBands} />}
+                {shouldShowTable && <DataContainer />}
             </Container>
             <Button variant="outlined">Selected Files {<DownloadIcon></DownloadIcon>}</Button>
         </div>

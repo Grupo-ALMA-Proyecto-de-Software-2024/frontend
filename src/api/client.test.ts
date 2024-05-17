@@ -5,6 +5,7 @@ import almaClient from "./client";
 const mock = new MockAdapter(client);
 
 describe("AlmaClient with a single filter parameter for category", () => {
+describe("AlmaClient with a single filter parameter for category", () => {
   afterEach(() => {
     mock.reset();
   });
@@ -358,4 +359,4 @@ describe("AlmaClient with multiple filter parameters for category", () => {
       ]);
     });
   });
-});
+})})
