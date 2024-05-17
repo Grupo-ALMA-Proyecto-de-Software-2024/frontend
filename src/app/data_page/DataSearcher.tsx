@@ -107,7 +107,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
 
     useEffect(() => {
         const fetchDisks = async () => {
-            const disks = await almaClient.getDisks( {regions: [title]} );
+            const disks = await almaClient.getDisks( {region: [title]} );
             setDisks(disks);
         };
 
@@ -122,7 +122,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
 
     useEffect(() => {
         const fetchBands = async (disks: string[]) => {
-            const bands = await almaClient.getBands( {regions: [title], disks: disks} );
+            const bands = await almaClient.getBands( {region: [title], disk: disks} );
             setBands(bands)
         };
         fetchBands(selectedDisks);
@@ -136,7 +136,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
 
     useEffect(() => {
         const fetchMolecules = async (disks: string[], bands: string[]) => {
-            const molecules = await almaClient.getMolecules( {region: [title], disk: disks, bands: bands} );
+            const molecules = await almaClient.getMolecules( {region: [title], disk: disks, band: bands} );
             setMolecules(molecules)
         };
         fetchMolecules(selectedDisks, selectedBands);
