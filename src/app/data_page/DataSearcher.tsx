@@ -116,7 +116,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     
     disks.forEach(disk => {
         diskValues.push(disk.name);
-    }, []);
+    });
 
     diskValues = diskValues.filter((item, index) => diskValues.indexOf(item) === index);
 
@@ -125,12 +125,12 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
             const bands = await almaClient.getBands( {regions: [title], disks: disks} );
             setBands(bands)
         };
-        fetchBands(diskValues);
-    })
+        fetchBands(selectedDisks);
+    }, [selectedDisks])
 
     bands.forEach(band => {
         bandValues.push(band.name);
-    }, []);
+    });
 
     bandValues = bandValues.filter((item, index) => bandValues.indexOf(item) === index);
 
@@ -139,12 +139,12 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
             const molecules = await almaClient.getMolecules( {region: [title], disk: disks, bands: bands} );
             setMolecules(molecules)
         };
-        fetchMolecules(diskValues, bandValues);
-    })
+        fetchMolecules(selectedDisks, selectedBands);
+    }, [selectedDisks, selectedBands])
 
     molecules.forEach(molecule => {
         moleculeValues.push(molecule.name);
-    }, []);
+    });
 
     moleculeValues = moleculeValues.filter((item, index) => moleculeValues.indexOf(item) === index);
 
