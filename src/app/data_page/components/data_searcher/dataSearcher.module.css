@@ -1,3 +1,10 @@
+.container{
+    padding: 50px;
+    line-height: 20px;
+    margin: 50px;
+    margin-top: 20px;
+}
+
 .header{
     margin-bottom: 30px;
 }
@@ -15,15 +22,15 @@
 }
 
 .regionSelectorColumn {
-    margin: 25px;
+    margin: 1px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.regionSelectorRow {
-    margin: 5px;
+.dataSelectorRow {
+    margin: 10px;
     display: flex;
     align-items: center;
     flex-direction: row;
