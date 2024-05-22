@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from "./dataContainer.module.css";
 import FilterListIcon from '@mui/icons-material/FilterList';
 
@@ -48,26 +48,6 @@ const dummyData: Disk[] = [
             data: [
               { name: 'Measurement Set', creationDate: '2024-04-16', file: 'measurement_set.zip', isViewable: false },
               { name: 'Cubo de Canales', creationDate: '2024-04-17', file: 'cubo_de_canales.zip', isViewable: false },
-              { name: 'Momento 0', creationDate: '2024-04-18', file: 'momento_0.fits', isViewable: true },
-              { name: 'Momento 1', creationDate: '2024-04-19', file: 'momento_1.fits', isViewable: true },
-            ],
-          },
-          {
-            name: 'Molecule 2',
-            data: [
-              { name: 'Measurement Set', creationDate: '2024-04-16', file: 'measurement_set.zip', isViewable: false },
-              { name: 'Cubo de Canales', creationDate: '2024-04-17', file: 'cubo_de_canales.zip', isViewable: false },
-              { name: 'Momento 0', creationDate: '2024-04-18', file: 'momento_0.fits', isViewable: true },
-              { name: 'Momento 1', creationDate: '2024-04-19', file: 'momento_1.fits', isViewable: true },
-            ],
-          },
-          {
-            name: 'Molecule N',
-            data: [
-              { name: 'Measurement Set', creationDate: '2024-04-16', file: 'measurement_set.zip', isViewable: false },
-              { name: 'Cubo de Canales', creationDate: '2024-04-17', file: 'cubo_de_canales.zip', isViewable: false },
-              { name: 'Momento 0', creationDate: '2024-04-18', file: 'momento_0.fits', isViewable: true },
-              { name: 'Momento 1', creationDate: '2024-04-19', file: 'momento_1.fits', isViewable: true },
             ],
           },
         ],
@@ -107,27 +87,9 @@ const dummyData: Disk[] = [
 ];
 
 const DataContainer: React.FC = () => {
-  const [selectedBands, setSelectedBands] = useState<{ [key: string]: string | null }>({});
-  const [selectedCategories, setSelectedCategories] = useState<{ [key: string]: string | null }>({});
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' }>({ key: '', direction: 'asc' });
-
-  const handleBandClick = (diskId: string, bandName: string) => {
-    setSelectedBands((prev) => ({
-      ...prev,
-      [diskId]: prev[diskId] === bandName ? null : bandName,
-    }));
-    setSelectedCategories((prev) => ({
-      ...prev,
-      [diskId]: null,
-    }));
-  };
-
-  const handleCategoryClick = (diskId: string, categoryName: string) => {
-    setSelectedCategories((prev) => ({
-      ...prev,
-      [diskId]: prev[diskId] === categoryName ? null : categoryName,
-    }));
-  };
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
   const handleSort = (key: string) => {
     let direction: 'asc' | 'desc' = 'asc';
@@ -149,78 +111,135 @@ const DataContainer: React.FC = () => {
     });
   };
 
+  const paginatedData = <T,>(data: T[], currentPage: number, itemsPerPage: number): T[] => {
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    return data.slice(start, end);
+  };
+
+  const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
+
+  const handleSelectAll = () => {
+    const allItems = new Set(dummyData.flatMap(disk =>
+      disk.bands.flatMap(band =>
+        band.molecules.flatMap(molecule =>
+          molecule.data.map(dataItem => `${disk.id}-${band.name}-${molecule.name}-${dataItem.name}`)
+        )
+      )
+    ));
+    setSelectedItems(selectedItems.size === allItems.size ? new Set() : allItems);
+  };
+
+  const handleSelectItem = (itemKey: string) => {
+    const newSelectedItems = new Set(selectedItems);
+    if (newSelectedItems.has(itemKey)) {
+      newSelectedItems.delete(itemKey);
+    } else {
+      newSelectedItems.add(itemKey);
+    }
+    setSelectedItems(newSelectedItems);
+  };
+
+  const renderRows = () => {
+    const rows: React.ReactNode[] = [];
+
+    paginatedData(sortedData(dummyData, sortConfig.key, sortConfig.direction), currentPage, itemsPerPage).forEach(disk => {
+      let diskRowCount = 0;
+      disk.bands.forEach(band => {
+        let bandRowCount = 0;
+        band.molecules.forEach(molecule => {
+          molecule.data.forEach((dataItem, dataIndex) => {
+            const itemKey = `${disk.id}-${band.name}-${molecule.name}-${dataItem.name}`;
+            const isSelected = selectedItems.has(itemKey);
+            rows.push(
+              <tr key={itemKey} className={`${styles.tableRow} ${isSelected ? styles.selected : ''}`}>
+                {diskRowCount === 0 && (
+                  <td rowSpan={disk.bands.reduce((sum, b) => sum + b.molecules.reduce((sumM, mol) => sumM + mol.data.length, 0), 0)}>
+                    {disk.disk}
+                  </td>
+                )}
+                {bandRowCount === 0 && (
+                  <td rowSpan={band.molecules.reduce((sum, mol) => sum + mol.data.length, 0)}>
+                    {band.name}
+                  </td>
+                )}
+                {dataIndex === 0 && (
+                  <td rowSpan={molecule.data.length}>
+                    {molecule.name}
+                  </td>
+                )}
+                <td>
+                  <div className={styles.checkbox}>
+                    {dataItem.name}
+                    <input
+                      type="checkbox"
+                      checked={isSelected}
+                      onChange={() => handleSelectItem(itemKey)}
+                    />
+                  </div>
+                </td>
+              </tr>
+            );
+            diskRowCount++;
+            bandRowCount++;
+          });
+        });
+      });
+    });
+
+    return rows;
+  };
+
+  const totalPages = Math.ceil(dummyData.reduce((sum, disk) => sum + disk.bands.reduce((sumB, band) => sumB + band.molecules.reduce((sumM, molecule) => sumM + molecule.data.length, 0), 0), 0) / itemsPerPage);
+
   return (
     <div className={styles.tableContainer}>
-      <div className={styles.tableHeader}>
-        <div
-          className={`${styles.headerCell} ${sortConfig.key === 'disk' ? (sortConfig.direction === 'asc' ? styles.sortAsc : styles.sortDesc) : ''}`}
-          onClick={() => handleSort('disk')}
-        >
-          Disk
-          <FilterListIcon className={`${sortConfig.key === 'disk' ? styles.rotate : ''} ${styles.icon}`} />
-        </div>
-        <div
-          className={`${styles.headerCell} ${sortConfig.key === 'band' ? (sortConfig.direction === 'asc' ? styles.sortAsc : styles.sortDesc) : ''}`}
-          onClick={() => handleSort('band')}
-        >
-          Band
-          <FilterListIcon className={`${sortConfig.key === 'band' ? styles.rotate : ''} ${styles.icon}`} />
-        </div>
-        <div
-          className={`${styles.headerCell} ${sortConfig.key === 'molecule' ? (sortConfig.direction === 'asc' ? styles.sortAsc : styles.sortDesc) : ''}`}
-          onClick={() => handleSort('molecule')}
-        >
-          Molecule
-          <FilterListIcon className={`${sortConfig.key === 'molecule' ? styles.rotate : ''} ${styles.icon}`} />
-        </div>
-        <div
-          className={`${styles.headerCell} ${sortConfig.key === 'data' ? (sortConfig.direction === 'asc' ? styles.sortAsc : styles.sortDesc) : ''}`}
-          onClick={() => handleSort('data')}
-        >
-          Data Item
-          <div className={styles.icon}>
-            <FilterListIcon className={`${sortConfig.key === 'data' ? styles.rotate : ''}`} />
-          </div>
-        </div>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th>
+              Disk
+              <FilterListIcon onClick={() => handleSort('disk')} className={`${sortConfig.key === 'disk' ? styles.rotate : ''} ${styles.icon}`} />
+            </th>
+            <th>
+              Band
+            </th>
+            <th>
+              Molecule
+            </th>
+            <th>
+              <div className={styles.checkboxHeader}>
+                Data Item
+                <input
+                  type="checkbox"
+                  onChange={handleSelectAll}
+                  checked={selectedItems.size === dummyData.flatMap(disk => disk.bands.flatMap(band => band.molecules.flatMap(molecule => molecule.data.map(dataItem => `${disk.id}-${band.name}-${molecule.name}-${dataItem.name}`)))).length}
+                />
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {renderRows()}
+        </tbody>
+      </table>
+      <div className={styles.pagination}>
+        <button onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1}>
+          Previous
+        </button>
+        {[...Array(totalPages)].map((_, index) => (
+          <button
+            key={index}
+            className={currentPage === index + 1 ? styles.activePage : ''}
+            onClick={() => setCurrentPage(index + 1)}
+          >
+            {index + 1}
+          </button>
+        ))}
+        <button onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages}>
+          Next
+        </button>
       </div>
-      {sortedData(dummyData, sortConfig.key, sortConfig.direction).map((disk) => (
-        <div className={styles.tableExt} key={disk.id}>
-          <div className={styles.tableInt}>
-            <div className={styles.diskColumn}>
-              <div className={styles.eachDisk}>{disk.disk}</div>
-            </div>
-            <div className={styles.bandColumn}>
-              {sortedData(disk.bands, sortConfig.key === 'band' ? 'name' : '', sortConfig.direction).map((band) => (
-                <div
-                  key={band.name}
-                  onClick={() => handleBandClick(disk.id, band.name)}
-                  className={styles.eachBand}
-                >
-                  {band.name}
-                </div>
-              ))}
-            </div>
-            <div className={styles.spectroscopyColumn}>
-              {selectedBands[disk.id] &&
-                sortedData(disk.bands.find((b) => b.name === selectedBands[disk.id])?.molecules || [], sortConfig.key === 'molecule' ? 'name' : '', sortConfig.direction).map((molecule) => (
-                  <div
-                    key={molecule.name}
-                    onClick={() => handleCategoryClick(disk.id, molecule.name)}
-                    className={styles.eachMolecule}
-                  >
-                    {molecule.name}
-                  </div>
-                ))}
-            </div>
-            <div className={styles.dataColumn}>
-              {selectedCategories[disk.id] &&
-                sortedData(disk.bands.find((b) => b.name === selectedBands[disk.id])?.molecules.find((m) => m.name === selectedCategories[disk.id])?.data || [], sortConfig.key === 'data' ? 'name' : '', sortConfig.direction).map((dataItem) => (
-                  <div key={dataItem.name}>{dataItem.name}</div>
-                ))}
-            </div>
-          </div>
-        </div>
-      ))}
     </div>
   );
 };
