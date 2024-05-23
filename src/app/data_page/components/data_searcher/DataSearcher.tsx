@@ -17,7 +17,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import DownloadIcon from '@mui/icons-material/Download';
 import styles from "./dataSearcher.module.css";
 import DataContainer from '../data_container/DataContainer';
-import { DiskDto, BandDto, RegionDto, MoleculeDto } from '@api/dto';
+import { DiskDto, BandDto, RegionDto, MoleculeDto, DataDto } from '@api/dto';
 import almaClient from '@api/client';
 
 interface ElementsInSelect {
@@ -27,7 +27,12 @@ interface ElementsInSelect {
 }
 
 const MultiSelect: FC<ElementsInSelect> = ({ title, values = [], onChange }) => {
+
     const [selectedNames, setSelectedNames] = useState<string[]>([]);
+
+    useEffect(() => {
+        setSelectedNames(prevSelectedNames => prevSelectedNames.filter(name => values.includes(name)));
+    }, [values]);
 
     const handleChange = (event: SelectChangeEvent<string[]>) => {
         const newSelection = event.target.value as string[];
@@ -83,6 +88,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     const [disks, setDisks] = useState<DiskDto[]>([]);
     const [bands, setBands] = useState<BandDto[]>([]);
     const [molecules, setMolecules] = useState<MoleculeDto[]>([]);
+    const [data, setData] = useState<DataDto[]>([]);
 
     const [selectedDisks, setSelectedDisks] = useState<string[]>([]);
     const handleDisksChange = (disks: string[]) => {
@@ -98,12 +104,18 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     const handleMoleculesChange = (molecules: string[]) => {
         setSelectedMolecules(molecules);
     }
+
+    const [selectedData, setSelectedData] = useState<string[]>([]);
+    const handleDataChange = (data: string[]) => {
+        setSelectedData(data);
+    }
   
-    const shouldShowTable = selectedDisks.length > 0 && selectedBands.length > 0 && selectedMolecules.length > 0;
+    const shouldShowTable = selectedDisks.length > 0 || selectedBands.length > 0 || selectedMolecules.length > 0 || selectedData.length > 0;
 
     var diskValues: string[] = [];
     var bandValues: string[] = [];
     var moleculeValues: string[] = [];
+    var dataValues: string[] = [];
 
     useEffect(() => {
         const fetchDisks = async () => {
@@ -123,14 +135,11 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     useEffect(() => {
         const fetchBands = async (disks: string[]) => {
             const bands = await almaClient.getBands( {region: [title], disk: disks} );
-            setBands(bands)
+            setBands(bands);
+            setSelectedBands(prevSelectedBands => prevSelectedBands.filter(item => bands.some(bandItem => bandItem.name === item)));
         };
 
-        if (selectedDisks.length > 0) {
-            fetchBands(selectedDisks);
-        } else {
-            setBands([]);
-        }
+        fetchBands(selectedDisks);
     }, [selectedDisks])
 
     bands.forEach(band => {
@@ -142,14 +151,11 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     useEffect(() => {
         const fetchMolecules = async (disks: string[], bands: string[]) => {
             const molecules = await almaClient.getMolecules( {region: [title], disk: disks, band: bands} );
-            setMolecules(molecules)
+            setMolecules(molecules);
+            setSelectedMolecules(prevSelectedMolecules => prevSelectedMolecules.filter(item => molecules.some(moleculeItem => moleculeItem.name === item)));
         };
 
-        if (selectedDisks.length > 0 && selectedBands.length > 0) {
         fetchMolecules(selectedDisks, selectedBands);
-        } else {
-            setMolecules([]);
-        }
     }, [selectedDisks, selectedBands])
 
     molecules.forEach(molecule => {
@@ -157,6 +163,21 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     });
 
     moleculeValues = moleculeValues.filter((item, index) => moleculeValues.indexOf(item) === index);
+
+    useEffect(() => {
+        const fetchData = async (disks: string[], bands: string[], molecules: string[]) => {
+            const data = await almaClient.getData( {region: [title], disk: disks, band: bands, molecule: molecules} );
+            setData(data);
+            setSelectedData(prevSelectedData => prevSelectedData.filter(item => data.some(dataItem => dataItem.name === item)));
+        };
+        fetchData(selectedDisks, selectedBands, selectedMolecules);
+    }, [selectedDisks, selectedBands, selectedMolecules])
+
+    data.forEach(data => {
+        dataValues.push(data.name);
+    });
+
+    dataValues = dataValues.filter((item, index) => dataValues.indexOf(item) === index);
 
     return (
         <div className={styles.dataSelectorRow}>
@@ -172,6 +193,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
                     <MultiSelect title={"Disks"} values={diskValues} onChange={handleDisksChange} />
                     <MultiSelect title={"Bands"} values={bandValues} onChange={handleBandsChange} />
                     <MultiSelect title={"Molecules"} values={moleculeValues} onChange={handleMoleculesChange} />
+                    <MultiSelect title={"Data"} values={dataValues} onChange={handleDataChange} />
                 </div>
                 {shouldShowTable && <DataContainer />}
             </Container>
