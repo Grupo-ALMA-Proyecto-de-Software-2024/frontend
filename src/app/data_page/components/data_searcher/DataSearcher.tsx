@@ -109,8 +109,6 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     const handleDataChange = (data: string[]) => {
         setSelectedData(data);
     }
-  
-    const shouldShowTable = selectedDisks.length > 0 || selectedBands.length > 0 || selectedMolecules.length > 0 || selectedData.length > 0;
 
     var diskValues: string[] = [];
     var bandValues: string[] = [];
@@ -195,7 +193,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
                     <MultiSelect title={"Molecules"} values={moleculeValues} onChange={handleMoleculesChange} />
                     <MultiSelect title={"Data"} values={dataValues} onChange={handleDataChange} />
                 </div>
-                {shouldShowTable && <DataContainer />}
+                <DataContainer />
             </Container>
             <Button variant="outlined">Selected Files {<DownloadIcon></DownloadIcon>}</Button>
         </div>
