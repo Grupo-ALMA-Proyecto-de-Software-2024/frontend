@@ -30,6 +30,8 @@
     cursor: pointer;
     opacity: 0.1;
     transition: opacity 0.3s, color 0.3s;
+    width: 75px;
+    height: 75px;
 }
   
 .lbutton:hover, .rbutton:hover {
@@ -37,7 +39,7 @@
 }
   
 .icon {
-    font-size: 5rem;
+    font-size: 75px;
 }
   
   

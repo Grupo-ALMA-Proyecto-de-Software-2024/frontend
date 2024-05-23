@@ -1,5 +1,5 @@
 import styles from "./data.module.css";
-import DataSearcher from "./DataSearcher"
+import DataSearcher from "./components/data_searcher/DataSearcher"
 
 const DataHeader = () => {
     return (
