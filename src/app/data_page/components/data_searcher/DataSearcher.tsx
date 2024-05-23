@@ -78,13 +78,6 @@ interface ContainerBuilderProps {
     title: string;
 }
 
-interface DataItem {
-    id: number;
-    Disk: string;
-    Band: string;
-    Data: number | null;
-}
-
 const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     
     const [disks, setDisks] = useState<DiskDto[]>([]);
