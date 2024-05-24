@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './dataContainer.module.css';
+import ImageModal from './imageModal';
 
 interface DataItem {
   name: string;
@@ -31,6 +32,19 @@ interface TableRowProps {
 }
 
 const TableRow: React.FC<TableRowProps> = ({ disks, selectedItems, handleSelectItem }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalImageUrl, setModalImageUrl] = useState('');
+
+  const openModal = (imageUrl: string) => {
+    setModalImageUrl(imageUrl);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalImageUrl('');
+  };
+
   const renderRows = () => {
     const rows: React.ReactNode[] = [];
 
@@ -62,6 +76,11 @@ const TableRow: React.FC<TableRowProps> = ({ disks, selectedItems, handleSelectI
                 <td>
                   <div className={styles.checkbox}>
                     {dataItem.name}
+                    {dataItem.isViewable && (
+                      <button onClick={() => openModal(`/path/to/image/${dataItem.file}`)}>
+                        View
+                      </button>
+                    )}
                     <input
                       type="checkbox"
                       checked={isSelected}
@@ -81,7 +100,12 @@ const TableRow: React.FC<TableRowProps> = ({ disks, selectedItems, handleSelectI
     return rows;
   };
 
-  return <tbody>{renderRows()}</tbody>;
+  return (
+    <>
+      <tbody>{renderRows()}</tbody>
+      <ImageModal isOpen={isModalOpen} onRequestClose={closeModal} imageUrl={modalImageUrl} />
+    </>
+  );
 };
 
 export default TableRow;

@@ -94,3 +94,16 @@
     margin: 0 5px;
     padding: 5px 10px;
   }  
+
+.checkbox button {
+    margin-left: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .checkbox button:hover {
+    background: #0056b3;
+  }
