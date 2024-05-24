@@ -17,25 +17,21 @@ const Home: React.FC = () => {
           <section className={styles.section}>
             <h1>AGE-Pro</h1>
             <h2>“The ALMA Survey of Gas Evolution in PROtoplanetary Disks”</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-               Quo necessitatibus et, alias quaerat, fugit, possimus dicta excepturi 
-               ex veritatis esse velit magnam. Aliquid cumque distinctio dicta molestias perspiciatis 
-               repellendus recusandae!
-               Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-               Exercitationem eos ex qui illum iure quasi autem dolorum quas commodi rem. 
-               Magni facilis asperiores dolorum aliquam nostrum repellat natus soluta expedita?</p>
+            <p>It&apos;s an LP
+                more than 100 hours of observation that were awarded to an international collaboration of more than
+                20 astronomers, who seek to understand the evolution of gaseous material in disks
+                protoplanetary organisms, and at the same time understand what physical mechanisms impact their evolution.
+                Once we achieve this goal, the collaboration will publish these results in a wave of
+                scientific publications that we hope have high impact. In addition, we have new data on
+                JWST space telescope that will be analyzed in the future by the collaboration</p>
           </section>
 
           <section className={styles.section}>
             <h1>About Us</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              Inventore, eaque delectus aut beatae enim deserunt nulla 
-              doloremque nisi ipsum cupiditate atque nam earum, 
-              fuga commodi temporibus a rem laboriosam! Necessitatibus?
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              Aut, quas numquam dolore at quod vel et. Mollitia nobis, 
-              vero similique cupiditate laboriosam nesciunt, 
-              distinctio quia laudantium nemo natus facilis excepturi?</p>
+            <p>The AGE-PRO collaboration is made up of professional astronomers working at universities and
+                astronomical observatories, postdoctoral researchers who are part of groups of
+                research associated with the astronomers participating in the project, and doctoral students and
+                master in astronomy.</p>
           </section>
         </div>
 
@@ -65,53 +61,36 @@ const Home: React.FC = () => {
         </div>
         </Link>
 
-        {/* Disks Card */}
-        <Link href="/disks">
+        {/* Regions Card */}
+        <Link href="/regions">
           <div className={styles.card}>
             <div className={styles.cardImage}>
               <Image
-                src="/cards/DisksIcon.png" 
-                alt="Disks Card" 
+                src="/cards/RegionsIcon.png" 
+                alt="Regions Card" 
                 width={150}
                 height={150}  
                 style={{objectFit: 'cover'}} 
               />
             </div>
-            <h3>Disks</h3>
+            <h3>Regions</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
         </Link>
 
-        {/* Visualizations Card */}
-        <Link href="/visualizations">
+        {/* News Card */}
+        <Link href="/news">
           <div className={styles.card}>
             <div className={styles.cardImage}>
               <Image
-                src="/cards/VisualizationsIcon.png" 
-                alt="Visualizations Card" 
-                width={150}
-                height={150}  
-                style={{objectFit: 'cover'}}
-              />
-            </div>
-            <h3>Visualizations</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </Link>
-
-        {/* Publications Card */}
-        <Link href="/publications">
-          <div className={styles.card}>
-            <div className={styles.cardImage}>
-              <Image
-                src="/cards/PublicationsIcon.png" 
-                alt="Publications Card" 
+                src="/cards/NewsIcon.png" 
+                alt="News Card" 
                 width={150}
                 height={150}  
                 style={{objectFit: 'cover'}} 
               />
             </div>
-            <h3>Publications</h3>
+            <h3>News</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
         </Link>
