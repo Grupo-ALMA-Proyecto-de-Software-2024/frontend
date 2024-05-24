@@ -4,7 +4,7 @@ import { CarouselImageDto } from './dto';
 
 const host = 'localhost';
 const port = 8000;
-const namespace = 'api';
+const namespace = 'content-management';
 const baseUrl = `http://${host}:${port}/${namespace}`;
 
 const client = axios.create({
