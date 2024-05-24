@@ -1,0 +1,1383 @@
+[
+    {
+      "id": "1",
+      "disk": "Disk 1",
+      "bands": [
+        {
+          "name": "Band 6",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C18O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "H2CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "DCN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "N2D+",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Band 7",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C17O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO2",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3CN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "disk": "Disk 2",
+      "bands": [
+        {
+          "name": "Band 6",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C18O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "H2CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "DCN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "N2D+",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Band 7",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C17O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO2",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3CN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "disk": "Disk 3",
+      "bands": [
+        {
+          "name": "Band 6",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C18O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "H2CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "DCN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "N2D+",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Band 7",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C17O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO2",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3CN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "disk": "Disk 4",
+      "bands": [
+        {
+          "name": "Band 6",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C18O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "H2CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "DCN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "N2D+",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Band 7",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C17O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO2",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3CN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "disk": "Disk 5",
+      "bands": [
+        {
+          "name": "Band 6",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C18O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "H2CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "DCN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "N2D+",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Band 7",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C17O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO2",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3CN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "disk": "Disk 6",
+      "bands": [
+        {
+          "name": "Band 6",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C18O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "H2CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "DCN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "N2D+",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Band 7",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C17O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO2",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3CN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "disk": "Disk 7",
+      "bands": [
+        {
+          "name": "Band 6",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C18O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "H2CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "DCN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "N2D+",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Band 7",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C17O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO2",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3CN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "disk": "Disk 8",
+      "bands": [
+        {
+          "name": "Band 6",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C18O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "H2CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "DCN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "N2D+",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Band 7",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C17O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO2",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3CN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "disk": "Disk 9",
+      "bands": [
+        {
+          "name": "Band 6",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C18O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "H2CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "DCN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "N2D+",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Band 7",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C17O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO2",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3CN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "disk": "Disk 10",
+      "bands": [
+        {
+          "name": "Band 6",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C18O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "H2CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "DCN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "N2D+",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Band 7",
+          "molecules": [
+            {
+              "name": "Continuum",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Map", "creationDate": "2024-04-17", "file": "map.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "C17O",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO2",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3CN",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "13CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "SO",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            },
+            {
+              "name": "CH3OH",
+              "data": [
+                { "name": "Measurement Set", "creationDate": "2024-04-16", "file": "measurement_set.zip", "isViewable": false },
+                { "name": "Cubo de Canales", "creationDate": "2024-04-17", "file": "cubo_de_canales.zip", "isViewable": false },
+                { "name": "Momento 0", "creationDate": "2024-04-18", "file": "momento_0.fits", "isViewable": true },
+                { "name": "Momento 1", "creationDate": "2024-04-19", "file": "momento_1.fits", "isViewable": true }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+  

@@ -1,9 +1,13 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from "./dataContainer.module.css";
 import FilterListIcon from '@mui/icons-material/FilterList';
+import TableHeader from './TableHeader';
+import TableRow from './TableRow';
+import Pagination from './Pagination';
+import dummyData from './dummyData.json';
 
-// Tipos de datos
+// Define the types here or import them
 interface DataItem {
   name: string;
   creationDate: string;
@@ -27,69 +31,19 @@ interface Disk {
   bands: Band[];
 }
 
-// Datos de ejemplo ampliados
-const dummyData: Disk[] = [
-  {
-    id: '1',
-    disk: 'Disk 1',
-    bands: [
-      {
-        name: 'Band 6',
-        molecules: [
-          {
-            name: 'Continuum',
-            data: [
-              { name: 'Measurement Set', creationDate: '2024-04-16', file: 'measurement_set.zip', isViewable: false },
-              { name: 'Map', creationDate: '2024-04-17', file: 'map.fits', isViewable: true },
-            ],
-          },
-          {
-            name: 'Molecule 1',
-            data: [
-              { name: 'Measurement Set', creationDate: '2024-04-16', file: 'measurement_set.zip', isViewable: false },
-              { name: 'Cubo de Canales', creationDate: '2024-04-17', file: 'cubo_de_canales.zip', isViewable: false },
-            ],
-          },
-        ],
-      },
-      {
-        name: 'Band 7',
-        molecules: [
-          {
-            name: 'Continuum',
-            data: [
-              { name: 'Measurement Set', creationDate: '2024-04-16', file: 'measurement_set.zip', isViewable: false },
-              { name: 'Map', creationDate: '2024-04-17', file: 'map.fits', isViewable: true },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: '2',
-    disk: 'Disk N',
-    bands: [
-      {
-        name: 'Band 1',
-        molecules: [
-          {
-            name: 'Continuum',
-            data: [
-              { name: 'Measurement Set', creationDate: '2024-04-16', file: 'measurement_set.zip', isViewable: false },
-              { name: 'Map', creationDate: '2024-04-17', file: 'map.fits', isViewable: true },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-];
-
 const DataContainer: React.FC = () => {
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' }>({ key: '', direction: 'asc' });
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const disksPerPage = 1; // Show one disk per page
+  const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
+  const [paginatedDisks, setPaginatedDisks] = useState<Disk[]>([]);
+
+  useEffect(() => {
+    // Update paginatedDisks whenever currentPage changes
+    const start = (currentPage - 1) * disksPerPage;
+    const end = start + disksPerPage;
+    setPaginatedDisks(dummyData.slice(start, end));
+  }, [currentPage]);
 
   const handleSort = (key: string) => {
     let direction: 'asc' | 'desc' = 'asc';
@@ -110,14 +64,6 @@ const DataContainer: React.FC = () => {
       return 0;
     });
   };
-
-  const paginatedData = <T,>(data: T[], currentPage: number, itemsPerPage: number): T[] => {
-    const start = (currentPage - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    return data.slice(start, end);
-  };
-
-  const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
 
   const handleSelectAll = () => {
     const allItems = new Set(dummyData.flatMap(disk =>
@@ -140,106 +86,24 @@ const DataContainer: React.FC = () => {
     setSelectedItems(newSelectedItems);
   };
 
-  const renderRows = () => {
-    const rows: React.ReactNode[] = [];
-
-    paginatedData(sortedData(dummyData, sortConfig.key, sortConfig.direction), currentPage, itemsPerPage).forEach(disk => {
-      let diskRowCount = 0;
-      disk.bands.forEach(band => {
-        let bandRowCount = 0;
-        band.molecules.forEach(molecule => {
-          molecule.data.forEach((dataItem, dataIndex) => {
-            const itemKey = `${disk.id}-${band.name}-${molecule.name}-${dataItem.name}`;
-            const isSelected = selectedItems.has(itemKey);
-            rows.push(
-              <tr key={itemKey} className={`${styles.tableRow} ${isSelected ? styles.selected : ''}`}>
-                {diskRowCount === 0 && (
-                  <td rowSpan={disk.bands.reduce((sum, b) => sum + b.molecules.reduce((sumM, mol) => sumM + mol.data.length, 0), 0)}>
-                    {disk.disk}
-                  </td>
-                )}
-                {bandRowCount === 0 && (
-                  <td rowSpan={band.molecules.reduce((sum, mol) => sum + mol.data.length, 0)}>
-                    {band.name}
-                  </td>
-                )}
-                {dataIndex === 0 && (
-                  <td rowSpan={molecule.data.length}>
-                    {molecule.name}
-                  </td>
-                )}
-                <td>
-                  <div className={styles.checkbox}>
-                    {dataItem.name}
-                    <input
-                      type="checkbox"
-                      checked={isSelected}
-                      onChange={() => handleSelectItem(itemKey)}
-                    />
-                  </div>
-                </td>
-              </tr>
-            );
-            diskRowCount++;
-            bandRowCount++;
-          });
-        });
-      });
-    });
-
-    return rows;
-  };
-
-  const totalPages = Math.ceil(dummyData.reduce((sum, disk) => sum + disk.bands.reduce((sumB, band) => sumB + band.molecules.reduce((sumM, molecule) => sumM + molecule.data.length, 0), 0), 0) / itemsPerPage);
+  const totalPages = Math.ceil(dummyData.length / disksPerPage);
 
   return (
     <div className={styles.tableContainer}>
       <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>
-              Disk
-              <FilterListIcon onClick={() => handleSort('disk')} className={`${sortConfig.key === 'disk' ? styles.rotate : ''} ${styles.icon}`} />
-            </th>
-            <th>
-              Band
-            </th>
-            <th>
-              Molecule
-            </th>
-            <th>
-              <div className={styles.checkboxHeader}>
-                Data Item
-                <input
-                  type="checkbox"
-                  onChange={handleSelectAll}
-                  checked={selectedItems.size === dummyData.flatMap(disk => disk.bands.flatMap(band => band.molecules.flatMap(molecule => molecule.data.map(dataItem => `${disk.id}-${band.name}-${molecule.name}-${dataItem.name}`)))).length}
-                />
-              </div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {renderRows()}
-        </tbody>
+        <TableHeader
+          sortConfig={sortConfig}
+          handleSort={handleSort}
+          handleSelectAll={handleSelectAll}
+          isSelectedAll={selectedItems.size === dummyData.flatMap(disk => disk.bands.flatMap(band => band.molecules.flatMap(molecule => molecule.data.map(dataItem => `${disk.id}-${band.name}-${molecule.name}-${dataItem.name}`)))).length}
+        />
+        <TableRow
+          disks={sortedData(paginatedDisks, sortConfig.key, sortConfig.direction)}
+          selectedItems={selectedItems}
+          handleSelectItem={handleSelectItem}
+        />
       </table>
-      <div className={styles.pagination}>
-        <button onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1}>
-          Previous
-        </button>
-        {[...Array(totalPages)].map((_, index) => (
-          <button
-            key={index}
-            className={currentPage === index + 1 ? styles.activePage : ''}
-            onClick={() => setCurrentPage(index + 1)}
-          >
-            {index + 1}
-          </button>
-        ))}
-        <button onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages}>
-          Next
-        </button>
-      </div>
+      <Pagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={setCurrentPage} />
     </div>
   );
 };

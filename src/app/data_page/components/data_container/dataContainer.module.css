@@ -3,89 +3,94 @@
     border-radius: 5px;
     background-color: var(--bg1); /* Color momentaneo */
     padding: 2px;
-}
-
-.table {
+  }
+  
+  .table {
     width: 100%;
     border-collapse: collapse;
-}
-
-.table th, .table td {
+  }
+  
+  .table th, .table td {
     border: 1px solid #ccc;
     padding: 8px;
     text-align: center;
-}
-
-.table th {
+  }
+  
+  .table th {
     background-color: #f7f7f7; /* Color momentaneo */
     cursor: pointer;
-}
-
-.table td {
+  }
+  
+  .table td {
     background-color: #fff; /* Color momentaneo */
-}
-
-.rotate {
+  }
+  
+  .rotate {
     transition: transform 0.3s ease;
-}
-
-.sortAsc .rotate {
+  }
+  
+  .sortAsc .rotate {
     transform: rotate(0deg);
-}
-
-.sortDesc .rotate {
+  }
+  
+  .sortDesc .rotate {
     transform: rotate(180deg);
-}
-
-.icon {
+  }
+  
+  .icon {
     margin-left: 5px;
-}
-
-.tableHeader th {
+  }
+  
+  .tableHeader th {
     padding: 10px;
     text-align: left;
-}
-
-.tableRow:nth-child(even) {
+  }
+  
+  .tableRow:nth-child(even) {
     background-color: #f9f9f9; /* Color momentaneo */
-}
-
-.tableRow:hover {
+  }
+  
+  .tableRow:hover {
     background-color: #f1f1f1; /* Color momentaneo */
-}
-
-.selected {
+  }
+  
+  .selected {
     background-color: #c8e6c9; /* Color para resaltar la selección */
-}
-
-.checkbox {
+  }
+  
+  .checkbox {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.pagination {
+  }
+  
+  .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
-}
-
-.pagination button {
+  }
+  
+  .pagination button {
     margin: 0 5px;
     padding: 5px 10px;
     background-color: white;
     border: 1px solid #ccc;
     cursor: pointer;
-}
-
-.pagination button:disabled {
+  }
+  
+  .pagination button:disabled {
     background-color: #f0f0f0;
     cursor: not-allowed;
-}
-
-.pagination .activePage {
+  }
+  
+  .pagination .activePage {
     background-color: #007bff;
     color: white;
     border: none;
-}
+  }
+  
+  .ellipsis {
+    margin: 0 5px;
+    padding: 5px 10px;
+  }  
