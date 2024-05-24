@@ -17,7 +17,7 @@ import {
 
 const host = "localhost";
 const port = 8000;
-const namespace = "api";
+const namespace = "content-management";
 const baseUrl = `http://${host}:${port}/${namespace}`;
 
 export const client = axios.create({
