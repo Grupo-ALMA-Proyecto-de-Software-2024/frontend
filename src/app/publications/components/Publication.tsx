@@ -14,8 +14,8 @@ const Publication = ({ publication }: Props) => {
     return (
         <div className={ styles.publicationContainer }>
             <div className={ styles.imageGallery }>
-                <a href={publication.image} target="_blank" rel="noopener noreferrer">
-                    <img src={publication.image} alt="Visualization" className={styles.publicationImage} />
+                <a href={publication.imageUrl} target="_blank" rel="noopener noreferrer">
+                    <img src={publication.imageUrl} alt="Visualization" className={styles.publicationImage} />
                 </a>
             </div>
             <div className={styles.publicationInfo}>
@@ -31,7 +31,7 @@ const Publication = ({ publication }: Props) => {
                         key="1"
                         className={styles.publicationAuthors}
                     >
-                        <p className={styles.publicationDetails}>{publication.full_authors}</p>
+                        <p className={styles.publicationDetails}>{publication.fullAuthors}</p>
                     </CollapsePanel>
                 </Collapse>
                 <p className={styles.publicationDetails}>{publication.summary}</p>
