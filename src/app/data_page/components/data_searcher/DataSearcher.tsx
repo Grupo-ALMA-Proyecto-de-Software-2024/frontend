@@ -210,7 +210,7 @@ const DataSearcher = () => {
     });
 
     const render = regionValues.map((region) =>
-        <div>
+        <div key={region}>
         {selectedRegions.includes(region) && (
             <ContainerBuilder title={region} />
         )}

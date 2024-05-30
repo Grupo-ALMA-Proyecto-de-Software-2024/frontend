@@ -40,3 +40,16 @@ export interface RegionDto {
     name: string;
     disks: DiskDto[];
 }
+
+export interface PublicationDto {
+    title: string;
+    authors: string;
+    fullAuthors: string;
+    journalInfo: string;
+    summary: string;
+    imageUrl: string;
+    pdfLink: string;
+    bibtexLink: string;
+    dataLink: string;
+    saoNasaLink: string;
+}

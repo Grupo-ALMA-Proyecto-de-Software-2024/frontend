@@ -6,8 +6,6 @@ import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 import Pagination from './Pagination';
 import dummyData from './dummyData.json';
-
-// Define the types here or import them
 interface DataItem {
   name: string;
   creationDate: string;
@@ -44,6 +42,7 @@ const DataContainer: React.FC = () => {
     const end = start + disksPerPage;
     setPaginatedDisks(dummyData.slice(start, end));
   }, [currentPage]);
+
 
   const handleSort = (key: string) => {
     let direction: 'asc' | 'desc' = 'asc';

@@ -7,6 +7,7 @@ import {
   BandDto,
   MoleculeDto,
   DataDto,
+  PublicationDto,
 } from "./dto";
 import {
   GetRegionsParams,
@@ -18,7 +19,7 @@ import {
 
 const host = "localhost";
 const port = 8000;
-const namespace = "api";
+const namespace = "content-management";
 const baseUrl = `http://${host}:${port}/${namespace}`;
 
 export const client = axios.create({
@@ -65,6 +66,22 @@ class almaClient {
   async getData(params?: GetDataParams): Promise<DataDto[]> {
     const response = await client.get("/data", { params });
     return response.data.data;
+  }
+
+  async getPublications(): Promise<PublicationDto[]> {
+    const response = await client.get("/publications");
+    return response.data.map((item: any) => ({
+      title: item.title,
+      authors: item.authors,
+      fullAuthors: item.full_authors,
+      journalInfo: item.journal_info,
+      summary: item.summary,
+      imageUrl: getFullImageUrl(item.image),
+      pdfLink: item.pdf_link,
+      bibtexLink: item.bibtex_link,
+      dataLink: item.data_link,
+      saoNasaLink: item.sao_nasa_link,
+    }));
   }
 }
 
