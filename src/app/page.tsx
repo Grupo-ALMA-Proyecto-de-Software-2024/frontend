@@ -1,15 +1,6 @@
-import dynamic from 'next/dynamic';
+import CarouselContainer from '@/components/carousel/carouselContainer';
+import Cards from '@/components/cards/Cards';
 import styles from "./home.module.css";
-
-const CarouselContainer = dynamic(() => import('@/components/carousel/carouselContainer'), {
-  ssr: false,
-  loading: () => <p>Loading...</p>,
-});
-
-const Cards = dynamic(() => import('@/components/cards/Cards'), {
-  ssr: false,
-  loading: () => <p>Loading cards...</p>,
-});
 
 const Home: React.FC = () => {
   return (
