@@ -7,9 +7,10 @@ import { CarouselImageDto } from "@api/dto";
 
 interface CarouselProps {
   images: CarouselImageDto[];
+  isLoading: boolean;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ images }) => {
+const Carousel: React.FC<CarouselProps> = ({ images, isLoading }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrev = () => {
@@ -28,13 +29,17 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
       <div className={styles.carouselContainer}>
         <button onClick={goToPrev} className={styles.lbutton}><NavigateBeforeRoundedIcon className={styles.icon}/></button>
         <div className={styles.carousel}>
-          <Image 
-            src={images[currentIndex].imageUrl}
-            alt={images[currentIndex].title}
-            fill
-            className={styles.carouselImage}
-            unoptimized
-          />
+          {isLoading ? (
+            <div className={styles.spinner}></div> // Placeholder for a loading spinner
+          ) : (
+            <Image 
+              src={images[currentIndex].imageUrl}
+              alt={images[currentIndex].title}
+              fill
+              className={styles.carouselImage}
+              unoptimized
+            />
+          )}
         </div>
         <button onClick={goToNext} className={styles.rbutton}><NavigateNextRoundedIcon className={styles.icon}/></button>
         <div className={styles.dotsContainer}>

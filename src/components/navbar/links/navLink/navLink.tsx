@@ -15,7 +15,7 @@ const NavLink = ({ item }: NavLinkProps) => {
   const pathName = usePathname();
 
   return (
-    <Link href={item.path} className={`${styles.container} ${pathName === item.path && styles.active}`}>
+    <Link href={item.path} className={`${styles.container} ${pathName === item.path && styles.active}`} prefetch >
             {item.title}
     </Link>
   );
