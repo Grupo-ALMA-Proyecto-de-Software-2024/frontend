@@ -78,19 +78,19 @@ const Home: React.FC = () => {
           </div>
         </Link>
 
-        {/* News Card */}
-        <Link href="/news">
+        {/* Publications Card */}
+        <Link href="/publications">
           <div className={styles.card}>
             <div className={styles.cardImage}>
               <Image
-                src="/cards/NewsIcon.png" 
-                alt="News Card" 
+                src="/cards/PublicationsIcon.png" 
+                alt="Publications Card" 
                 width={150}
                 height={150}  
                 style={{objectFit: 'cover'}} 
               />
             </div>
-            <h3>News</h3>
+            <h3>Publications</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
         </Link>
