@@ -26,8 +26,8 @@ const links: LinkItem[] = [
         path: "/regions",
     },
     {
-        title: "News",
-        path: "/news",
+        title: "Publications",
+        path: "/publications",
 
     },
     {
