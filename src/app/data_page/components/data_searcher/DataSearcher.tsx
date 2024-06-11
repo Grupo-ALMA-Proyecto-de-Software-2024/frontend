@@ -83,6 +83,13 @@ interface ContainerBuilderProps {
     title: string;
 }
 
+interface DataItem {
+    id: number;
+    Disk: string;
+    Band: string;
+    Data: number | null;
+}
+
 const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     
     const [disks, setDisks] = useState<DiskDto[]>([]);
@@ -104,12 +111,10 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     const handleMoleculesChange = (molecules: string[]) => {
         setSelectedMolecules(molecules);
     }
-
     const [selectedData, setSelectedData] = useState<string[]>([]);
     const handleDataChange = (data: string[]) => {
         setSelectedData(data);
     }
-
     var diskValues: string[] = [];
     var bandValues: string[] = [];
     var moleculeValues: string[] = [];
