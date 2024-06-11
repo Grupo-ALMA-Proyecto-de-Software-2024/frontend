@@ -5,7 +5,7 @@
     background-color: black;
     position: relative; /* Position relative for absolute positioning of dots */
     transition: opacity 0.5s ease-in-out; /*  Add transition to the carousel container */
-  }
+}
   
 .carousel {
     display: flex;
@@ -42,7 +42,6 @@
     font-size: 75px;
 }
   
-  
 .dotsContainer {
     position: absolute; 
     bottom: 10px; 
@@ -67,13 +66,39 @@
     opacity: 0.9;
 }
 
+.spinner {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #083c5e; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 /*Responsive Design*/
 @media (max-width: 768px) {
-    .carouselContainer{
+    .carouselContainer {
         height: 300px;
     }
     
-    .carousel{
+    .carousel {
         height: 300px;
+    }
+
+    .icon {
+        font-size: 50px;
+    }
+
+    .lbutton, .rbutton {
+        width: 50px;
+        height: 50px;
     }
 }
