@@ -42,6 +42,7 @@ const Home: React.FC = () => {
             width={500}
             height={500}
             className={styles.gifImage}
+            unoptimized
           />
         </div>
       </div>
