@@ -111,15 +111,10 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
     const handleMoleculesChange = (molecules: string[]) => {
         setSelectedMolecules(molecules);
     }
-<<<<<<< data_page_dataContainer
-=======
-
     const [selectedData, setSelectedData] = useState<string[]>([]);
     const handleDataChange = (data: string[]) => {
         setSelectedData(data);
     }
->>>>>>> master
-
     var diskValues: string[] = [];
     var bandValues: string[] = [];
     var moleculeValues: string[] = [];
