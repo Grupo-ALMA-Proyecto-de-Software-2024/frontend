@@ -1,5 +1,6 @@
 import CarouselContainer from '@/components/carousel/carouselContainer';
 import Cards from '@/components/cards/Cards';
+import Image from 'next/image';
 import styles from "./home.module.css";
 
 const Home: React.FC = () => {
@@ -12,9 +13,9 @@ const Home: React.FC = () => {
         <div className={styles.leftContent}>
           <section className={styles.section}>
             <h1>AGE-Pro</h1>
-            <h2>“The ALMA Survey of Gas Evolution in PROtoplanetary Disks”</h2>
+            <h2>&ldquo;The ALMA Survey of Gas Evolution in PROtoplanetary Disks&rdquo;</h2>
             <p>
-              It's an LP more than 100 hours of observation that were awarded to an international collaboration of more than
+              It&apos;s an LP more than 100 hours of observation that were awarded to an international collaboration of more than
               20 astronomers, who seek to understand the evolution of gaseous material in disks
               protoplanetary organisms, and at the same time understand what physical mechanisms impact their evolution.
               Once we achieve this goal, the collaboration will publish these results in a wave of
@@ -35,7 +36,13 @@ const Home: React.FC = () => {
         </div>
 
         <div className={styles.rightContent}>
-          <img src="https://media.giphy.com/media/l5JbspfwZ0yjHjlJ0K/giphy.gif" alt="Earth" className={styles.gifImage} />
+          <Image
+            src="/giphy.gif"
+            alt="Earth"
+            width={500}
+            height={500}
+            className={styles.gifImage}
+          />
         </div>
       </div>
 

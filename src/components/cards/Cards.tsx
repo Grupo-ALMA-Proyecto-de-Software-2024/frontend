@@ -75,6 +75,8 @@ const Cards: FC = () => {
   );
 };
 
+Cards.displayName = 'Cards';
+
 export default memo(Cards);
 
 const Card: FC<CardProps> = memo(({ imageSrc, imageAlt, title, description }) => (
@@ -86,3 +88,5 @@ const Card: FC<CardProps> = memo(({ imageSrc, imageAlt, title, description }) =>
     <p>{description}</p>
   </div>
 ));
+
+Card.displayName = 'Card';

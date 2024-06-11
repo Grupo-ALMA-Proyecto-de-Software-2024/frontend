@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState, memo } from "react";
+import { useState } from "react";
 import styles from "./carousel.module.css";
 import NavigateBeforeRoundedIcon from '@mui/icons-material/NavigateBeforeRounded';
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
@@ -9,7 +9,7 @@ interface CarouselProps {
   images: CarouselImageDto[];
 }
 
-const Carousel: React.FC<CarouselProps> = memo(({ images }) => {
+const Carousel: React.FC<CarouselProps> = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrev = () => {
@@ -25,31 +25,31 @@ const Carousel: React.FC<CarouselProps> = memo(({ images }) => {
   };
 
   return (
-    <div className={styles.carouselContainer}>
-      <button onClick={goToPrev} className={styles.lbutton}><NavigateBeforeRoundedIcon className={styles.icon} /></button>
-      <div className={styles.carousel}>
-        <Image 
-          src={images[currentIndex].imageUrl}
-          alt={images[currentIndex].title}
-          fill
-          className={styles.carouselImage}
-          placeholder="blur"
-          blurDataURL={images[currentIndex].imageUrl}
-          loading="lazy"
-        />
-      </div>
-      <button onClick={goToNext} className={styles.rbutton}><NavigateNextRoundedIcon className={styles.icon} /></button>
-      <div className={styles.dotsContainer}>
-        {images.map((_, index) => (
-          <div 
-            key={index} 
-            className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ''}`} 
-            onClick={() => setCurrentIndex(index)}
+      <div className={styles.carouselContainer}>
+        <button onClick={goToPrev} className={styles.lbutton}><NavigateBeforeRoundedIcon className={styles.icon}/></button>
+        <div className={styles.carousel}>
+          <Image 
+            src={images[currentIndex].imageUrl}
+            alt={images[currentIndex].title}
+            fill
+            className={styles.carouselImage}
+            unoptimized
           />
-        ))}
+        </div>
+        <button onClick={goToNext} className={styles.rbutton}><NavigateNextRoundedIcon className={styles.icon}/></button>
+        <div className={styles.dotsContainer}>
+          {images.map((_, index) => (
+            <div 
+              key={index} 
+              className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ''}`} 
+              onClick={() => setCurrentIndex(index)}
+            />
+          ))}
+        </div>
       </div>
-    </div>
   );
-});
+}
+
+Carousel.displayName = 'Carousel';
 
 export default Carousel;
