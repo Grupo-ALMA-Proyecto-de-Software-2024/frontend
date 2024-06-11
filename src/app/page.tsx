@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import styles from "./home.module.css";
 
-const CarouselContainer = dynamic(() => import('@/components/carouselContainer/carouselContainer'), {
+const CarouselContainer = dynamic(() => import('@/components/carousel/carouselContainer'), {
   ssr: false,
   loading: () => <p>Loading...</p>,
 });
