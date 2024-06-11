@@ -51,24 +51,12 @@ const links: LinkItem[] = [
 const Links = () => {
     const [open, setOpen] = useState(false);
 
-    /*Temporary, just use it to show/hide Admin button and Login/logut button */
-    const session = true;
-    const isAdmin = true;
-
     return (
         <div className={styles.container}>
             <div className={styles.links}>
                 {links.map((link) => (
                     <NavLink item={link} key={link.title} />
                 ))}
-                {session ? (
-                    <>
-                        {isAdmin && <NavLink item={{ title: "Admin", path: "/admin" }} />}
-                        <button className={styles.logout}>Log out</button>
-                    </>
-                ) : (
-                    <NavLink item={{ title: "Sign in", path: "/login" }} /> /*This si temporary, just change it if u want*/
-                )}
             </div>
             <button className={styles.menuButton} onClick={() => setOpen((prev) => !prev)}>
                 {open ? <CloseRoundedIcon className={styles.menuIcon} /> : <MenuRoundedIcon className={styles.menuIcon} />}
