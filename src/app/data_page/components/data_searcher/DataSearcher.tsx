@@ -17,6 +17,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import DownloadIcon from '@mui/icons-material/Download';
 import styles from "./dataSearcher.module.css";
 import DataContainer from '../data_container/DataContainer';
+import DownloadButton from './DownloadButton';
 import { DiskDto, BandDto, RegionDto, MoleculeDto, DataDto } from '@api/dto';
 import almaClient from '@api/client';
 
@@ -200,7 +201,7 @@ const ContainerBuilder: FC<ContainerBuilderProps> = ({ title }) => {
                 </div>
                 <DataContainer />
             </Container>
-            <Button variant="outlined">Selected Files {<DownloadIcon></DownloadIcon>}</Button>
+            <DownloadButton />
         </div>
     )
 }
