@@ -1,11 +1,11 @@
 import React, { useState, useEffect, FC } from 'react';
 import { Container, Button } from "@mui/material";
-import DownloadIcon from '@mui/icons-material/Download';
 import styles from "./dataSearcher.module.css";
 import MultiSelect from './MultiSelect'; // Asegúrate de importar el archivo correcto
 import DataContainer from '../data_container/DataContainer';
 import { DiskDto, BandDto, MoleculeDto, DataDto } from '@api/dto';
 import almaClient from '@api/client';
+import DownloadButton from './DownloadButton';
 
 interface DataFilterContainerProps {
     title: string;
@@ -68,9 +68,7 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
                 </div>
                 <DataContainer />
             </Container>
-            <Button variant="outlined">
-                Selected Files <DownloadIcon />
-            </Button>
+            <DownloadButton />
         </div>
     );
 };
