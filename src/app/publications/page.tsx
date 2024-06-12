@@ -20,11 +20,9 @@ const PublicationsPage: NextPage = () => {
     const loadPublications = async () => {
       try {
         const publications = await fetchPublications();
-        console.log('Fetched publications:', publications);
         setFetchedPublications(publications);
         setIsLoading(false);  // Set isLoading to false after fetching
       } catch (err) {
-        console.error(err);
         setError('Unable to load publications');
         setIsLoading(false);  // Set isLoading to false even if there's an error
       }
@@ -33,7 +31,6 @@ const PublicationsPage: NextPage = () => {
   }, []);
 
   useEffect(() => {
-    console.log('Fetched publications state updated:', fetchedPublications);
   }, [fetchedPublications]);
 
   return (
