@@ -2,12 +2,13 @@ import axios from "axios";
 import qs from "qs";
 import {
   CarouselImageDto,
+  PublicationDto,
+  PressNewsDto,
   RegionDto,
   DiskDto,
   BandDto,
   MoleculeDto,
   DataDto,
-  PublicationDto,
 } from "./dto";
 import {
   GetRegionsParams,
@@ -62,6 +63,15 @@ class almaClient {
       bibtexLink: item.bibtex_link,
       dataLink: item.data_link,
       saoNasaLink: item.sao_nasa_link,
+    }));
+  }
+
+  async getPressNews(): Promise<PressNewsDto[]> {
+    const response = await contentManagementClient.get("/press-news");
+    return response.data.map((item: any) => ({
+      content: item.content,
+      newsType: item.news_type,
+      creationDate: item.creation_date,
     }));
   }
 

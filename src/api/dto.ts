@@ -1,9 +1,36 @@
+// Content Management DTOs
 export interface CarouselImageDto {
     imageUrl: string;
     title: string;
     description: string;
 }
 
+export interface PublicationDto {
+    title: string;
+    authors: string;
+    fullAuthors: string;
+    journalInfo: string;
+    summary: string;
+    imageUrl: string;
+    pdfLink: string;
+    bibtexLink: string;
+    dataLink: string;
+    saoNasaLink: string;
+}
+
+export enum NewsType {
+    OFFICIAL_PRESS = "OP",
+    AGEPRO_IN_NEWS = "AN",
+}
+  
+export interface PressNewsDto {
+    content: string;
+    newsType: NewsType;
+    creationDate: string;
+}
+
+
+// Data DTOs
 export interface DataDto {
     name: string;
     creationDate: string;
@@ -29,17 +56,4 @@ export interface DiskDto {
 export interface RegionDto {
     name: string;
     disks: DiskDto[];
-}
-
-export interface PublicationDto {
-    title: string;
-    authors: string;
-    fullAuthors: string;
-    journalInfo: string;
-    summary: string;
-    imageUrl: string;
-    pdfLink: string;
-    bibtexLink: string;
-    dataLink: string;
-    saoNasaLink: string;
 }
