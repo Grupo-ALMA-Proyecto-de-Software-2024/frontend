@@ -52,11 +52,6 @@ class almaClient {
 
   async getPublications(): Promise<PublicationDto[]> {
     const response = await contentManagementClient.get("/publications");
-    console.log(response.data);
-    console.log(response.data.publications);
-    if (!response.data.publications || response.data.publications.length === 0) {
-      return [];
-    }
     return response.data.publications.map((item: any) => ({
       title: item.title,
       authors: item.authors,
