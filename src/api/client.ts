@@ -73,7 +73,7 @@ class almaClient {
 
   async getPressNews(): Promise<PressNewsDto[]> {
     const response = await contentManagementClient.get("/press-news");
-    return response.data.map((item: any) => ({
+    return response.data.press_news.map((item: any) => ({
       content: item.content,
       newsType: item.news_type,
       creationDate: item.creation_date,

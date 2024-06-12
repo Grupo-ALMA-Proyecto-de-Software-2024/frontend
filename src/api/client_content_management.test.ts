@@ -30,7 +30,7 @@ describe("AlmaClient Content Management Methods", () => {
       ];
       contentMock.onGet("/carousel").reply(200, mockData);
       const response = await almaClient.getCarouselImages();
-      expect(response).toEqual([
+      expect(response).toEqual({"carousel_images": [
         {
           imageUrl: "http://localhost:8000/image1.jpg",
           title: "Image 1",
@@ -41,7 +41,7 @@ describe("AlmaClient Content Management Methods", () => {
           title: "Image 2",
           description: "Description 2",
         },
-      ]);
+      ]});
     });
 
     it("handles network errors for getCarouselImages", async () => {
@@ -80,7 +80,7 @@ describe("AlmaClient Content Management Methods", () => {
       ];
       contentMock.onGet("/publications").reply(200, mockData);
       const response = await almaClient.getPublications();
-      expect(response).toEqual([
+      expect(response).toEqual({ "publications": [
         {
           title: "Publication 1",
           authors: "Author 1",
@@ -105,7 +105,7 @@ describe("AlmaClient Content Management Methods", () => {
           dataLink: "data2.dat",
           saoNasaLink: "sao_nasa2",
         },
-      ]);
+      ]});
     });
 
     it("handles network errors for getPublications", async () => {
@@ -130,7 +130,7 @@ describe("AlmaClient Content Management Methods", () => {
       ];
       contentMock.onGet("/press-news").reply(200, mockData);
       const response = await almaClient.getPressNews();
-      expect(response).toEqual([
+      expect(response).toEqual({ "press_news": [
         {
           content: "Press News 1",
           newsType: NewsType.OFFICIAL_PRESS,
@@ -141,7 +141,7 @@ describe("AlmaClient Content Management Methods", () => {
           newsType: NewsType.AGEPRO_IN_NEWS,
           creationDate: "2024-05-07T23:04:56.782Z",
         },
-      ]);
+      ]});
     });
 
     it("handles network errors for getPressNews", async () => {
