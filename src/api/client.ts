@@ -43,7 +43,7 @@ function getFullImageUrl(imageUrl: string) {
 class almaClient {
   async getCarouselImages(): Promise<CarouselImageDto[]> {
     const response = await contentManagementClient.get("/carousel");
-    return response.data.map((item: any) => ({
+    return response.data.carousel_images.map((item: any) => ({
       imageUrl: getFullImageUrl(item.image),
       title: item.title,
       description: item.description,
@@ -52,7 +52,12 @@ class almaClient {
 
   async getPublications(): Promise<PublicationDto[]> {
     const response = await contentManagementClient.get("/publications");
-    return response.data.map((item: any) => ({
+    console.log(response.data);
+    console.log(response.data.publications);
+    if (!response.data.publications || response.data.publications.length === 0) {
+      return [];
+    }
+    return response.data.publications.map((item: any) => ({
       title: item.title,
       authors: item.authors,
       fullAuthors: item.full_authors,

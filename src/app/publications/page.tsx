@@ -4,17 +4,18 @@
 
 import type { NextPage } from 'next';
 import Publication from './components/Publication';
-import { fetchPublications, Publication as PublicationType } from './data/publications';
+import { fetchPublications } from './data/publications';
 import styles from './components/page.module.css';
 import { Divider } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { PublicationDto } from '@/api/dto';
 
 
 
 const PublicationsPage: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [fetchedPublications, setFetchedPublications] = useState<PublicationType[]>([]);
+  const [fetchedPublications, setFetchedPublications] = useState<PublicationDto[]>([]);
 
   useEffect(() => {
     const loadPublications = async () => {
@@ -22,8 +23,8 @@ const PublicationsPage: NextPage = () => {
         const publications = await fetchPublications();
         setFetchedPublications(publications);
         setIsLoading(false);  // Set isLoading to false after fetching
-      } catch (err) {
-        setError('Unable to load publications');
+      } catch (err: any) {
+        setError(err.message || 'Error in fetching publications');
         setIsLoading(false);  // Set isLoading to false even if there's an error
       }
     };
@@ -56,7 +57,7 @@ const PublicationsPage: NextPage = () => {
         ) : (
             fetchedPublications.map((publication, index) => (
               <React.Fragment key={index}>
-                <Publication publication={publication} />
+                <Publication {...publication} />
                 {index < fetchedPublications.length - 1 && <Divider />}
               </React.Fragment>
             ))

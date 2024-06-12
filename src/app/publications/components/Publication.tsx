@@ -1,16 +1,11 @@
 // components/Publication.tsx
 
-import { Publication as PublicationType } from '../data/publications';
+import { PublicationDto } from '@/api/dto';
 import styles from './publication.module.css';
 import { Button, Collapse } from 'antd';
 import CollapsePanel from "antd/es/collapse/CollapsePanel";
 
-
-interface Props {
-    publication: PublicationType;
-}
-
-const Publication = ({ publication }: Props) => {
+const Publication = (publication: PublicationDto) => {
     return (
         <div className={ styles.publicationContainer }>
             <div className={ styles.imageGallery }>

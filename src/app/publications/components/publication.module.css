@@ -11,9 +11,10 @@
   margin-right: 20px;
 }
 .publicationImage {
+
   margin-top: 10px;
   width: 100%; /* Adjust size as needed */
-  max-width: 200px;
+  max-height: 500px;
   transition: filter 0.3s ease;
 }
 
