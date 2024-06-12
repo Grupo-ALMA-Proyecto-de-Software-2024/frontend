@@ -1,0 +1,72 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f8f9fa; /* Light grey background */
+  color: #333;
+  font-family: 'Helvetica'; /* Academic looking font */
+}
+
+.pressContainer, .newsArticles{
+  align-items: center;
+  margin-bottom: 2rem;
+  display: flex; 
+  justify-content: space-between; /* Space items evenly */  
+  border: 1px solid #dee2e6; /* Add borders to sections */
+  padding: 15px;
+  margin-bottom: 2rem;
+  background-color: white; /* White background for content areas */
+}
+  
+
+.header, .subHeader {
+  font-weight: bold;
+  color: #212529; /* Darker text for better contrast */
+}
+
+.description {
+  margin-bottom: 2rem;
+}
+
+.subHeader {
+  font-size: 1.5rem;
+  color: #000;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.pressList {
+  padding: 0;
+  width: 50%;
+}
+
+.pressList li {
+  margin-bottom: 0.5rem;
+  margin-left: 2rem;
+  /* Add more styles here */
+}
+.pressImage {
+  width: 100%;
+  margin: 0 auto; /* Center the image horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imageDescription {
+  color: #666;
+  font-size: 0.8rem;
+  text-align: center; /* Center the text description */
+  margin-top: 1rem; /* Add margin to separate image and description */
+}
+
+.contactUs {
+  background-color: #f0f7ff; /* Different background for contact section */
+  padding: 15px;
+  border: 1px solid #dee2e6;
+}
+
+.contactDescription {
+  text-align: start; 
+  font-style: italic; /* Italicize contact info for emphasis */
+}
