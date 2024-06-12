@@ -1,10 +1,15 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from 'react';
 import styles from "./dataSearcher.module.css";
-import MultiSelect from './MultiSelect'; // Asegúrate de importar el archivo correcto
-import DataFilterContainer from './DataFilterContainer'; // Asegúrate de importar el archivo correcto
+import MultiSelect from './MultiSelect';
+import DataFilterContainer from './DataFilterContainer';
 import { RegionDto } from '@api/dto';
 import almaClient from '@api/client';
+
+interface FilterOption {
+    value: string;
+    label: string;
+}
 
 const DataSearcher = () => {
     const [regions, setRegions] = useState<RegionDto[]>([]);

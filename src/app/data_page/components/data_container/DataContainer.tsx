@@ -1,11 +1,10 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import styles from "./dataContainer.module.css";
-import FilterListIcon from '@mui/icons-material/FilterList';
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 import Pagination from './Pagination';
-import dummyData from './dummyData.json';
+
 interface DataItem {
   name: string;
   creationDate: string;
@@ -29,7 +28,7 @@ interface Disk {
   bands: Band[];
 }
 
-const DataContainer: React.FC = () => {
+const DataContainer: React.FC<{ data: Disk[] }> = ({ data }) => {
   const [sortConfig, setSortConfig] = useState<{ key: string; direction: 'asc' | 'desc' }>({ key: '', direction: 'asc' });
   const [currentPage, setCurrentPage] = useState(1);
   const disksPerPage = 1; // Show one disk per page
@@ -37,11 +36,11 @@ const DataContainer: React.FC = () => {
   const [paginatedDisks, setPaginatedDisks] = useState<Disk[]>([]);
 
   useEffect(() => {
-    // Update paginatedDisks whenever currentPage changes
+    // Update paginatedDisks whenever currentPage or data changes
     const start = (currentPage - 1) * disksPerPage;
     const end = start + disksPerPage;
-    setPaginatedDisks(dummyData.slice(start, end));
-  }, [currentPage]);
+    setPaginatedDisks(data.slice(start, end));
+  }, [currentPage, data]);
 
 
   const handleSort = (key: string) => {
@@ -65,7 +64,7 @@ const DataContainer: React.FC = () => {
   };
 
   const handleSelectAll = () => {
-    const allItems = new Set(dummyData.flatMap(disk =>
+    const allItems = new Set(data.flatMap(disk =>
       disk.bands.flatMap(band =>
         band.molecules.flatMap(molecule =>
           molecule.data.map(dataItem => `${disk.id}-${band.name}-${molecule.name}-${dataItem.name}`)
@@ -85,7 +84,7 @@ const DataContainer: React.FC = () => {
     setSelectedItems(newSelectedItems);
   };
 
-  const totalPages = Math.ceil(dummyData.length / disksPerPage);
+  const totalPages = Math.ceil(data.length / disksPerPage);
 
   return (
     <div className={styles.tableContainer}>
@@ -94,7 +93,7 @@ const DataContainer: React.FC = () => {
           sortConfig={sortConfig}
           handleSort={handleSort}
           handleSelectAll={handleSelectAll}
-          isSelectedAll={selectedItems.size === dummyData.flatMap(disk => disk.bands.flatMap(band => band.molecules.flatMap(molecule => molecule.data.map(dataItem => `${disk.id}-${band.name}-${molecule.name}-${dataItem.name}`)))).length}
+          isSelectedAll={selectedItems.size === data.flatMap(disk => disk.bands.flatMap(band => band.molecules.flatMap(molecule => molecule.data.map(dataItem => `${disk.id}-${band.name}-${molecule.name}-${dataItem.name}`)))).length}
         />
         <TableRow
           disks={sortedData(paginatedDisks, sortConfig.key, sortConfig.direction)}
