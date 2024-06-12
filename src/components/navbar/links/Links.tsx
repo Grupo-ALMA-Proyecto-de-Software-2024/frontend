@@ -28,7 +28,6 @@ const links: LinkItem[] = [
     {
         title: "Publications",
         path: "/publications",
-
     },
     {
         title: "Press",

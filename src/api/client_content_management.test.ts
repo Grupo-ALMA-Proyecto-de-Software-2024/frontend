@@ -16,7 +16,7 @@ describe("AlmaClient Content Management Methods", () => {
 
   describe("getCarouselImages", () => {
     it("fetches carousel images correctly", async () => {
-      const mockData = [
+      const mockData = { "carousel_images": [
         {
           image: "image1.jpg",
           title: "Image 1",
@@ -27,7 +27,7 @@ describe("AlmaClient Content Management Methods", () => {
           title: "Image 2",
           description: "Description 2",
         },
-      ];
+      ]};
       contentMock.onGet("/carousel").reply(200, mockData);
       const response = await almaClient.getCarouselImages();
       expect(response).toEqual([
@@ -52,7 +52,7 @@ describe("AlmaClient Content Management Methods", () => {
 
   describe("getPublications", () => {
     it("fetches publications correctly", async () => {
-      const mockData = [
+      const mockData = { "publications": [
         {
           title: "Publication 1",
           authors: "Author 1",
@@ -77,7 +77,7 @@ describe("AlmaClient Content Management Methods", () => {
           data_link: "data2.dat",
           sao_nasa_link: "sao_nasa2",
         },
-      ];
+      ]};
       contentMock.onGet("/publications").reply(200, mockData);
       const response = await almaClient.getPublications();
       expect(response).toEqual([
@@ -116,7 +116,7 @@ describe("AlmaClient Content Management Methods", () => {
 
   describe("getPressNews", () => {
     it("fetches press news correctly", async () => {
-      const mockData = [
+      const mockData = { "press_news": [
         {
           content: "Press News 1",
           news_type: "OP",
@@ -127,7 +127,7 @@ describe("AlmaClient Content Management Methods", () => {
           news_type: "AN",
           creation_date: "2024-05-07T23:04:56.782Z",
         },
-      ];
+      ]};
       contentMock.onGet("/press-news").reply(200, mockData);
       const response = await almaClient.getPressNews();
       expect(response).toEqual([
