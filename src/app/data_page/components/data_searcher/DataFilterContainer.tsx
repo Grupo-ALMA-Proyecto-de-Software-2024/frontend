@@ -16,29 +16,6 @@ interface DataFilterContainerProps {
     title: string;
 }
 
-interface DataItem {
-    name: string;
-    creationDate: string;
-    file: string;
-    isViewable: boolean;
-}
-
-interface Molecule {
-    name: string;
-    data: DataItem[];
-}
-
-interface Band {
-    name: string;
-    molecules: Molecule[];
-}
-
-interface Disk {
-    id: string;
-    disk: string;
-    bands: Band[];
-}
-
 const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
     const [disks, setDisks] = useState<DiskDto[]>([]);
     const [bands, setBands] = useState<BandDto[]>([]);
@@ -98,20 +75,19 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
         setFilteredData(filtered);
     }, [data, selectedDisks, selectedBands, selectedMolecules]);
 
-    const convertToDisks = (data: DataDto[]): Disk[] => {
+    const convertToDisks = (data: DataDto[]): DiskDto[] => {
         return disks
             .filter(disk => selectedDisks.length === 0 || selectedDisks.includes(disk.name))
             .map(disk => ({
-                id: disk.name,
-                disk: disk.name,
+                ...disk,
                 bands: disk.bands
                     .filter(band => selectedBands.length === 0 || selectedBands.includes(band.name))
                     .map(band => ({
-                        name: band.name,
+                        ...band,
                         molecules: band.molecules
                             .filter(molecule => selectedMolecules.length === 0 || selectedMolecules.includes(molecule.name))
                             .map(molecule => ({
-                                name: molecule.name,
+                                ...molecule,
                                 data: molecule.data.filter(dataItem => selectedData.length === 0 || selectedData.includes(dataItem.name))
                             }))
                     }))
