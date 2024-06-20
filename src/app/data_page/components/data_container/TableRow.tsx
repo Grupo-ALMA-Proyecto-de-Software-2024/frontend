@@ -3,32 +3,53 @@ import styles from './dataContainer.module.css';
 import ImageModal from './imageModal';
 import { DataDto } from '@api/dto';
 
+/**
+ * Interface representing a flattened data item with additional properties.
+ */
 interface FlattenedDataItem extends DataDto {
   disk: string;
   band: string;
   molecule: string;
 }
 
+/**
+ * Props for the TableRow component.
+ */
 interface TableRowProps {
   data: FlattenedDataItem[];
   selectedItems: Set<string>;
   handleSelectItem: (itemKey: string) => void;
 }
 
+/**
+ * TableRow component to render the rows of the table.
+ * @param {TableRowProps} props - The props for the component.
+ */
 const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectItem }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageUrl, setModalImageUrl] = useState('');
 
+  /**
+   * Open the image modal.
+   * @param {string} imageUrl - The URL of the image to display.
+   */
   const openModal = (imageUrl: string) => {
     setModalImageUrl(imageUrl);
     setIsModalOpen(true);
   };
 
+  /**
+   * Close the image modal.
+   */
   const closeModal = () => {
     setIsModalOpen(false);
     setModalImageUrl('');
   };
 
+  /**
+   * Render the rows of the table.
+   * @returns {React.ReactNode[]} - The rows of the table.
+   */
   const renderRows = () => {
     const rows: React.ReactNode[] = [];
     let currentDisk = '';

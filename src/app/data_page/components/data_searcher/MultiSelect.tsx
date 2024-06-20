@@ -3,17 +3,19 @@ import { Stack, OutlinedInput, InputLabel, MenuItem, Chip, Select, FormControl, 
 import CheckIcon from "@mui/icons-material/Check";
 import CancelIcon from "@mui/icons-material/Cancel";
 
-interface FilterOption {
-    value: string;
-    label: string;
-}
-
+/**
+ * Props for the MultiSelect component.
+ */
 interface ElementsInSelect {
     title: string;
     values: string[];
     onChange?: (elements: string[]) => void;
 }
 
+/**
+ * MultiSelect component for selecting multiple items from a dropdown list.
+ * @param {ElementsInSelect} props - The props for the component.
+ */
 const MultiSelect: FC<ElementsInSelect> = ({ title, values = [], onChange }) => {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 

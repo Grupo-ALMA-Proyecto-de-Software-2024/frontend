@@ -6,11 +6,9 @@ import DataFilterContainer from './DataFilterContainer';
 import { RegionDto } from '@api/dto';
 import almaClient from '@api/client';
 
-interface FilterOption {
-    value: string;
-    label: string;
-}
-
+/**
+ * DataSearcher component to manage and display region selection and data filtering.
+ */
 const DataSearcher = () => {
     const [regions, setRegions] = useState<RegionDto[]>([]);
     const [selectedRegions, setSelectedRegions] = useState<string[]>([]);

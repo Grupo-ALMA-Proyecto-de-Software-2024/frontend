@@ -6,12 +6,19 @@ import TableRow from './TableRow';
 import Pagination from './Pagination';
 import { DiskDto, DataDto } from '@api/dto';
 
+/**
+ * Interface representing a flattened data item with additional properties.
+ */
 interface FlattenedDataItem extends DataDto {
   disk: string;
   band: string;
   molecule: string;
 }
 
+/**
+ * DataContainer component to display paginated data in a table format.
+ * @param {DiskDto[]} data - Array of DiskDto objects.
+ */
 const DataContainer: React.FC<{ data: DiskDto[] }> = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 15; // Show 15 items per page
@@ -38,6 +45,9 @@ const DataContainer: React.FC<{ data: DiskDto[] }> = ({ data }) => {
     setPaginatedItems(flatData.slice(start, end));
   }, [currentPage, data]);
 
+  /**
+   * Handle selecting all items in the table.
+   */
   const handleSelectAll = () => {
     const allItems = new Set(
       data.flatMap(disk =>
@@ -51,6 +61,10 @@ const DataContainer: React.FC<{ data: DiskDto[] }> = ({ data }) => {
     setSelectedItems(selectedItems.size === allItems.size ? new Set() : allItems);
   };
 
+  /**
+   * Handle selecting a specific item in the table.
+   * @param {string} itemKey - The key of the item to select.
+   */
   const handleSelectItem = (itemKey: string) => {
     const newSelectedItems = new Set(selectedItems);
     if (newSelectedItems.has(itemKey)) {

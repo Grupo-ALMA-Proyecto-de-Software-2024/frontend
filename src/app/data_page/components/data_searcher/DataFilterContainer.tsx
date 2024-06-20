@@ -7,15 +7,17 @@ import { DiskDto, BandDto, MoleculeDto, DataDto } from '@api/dto';
 import almaClient from '@api/client';
 import DownloadButton from './DownloadButton';
 
-interface FilterOption {
-    value: string;
-    label: string;
-}
-
+/**
+ * Props for the DataFilterContainer component.
+ */
 interface DataFilterContainerProps {
     title: string;
 }
 
+/**
+ * DataFilterContainer component to manage and display filtered data.
+ * @param {DataFilterContainerProps} props - The props for the component.
+ */
 const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
     const [disks, setDisks] = useState<DiskDto[]>([]);
     const [bands, setBands] = useState<BandDto[]>([]);
@@ -56,7 +58,7 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
         const fetchData = async () => {
             const fetchedData = await almaClient.getData({ region: [title] });
             setData(fetchedData);
-            setFilteredData(fetchedData); // Inicialmente, no hay filtros
+            setFilteredData(fetchedData); // Initially, no filters applied
         };
         fetchData();
     }, [title]);
@@ -75,6 +77,11 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
         setFilteredData(filtered);
     }, [data, selectedDisks, selectedBands, selectedMolecules]);
 
+    /**
+     * Convert DataDto array to DiskDto array for displaying in DataContainer.
+     * @param {DataDto[]} data - Array of DataDto objects.
+     * @returns {DiskDto[]} - Array of DiskDto objects.
+     */
     const convertToDisks = (data: DataDto[]): DiskDto[] => {
         return disks
             .filter(disk => selectedDisks.length === 0 || selectedDisks.includes(disk.name))
@@ -92,8 +99,7 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
                             }))
                     }))
             }))
-            .filter(disk => disk.bands.length > 0); // Filtrar discos que no tengan bandas válidas
-
+            .filter(disk => disk.bands.length > 0); // Filter disks with no valid bands
     };
 
     return (
