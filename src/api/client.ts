@@ -1,10 +1,7 @@
 import axios from "axios";
 import qs from "qs";
-import qs from "qs";
 import {
   CarouselImageDto,
-  PublicationDto,
-  PressNewsDto,
   PublicationDto,
   PressNewsDto,
   RegionDto,
@@ -99,7 +96,6 @@ class almaClient {
   }
 
   async getData(params?: GetDataParams): Promise<DataDto[]> {
-    const response = await dataClient.get("/data", { params });
     const response = await dataClient.get("/data", { params });
     return response.data.data;
   }
