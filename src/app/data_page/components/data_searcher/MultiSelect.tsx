@@ -3,31 +3,22 @@ import { Stack, OutlinedInput, InputLabel, MenuItem, Chip, Select, FormControl, 
 import CheckIcon from "@mui/icons-material/Check";
 import CancelIcon from "@mui/icons-material/Cancel";
 
-/**
- * Props for the MultiSelect component.
- */
 interface ElementsInSelect {
     title: string;
     values: string[];
     onChange?: (elements: string[]) => void;
 }
 
-/**
- * MultiSelect component for selecting multiple items from a dropdown list.
- * @param {ElementsInSelect} props - The props for the component.
- */
 const MultiSelect: FC<ElementsInSelect> = ({ title, values = [], onChange }) => {
-    const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+    const [selectedNames, setSelectedNames] = useState<string[]>([]);
 
     useEffect(() => {
-        setSelectedOptions(prevSelectedOptions => 
-            prevSelectedOptions.filter(option => values.includes(option))
-        );
+        setSelectedNames(prevSelectedNames => prevSelectedNames.filter(name => values.includes(name)));
     }, [values]);
 
     const handleChange = (event: SelectChangeEvent<string[]>) => {
         const newSelection = event.target.value as string[];
-        setSelectedOptions(newSelection);
+        setSelectedNames(newSelection);
         onChange?.(newSelection);
     };
 
@@ -36,7 +27,7 @@ const MultiSelect: FC<ElementsInSelect> = ({ title, values = [], onChange }) => 
             <InputLabel>{title}</InputLabel>
             <Select
                 multiple
-                value={selectedOptions}
+                value={selectedNames}
                 onChange={handleChange}
                 input={<OutlinedInput label={title} />}
                 renderValue={(selected) => (
@@ -46,8 +37,8 @@ const MultiSelect: FC<ElementsInSelect> = ({ title, values = [], onChange }) => 
                                 key={value}
                                 label={value}
                                 onDelete={() => {
-                                    const newSelection = selectedOptions.filter((item) => item !== value);
-                                    setSelectedOptions(newSelection);
+                                    const newSelection = selectedNames.filter((item) => item !== value);
+                                    setSelectedNames(newSelection);
                                     onChange?.(newSelection);
                                 }}
                                 deleteIcon={<CancelIcon onMouseDown={(event) => event.stopPropagation()} />}
@@ -58,7 +49,7 @@ const MultiSelect: FC<ElementsInSelect> = ({ title, values = [], onChange }) => 
             >
                 {values.map((value) => (
                     <MenuItem key={value} value={value}>
-                        {value} {selectedOptions.includes(value) ? <CheckIcon color="info" /> : null}
+                        {value} {selectedNames.includes(value) ? <CheckIcon color="info" /> : null}
                     </MenuItem>
                 ))}
             </Select>

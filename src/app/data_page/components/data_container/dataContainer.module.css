@@ -1,80 +1,110 @@
-/* General Table Styles */
 .tableContainer {
-  margin: 25px 0;
-  border-radius: 5px;
-  background-color: var(--bg1);
-  padding: 2px;
-}
+    margin: 25px 0;
+    border-radius: 5px;
+    background-color: var(--bg1); /* Color momentaneo */
+    padding: 2px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .table th {
+    background-color: #f7f7f7; /* Color momentaneo */
+    cursor: pointer;
+  }
+  
+  .table td {
+    background-color: #fff; /* Color momentaneo */
+  }
+  
+  .rotate {
+    transition: transform 0.3s ease;
+  }
+  
+  .sortAsc .rotate {
+    transform: rotate(0deg);
+  }
+  
+  .sortDesc .rotate {
+    transform: rotate(180deg);
+  }
+  
+  .icon {
+    margin-left: 5px;
+  }
+  
+  .tableHeader th {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .tableRow:nth-child(even) {
+    background-color: #f9f9f9; /* Color momentaneo */
+  }
+  
+  .tableRow:hover {
+    background-color: #f1f1f1; /* Color momentaneo */
+  }
+  
+  .selected {
+    background-color: #c8e6c9; /* Color para resaltar la selección */
+  }
+  
+  .checkbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .pagination button:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+  }
+  
+  .pagination .activePage {
+    background-color: #007bff;
+    color: white;
+    border: none;
+  }
+  
+  .ellipsis {
+    margin: 0 5px;
+    padding: 5px 10px;
+    color: white;
+  }  
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.table th,
-.table td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: center;
-}
-
-.table th {
-  background-color: #f7f7f7;
-  cursor: pointer;
-}
-
-.table td {
-  background-color: #fff;
-}
-
-.icon {
-  margin-left: 5px;
-}
-
-.tableHeader th {
-  padding: 10px;
-  text-align: left;
-}
-
-.tableRow:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.tableRow:hover {
-  background-color: #f1f1f1;
-}
-
-.selected {
-  background-color: #c8e6c9;
-}
-
-/* Styles for Checkbox */
-.checkbox {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.checkboxHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Pagination Styles */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0;
-}
-
-/* New styles for disk separation */
-.newDiskRow {
-  border-top: 2px solid var(--bg1);
-  background-color: var(--alma-light-blue);
-}
-
-.newDiskRow td {
-  border-top: 2px solid var(--bg1);
-}
+.checkbox button {
+    margin-left: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .checkbox button:hover {
+    background: #0056b3;
+  }

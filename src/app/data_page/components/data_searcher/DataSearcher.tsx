@@ -1,15 +1,11 @@
-"use client";
+"use client"
 import React, { useState, useEffect } from 'react';
 import styles from "./dataSearcher.module.css";
-import MultiSelect from './MultiSelect';
-import DataFilterContainer from './DataFilterContainer';
+import MultiSelect from './MultiSelect'; // Asegúrate de importar el archivo correcto
+import DataFilterContainer from './DataFilterContainer'; // Asegúrate de importar el archivo correcto
 import { RegionDto } from '@api/dto';
 import almaClient from '@api/client';
-import DownloadButton from './DownloadButton';
 
-/**
- * DataSearcher component to manage and display region selection and data filtering.
- */
 const DataSearcher = () => {
     const [regions, setRegions] = useState<RegionDto[]>([]);
     const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
@@ -23,19 +19,12 @@ const DataSearcher = () => {
     }, []);
 
     return (
-        <div>
-            {selectedRegions.length > 0 && (
-            <DownloadButton />
-            )}
-            <div className={styles.regionSelectorColumn}>
-                <h4>Select one or more regions</h4>
-                <MultiSelect title="Regions" values={regions.map(region => region.name)} onChange={setSelectedRegions} />
-            </div>
-            <div className={styles.regionSelectorColumnLeft}>
-                {selectedRegions.map(region => (
-                    <DataFilterContainer key={region} title={region} />
-                ))}
-            </div>
+        <div className={styles.regionSelectorColumn}>
+            <h4>Select one or more regions</h4>
+            <MultiSelect title="Regions" values={regions.map(region => region.name)} onChange={setSelectedRegions} />
+            {selectedRegions.map(region => (
+                <DataFilterContainer key={region} title={region} />
+            ))}
         </div>
     );
 };

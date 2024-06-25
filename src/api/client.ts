@@ -1,7 +1,10 @@
 import axios from "axios";
 import qs from "qs";
+import qs from "qs";
 import {
   CarouselImageDto,
+  PublicationDto,
+  PressNewsDto,
   PublicationDto,
   PressNewsDto,
   RegionDto,
@@ -97,15 +100,10 @@ class almaClient {
 
   async getData(params?: GetDataParams): Promise<DataDto[]> {
     const response = await dataClient.get("/data", { params });
+    const response = await dataClient.get("/data", { params });
     return response.data.data;
   }
 
-  async generateDownloadScript(dataItems: DataDto[]): Promise<string> {
-    const response = await dataClient.post("/generate-download-script", {
-      links: dataItems.map((item) => item.filepath),
-    });
-    return response.data.script;
-  }
 
 }
 
