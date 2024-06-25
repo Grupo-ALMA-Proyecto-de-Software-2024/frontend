@@ -108,5 +108,8 @@ class almaClient {
   }
 
 }
+// ... existing code ...
 
-export default new almaClient();
+const almaClientInstance = new almaClient();
+export default almaClientInstance;
+

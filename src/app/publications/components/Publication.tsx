@@ -4,13 +4,14 @@ import { PublicationDto } from '@/api/dto';
 import styles from './publication.module.css';
 import { Button, Collapse } from 'antd';
 import CollapsePanel from "antd/es/collapse/CollapsePanel";
+import Image from 'next/image'
 
 const Publication = (publication: PublicationDto) => {
     return (
         <div className={ styles.publicationContainer }>
             <div className={ styles.imageGallery }>
                 <a href={publication.imageUrl} target="_blank" rel="noopener noreferrer">
-                    <img src={publication.imageUrl} alt="Visualization" className={styles.publicationImage} />
+                    <Image src={publication.imageUrl} alt="Visualization" className={styles.publicationImage} />
                 </a>
             </div>
             <div className={styles.publicationInfo}>
