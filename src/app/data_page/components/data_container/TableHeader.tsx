@@ -1,22 +1,23 @@
 import React from 'react';
 import styles from './dataContainer.module.css';
-import FilterListIcon from '@mui/icons-material/FilterList';
 
+/**
+ * Props for the TableHeader component.
+ */
 interface TableHeaderProps {
-  sortConfig: { key: string; direction: 'asc' | 'desc' };
-  handleSort: (key: string) => void;
   handleSelectAll: () => void;
   isSelectedAll: boolean;
 }
 
-const TableHeader: React.FC<TableHeaderProps> = ({ sortConfig, handleSort, handleSelectAll, isSelectedAll }) => {
+/**
+ * TableHeader component to render the table headers.
+ * @param {TableHeaderProps} props - The props for the component.
+ */
+const TableHeader: React.FC<TableHeaderProps> = ({ handleSelectAll, isSelectedAll }) => {
   return (
     <thead>
       <tr>
-        <th>
-          Disk
-          <FilterListIcon onClick={() => handleSort('disk')} className={`${sortConfig.key === 'disk' ? styles.rotate : ''} ${styles.icon}`} />
-        </th>
+        <th>Disk</th>
         <th>Band</th>
         <th>Molecule</th>
         <th>

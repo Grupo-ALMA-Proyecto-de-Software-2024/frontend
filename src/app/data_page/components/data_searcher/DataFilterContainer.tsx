@@ -1,21 +1,29 @@
 import React, { useState, useEffect, FC } from 'react';
-import { Container, Button } from "@mui/material";
+import { Container } from "@mui/material";
 import styles from "./dataSearcher.module.css";
-import MultiSelect from './MultiSelect'; // Asegúrate de importar el archivo correcto
+import MultiSelect from './MultiSelect';
 import DataContainer from '../data_container/DataContainer';
 import { DiskDto, BandDto, MoleculeDto, DataDto } from '@api/dto';
 import almaClient from '@api/client';
 import DownloadButton from './DownloadButton';
 
+/**
+ * Props for the DataFilterContainer component.
+ */
 interface DataFilterContainerProps {
     title: string;
 }
 
+/**
+ * DataFilterContainer component to manage and display filtered data.
+ * @param {DataFilterContainerProps} props - The props for the component.
+ */
 const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
     const [disks, setDisks] = useState<DiskDto[]>([]);
     const [bands, setBands] = useState<BandDto[]>([]);
     const [molecules, setMolecules] = useState<MoleculeDto[]>([]);
     const [data, setData] = useState<DataDto[]>([]);
+    const [filteredData, setFilteredData] = useState<DataDto[]>([]);
 
     const [selectedDisks, setSelectedDisks] = useState<string[]>([]);
     const [selectedBands, setSelectedBands] = useState<string[]>([]);
@@ -32,41 +40,79 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
 
     useEffect(() => {
         const fetchBands = async () => {
-            const fetchedBands = await almaClient.getBands({ region: [title], disk: selectedDisks });
+            const fetchedBands = await almaClient.getBands({ region: [title] });
             setBands(fetchedBands);
         };
         fetchBands();
-    }, [title, selectedDisks]);
+    }, [title]);
 
     useEffect(() => {
         const fetchMolecules = async () => {
-            const fetchedMolecules = await almaClient.getMolecules({ region: [title], disk: selectedDisks, band: selectedBands });
+            const fetchedMolecules = await almaClient.getMolecules({ region: [title] });
             setMolecules(fetchedMolecules);
         };
         fetchMolecules();
-    }, [title, selectedDisks, selectedBands]);
+    }, [title]);
 
     useEffect(() => {
         const fetchData = async () => {
-            const fetchedData = await almaClient.getData({ region: [title], disk: selectedDisks, band: selectedBands, molecule: selectedMolecules });
+            const fetchedData = await almaClient.getData({ region: [title] });
             setData(fetchedData);
+            setFilteredData(fetchedData); // Initially, no filters applied
         };
         fetchData();
-    }, [title, selectedDisks, selectedBands, selectedMolecules]);
+    }, [title]);
 
-    const uniqueValues = (items: string[]) => [...new Set(items)];
+    useEffect(() => {
+        let filtered = data;
+        if (selectedDisks.length > 0) {
+            filtered = filtered.filter(d => selectedDisks.includes(d.file));
+        }
+        if (selectedBands.length > 0) {
+            filtered = filtered.filter(d => selectedBands.includes(d.file));
+        }
+        if (selectedMolecules.length > 0) {
+            filtered = filtered.filter(d => selectedMolecules.includes(d.file));
+        }
+        setFilteredData(filtered);
+    }, [data, selectedDisks, selectedBands, selectedMolecules]);
+
+    /**
+     * Convert DataDto array to DiskDto array for displaying in DataContainer.
+     * @param {DataDto[]} data - Array of DataDto objects.
+     * @returns {DiskDto[]} - Array of DiskDto objects.
+     */
+    const convertToDisks = (data: DataDto[]): DiskDto[] => {
+        return disks
+            .filter(disk => selectedDisks.length === 0 || selectedDisks.includes(disk.name))
+            .map(disk => ({
+                ...disk,
+                bands: disk.bands
+                    .filter(band => selectedBands.length === 0 || selectedBands.includes(band.name))
+                    .map(band => ({
+                        ...band,
+                        molecules: band.molecules
+                            .filter(molecule => selectedMolecules.length === 0 || selectedMolecules.includes(molecule.name))
+                            .map(molecule => ({
+                                ...molecule,
+                                data: molecule.data.filter(dataItem => selectedData.length === 0 || selectedData.includes(dataItem.name))
+                            }))
+                    }))
+            }))
+            .filter(disk => disk.bands.length > 0); // Filter disks with no valid bands
+    };
 
     return (
         <div className={styles.dataSelectorRow}>
             <Container sx={{ border: 1, borderRadius: '16px', margin: '15px', width: '1100px', justifyContent: 'flex-start' }}>
                 <div className={styles.dataSelectorRow}>
                     <h2>{title}</h2>
-                    <MultiSelect title="Disks" values={uniqueValues(disks.map(disk => disk.name))} onChange={setSelectedDisks} />
-                    <MultiSelect title="Bands" values={uniqueValues(bands.map(band => band.name))} onChange={setSelectedBands} />
-                    <MultiSelect title="Molecules" values={uniqueValues(molecules.map(molecule => molecule.name))} onChange={setSelectedMolecules} />
-                    <MultiSelect title="Data" values={uniqueValues(data.map(d => d.name))} onChange={setSelectedData} />
+                    <MultiSelect title="Disks" values={[...new Set(disks.map(disk => disk.name))]} onChange={setSelectedDisks} />
+                    <MultiSelect title="Bands" values={[...new Set(bands.map(band => band.name))]} onChange={setSelectedBands} />
+                    <MultiSelect title="Molecules" values={[...new Set(molecules.map(molecule => molecule.name))]} onChange={setSelectedMolecules} />
+                    <MultiSelect title="Data" values={[...new Set(data.map(d => d.name))]} onChange={setSelectedData} />
                 </div>
-                <DataContainer />
+                <DataContainer data={convertToDisks(filteredData)} />
             </Container>
             <DownloadButton />
         </div>
