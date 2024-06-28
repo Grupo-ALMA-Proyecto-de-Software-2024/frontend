@@ -55,17 +55,10 @@
   align-items: center;
 }
 
-.checkbox button {
-  margin-left: 10px;
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 5px;
-  cursor: pointer;
-}
-
-.checkbox button:hover {
-  background: #0056b3;
+.checkboxHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* Pagination Styles */
