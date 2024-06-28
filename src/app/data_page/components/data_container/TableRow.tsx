@@ -1,55 +1,34 @@
 import React, { useState } from 'react';
-import styles from './dataContainer.module.css';
-import ImageModal from './imageModal';
+import { TableRow as MuiTableRow, TableCell, Checkbox, Button } from '@mui/material';
 import { DataDto } from '@api/dto';
+import styles from './dataContainer.module.css';
 
-/**
- * Interface representing a flattened data item with additional properties.
- */
 interface FlattenedDataItem extends DataDto {
   disk: string;
   band: string;
   molecule: string;
 }
 
-/**
- * Props for the TableRow component.
- */
 interface TableRowProps {
   data: FlattenedDataItem[];
   selectedItems: Set<string>;
   handleSelectItem: (itemKey: string) => void;
 }
 
-/**
- * TableRow component to render the rows of the table.
- * @param {TableRowProps} props - The props for the component.
- */
 const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectItem }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageUrl, setModalImageUrl] = useState('');
 
-  /**
-   * Open the image modal.
-   * @param {string} imageUrl - The URL of the image to display.
-   */
   const openModal = (imageUrl: string) => {
     setModalImageUrl(imageUrl);
     setIsModalOpen(true);
   };
 
-  /**
-   * Close the image modal.
-   */
   const closeModal = () => {
     setIsModalOpen(false);
     setModalImageUrl('');
   };
 
-  /**
-   * Render the rows of the table.
-   * @returns {React.ReactNode[]} - The rows of the table.
-   */
   const renderRows = () => {
     const rows: React.ReactNode[] = [];
     let currentDisk = '';
@@ -85,24 +64,23 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
       }
 
       rows.push(
-        <tr key={itemKey} className={`${styles.tableRow} ${isSelected ? styles.selected : ''}`}>
-          {isNewDisk && <td rowSpan={diskRowSpan}>{dataItem.disk}</td>}
-          {isNewBand && <td rowSpan={bandRowSpan}>{dataItem.band}</td>}
-          {isNewMolecule && <td rowSpan={moleculeRowSpan}>{dataItem.molecule}</td>}
-          <td>
+        <MuiTableRow key={itemKey} className={`${styles.tableRow} ${isSelected ? styles.selected : ''} ${isNewDisk ? styles.newDiskRow : ''}`}>
+          {isNewDisk && <TableCell rowSpan={diskRowSpan}>{dataItem.disk}</TableCell>}
+          {isNewBand && <TableCell rowSpan={bandRowSpan}>{dataItem.band}</TableCell>}
+          {isNewMolecule && <TableCell rowSpan={moleculeRowSpan}>{dataItem.molecule}</TableCell>}
+          <TableCell>
             <div className={styles.checkbox}>
               {dataItem.name}
               {dataItem.isViewable && (
-                <button onClick={() => openModal(`/path/to/image/${dataItem.file}`)}>View</button>
+                <Button variant="outlined" onClick={() => openModal(`/path/to/image/${dataItem.file}`)}>View</Button>
               )}
-              <input
-                type="checkbox"
+              <Checkbox
                 checked={isSelected}
                 onChange={() => handleSelectItem(itemKey)}
               />
             </div>
-          </td>
-        </tr>
+          </TableCell>
+        </MuiTableRow>
       );
     });
 
@@ -111,8 +89,7 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
 
   return (
     <>
-      <tbody>{renderRows()}</tbody>
-      <ImageModal isOpen={isModalOpen} onRequestClose={closeModal} imageUrl={modalImageUrl} />
+      {renderRows()}
     </>
   );
 };
