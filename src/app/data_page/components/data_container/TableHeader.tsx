@@ -1,6 +1,7 @@
 import React from 'react';
-import { TableCell, TableHead, TableRow, Checkbox, Tooltip, Zoom } from '@mui/material';
 import styles from './dataContainer.module.css';
+import { Checkbox, Tooltip } from '@mui/material';
+import { CheckBox } from '@mui/icons-material';
 
 /**
  * Props for the TableHeader component.
@@ -16,25 +17,25 @@ interface TableHeaderProps {
  */
 const TableHeader: React.FC<TableHeaderProps> = ({ handleSelectAll, isSelectedAll }) => {
   return (
-    <TableHead>
-      <TableRow>
-        <TableCell>Disk</TableCell>
-        <TableCell>Band</TableCell>
-        <TableCell>Molecule</TableCell>
-        <TableCell>
+    <thead>
+      <tr>
+        <th>Disk</th>
+        <th>Band</th>
+        <th>Molecule</th>
+        <th>
           <div className={styles.checkboxHeader}>
-            Data Item
-            <Tooltip TransitionComponent={Zoom} title="Select All" arrow>
+            <span className={styles.headerText}>Data Item</span>
+            <Tooltip title="Select All" placement="top">
               <Checkbox
                 onChange={handleSelectAll}
                 checked={isSelectedAll}
-                className={styles.checkbox}
+                className={styles.headerCheckbox}
               />
             </Tooltip>
           </div>
-        </TableCell>
-      </TableRow>
-    </TableHead>
+        </th>
+      </tr>
+    </thead>
   );
 };
 

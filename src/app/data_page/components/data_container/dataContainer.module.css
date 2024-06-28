@@ -78,16 +78,3 @@
 .newDiskRow td {
   border-top: 2px solid var(--bg1);
 }
-
-/* Tooltip styles */
-.MuiTooltip-tooltip {
-  background-color: var(--alma-blue);
-  color: var(--textSoft);
-  font-size: 2rem; /* Increase the font size */
-  padding: 10px; /* Add padding */
-  border: 1px solid var(--alma-light-blue);
-}
-
-.MuiTooltip-arrow {
-  color: var(--alma-blue);
-}

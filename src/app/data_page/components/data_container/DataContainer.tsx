@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styles from "./dataContainer.module.css";
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
-import Pagination from '@mui/material/Pagination'; // Importa el componente de paginación de MUI
+import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { DiskDto, DataDto } from '@api/dto';
 
@@ -51,13 +51,7 @@ const DataContainer: React.FC<{ data: DiskDto[] }> = ({ data }) => {
    */
   const handleSelectAll = () => {
     const allItems = new Set(
-      data.flatMap(disk =>
-        disk.bands.flatMap(band =>
-          band.molecules.flatMap(molecule =>
-            molecule.data.map(dataItem => `${disk.name}-${band.name}-${molecule.name}-${dataItem.name}`)
-          )
-        )
-      )
+      paginatedItems.map(dataItem => `${dataItem.disk}-${dataItem.band}-${dataItem.molecule}-${dataItem.name}`)
     );
     setSelectedItems(selectedItems.size === allItems.size ? new Set() : allItems);
   };
@@ -89,7 +83,7 @@ const DataContainer: React.FC<{ data: DiskDto[] }> = ({ data }) => {
       <table className={styles.table}>
         <TableHeader
           handleSelectAll={handleSelectAll}
-          isSelectedAll={selectedItems.size === paginatedItems.length}
+          isSelectedAll={selectedItems.size === paginatedItems.length && selectedItems.size > 0}
         />
         <TableRow
           data={paginatedItems}
@@ -108,7 +102,7 @@ const DataContainer: React.FC<{ data: DiskDto[] }> = ({ data }) => {
               color: 'var(--textSoft)', // Change color font
             },
             '& .Mui-selected': {
-              backgroundColor: 'var(--alma-light-blue)',
+              backgroundColor: 'var(--bg2)',
               color: 'var(--alma-blue)',
             },
             '& .MuiPaginationItem-root:hover': {
