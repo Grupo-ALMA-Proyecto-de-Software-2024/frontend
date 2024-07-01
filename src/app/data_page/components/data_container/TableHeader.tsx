@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './dataContainer.module.css';
+import { Checkbox, Tooltip } from '@mui/material';
+import { CheckBox } from '@mui/icons-material';
 
 /**
  * Props for the TableHeader component.
@@ -22,8 +24,14 @@ const TableHeader: React.FC<TableHeaderProps> = ({ handleSelectAll, isSelectedAl
         <th>Molecule</th>
         <th>
           <div className={styles.checkboxHeader}>
-            Data Item
-            <input type="checkbox" onChange={handleSelectAll} checked={isSelectedAll} />
+            <span className={styles.headerText}>Data Item</span>
+            <Tooltip title="Select All" placement="top">
+              <Checkbox
+                onChange={handleSelectAll}
+                checked={isSelectedAll}
+                className={styles.headerCheckbox}
+              />
+            </Tooltip>
           </div>
         </th>
       </tr>

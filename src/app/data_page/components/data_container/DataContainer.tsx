@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import styles from "./dataContainer.module.css";
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
-import Pagination from './Pagination';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 import { DiskDto, DataDto } from '@api/dto';
 
 /**
@@ -50,13 +51,7 @@ const DataContainer: React.FC<{ data: DiskDto[] }> = ({ data }) => {
    */
   const handleSelectAll = () => {
     const allItems = new Set(
-      data.flatMap(disk =>
-        disk.bands.flatMap(band =>
-          band.molecules.flatMap(molecule =>
-            molecule.data.map(dataItem => `${disk.name}-${band.name}-${molecule.name}-${dataItem.name}`)
-          )
-        )
-      )
+      paginatedItems.map(dataItem => `${dataItem.disk}-${dataItem.band}-${dataItem.molecule}-${dataItem.name}`)
     );
     setSelectedItems(selectedItems.size === allItems.size ? new Set() : allItems);
   };
@@ -79,12 +74,16 @@ const DataContainer: React.FC<{ data: DiskDto[] }> = ({ data }) => {
     data.reduce((sum, disk) => sum + disk.bands.reduce((sumBand, band) => sumBand + band.molecules.reduce((sumMol, molecule) => sumMol + molecule.data.length, 0), 0), 0) / itemsPerPage
   );
 
+  const handlePageChange = (event: React.ChangeEvent<unknown>, page: number) => {
+    setCurrentPage(page);
+  };
+
   return (
     <div className={styles.tableContainer}>
       <table className={styles.table}>
         <TableHeader
           handleSelectAll={handleSelectAll}
-          isSelectedAll={selectedItems.size === paginatedItems.length}
+          isSelectedAll={selectedItems.size === paginatedItems.length && selectedItems.size > 0}
         />
         <TableRow
           data={paginatedItems}
@@ -92,7 +91,26 @@ const DataContainer: React.FC<{ data: DiskDto[] }> = ({ data }) => {
           handleSelectItem={handleSelectItem}
         />
       </table>
-      <Pagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={setCurrentPage} />
+      <Stack spacing={2} className={styles.pagination}>
+        <Pagination 
+          count={totalPages} 
+          page={currentPage} 
+          onChange={handlePageChange} 
+          size="medium" // Size Change
+          sx={{
+            '& .MuiPaginationItem-root': {
+              color: 'var(--textSoft)', // Change color font
+            },
+            '& .Mui-selected': {
+              backgroundColor: 'var(--bg2)',
+              color: 'var(--alma-blue)',
+            },
+            '& .MuiPaginationItem-root:hover': {
+              backgroundColor: 'rgba(138, 198, 233, 0.4)',
+            },
+          }}
+        />
+      </Stack>
     </div>
   );
 };
