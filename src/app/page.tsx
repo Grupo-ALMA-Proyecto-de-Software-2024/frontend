@@ -3,6 +3,20 @@ import Cards from '@/components/cards/Cards';
 import Image from 'next/image';
 import styles from "./home.module.css";
 
+import { marked } from 'marked';
+// or const { marked } = require('marked');
+
+const Markdown = marked.parse(`
+<h1>Testing Markdown</h1>
+
+# About Us
+
+The AGE-PRO collaboration is made up of professional astronomers working at universities and
+astronomical observatories, postdoctoral researchers who are part of groups of
+research associated with the astronomers participating in the project, and doctoral students and
+master in astronomy.
+`);
+
 const Home: React.FC = () => {
   return (
     <main>
@@ -33,6 +47,9 @@ const Home: React.FC = () => {
               master in astronomy.
             </p>
           </section>
+          <div>
+            <div className={styles.section} dangerouslySetInnerHTML={{ __html: Markdown }} />
+          </div>
         </div>
 
         <div className={styles.rightContent}>
