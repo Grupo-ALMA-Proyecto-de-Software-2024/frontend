@@ -87,13 +87,13 @@ describe("AlmaClient with a single filter parameter for category", () => {
       const mockData = {
         data: [
           {
+            region: "North",
+            disk: "Disk1",
+            band: "Band1",
+            molecule: "Molecule1",
             name: "Data1",
             creationDate: "2024-05-06T23:04:56.782Z",
-            moleculeName: "Molecule1",
-            bandName: "Band1",
-            diskName: "Disk1",
-            regionName: "North",
-            file: "file_path",
+            filepath: "file_path",
             isViewable: true,
           },
         ],
@@ -108,6 +108,41 @@ describe("AlmaClient with a single filter parameter for category", () => {
       dataMock.onGet("/data", { params }).reply(200, mockData);
       const response = await almaClient.getData(params);
       expect(response).toEqual(mockData.data);
+    });
+  });
+
+  describe("generateDownloadScript", () => {
+    it("generates a download script correctly", async () => {
+      const mockData = {
+        script: "download_script_content",
+      };
+      const dataItems = [
+        {
+          region: "North",
+          disk: "Disk1",
+          band: "Band1",
+          molecule: "Molecule1",
+          name: "Data1",
+          creationDate: "2024-05-06T23:04:56.782Z",
+          filepath: "path/to/file1",
+          isViewable: true,
+        },
+        {
+          region: "North",
+          disk: "Disk1",
+          band: "Band2",
+          molecule: "Molecule2",
+          name: "Data2",
+          creationDate: "2024-05-06T23:04:56.782Z",
+          filepath: "path/to/file2",
+          isViewable: true,
+        },
+      ];
+      dataMock.onPost("/generate-download-script", {
+        links: dataItems.map((item) => item.filepath),
+      }).reply(200, mockData);
+      const response = await almaClient.generateDownloadScript(dataItems);
+      expect(response).toEqual(mockData.script);
     });
   });
 
@@ -304,23 +339,23 @@ describe("AlmaClient with multiple filter parameters for category", () => {
       const mockData = {
         data: [
           {
+            region: "North",
+            disk: "Disk1",
+            band: "Band1",
+            molecule: "Molecule1",
             name: "Data1",
             creationDate: "2024-05-06T23:04:56.782Z",
-            moleculeName: "Molecule1",
-            bandName: "Band1",
-            diskName: "Disk1",
-            regionName: "North",
-            file: "file_path",
+            filepath: "file_path",
             isViewable: true,
           },
           {
+            region: "North",
+            disk: "Disk1",
+            band: "Band1",
+            molecule: "Molecule1",
             name: "Data2",
             creationDate: "2024-05-06T23:04:56.782Z",
-            moleculeName: "Molecule1",
-            bandName: "Band1",
-            diskName: "Disk1",
-            regionName: "North",
-            file: "file_path",
+            filepath: "file_path",
             isViewable: true,
           },
         ],
@@ -348,13 +383,13 @@ describe("AlmaClient with multiple filter parameters for category", () => {
         .reply(200, {
           data: [
             {
+              region: "North",
+              disk: "Disk1",
+              band: "Band1",
+              molecule: "Molecule1",
               name: "Data1",
               creationDate: "2024-05-06T23:04:56.782Z",
-              moleculeName: "Molecule1",
-              bandName: "Band1",
-              diskName: "Disk1",
-              regionName: "North",
-              file: "file_path",
+              filepath: "file_path",
               isViewable: true,
             },
           ],
@@ -362,13 +397,13 @@ describe("AlmaClient with multiple filter parameters for category", () => {
       const response2 = await almaClient.getData(params2);
       expect(response2).toEqual([
         {
+          region: "North",
+          disk: "Disk1",
+          band: "Band1",
+          molecule: "Molecule1",
           name: "Data1",
           creationDate: "2024-05-06T23:04:56.782Z",
-          moleculeName: "Molecule1",
-          bandName: "Band1",
-          diskName: "Disk1",
-          regionName: "North",
-          file: "file_path",
+          filepath: "file_path",
           isViewable: true,
         },
       ]);

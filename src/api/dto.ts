@@ -32,9 +32,13 @@ export interface PressNewsDto {
 
 // Data DTOs
 export interface DataDto {
+    region: string;
+    disk: string;
+    band: string;
+    molecule: string;
     name: string;
     creationDate: string;
-    file: string;
+    filepath: string;
     isViewable: boolean;
 }
 

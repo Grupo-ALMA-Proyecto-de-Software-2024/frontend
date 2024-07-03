@@ -65,13 +65,13 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
     useEffect(() => {
         let filtered = data;
         if (selectedDisks.length > 0) {
-            filtered = filtered.filter(d => selectedDisks.includes(d.file));
+            filtered = filtered.filter(d => selectedDisks.includes(d.filepath));
         }
         if (selectedBands.length > 0) {
-            filtered = filtered.filter(d => selectedBands.includes(d.file));
+            filtered = filtered.filter(d => selectedBands.includes(d.filepath));
         }
         if (selectedMolecules.length > 0) {
-            filtered = filtered.filter(d => selectedMolecules.includes(d.file));
+            filtered = filtered.filter(d => selectedMolecules.includes(d.filepath));
         }
         setFilteredData(filtered);
     }, [data, selectedDisks, selectedBands, selectedMolecules]);
