@@ -41,7 +41,14 @@ const DownloadButton = () => {
       downloadFile(content, 'script.sh', 'text/x-shellscript');
     };
   
-    return <Button variant="outlined" onClick={handleDownload} >Download Script {<DownloadIcon />}</Button>;
+    return <Button sx={{ position: 'fixed', 
+                        bottom: 128, 
+                        right: 96,
+                        backgroundColor: 'white',
+                        '&:hover': {
+                          backgroundColor: '#ADD8E6'
+                        } }} 
+                  variant="outlined" onClick={handleDownload} >Download {<DownloadIcon />}</Button>;
 };
   
 export default DownloadButton;
