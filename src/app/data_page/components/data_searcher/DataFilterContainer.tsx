@@ -5,7 +5,6 @@ import MultiSelect from './MultiSelect';
 import DataContainer from '../data_container/DataContainer';
 import { DiskDto, BandDto, MoleculeDto, DataDto } from '@api/dto';
 import almaClient from '@api/client';
-import DownloadButton from './DownloadButton';
 
 /**
  * Props for the DataFilterContainer component.
@@ -103,7 +102,7 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
     };
 
     return (
-        <div className={styles.dataSelectorRow}>
+        <div>
             <Container sx={{ border: 1, borderRadius: '16px', margin: '15px', width: '1100px', justifyContent: 'flex-start' }}>
                 <div className={styles.dataSelectorRow}>
                     <h2>{title}</h2>
@@ -114,7 +113,6 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
                 </div>
                 <DataContainer data={convertToDisks(filteredData)} />
             </Container>
-            <DownloadButton />
         </div>
     );
 };
