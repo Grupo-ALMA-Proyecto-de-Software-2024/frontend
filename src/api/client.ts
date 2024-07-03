@@ -100,6 +100,12 @@ class almaClient {
     return response.data.data;
   }
 
+  async generateDownloadScript(dataItems: DataDto[]): Promise<string> {
+    const response = await dataClient.post("/generate-download-script", {
+      links: dataItems.map((item) => item.filepath),
+    });
+    return response.data.script;
+  }
 
 }
 
