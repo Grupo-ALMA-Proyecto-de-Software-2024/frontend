@@ -4,6 +4,8 @@
   border-radius: 5px;
   background-color: var(--bg1);
   padding: 2px;
+  height: 400px;
+  overflow-y: auto;
 }
 
 .table {

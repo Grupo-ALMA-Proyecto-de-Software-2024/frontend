@@ -102,7 +102,7 @@ const DataContainer: React.FC<{ data: DiskDto[] }> = ({ data }) => {
               color: 'var(--textSoft)', // Change color font
             },
             '& .Mui-selected': {
-              backgroundColor: 'var(--bg2)',
+              backgroundColor: 'var(--alma-light-blue)',
               color: 'var(--alma-blue)',
             },
             '& .MuiPaginationItem-root:hover': {
