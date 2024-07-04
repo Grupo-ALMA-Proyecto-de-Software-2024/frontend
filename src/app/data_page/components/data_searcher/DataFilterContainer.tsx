@@ -103,7 +103,7 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
 
     return (
         <div>
-            <Container sx={{ border: 1, borderRadius: '16px', margin: '15px', width: '1100px', justifyContent: 'flex-start' }}>
+            <Container sx={{ border: 2, borderRadius: '16px', margin: '15px', width: '900px', height:'600px', justifyContent: 'flex-start' , backgroundColor:'snow'}}>
                 <div className={styles.dataSelectorRow}>
                     <h2>{title}</h2>
                     <MultiSelect title="Disks" values={[...new Set(disks.map(disk => disk.name))]} onChange={setSelectedDisks} />
