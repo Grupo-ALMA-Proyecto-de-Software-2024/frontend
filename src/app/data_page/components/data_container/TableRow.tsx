@@ -71,7 +71,7 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
           <TableCell>
             <div className={styles.checkbox}>
               {dataItem.name}
-              {dataItem.isViewable && (
+              {dataItem.imageLink !== null && (
                 <Button variant="outlined" onClick={() => openModal(`/path/to/image/${dataItem.filepath}`)}>View</Button>
               )}
               <Checkbox

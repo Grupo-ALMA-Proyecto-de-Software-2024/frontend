@@ -94,7 +94,8 @@ describe("AlmaClient with a single filter parameter for category", () => {
             name: "Data1",
             creationDate: "2024-05-06T23:04:56.782Z",
             filepath: "file_path",
-            isViewable: true,
+            imageLink: "image_link",
+            sizeInMb: 100,
           },
         ],
       };
@@ -125,7 +126,8 @@ describe("AlmaClient with a single filter parameter for category", () => {
           name: "Data1",
           creationDate: "2024-05-06T23:04:56.782Z",
           filepath: "path/to/file1",
-          isViewable: true,
+          imageLink: "image_link",
+          sizeInMb: 100,
         },
         {
           region: "North",
@@ -135,7 +137,8 @@ describe("AlmaClient with a single filter parameter for category", () => {
           name: "Data2",
           creationDate: "2024-05-06T23:04:56.782Z",
           filepath: "path/to/file2",
-          isViewable: true,
+          imageLink: null,
+          sizeInMb: null,
         },
       ];
       dataMock.onPost("/generate-download-script", {
@@ -346,7 +349,8 @@ describe("AlmaClient with multiple filter parameters for category", () => {
             name: "Data1",
             creationDate: "2024-05-06T23:04:56.782Z",
             filepath: "file_path",
-            isViewable: true,
+            imageLink: "image_link",
+            sizeInMb: 100,
           },
           {
             region: "North",
@@ -356,7 +360,8 @@ describe("AlmaClient with multiple filter parameters for category", () => {
             name: "Data2",
             creationDate: "2024-05-06T23:04:56.782Z",
             filepath: "file_path",
-            isViewable: true,
+            imageLink: null,
+            sizeInMb: null,
           },
         ],
       };
@@ -390,7 +395,8 @@ describe("AlmaClient with multiple filter parameters for category", () => {
               name: "Data1",
               creationDate: "2024-05-06T23:04:56.782Z",
               filepath: "file_path",
-              isViewable: true,
+              imageLink: "image_link",
+              sizeInMb: 100,
             },
           ],
         });
@@ -404,7 +410,8 @@ describe("AlmaClient with multiple filter parameters for category", () => {
           name: "Data1",
           creationDate: "2024-05-06T23:04:56.782Z",
           filepath: "file_path",
-          isViewable: true,
+          imageLink: null,
+          sizeInMb: null,
         },
       ]);
     });
