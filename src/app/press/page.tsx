@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './press.module.css';
 import { fetchPressNews } from './data/press';
 import { NewsType, PressNewsDto } from '@/api/dto';
-
+import { marked } from 'marked';
 
 const Press = () => {
     const [pressReleases, setPressReleases] = useState<PressNewsDto[]>([]);
@@ -43,9 +43,7 @@ const Press = () => {
             <div className={styles.pressList}>
               <ul>
                 {pressReleases.map((release, index) => (
-                  <li key={index}>
-                    {release.content}
-                  </li>
+                  <li key={index} dangerouslySetInnerHTML={{ __html: marked(release.content) }} />
                 ))}
               </ul>
             </div>
@@ -63,13 +61,11 @@ const Press = () => {
           <h2 className={styles.subHeader}>AGE-PRO in the News</h2>
           <div className={styles.newsArticles}>
             <div className={styles.pressList}>
-              <ul>
-               {newsArticles.map((release, index) => (
-                  <li key={index}>
-                    {release.content}
-                  </li>
-                ))}
-              </ul>
+                <ul>
+                    {newsArticles.map((release, index) => (
+                        <li key={index} dangerouslySetInnerHTML={{ __html: marked(release.content) }} />
+                    ))}
+                </ul>
             </div>
           </div>
         </section>
