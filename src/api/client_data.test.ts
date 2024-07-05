@@ -375,7 +375,7 @@ describe("AlmaClient with multiple filter parameters for category", () => {
       dataMock.onGet("/data", { params }).reply(200, mockData);
       const response = await almaClient.getData(params);
       expect(response).toEqual(mockData.data);
-
+  
       const params2 = {
         region: ["North"],
         disk: ["Disk1"],
@@ -383,23 +383,21 @@ describe("AlmaClient with multiple filter parameters for category", () => {
         molecule: ["Molecule1"],
         data: ["Data1", "Data3"],
       };
-      dataMock
-        .onGet("/data", { params: params2 })
-        .reply(200, {
-          data: [
-            {
-              region: "North",
-              disk: "Disk1",
-              band: "Band1",
-              molecule: "Molecule1",
-              name: "Data1",
-              creationDate: "2024-05-06T23:04:56.782Z",
-              filepath: "file_path",
-              imageLink: "image_link",
-              sizeInMb: 100,
-            },
-          ],
-        });
+      dataMock.onGet("/data", { params: params2 }).reply(200, {
+        data: [
+          {
+            region: "North",
+            disk: "Disk1",
+            band: "Band1",
+            molecule: "Molecule1",
+            name: "Data1",
+            creationDate: "2024-05-06T23:04:56.782Z",
+            filepath: "file_path",
+            imageLink: "image_link",
+            sizeInMb: 100,
+          },
+        ],
+      });
       const response2 = await almaClient.getData(params2);
       expect(response2).toEqual([
         {
@@ -410,10 +408,11 @@ describe("AlmaClient with multiple filter parameters for category", () => {
           name: "Data1",
           creationDate: "2024-05-06T23:04:56.782Z",
           filepath: "file_path",
-          imageLink: null,
-          sizeInMb: null,
+          imageLink: "image_link",
+          sizeInMb: 100,
         },
       ]);
     });
   });
+  
 });
