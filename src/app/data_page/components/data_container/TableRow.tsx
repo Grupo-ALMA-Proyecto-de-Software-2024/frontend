@@ -1,37 +1,21 @@
 import React, { useState } from 'react';
+import { TableRow as MuiTableRow, TableCell, Checkbox, Button } from '@mui/material';
+import { DataDto } from '@api/dto';
 import styles from './dataContainer.module.css';
-import ImageModal from './imageModal';
 
-interface DataItem {
-  name: string;
-  creationDate: string;
-  file: string;
-  isViewable: boolean;
-}
-
-interface Molecule {
-  name: string;
-  data: DataItem[];
-}
-
-interface Band {
-  name: string;
-  molecules: Molecule[];
-}
-
-interface Disk {
-  id: string;
+interface FlattenedDataItem extends DataDto {
   disk: string;
-  bands: Band[];
+  band: string;
+  molecule: string;
 }
 
 interface TableRowProps {
-  disks: Disk[];
+  data: FlattenedDataItem[];
   selectedItems: Set<string>;
   handleSelectItem: (itemKey: string) => void;
 }
 
-const TableRow: React.FC<TableRowProps> = ({ disks, selectedItems, handleSelectItem }) => {
+const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectItem }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageUrl, setModalImageUrl] = useState('');
 
@@ -47,54 +31,57 @@ const TableRow: React.FC<TableRowProps> = ({ disks, selectedItems, handleSelectI
 
   const renderRows = () => {
     const rows: React.ReactNode[] = [];
+    let currentDisk = '';
+    let currentBand = '';
+    let currentMolecule = '';
+    let diskRowSpan = 0;
+    let bandRowSpan = 0;
+    let moleculeRowSpan = 0;
 
-    disks.forEach(disk => {
-      let diskRowCount = 0;
-      disk.bands.forEach(band => {
-        let bandRowCount = 0;
-        band.molecules.forEach(molecule => {
-          molecule.data.forEach((dataItem, dataIndex) => {
-            const itemKey = `${disk.id}-${band.name}-${molecule.name}-${dataItem.name}`;
-            const isSelected = selectedItems.has(itemKey);
-            rows.push(
-              <tr key={itemKey} className={`${styles.tableRow} ${isSelected ? styles.selected : ''}`}>
-                {diskRowCount === 0 && (
-                  <td rowSpan={disk.bands.reduce((sum, b) => sum + b.molecules.reduce((sumM, mol) => sumM + mol.data.length, 0), 0)}>
-                    {disk.disk}
-                  </td>
-                )}
-                {bandRowCount === 0 && (
-                  <td rowSpan={band.molecules.reduce((sum, mol) => sum + mol.data.length, 0)}>
-                    {band.name}
-                  </td>
-                )}
-                {dataIndex === 0 && (
-                  <td rowSpan={molecule.data.length}>
-                    {molecule.name}
-                  </td>
-                )}
-                <td>
-                  <div className={styles.checkbox}>
-                    {dataItem.name}
-                    {dataItem.isViewable && (
-                      <button onClick={() => openModal(`/path/to/image/${dataItem.file}`)}>
-                        View
-                      </button>
-                    )}
-                    <input
-                      type="checkbox"
-                      checked={isSelected}
-                      onChange={() => handleSelectItem(itemKey)}
-                    />
-                  </div>
-                </td>
-              </tr>
-            );
-            diskRowCount++;
-            bandRowCount++;
-          });
-        });
-      });
+    data.forEach((dataItem, index) => {
+      const itemKey = `${dataItem.disk}-${dataItem.band}-${dataItem.molecule}-${dataItem.name}`;
+      const isSelected = selectedItems.has(itemKey);
+
+      const isNewDisk = dataItem.disk !== currentDisk;
+      const isNewBand = isNewDisk || dataItem.band !== currentBand;
+      const isNewMolecule = isNewBand || dataItem.molecule !== currentMolecule;
+
+      if (isNewDisk) {
+        currentDisk = dataItem.disk;
+        currentBand = dataItem.band;
+        currentMolecule = dataItem.molecule;
+        diskRowSpan = data.filter(item => item.disk === currentDisk).length;
+        bandRowSpan = data.filter(item => item.disk === currentDisk && item.band === currentBand).length;
+        moleculeRowSpan = data.filter(item => item.disk === currentDisk && item.band === currentBand && item.molecule === currentMolecule).length;
+      } else if (isNewBand) {
+        currentBand = dataItem.band;
+        currentMolecule = dataItem.molecule;
+        bandRowSpan = data.filter(item => item.disk === currentDisk && item.band === currentBand).length;
+        moleculeRowSpan = data.filter(item => item.disk === currentDisk && item.band === currentBand && item.molecule === currentMolecule).length;
+      } else if (isNewMolecule) {
+        currentMolecule = dataItem.molecule;
+        moleculeRowSpan = data.filter(item => item.disk === currentDisk && item.band === currentBand && item.molecule === currentMolecule).length;
+      }
+
+      rows.push(
+        <MuiTableRow key={itemKey} className={`${styles.tableRow} ${isSelected ? styles.selected : ''} ${isNewDisk ? styles.newDiskRow : ''}`}>
+          {isNewDisk && <TableCell rowSpan={diskRowSpan}>{dataItem.disk}</TableCell>}
+          {isNewBand && <TableCell rowSpan={bandRowSpan}>{dataItem.band}</TableCell>}
+          {isNewMolecule && <TableCell rowSpan={moleculeRowSpan}>{dataItem.molecule}</TableCell>}
+          <TableCell>
+            <div className={styles.checkbox}>
+              {dataItem.name}
+              {dataItem.isViewable && (
+                <Button variant="outlined" onClick={() => openModal(`/path/to/image/${dataItem.filepath}`)}>View</Button>
+              )}
+              <Checkbox
+                checked={isSelected}
+                onChange={() => handleSelectItem(itemKey)}
+              />
+            </div>
+          </TableCell>
+        </MuiTableRow>
+      );
     });
 
     return rows;
@@ -102,8 +89,7 @@ const TableRow: React.FC<TableRowProps> = ({ disks, selectedItems, handleSelectI
 
   return (
     <>
-      <tbody>{renderRows()}</tbody>
-      <ImageModal isOpen={isModalOpen} onRequestClose={closeModal} imageUrl={modalImageUrl} />
+      {renderRows()}
     </>
   );
 };
