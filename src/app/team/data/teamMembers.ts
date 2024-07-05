@@ -242,3 +242,5 @@ const teamMembers: TeamMember[] = [
     },
     
 ];
+
+export default teamMembers;
