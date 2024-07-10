@@ -1,0 +1,90 @@
+.container {
+    margin-left: 200px;
+    margin-right: 200px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.info {
+    font-family: Arial, sans-serif;
+}
+
+.title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.line {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin-bottom: 20px;
+}
+
+.region {
+    margin-bottom: 40px;
+}
+
+.regionTitle {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.regionInfo {
+    margin: 0 0 20px 0;
+    font-size: 16px;
+}
+
+.tableContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    width: 100%;
+    max-width: 800px;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table, .th, .td {
+    border: 1px solid #ddd;
+}
+
+.th, .td {
+    padding: 8px;
+    text-align: left;
+}
+
+.th {
+    background-color: #f4f4f4;
+}
+
+.evenRow {
+    background-color: #f9f9f9;
+}
+
+.sub {
+    font-size: 0.75em;
+    vertical-align: sub;
+}
+
+.regionDescription {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.regionInfo {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.regionImage {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
