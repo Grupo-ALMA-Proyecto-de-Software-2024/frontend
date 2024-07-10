@@ -7,28 +7,17 @@ interface FlattenedDataItem extends DataDto {
   disk: string;
   band: string;
   molecule: string;
+  isViewable: boolean; // Ensure isViewable is included in the interface
 }
 
 interface TableRowProps {
   data: FlattenedDataItem[];
   selectedItems: Set<string>;
   handleSelectItem: (itemKey: string) => void;
+  onOpenImage: (url: string) => void;
 }
 
-const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectItem }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalImageUrl, setModalImageUrl] = useState('');
-
-  const openModal = (imageUrl: string) => {
-    setModalImageUrl(imageUrl);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setModalImageUrl('');
-  };
-
+const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectItem, onOpenImage }) => {
   const renderRows = () => {
     const rows: React.ReactNode[] = [];
     let currentDisk = '';
@@ -72,7 +61,7 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
             <div className={styles.checkbox}>
               {dataItem.name}
               {dataItem.isViewable && (
-                <Button variant="outlined" onClick={() => openModal(`/path/to/image/${dataItem.filepath}`)}>View</Button>
+                <Button variant="outlined" onClick={() => onOpenImage(dataItem.file)}>View</Button>
               )}
               <Checkbox
                 checked={isSelected}

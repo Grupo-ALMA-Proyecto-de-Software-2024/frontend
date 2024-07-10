@@ -11,13 +11,14 @@ import almaClient from '@api/client';
  */
 interface DataFilterContainerProps {
     title: string;
+    onOpenImage: (url: string) => void; // Add this prop
 }
 
 /**
  * DataFilterContainer component to manage and display filtered data.
  * @param {DataFilterContainerProps} props - The props for the component.
  */
-const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
+const DataFilterContainer: FC<DataFilterContainerProps> = ({ title, onOpenImage }) => {
     const [disks, setDisks] = useState<DiskDto[]>([]);
     const [bands, setBands] = useState<BandDto[]>([]);
     const [molecules, setMolecules] = useState<MoleculeDto[]>([]);
@@ -111,7 +112,7 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
                     <MultiSelect title="Molecules" values={[...new Set(molecules.map(molecule => molecule.name))]} onChange={setSelectedMolecules} />
                     <MultiSelect title="Data" values={[...new Set(data.map(d => d.name))]} onChange={setSelectedData} />
                 </div>
-                <DataContainer data={convertToDisks(filteredData)} />
+                <DataContainer data={convertToDisks(filteredData)} onOpenImage={onOpenImage} />
             </Container>
         </div>
     );

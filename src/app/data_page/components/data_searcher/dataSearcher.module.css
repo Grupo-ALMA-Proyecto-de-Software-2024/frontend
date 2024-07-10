@@ -29,6 +29,26 @@
     flex-direction: column;
 }
 
+.TableAndImage{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.regionBlocks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .regionBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
 .regionSelectorColumnLeft {
     margin: 1px;
     display: flex;

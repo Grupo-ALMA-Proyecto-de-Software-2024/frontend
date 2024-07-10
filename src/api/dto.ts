@@ -39,7 +39,8 @@ export interface DataDto {
     name: string;
     creationDate: string;
     filepath: string;
-    isViewable: boolean;
+    is_viewable: boolean;
+    file: string;
 }
 
 export interface MoleculeDto {
