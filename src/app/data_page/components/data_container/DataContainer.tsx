@@ -14,13 +14,23 @@ interface FlattenedDataItem extends DataDto {
   disk: string;
   band: string;
   molecule: string;
+  isViewable: boolean; // Asegúrate de que isViewable esté incluido aquí
+}
+
+/**
+ * Props for the DataContainer component.
+ */
+interface DataContainerProps {
+  data: DiskDto[];
+  onOpenImage: (url: string) => void;
 }
 
 /**
  * DataContainer component to display paginated data in a table format.
  * @param {DiskDto[]} data - Array of DiskDto objects.
+ * @param {Function} onOpenImage - Function to open the image.
  */
-const DataContainer: React.FC<{ data: DiskDto[] }> = ({ data }) => {
+const DataContainer: React.FC<DataContainerProps> = ({ data, onOpenImage }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 15; // Show 15 items per page
   const [paginatedItems, setPaginatedItems] = useState<FlattenedDataItem[]>([]);
@@ -36,6 +46,7 @@ const DataContainer: React.FC<{ data: DiskDto[] }> = ({ data }) => {
             disk: disk.name,
             band: band.name,
             molecule: molecule.name,
+            isViewable: dataItem.is_viewable // Asegúrate de usar is_viewable
           }))
         )
       )
@@ -85,11 +96,14 @@ const DataContainer: React.FC<{ data: DiskDto[] }> = ({ data }) => {
           handleSelectAll={handleSelectAll}
           isSelectedAll={selectedItems.size === paginatedItems.length && selectedItems.size > 0}
         />
-        <TableRow
-          data={paginatedItems}
-          selectedItems={selectedItems}
-          handleSelectItem={handleSelectItem}
-        />
+        <tbody>
+          <TableRow
+            data={paginatedItems}
+            selectedItems={selectedItems}
+            handleSelectItem={handleSelectItem}
+            onOpenImage={onOpenImage} // Pass onOpenImage to TableRow
+          />
+        </tbody>
       </table>
       <Stack spacing={2} className={styles.pagination}>
         <Pagination 
