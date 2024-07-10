@@ -16,15 +16,20 @@ interface FlattenedDataItem extends DataDto {
   molecule: string;
 }
 
+interface DataContainerProps {
+  data: DiskDto[];
+  selectedItems: Set<string>;
+  setSelectedItems: React.Dispatch<React.SetStateAction<Set<string>>>;
+}
+
 /**
  * DataContainer component to display paginated data in a table format.
  * @param {DiskDto[]} data - Array of DiskDto objects.
  */
-const DataContainer: React.FC<{ data: DiskDto[] }> = ({ data }) => {
+const DataContainer: React.FC<DataContainerProps> = ({ data, selectedItems, setSelectedItems }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 15; // Show 15 items per page
   const [paginatedItems, setPaginatedItems] = useState<FlattenedDataItem[]>([]);
-  const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     // Flatten the data structure for pagination

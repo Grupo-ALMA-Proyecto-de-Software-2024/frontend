@@ -29,6 +29,8 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
     const [selectedMolecules, setSelectedMolecules] = useState<string[]>([]);
     const [selectedData, setSelectedData] = useState<string[]>([]);
 
+    const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
+
     useEffect(() => {
         const fetchDisks = async () => {
             const fetchedDisks = await almaClient.getDisks({ region: [title] });
@@ -111,7 +113,7 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title }) => {
                     <MultiSelect title="Molecules" values={[...new Set(molecules.map(molecule => molecule.name))]} onChange={setSelectedMolecules} />
                     <MultiSelect title="Data" values={[...new Set(data.map(d => d.name))]} onChange={setSelectedData} />
                 </div>
-                <DataContainer data={convertToDisks(filteredData)} />
+                <DataContainer data={convertToDisks(filteredData)} selectedItems={selectedItems} setSelectedItems={setSelectedItems} />
             </Container>
         </div>
     );
