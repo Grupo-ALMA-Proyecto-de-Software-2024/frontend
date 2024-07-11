@@ -2,6 +2,7 @@ import React, { useState, useEffect, FC } from 'react';
 import { Stack, OutlinedInput, InputLabel, MenuItem, Chip, Select, FormControl, SelectChangeEvent } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import CancelIcon from "@mui/icons-material/Cancel";
+import styles from "./dataSearcher.module.css";
 
 /**
  * Props for the MultiSelect component.
@@ -32,7 +33,7 @@ const MultiSelect: FC<ElementsInSelect> = ({ title, values = [], onChange }) => 
     };
 
     return (
-        <FormControl sx={{ m: 2, width: 400 }}>
+        <FormControl sx={{ m: 2, width: 400 }} className={styles.MultiSelect}>
             <InputLabel>{title}</InputLabel>
             <Select
                 multiple

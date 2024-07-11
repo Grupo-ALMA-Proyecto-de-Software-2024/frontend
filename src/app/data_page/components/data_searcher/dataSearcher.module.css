@@ -1,20 +1,24 @@
-.container{
+.container {
     padding: 50px;
     line-height: 20px;
     margin: 50px;
     margin-top: 20px;
 }
 
-.header{
+.header {
     margin-bottom: 30px;
 }
 
-.paragraph{
+.paragraph {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.datalist{
+.dataSearcher{
+    width: 100%;
+}
+
+.datalist {
     font-size: 15px;
     margin-left: 20px;
     list-style-type: disc;
@@ -29,25 +33,25 @@
     flex-direction: column;
 }
 
-.TableAndImage{
+.TableAndImage {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    flex-direction: row;
+    flex-direction: row; /* Default to row */
 }
 
 .regionBlocks {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
+}
   
-  .regionBlock {
+.regionBlock {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
-  }
+}
 
 .regionSelectorColumnLeft {
     margin: 1px;
@@ -63,4 +67,98 @@
     align-items: center;
     flex-direction: row;
     flex-wrap: nowrap;
+}
+
+.RightImage {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin-top: 20px; /* Add some margin to separate from the table */
+}
+
+.RightImage img {
+    width: 300px;
+    height: auto;
+}
+
+@media (max-width: 1400px) {
+    .regionBlock {
+        flex-direction: column; /* Change to column for smaller screens */
+        width: 100%;
+    }
+
+    .DFContainer {
+        width: 100%;
+    }
+
+    .regionSelectorColumnLeft {
+        width: 100%;
+    }
+
+    .RightImage {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .TableAndImage {
+        flex-direction: column; /* Change to column for smaller screens */
+    }
+
+    .RightImage img {
+        width: 80%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .paragraph {
+        font-size: 14px;
+    }
+
+    .datalist {
+        font-size: 12px;
+    }
+
+    .header {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .TableAndImage {
+        flex-direction: column; /* Ensure column direction on very small screens */
+    }
+
+    .regionSelectorColumn {
+        padding: 10px;
+    }
+
+    .RightImage {
+        margin-top: 10px;
+    }
+
+    .RightImage img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+    }
+
+    .MultiSelect{
+        width: 100%;
+    }
+
+    .DFContainer {
+        width: 100%;
+        height: auto;
+    }
+
+    .dataSelectorRow {
+        flex-direction: column;
+        height: auto;
+    }
 }

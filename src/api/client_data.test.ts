@@ -126,7 +126,7 @@ describe("AlmaClient with a single filter parameter for category", () => {
           name: "Data1",
           creationDate: "2024-05-06T23:04:56.782Z",
           filepath: "path/to/file1",
-          imageLink: "image_link",
+          image_link: "image_link",
           sizeInMb: 100,
         },
         {
@@ -137,7 +137,7 @@ describe("AlmaClient with a single filter parameter for category", () => {
           name: "Data2",
           creationDate: "2024-05-06T23:04:56.782Z",
           filepath: "path/to/file2",
-          imageLink: null,
+          image_link: null,
           sizeInMb: null,
         },
       ];

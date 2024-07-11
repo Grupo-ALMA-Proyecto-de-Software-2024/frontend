@@ -59,9 +59,13 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
           {isNewMolecule && <TableCell rowSpan={moleculeRowSpan}>{dataItem.molecule}</TableCell>}
           <TableCell>
             <div className={styles.checkbox}>
-              {dataItem.name}
+              {dataItem.imageLink ? (
+                <span className={styles.dataItem} onClick={() => onOpenImage(dataItem.imageLink!)}>{dataItem.name}</span>
+              ) : (
+                <span>{dataItem.name}</span>
+              )}
               {dataItem.imageLink && (
-                <Button variant="outlined" onClick={() => onOpenImage(dataItem.imageLink!)}>View</Button>
+                <Button variant="outlined" onClick={() => onOpenImage(dataItem.imageLink!)} className={styles.imageButton}>View</Button>
               )}
               <Checkbox
                 checked={isSelected}

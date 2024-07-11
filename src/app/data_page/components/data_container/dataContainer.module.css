@@ -80,3 +80,9 @@
 .newDiskRow td {
   border-top: 2px solid var(--bg1);
 }
+
+@media (max-width: 768px) {
+  .imageButton {
+    display: none;
+  }
+}
