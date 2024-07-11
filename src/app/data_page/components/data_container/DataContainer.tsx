@@ -46,7 +46,7 @@ const DataContainer: React.FC<DataContainerProps> = ({ data, onOpenImage }) => {
             disk: disk.name,
             band: band.name,
             molecule: molecule.name,
-            imageLink: dataItem.imageLink || null
+            imageLink: dataItem.image_link || null
           }))
         )
       )
