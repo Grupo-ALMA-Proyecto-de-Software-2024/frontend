@@ -240,6 +240,30 @@ const teamMembers: TeamMember[] = [
         expertise: "nan",
         photographLink: ""
     },
+
+    {
+        fullName: "Dary Alexandra Ruiz",
+        institution: "NRAO/Joint ALMA Observatory",
+        cityCountry: "Santiago, Chile",
+        role: "Co-I & Data delegee",
+        team: "Ophiuchus",
+        personalWebsite: "nan",
+        email: "druiz@nrao.edu",
+        expertise: "Protoplanetary disks, outflows, mm-wave interferometry",
+        photographLink: ""
+    },
+
+    {
+        fullName: "Estephani Torres Villanueva",
+        institution: "University of Wisconsin-Madison",
+        cityCountry: "Madison, USA",
+        role: "Co-I",
+        team: "Lupus & UppSco",
+        personalWebsite: "nan",
+        email: "torresvillan@wisc.edu",
+        expertise: "Protoplanetary disks, planet formation, astrochemistry",
+        photographLink: "https://www.astro.wisc.edu/wp-content/uploads/sites/1730/2021/11/IMG_3783-e1662483908181.jpg"
+    }
     
 ];
 

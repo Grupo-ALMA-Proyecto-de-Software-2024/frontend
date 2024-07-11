@@ -18,9 +18,25 @@ const Team = () => {
                 <h1>Our Team</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 <h2>Institutions & Funding</h2>
-                <Image src="/institutions/uchilelogo.jpg" alt="Institution 1" width={300} height={120} />
-                <Image src="/institutions/ulondonlogo.png" alt="Institution 2" width={300} height={140} />
-                <Image src="/institutions/uarizonalogo.png" alt="Institution 3" width={280} height={160} />
+                <Image src="/institutions/uchilelogo.jpg" alt="Institution 1" width={250} height={100} />
+                <Image src="/institutions/ulondonlogo.png" alt="Institution 2" width={250} height={100} />
+                <Image src="/institutions/uarizonalogo.png" alt="Institution 3" width={250} height={100} />
+                <Image src="/institutions/astrologo.png" alt="Institution 3" width={250} height={100} />
+                <Image src="/institutions/almajoint.png" alt="Institution 4" width={100} height={100} />
+                <Image src="/institutions/amsterdamlogo.png" alt="Institution 5" width={250} height={100} />
+                <Image src="/institutions/cnrslogo.gif" alt="Institution 6" width={100} height={100} />  
+                <Image src="/institutions/deglistudilogo.png" alt="Institution 7" width={250} height={100} />
+                <Image src="/institutions/leidenlogo.png" alt="Institution 8" width={250} height={100} />
+                <Image src="/institutions/maxplancklogo.jpg" alt="Institution 9" width={100} height={100} />
+                <Image src="/institutions/mssllogo.jpg" alt="Institution 10" width={250} height={100} />  
+                <Image src="/institutions/esologo.png" alt="Institution 11" width={100} height={100} />
+                <Image src="/institutions/iaslogo.jpg" alt="Institution 12" width={100} height={100} />
+                <Image src="/institutions/parissaclaylogo.png" alt="Institution 13" width={250} height={100} />
+                <Image src="/institutions/uconnlogo.png" alt="Institution 14" width={250} height={100} />  
+                <Image src="/institutions/udplogo.jpg" alt="Institution 15" width={250} height={100} />
+                <Image src="/institutions/usachlogo.png" alt="Institution 16" width={250} height={100} />
+                <Image src="/institutions/wisconsinlogo.png" alt="Institution 17" width={250} height={100} />
+                    
             </div>
             <div className={styles.memberGrid}>
                 {teamMembers.map(member => (
@@ -28,7 +44,7 @@ const Team = () => {
                         <CollapsePanel
                             header={
                                 <div className={styles.collapseCard}>
-                                    <Image src="/team/anibal.jpg"
+                                    <Image src={`/team/${member.fullName.split(' ')[0].toLowerCase()}.jpg`}
                                         alt={member.fullName}
                                         width={170}
                                         height={170}
