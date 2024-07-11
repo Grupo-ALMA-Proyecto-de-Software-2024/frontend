@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TableRow as MuiTableRow, TableCell, Checkbox, Button } from '@mui/material';
 import { DataDto } from '@api/dto';
 import styles from './dataContainer.module.css';
@@ -7,7 +7,7 @@ interface FlattenedDataItem extends DataDto {
   disk: string;
   band: string;
   molecule: string;
-  isViewable: boolean; // Ensure isViewable is included in the interface
+  imageLink: string | null;
 }
 
 interface TableRowProps {
@@ -28,7 +28,7 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
     let moleculeRowSpan = 0;
 
     data.forEach((dataItem, index) => {
-      const itemKey = `${dataItem.disk}-${dataItem.band}-${dataItem.molecule}-${dataItem.name}`;
+      const itemKey = `${dataItem.disk}-${dataItem.band}-${dataItem.molecule}-${dataItem.name}-${index}`; // Ensure unique key
       const isSelected = selectedItems.has(itemKey);
 
       const isNewDisk = dataItem.disk !== currentDisk;
@@ -60,8 +60,8 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
           <TableCell>
             <div className={styles.checkbox}>
               {dataItem.name}
-              {dataItem.imageLink !== null && (
-                <Button variant="outlined" onClick={() => onOpenImage(`${dataItem.filepath}`)}>View</Button>
+              {dataItem.imageLink && (
+                <Button variant="outlined" onClick={() => onOpenImage(dataItem.imageLink!)}>View</Button>
               )}
               <Checkbox
                 checked={isSelected}

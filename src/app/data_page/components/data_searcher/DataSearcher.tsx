@@ -11,12 +11,11 @@ import { Modal, Box } from '@mui/material';
 /**
  * DataSearcher component to manage and display region selection and data filtering.
  */
-const DataSearcher: React.FC = () => {
+const DataSearcher = () => {
     const [regions, setRegions] = useState<RegionDto[]>([]);
     const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
-    const [imageUrls, setImageUrls] = useState<{ [key: string]: string }>({});
+    const [imageUrl, setImageUrl] = useState<string>('');
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [modalImageUrl, setModalImageUrl] = useState<string>('');
 
     useEffect(() => {
         const fetchRegions = async () => {
@@ -26,12 +25,11 @@ const DataSearcher: React.FC = () => {
         fetchRegions();
     }, []);
 
-    const handleOpenImage = (region: string, url: string) => {
-        setImageUrls(prev => ({ ...prev, [region]: url }));
+    const handleOpenImage = (url: string) => {
+        setImageUrl(url);
     };
 
-    const handleImageClick = (url: string) => {
-        setModalImageUrl(url);
+    const handleImageClick = () => {
         setIsModalOpen(true);
     };
 
@@ -48,35 +46,18 @@ const DataSearcher: React.FC = () => {
                 <h4>Select one or more regions</h4>
                 <MultiSelect title="Regions" values={regions.map(region => region.name)} onChange={setSelectedRegions} />
             </div>
-            <div className={styles.regionBlocks}>
+            <div className={styles.TableAndImage}>
                 {selectedRegions.map(region => (
                     <div key={region} className={styles.regionBlock}>
-                        <div className={styles.regionSelectorColumnLeft}>
-                            <DataFilterContainer title={region} onOpenImage={(url: string) => handleOpenImage(region, url)} />
-                        </div>
-                        {imageUrls[region] && (
-                            <div className={styles.RightImage} onClick={() => handleImageClick(imageUrls[region])}>
-                                <img src={imageUrls[region]} alt="Selected" style={{ maxWidth: '200px', margin: '20px' }} />
+                        <DataFilterContainer title={region} onOpenImage={handleOpenImage} />
+                        {imageUrl && (
+                            <div className={styles.RightImage} onClick={handleImageClick}>
+                                <img src={imageUrl} alt="Selected" style={{ maxWidth: '200px', margin: '20px' }} />
                             </div>
                         )}
                     </div>
                 ))}
             </div>
-            <Modal open={isModalOpen} onClose={handleCloseImage}>
-                <Box
-                    sx={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        bgcolor: 'background.paper',
-                        boxShadow: 24,
-                        p: 4,
-                    }}
-                >
-                    <img src={modalImageUrl} alt="Selected" style={{ maxWidth: '100%', maxHeight: '80vh' }} />
-                </Box>
-            </Modal>
         </div>
     );
 };

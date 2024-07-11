@@ -14,7 +14,7 @@ interface FlattenedDataItem extends DataDto {
   disk: string;
   band: string;
   molecule: string;
-  isViewable: boolean; // Asegúrate de que isViewable esté incluido aquí
+  imageLink: string | null; // Ensure isViewable is included here
 }
 
 /**
@@ -41,12 +41,12 @@ const DataContainer: React.FC<DataContainerProps> = ({ data, onOpenImage }) => {
     const flatData: FlattenedDataItem[] = data.flatMap(disk =>
       disk.bands.flatMap(band =>
         band.molecules.flatMap(molecule =>
-          molecule.data.map(dataItem => ({
+          molecule.data.map((dataItem) => ({
             ...dataItem,
             disk: disk.name,
             band: band.name,
             molecule: molecule.name,
-            isViewable: dataItem.is_viewable // Asegúrate de usar is_viewable
+            imageLink: dataItem.imageLink || null
           }))
         )
       )

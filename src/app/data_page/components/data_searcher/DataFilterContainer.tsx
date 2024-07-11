@@ -11,7 +11,7 @@ import almaClient from '@api/client';
  */
 interface DataFilterContainerProps {
     title: string;
-    onOpenImage: (url: string) => void; // Add this prop
+    onOpenImage: (url: string) => void; // Add this prop to pass down
 }
 
 /**
