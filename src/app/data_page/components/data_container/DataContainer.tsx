@@ -61,10 +61,14 @@ const DataContainer: React.FC<DataContainerProps> = ({ data, onOpenImage }) => {
    * Handle selecting all items in the table.
    */
   const handleSelectAll = () => {
-    const allItems = new Set(
-      paginatedItems.map(dataItem => `${dataItem.disk}-${dataItem.band}-${dataItem.molecule}-${dataItem.name}`)
-    );
-    setSelectedItems(selectedItems.size === allItems.size ? new Set() : allItems);
+    if (selectedItems.size === paginatedItems.length) {
+      setSelectedItems(new Set());
+    } else {
+      const allItems = new Set(
+        paginatedItems.map(dataItem => `${dataItem.disk}-${dataItem.band}-${dataItem.molecule}-${dataItem.name}-${paginatedItems.indexOf(dataItem)}`)
+      );
+      setSelectedItems(allItems);
+    }
   };
 
   /**
