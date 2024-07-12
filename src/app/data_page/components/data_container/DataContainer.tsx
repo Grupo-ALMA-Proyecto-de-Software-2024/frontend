@@ -14,10 +14,15 @@ interface FlattenedDataItem extends DataDto {
   disk: string;
   band: string;
   molecule: string;
+  imageLink: string | null; // Ensure isViewable is included here
 }
 
+/**
+ * Props for the DataContainer component.
+ */
 interface DataContainerProps {
   data: DiskDto[];
+  onOpenImage: (url: string) => void;
   selectedItems: Set<string>;
   setSelectedItems: React.Dispatch<React.SetStateAction<Set<string>>>;
 }
@@ -25,8 +30,9 @@ interface DataContainerProps {
 /**
  * DataContainer component to display paginated data in a table format.
  * @param {DiskDto[]} data - Array of DiskDto objects.
+ * @param {Function} onOpenImage - Function to open the image.
  */
-const DataContainer: React.FC<DataContainerProps> = ({ data, selectedItems, setSelectedItems }) => {
+const DataContainer: React.FC<DataContainerProps> = ({ data, onOpenImage, selectedItems, setSelectedItems }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 15; // Show 15 items per page
   const [paginatedItems, setPaginatedItems] = useState<FlattenedDataItem[]>([]);
@@ -36,11 +42,12 @@ const DataContainer: React.FC<DataContainerProps> = ({ data, selectedItems, setS
     const flatData: FlattenedDataItem[] = data.flatMap(disk =>
       disk.bands.flatMap(band =>
         band.molecules.flatMap(molecule =>
-          molecule.data.map(dataItem => ({
+          molecule.data.map((dataItem) => ({
             ...dataItem,
             disk: disk.name,
             band: band.name,
             molecule: molecule.name,
+            imageLink: dataItem.image_link || null
           }))
         )
       )
@@ -55,10 +62,14 @@ const DataContainer: React.FC<DataContainerProps> = ({ data, selectedItems, setS
    * Handle selecting all items in the table.
    */
   const handleSelectAll = () => {
-    const allItems = new Set(
-      paginatedItems.map(dataItem => `${dataItem.disk}-${dataItem.band}-${dataItem.molecule}-${dataItem.name}`)
-    );
-    setSelectedItems(selectedItems.size === allItems.size ? new Set() : allItems);
+    if (selectedItems.size === paginatedItems.length) {
+      setSelectedItems(new Set());
+    } else {
+      const allItems = new Set(
+        paginatedItems.map(dataItem => `${dataItem.disk}-${dataItem.band}-${dataItem.molecule}-${dataItem.name}-${paginatedItems.indexOf(dataItem)}`)
+      );
+      setSelectedItems(allItems);
+    }
   };
 
   /**
@@ -90,11 +101,14 @@ const DataContainer: React.FC<DataContainerProps> = ({ data, selectedItems, setS
           handleSelectAll={handleSelectAll}
           isSelectedAll={selectedItems.size === paginatedItems.length && selectedItems.size > 0}
         />
-        <TableRow
-          data={paginatedItems}
-          selectedItems={selectedItems}
-          handleSelectItem={handleSelectItem}
-        />
+        <tbody>
+          <TableRow
+            data={paginatedItems}
+            selectedItems={selectedItems}
+            handleSelectItem={handleSelectItem}
+            onOpenImage={onOpenImage} // Pass onOpenImage to TableRow
+          />
+        </tbody>
       </table>
       <Stack spacing={2} className={styles.pagination}>
         <Pagination 
@@ -107,7 +121,7 @@ const DataContainer: React.FC<DataContainerProps> = ({ data, selectedItems, setS
               color: 'var(--textSoft)', // Change color font
             },
             '& .Mui-selected': {
-              backgroundColor: 'var(--bg2)',
+              backgroundColor: 'var(--alma-light-blue)',
               color: 'var(--alma-blue)',
             },
             '& .MuiPaginationItem-root:hover': {

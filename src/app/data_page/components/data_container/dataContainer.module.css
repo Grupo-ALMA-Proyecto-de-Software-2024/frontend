@@ -4,6 +4,8 @@
   border-radius: 5px;
   background-color: var(--bg1);
   padding: 2px;
+  height: 400px;
+  overflow-y: auto;
 }
 
 .table {
@@ -77,4 +79,10 @@
 
 .newDiskRow td {
   border-top: 2px solid var(--bg1);
+}
+
+@media (max-width: 768px) {
+  .imageButton {
+    display: none;
+  }
 }

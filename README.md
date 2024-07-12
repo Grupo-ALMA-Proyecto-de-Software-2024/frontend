@@ -34,3 +34,22 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Frontend modifications
+
+### Changing color scheme
+
+If you'd like to change color scheme, you can do so by modifying `app/globals.css`, specifically the `:root` selector. For example, to change the background color to black and text color to white, you can modify the following lines in `app/globals.css`:
+
+```css
+    :root {
+        --bg1:#000000; /* Main Background color */
+        --bg2:#E7EFEF; /* Secondary Background color */
+        --text: white; /* Main text color */
+        --textSoft: black; /* Secondary text color */
+    }
+```
+
+### Changing resources
+
+If you'd like to change the resources, you can do so by adding new resources to the `public/` directory. In order to replace existing resources, you can simply replace the existing resources with the new ones in each of the respective directories, making sure to keep the same file name.

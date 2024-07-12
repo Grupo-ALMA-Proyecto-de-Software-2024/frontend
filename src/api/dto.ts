@@ -39,7 +39,8 @@ export interface DataDto {
     name: string;
     creationDate: string;
     filepath: string;
-    isViewable: boolean;
+    image_link: string | null;
+    sizeInMb: number | null;
 }
 
 export interface MoleculeDto {
@@ -54,10 +55,12 @@ export interface BandDto {
 
 export interface DiskDto {
     name: string;
+    features: { [key: string]: string };
     bands: BandDto[];
 }
 
 export interface RegionDto {
     name: string;
+    description: string | null;
     disks: DiskDto[];
 }
