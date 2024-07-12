@@ -39,7 +39,7 @@ export interface DataDto {
     name: string;
     creationDate: string;
     filepath: string;
-    imageLink: string | null;
+    image_link: string | null;
     sizeInMb: number | null;
 }
 

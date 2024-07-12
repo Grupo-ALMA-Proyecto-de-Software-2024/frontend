@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TableRow as MuiTableRow, TableCell, Checkbox, Button } from '@mui/material';
 import { DataDto } from '@api/dto';
 import styles from './dataContainer.module.css';
@@ -7,28 +7,17 @@ interface FlattenedDataItem extends DataDto {
   disk: string;
   band: string;
   molecule: string;
+  imageLink: string | null;
 }
 
 interface TableRowProps {
   data: FlattenedDataItem[];
   selectedItems: Set<string>;
   handleSelectItem: (itemKey: string) => void;
+  onOpenImage: (url: string) => void;
 }
 
-const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectItem }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalImageUrl, setModalImageUrl] = useState('');
-
-  const openModal = (imageUrl: string) => {
-    setModalImageUrl(imageUrl);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setModalImageUrl('');
-  };
-
+const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectItem, onOpenImage }) => {
   const renderRows = () => {
     const rows: React.ReactNode[] = [];
     let currentDisk = '';
@@ -39,7 +28,7 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
     let moleculeRowSpan = 0;
 
     data.forEach((dataItem, index) => {
-      const itemKey = `${dataItem.disk}-${dataItem.band}-${dataItem.molecule}-${dataItem.name}`;
+      const itemKey = `${dataItem.disk}-${dataItem.band}-${dataItem.molecule}-${dataItem.name}-${index}`; // Ensure unique key
       const isSelected = selectedItems.has(itemKey);
 
       const isNewDisk = dataItem.disk !== currentDisk;
@@ -70,9 +59,13 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
           {isNewMolecule && <TableCell rowSpan={moleculeRowSpan}>{dataItem.molecule}</TableCell>}
           <TableCell>
             <div className={styles.checkbox}>
-              {dataItem.name}
-              {dataItem.imageLink !== null && (
-                <Button variant="outlined" onClick={() => openModal(`/path/to/image/${dataItem.filepath}`)}>View</Button>
+              {dataItem.imageLink ? (
+                <span className={styles.dataItem} onClick={() => onOpenImage(dataItem.imageLink!)}>{dataItem.name}</span>
+              ) : (
+                <span>{dataItem.name}</span>
+              )}
+              {dataItem.imageLink && (
+                <Button variant="outlined" onClick={() => onOpenImage(dataItem.imageLink!)} className={styles.imageButton}>View</Button>
               )}
               <Checkbox
                 checked={isSelected}
