@@ -17,14 +17,28 @@ const DataSearcher = () => {
     const [imageUrls, setImageUrls] = useState<{ [key: string]: string }>({});
     const [modalImageUrl, setModalImageUrl] = useState<string>('');
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [regionStates, setRegionStates] = useState<{ [key: string]: Set<string> }>({});
 
     useEffect(() => {
         const fetchRegions = async () => {
             const fetchedRegions = await almaClient.getRegions();
             setRegions(fetchedRegions);
+
+            const initialStates: { [key: string]: Set<string> } = {};
+            fetchedRegions.forEach(region => {
+                initialStates[region.name] = new Set(); // Puedes inicializar con el estado que necesites
+            });
+            setRegionStates(initialStates);
         };
         fetchRegions();
     }, []);
+
+    const updateRegionState = (regionName: string, newState: any) => {
+        setRegionStates(prevStates => ({
+            ...prevStates,
+            [regionName]: newState
+        }));
+    };
 
     const handleOpenImage = (region: string, url: string) => {
         setImageUrls(prev => ({ ...prev, [region]: url }));
@@ -55,6 +69,8 @@ const DataSearcher = () => {
                         <DataFilterContainer 
                             title={region} 
                             onOpenImage={(url: string) => handleOpenImage(region, url)} 
+                            selectedItems={regionStates[region]}
+                            setSelectedItems={newState => updateRegionState(region, newState)}
                         />
                         {imageUrls[region] && (
                             <div className={styles.RightImage} onClick={() => handleImageClick(imageUrls[region])}>

@@ -12,13 +12,15 @@ import almaClient from '@api/client';
 interface DataFilterContainerProps {
     title: string;
     onOpenImage: (url: string) => void; // Add this prop to pass down
+    selectedItems: Set<string>;
+    setSelectedItems: React.Dispatch<React.SetStateAction<Set<string>>>;
 }
 
 /**
  * DataFilterContainer component to manage and display filtered data.
  * @param {DataFilterContainerProps} props - The props for the component.
  */
-const DataFilterContainer: FC<DataFilterContainerProps> = ({ title, onOpenImage }) => {
+const DataFilterContainer: FC<DataFilterContainerProps> = ({ title, onOpenImage, selectedItems, setSelectedItems }) => {
     const [disks, setDisks] = useState<DiskDto[]>([]);
     const [bands, setBands] = useState<BandDto[]>([]);
     const [molecules, setMolecules] = useState<MoleculeDto[]>([]);
@@ -29,8 +31,6 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title, onOpenImage 
     const [selectedBands, setSelectedBands] = useState<string[]>([]);
     const [selectedMolecules, setSelectedMolecules] = useState<string[]>([]);
     const [selectedData, setSelectedData] = useState<string[]>([]);
-
-    const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
 
     useEffect(() => {
         const fetchDisks = async () => {
