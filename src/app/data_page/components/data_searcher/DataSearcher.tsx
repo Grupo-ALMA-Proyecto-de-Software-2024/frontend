@@ -18,6 +18,7 @@ const DataSearcher = () => {
     const [modalImageUrl, setModalImageUrl] = useState<string>('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [regionStates, setRegionStates] = useState<{ [key: string]: Set<string> }>({});
+    const [combinedSet, setCombinedSet] = useState<Set<string>>(new Set());
 
     useEffect(() => {
         const fetchRegions = async () => {
@@ -32,6 +33,14 @@ const DataSearcher = () => {
         };
         fetchRegions();
     }, []);
+
+    useEffect(() => {
+        const newCombinedSet = new Set<string>();
+        Object.values(regionStates).forEach(regionSet => {
+            regionSet.forEach(item => newCombinedSet.add(item));
+        });
+        setCombinedSet(newCombinedSet);
+    }, [regionStates]);
 
     const updateRegionState = (regionName: string, newState: any) => {
         setRegionStates(prevStates => ({
@@ -57,7 +66,7 @@ const DataSearcher = () => {
     return (
         <div className={styles.dataSearcher}>
             {selectedRegions.length > 0 && (
-                <DownloadButton />
+                <DownloadButton allSelections={combinedSet}/>
             )}
             <div className={styles.regionSelectorColumn}>
                 <h4>Select one or more regions</h4>

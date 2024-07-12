@@ -107,6 +107,15 @@ class almaClient {
     return response.data.script;
   }
 
+  async generateDownloadScriptFromString(dataItems: Set<string>): Promise<string> {
+    const stringArray = Array.from(dataItems);
+    console.log(stringArray)
+    const response = await dataClient.post("/generate-script/", {
+      links: stringArray.map((item) => item.split('--').pop()),
+    });
+    return response.data.script_url;
+  }
+
 }
 
 export default new almaClient();

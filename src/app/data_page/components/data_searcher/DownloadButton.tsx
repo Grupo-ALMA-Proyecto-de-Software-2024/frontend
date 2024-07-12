@@ -1,13 +1,21 @@
-import React from "react";
+import React, { FC } from "react";
 import Button from "@mui/material/Button";
 import DownloadIcon from '@mui/icons-material/Download';
+import almaClient from '@api/client';
+
+/**
+ * Props for the DownloadButton component.
+ */
+interface DownloadButtonProps {
+  allSelections: Set<string>;
+}
 
 /**
  * Generate the content of the file to be downloaded.
  * @returns {string} - The content of the file.
  */
-const generateFileContent = () => {
-    return "instructions go here";
+const generateFileContent = (allSelections: Set<string>) => {
+    return almaClient.generateDownloadScriptFromString(allSelections);
 };
 
 /**
@@ -16,10 +24,7 @@ const generateFileContent = () => {
  * @param {string} filename - The name of the file.
  * @param {string} contentType - The MIME type of the file.
  */
-const downloadFile = (content: string, filename: string, contentType: string) => {
-    const blob = new Blob([content], { type: contentType });
-    const url = URL.createObjectURL(blob);
-    
+const downloadFile = (url: string, filename: string, contentType: string) => {
     const a = document.createElement('a');
     a.href = url;
     a.download = filename;
@@ -35,10 +40,10 @@ const downloadFile = (content: string, filename: string, contentType: string) =>
 /**
  * DownloadButton component to trigger the download of a file.
  */
-const DownloadButton = () => {
-    const handleDownload = () => {
-      const content = generateFileContent();
-      downloadFile(content, 'script.sh', 'text/x-shellscript');
+const DownloadButton: FC<DownloadButtonProps> = ({ allSelections }) => {
+    const handleDownload = async () => {
+      const url = generateFileContent(allSelections);
+      downloadFile(await url, 'script.sh', 'text/x-shellscript');
     };
   
     return <Button sx={{ position: 'fixed', 
