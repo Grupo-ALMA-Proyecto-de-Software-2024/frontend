@@ -57,3 +57,31 @@ export interface RegionDto {
     name: string;
     disks: DiskDto[];
 }
+
+// RegionPage
+
+export interface RegionDto {
+    info: string;
+    image: string;
+    table: {
+      ID: string;
+      fullname: string;
+      RA: string;
+      Dec: string;
+      distance: string;
+      SpT: string;
+      Class: string;
+      Teff: string;
+      Lstar: string;
+      Av: string;
+      Mstar: string;
+      Macc: string;
+    }[];
+  }
+  
+  export interface RegionsPageDto {
+    Ophiuchus: RegionDto;
+    Lupus: RegionDto;
+    UpperScorpius: RegionDto;
+  }
+  

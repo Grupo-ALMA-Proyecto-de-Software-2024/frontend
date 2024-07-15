@@ -9,6 +9,7 @@ import {
   BandDto,
   MoleculeDto,
   DataDto,
+  RegionsPageDto,
 } from "./dto";
 import {
   GetRegionsParams,
@@ -100,7 +101,10 @@ class almaClient {
     return response.data.data;
   }
 
-
+  async getRegionsPage(): Promise<RegionsPageDto> {
+    const response = await contentManagementClient.get("/regions-page");
+    return response.data;
+  }
 }
 
 export default new almaClient();
