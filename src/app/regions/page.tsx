@@ -1,22 +1,48 @@
 "use client";
 
 import type { NextPage } from 'next';
-import { fetchRegions } from './data/regions';
 import { Divider } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { RegionDto, DiskDto } from '@/api/dto';
+import almaClient from "@/api/client";
 import styles from './regions.module.css'; // Importa el archivo CSS module
+
+const fetchRegions = async (): Promise<RegionDto[]> => {
+    try {
+      const regions = await almaClient.getRegions();
+      return regions;
+    } catch (error: any) {
+      console.error('Failed to fetch regions', error);
+      throw new Error(error.message);
+    }
+};
+
+
+const fetchDisks = async (): Promise<DiskDto[]> => {
+    try {
+      const disks = await almaClient.getDisks();
+      return disks;
+    } catch (error: any) {
+      console.error('Failed to fetch disks', error);
+      throw new Error(error.message);
+    }
+}
+
+
 
 const RegionsPage: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [fetchedRegions, setFetchedRegions] = useState<RegionDto[] | null>(null);
+  const [fetchedRegions, setFetchedRegions] = useState<RegionDto[]>([]);
+  const [fetchedDisks, setFetchedDisks] = useState<DiskDto[]>([]);
 
   useEffect(() => {
     const loadRegions = async () => {
       try {
-        const regionsPage = await fetchRegions();
-        setFetchedRegions(regionsPage);
+        const regions = await fetchRegions();
+        const disks = await fetchDisks();
+        setFetchedRegions(regions);
+        setFetchedDisks(disks);
         setIsLoading(false);
       } catch (err: any) {
         setError(err.message || 'Error in fetching regions');
@@ -25,6 +51,25 @@ const RegionsPage: NextPage = () => {
     };
     loadRegions();
   }, []);
+
+  console.log("REGIONES");
+  console.log(fetchedRegions);
+  console.log("DISCOS");
+  console.log(fetchedDisks);
+  
+  // columns it's union of all keys (example of json: fetchedRDisks[0].features)
+  // code in python example: set((*(disk.features.keys() for disk in fetchedDisks))
+  const columns: string[] = [];
+  fetchedDisks.forEach(disk => {
+    Object.keys(disk.features).forEach(key => {
+      if (!columns.includes(key)) {
+        columns.push(key);
+      }
+    });
+  });
+
+  console.log("COLUMNS");
+  console.log(columns);
 
   const renderRegion = (region: RegionDto, regionName: string) => (
     <div key={regionName}>
