@@ -40,11 +40,11 @@ const links: LinkItem[] = [
     {
         title: "Data",
         path: "/data_page",
-    },
+    }/*,
     {
         title: "Scripts",
         path: "/scripts_page",
-    },
+    },*/
 ];
 
 const Links = () => {
