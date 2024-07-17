@@ -17,14 +17,37 @@ const DataSearcher = () => {
     const [imageUrls, setImageUrls] = useState<{ [key: string]: string }>({});
     const [modalImageUrl, setModalImageUrl] = useState<string>('');
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [regionStates, setRegionStates] = useState<{ [key: string]: Set<string> }>({});
+    const [combinedSet, setCombinedSet] = useState<Set<string>>(new Set());
 
     useEffect(() => {
         const fetchRegions = async () => {
             const fetchedRegions = await almaClient.getRegions();
             setRegions(fetchedRegions);
+
+            const initialStates: { [key: string]: Set<string> } = {};
+            fetchedRegions.forEach(region => {
+                initialStates[region.name] = new Set(); // Puedes inicializar con el estado que necesites
+            });
+            setRegionStates(initialStates);
         };
         fetchRegions();
     }, []);
+
+    useEffect(() => {
+        const newCombinedSet = new Set<string>();
+        Object.values(regionStates).forEach(regionSet => {
+            regionSet.forEach(item => newCombinedSet.add(item));
+        });
+        setCombinedSet(newCombinedSet);
+    }, [regionStates]);
+
+    const updateRegionState = (regionName: string, newState: any) => {
+        setRegionStates(prevStates => ({
+            ...prevStates,
+            [regionName]: newState
+        }));
+    };
 
     const handleOpenImage = (region: string, url: string) => {
         setImageUrls(prev => ({ ...prev, [region]: url }));
@@ -43,7 +66,7 @@ const DataSearcher = () => {
     return (
         <div className={styles.dataSearcher}>
             {selectedRegions.length > 0 && (
-                <DownloadButton />
+                <DownloadButton allSelections={combinedSet}/>
             )}
             <div className={styles.regionSelectorColumn}>
                 <h4>Select one or more regions</h4>
@@ -55,6 +78,8 @@ const DataSearcher = () => {
                         <DataFilterContainer 
                             title={region} 
                             onOpenImage={(url: string) => handleOpenImage(region, url)} 
+                            selectedItems={regionStates[region]}
+                            setSelectedItems={newState => updateRegionState(region, newState)}
                         />
                         {imageUrls[region] && (
                             <div className={styles.RightImage} onClick={() => handleImageClick(imageUrls[region])}>

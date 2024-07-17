@@ -12,13 +12,15 @@ import almaClient from '@api/client';
 interface DataFilterContainerProps {
     title: string;
     onOpenImage: (url: string) => void; // Add this prop to pass down
+    selectedItems: Set<string>;
+    setSelectedItems: React.Dispatch<React.SetStateAction<Set<string>>>;
 }
 
 /**
  * DataFilterContainer component to manage and display filtered data.
  * @param {DataFilterContainerProps} props - The props for the component.
  */
-const DataFilterContainer: FC<DataFilterContainerProps> = ({ title, onOpenImage }) => {
+const DataFilterContainer: FC<DataFilterContainerProps> = ({ title, onOpenImage, selectedItems, setSelectedItems }) => {
     const [disks, setDisks] = useState<DiskDto[]>([]);
     const [bands, setBands] = useState<BandDto[]>([]);
     const [molecules, setMolecules] = useState<MoleculeDto[]>([]);
@@ -134,7 +136,7 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title, onOpenImage 
                     <MultiSelect title="Molecules" values={[...new Set(molecules.map(molecule => molecule.name))]} onChange={setSelectedMolecules} />
                     <MultiSelect title="Data" values={[...new Set(data.map(d => d.name))]} onChange={setSelectedData} />
                 </div>
-                <DataContainer data={convertToDisks(filteredData)} onOpenImage={onOpenImage} />
+                <DataContainer data={convertToDisks(filteredData)} onOpenImage={onOpenImage} selectedItems={selectedItems} setSelectedItems={setSelectedItems} />
             </Container>
         </div>
     );

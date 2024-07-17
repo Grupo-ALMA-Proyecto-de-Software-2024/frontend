@@ -28,7 +28,7 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
     let moleculeRowSpan = 0;
 
     data.forEach((dataItem, index) => {
-      const itemKey = `${dataItem.disk}-${dataItem.band}-${dataItem.molecule}-${dataItem.name}-${index}`; // Ensure unique key
+      const itemKey = `${dataItem.disk}--${dataItem.band}--${dataItem.molecule}--${dataItem.name}--${index}--${dataItem.filepath}`; // Ensure unique key
       const isSelected = selectedItems.has(itemKey);
 
       const isNewDisk = dataItem.disk !== currentDisk;

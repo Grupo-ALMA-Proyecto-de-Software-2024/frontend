@@ -23,6 +23,8 @@ interface FlattenedDataItem extends DataDto {
 interface DataContainerProps {
   data: DiskDto[];
   onOpenImage: (url: string) => void;
+  selectedItems: Set<string>;
+  setSelectedItems: React.Dispatch<React.SetStateAction<Set<string>>>;
 }
 
 /**
@@ -30,11 +32,10 @@ interface DataContainerProps {
  * @param {DiskDto[]} data - Array of DiskDto objects.
  * @param {Function} onOpenImage - Function to open the image.
  */
-const DataContainer: React.FC<DataContainerProps> = ({ data, onOpenImage }) => {
+const DataContainer: React.FC<DataContainerProps> = ({ data, onOpenImage, selectedItems, setSelectedItems }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 15; // Show 15 items per page
   const [paginatedItems, setPaginatedItems] = useState<FlattenedDataItem[]>([]);
-  const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     // Flatten the data structure for pagination
