@@ -1,3 +1,5 @@
+/* regions.module.css */
+
 .container {
     margin-left: 200px;
     margin-right: 200px;
@@ -7,84 +9,75 @@
     border-radius: 8px;
 }
 
-.info {
-    font-family: Arial, sans-serif;
-}
-
-.title {
+.loading {
     text-align: center;
-    color: #2c3e50;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #555;
 }
 
-.line {
-    border: none;
-    height: 1px;
-    background-color: #ddd;
+.error {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ff4d4f;
+}
+
+.header {
+    text-align: center;
     margin-bottom: 20px;
+    color: #2c3e50;
 }
 
 .region {
     margin-bottom: 40px;
 }
 
-.regionTitle {
-    color: #2c3e50;
-    margin-bottom: 10px;
-}
-
-.regionInfo {
-    margin: 0 0 20px 0;
-    font-size: 16px;
-}
-
-.tableContainer {
+.regionContent {
     display: flex;
-    justify-content: center;
+    align-items: flex-start;
+}
+
+.regionDescription {
+    flex: 1;
+}
+
+.regionImage {
+    margin-left: 20px;
+}
+
+.image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.tableWrapper {
+    margin-top: 20px;
 }
 
 .table {
     width: 100%;
-    max-width: 800px;
     border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-.table, .th, .td {
     border: 1px solid #ddd;
 }
 
-.th, .td {
+.table th, .table td {
+    border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
 
-.th {
+.table th {
     background-color: #f4f4f4;
 }
 
-.evenRow {
+.table tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-.sub {
-    font-size: 0.75em;
-    vertical-align: sub;
-}
-
-.regionDescription {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 30px;
-}
-
-.regionInfo {
-    flex: 1;
-    margin-right: 20px;
-}
-
-.regionImage {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
+.description {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
 }
