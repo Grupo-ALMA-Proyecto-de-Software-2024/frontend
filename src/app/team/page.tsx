@@ -19,23 +19,23 @@ const Team = () => {
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 <h2>Institutions & Funding</h2>
                 <Image src="/institutions/uchilelogo.jpg" alt="Institution 1" width={250} height={100} />
-                <Image src="/institutions/ulondonlogo.png" alt="Institution 2" width={250} height={100} />
-                <Image src="/institutions/uarizonalogo.png" alt="Institution 3" width={250} height={100} />
+                <Image src="/institutions/ulondonlogo.png" alt="Institution 2" width={250} height={120} />
+                <Image src="/institutions/uarizonalogo.png" alt="Institution 3" width={250} height={150} />
                 <Image src="/institutions/astrologo.png" alt="Institution 3" width={250} height={100} />
-                <Image src="/institutions/almajoint.png" alt="Institution 4" width={100} height={100} />
+                <Image src="/institutions/almajoint.png" alt="Institution 4" width={80} height={100} />
                 <Image src="/institutions/amsterdamlogo.png" alt="Institution 5" width={250} height={100} />
                 <Image src="/institutions/cnrslogo.gif" alt="Institution 6" width={100} height={100} />  
-                <Image src="/institutions/deglistudilogo.png" alt="Institution 7" width={250} height={100} />
+                <Image src="/institutions/deglistudilogo.png" alt="Institution 7" width={250} height={50} />
                 <Image src="/institutions/leidenlogo.png" alt="Institution 8" width={250} height={100} />
-                <Image src="/institutions/maxplancklogo.jpg" alt="Institution 9" width={100} height={100} />
-                <Image src="/institutions/mssllogo.jpg" alt="Institution 10" width={250} height={100} />  
-                <Image src="/institutions/esologo.png" alt="Institution 11" width={100} height={100} />
+                <Image src="/institutions/maxplancklogo.jpg" alt="Institution 9" width={120} height={80} />
+                <Image src="/institutions/mssllogo.jpg" alt="Institution 10" width={200} height={100} />  
+                <Image src="/institutions/esologo.png" alt="Institution 11" width={80} height={100} />
                 <Image src="/institutions/iaslogo.jpg" alt="Institution 12" width={100} height={100} />
                 <Image src="/institutions/parissaclaylogo.png" alt="Institution 13" width={250} height={100} />
-                <Image src="/institutions/uconnlogo.png" alt="Institution 14" width={250} height={100} />  
-                <Image src="/institutions/udplogo.jpg" alt="Institution 15" width={250} height={100} />
-                <Image src="/institutions/usachlogo.png" alt="Institution 16" width={250} height={100} />
-                <Image src="/institutions/wisconsinlogo.png" alt="Institution 17" width={250} height={100} />
+                <Image src="/institutions/uconnlogo.png" alt="Institution 14" width={200} height={80} />  
+                <Image src="/institutions/udplogo.jpg" alt="Institution 15" width={150} height={150} />
+                <Image src="/institutions/usachlogo.png" alt="Institution 16" width={220} height={100} />
+                <Image src="/institutions/wisconsinlogo.png" alt="Institution 17" width={250} height={150} />
                     
             </div>
             <div className={styles.memberGrid}>

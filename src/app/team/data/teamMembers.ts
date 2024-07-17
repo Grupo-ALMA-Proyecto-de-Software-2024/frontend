@@ -223,7 +223,7 @@ const teamMembers: TeamMember[] = [
         cityCountry: "Leiden, the Netherlands",
         role: "Co-I",
         team: "nan",
-        personalWebsite: "https://www.universiteitleiden.nl/en/staffmembers/michiel-hogerheijde#tab-1",
+        personalWebsite: "https://www.universiteitleiden.nl/en/staffmembers/michiel-hogerheijde",
         email: "michiel@strw.leidenuniv.nl",
         expertise: "Protoplanetary disks, planet formation, interferometry at mm and ir wavelengths",
         photographLink: "https://www.universiteitleiden.nl/binaries/content/gallery/ul2/portraits/science/h/m.-hogerheijde-strw-200.jpg/m.-hogerheijde-strw-200.jpg/d200x250"

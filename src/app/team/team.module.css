@@ -74,3 +74,13 @@
     word-wrap: break-word;
     white-space: normal;
 }
+
+.memberInfo a {
+    word-wrap: break-word;
+    width: 70%;
+}
+
+.memberInfo p {
+    word-wrap: break-word;
+    width: 70%;
+}
