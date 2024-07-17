@@ -1,5 +1,4 @@
 "use client";
-
 import type { NextPage } from 'next';
 import { Divider } from 'antd';
 import React, { useEffect, useState } from 'react';
@@ -9,26 +8,23 @@ import styles from './regions.module.css'; // Importa el archivo CSS module
 
 const fetchRegions = async (): Promise<RegionDto[]> => {
     try {
-      const regions = await almaClient.getRegions();
-      return regions;
+        const regions = await almaClient.getRegions();
+        return regions;
     } catch (error: any) {
-      console.error('Failed to fetch regions', error);
-      throw new Error(error.message);
+        console.error('Failed to fetch regions', error);
+        throw new Error(error.message);
     }
 };
 
-
 const fetchDisks = async (): Promise<DiskDto[]> => {
     try {
-      const disks = await almaClient.getDisks();
-      return disks;
+        const disks = await almaClient.getDisks();
+        return disks;
     } catch (error: any) {
-      console.error('Failed to fetch disks', error);
-      throw new Error(error.message);
+        console.error('Failed to fetch disks', error);
+        throw new Error(error.message);
     }
-}
-
-
+};
 
 const RegionsPage: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -37,111 +33,87 @@ const RegionsPage: NextPage = () => {
   const [fetchedDisks, setFetchedDisks] = useState<DiskDto[]>([]);
 
   useEffect(() => {
-    const loadRegions = async () => {
-      try {
-        const regions = await fetchRegions();
-        const disks = await fetchDisks();
-        setFetchedRegions(regions);
-        setFetchedDisks(disks);
-        setIsLoading(false);
-      } catch (err: any) {
-        setError(err.message || 'Error in fetching regions');
-        setIsLoading(false);
-      }
-    };
-    loadRegions();
+      const loadRegions = async () => {
+          try {
+              const regions = await fetchRegions();
+              const disks = await fetchDisks();
+              setFetchedRegions(regions);
+              setFetchedDisks(disks);
+              setIsLoading(false);
+          } catch (err: any) {
+              setError(err.message || 'Error in fetching regions');
+              setIsLoading(false);
+          }
+      };
+      loadRegions();
   }, []);
 
-  console.log("REGIONES");
-  console.log(fetchedRegions);
-  console.log("DISCOS");
-  console.log(fetchedDisks);
-  
-  // columns it's union of all keys (example of json: fetchedRDisks[0].features)
-  // code in python example: set((*(disk.features.keys() for disk in fetchedDisks))
-  const columns: string[] = [];
-  fetchedDisks.forEach(disk => {
-    Object.keys(disk.features).forEach(key => {
-      if (!columns.includes(key)) {
-        columns.push(key);
-      }
+  const getAllFeatures = () => {
+      const allFeatures: Set<string> = new Set();
+      fetchedDisks.forEach(disk => {
+        Object.keys(disk.features).forEach(key => {
+            if (key !== 'Fullname') { // Excluimos ID y fullname
+                allFeatures.add(key);
+            }
+        });
     });
-  });
-
-  console.log("COLUMNS");
-  console.log(columns);
-
-  const renderRegion = (region: RegionDto, regionName: string) => (
-    <div key={regionName}>
-      <h2>{regionName}</h2>
-      <p>{region.info}</p>
-      <img src={region.image} alt={`${regionName} image`} />
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Fullname</th>
-            <th>RA</th>
-            <th>Dec</th>
-            <th>Distance</th>
-            <th>SpT</th>
-            <th>Class</th>
-            <th>Teff</th>
-            <th>Lstar</th>
-            <th>Av</th>
-            <th>Mstar</th>
-            <th>Macc</th>
-          </tr>
-        </thead>
-        <tbody>
-          {region.table.map((row, index) => (
-            <tr key={index}>
-              <td>{row.ID}</td>
-              <td>{row.fullname}</td>
-              <td>{row.RA}</td>
-              <td>{row.Dec}</td>
-              <td>{row.distance}</td>
-              <td>{row.SpT}</td>
-              <td>{row.Class}</td>
-              <td>{row.Teff}</td>
-              <td>{row.Lstar}</td>
-              <td>{row.Av}</td>
-              <td>{row.Mstar}</td>
-              <td>{row.Macc}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <Divider />
-    </div>
-  );
+      return Array.from(allFeatures);
+  };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.header}>Regions</h1>
-      <Divider />
-      <div>
-        {isLoading ? (
-          <div className={styles.loading}>
-            <Divider />
-            Loading...
-          </div>
-        ) : error ? (
-          <div>
-            <Divider />
-            <strong>Error:</strong> {error}
-          </div>
-        ) : (
-          fetchedRegions && (
-            <div>
-              {renderRegion(fetchedRegions.Ophiuchus, 'Ophiuchus')}
-              {renderRegion(fetchedRegions.Lupus, 'Lupus')}
-              {renderRegion(fetchedRegions.UpperScorpius, 'Upper Scorpius')}
-            </div>
-          )
-        )}
+      <div className={styles.container}>
+          <h1 className={styles.header}>Regions</h1>
+          <Divider />
+          {isLoading ? (
+              <div className={styles.loading}>Loading...</div>
+          ) : error ? (
+              <div className={styles.error}>{error}</div>
+          ) : (
+              fetchedRegions.map((region, regionIndex) => (
+                  <div key={regionIndex} className={styles.region}>
+                      <div className={styles.regionContent}>
+                          <div className={styles.regionDescription}>
+                              <h2>{region.name}</h2>
+                              {region.description && <p className={styles.description}>{region.description}</p>}
+                          </div>
+                          <div className={styles.regionImage}>
+                              <img src={`/regions/${region.name}.jpg`} alt={region.name} className={styles.image} />
+                          </div>
+                      </div>
+                      <div className={styles.tableWrapper}>
+                          <table className={styles.table}>
+                              <thead>
+                                  <tr>
+                                      <th className={styles.th}>Full Name</th> {/* Columna para Disk Name */}
+                                      {getAllFeatures().map((feature, index) => (
+                                          <th key={index} className={styles.th}>{feature}</th>
+                                      ))}
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  {region.disks
+                                      .slice() // Clonamos el array para no modificar el original
+                                      .sort((a, b) => {
+                                          // Ordenamos por el campo 'Disk ID' como string
+                                          if (a.features['Disk ID'] < b.features['Disk ID']) return -1;
+                                          if (a.features['Disk ID'] > b.features['Disk ID']) return 1;
+                                          return 0;
+                                      })
+                                      .map((disk, diskIndex) => (
+                                          <tr key={diskIndex} className={diskIndex % 2 === 0 ? styles.evenRow : ''}>
+                                              <td className={styles.td}>{disk.name}</td> {/* Renderizar el nombre del disco */}
+                                              {getAllFeatures().map((feature, index) => (
+                                                  <td key={index} className={styles.td}>{disk.features[feature] || '-'}</td>
+                                              ))}
+                                          </tr>
+                                      ))}
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              ))
+          )}
       </div>
-    </div>
   );
 };
 
