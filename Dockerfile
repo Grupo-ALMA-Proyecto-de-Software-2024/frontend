@@ -9,6 +9,7 @@ COPY package.json package-lock.json* ./
 
 # Install dependencies
 RUN npm install
+# RUN npm install @radix-ui/themes
 
 # Copy the rest of your frontend application
 COPY . .
