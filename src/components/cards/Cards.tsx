@@ -53,14 +53,14 @@ const cardsData: CardProps[] = [
     title: 'Data',
     description: 'Access and analyze our collected data.',
     link: '/data_page',
-  }/*,
+  },
   {
     imageSrc: '/cards/ScriptsIcon.png',
     imageAlt: 'Scripts Card',
     title: 'Scripts',
     description: 'Find scripts and tools for data analysis.',
     link: '/scripts_page',
-  },*/
+  },
 ];
 
 const Cards: FC = () => {
