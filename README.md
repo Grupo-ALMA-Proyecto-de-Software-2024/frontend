@@ -53,3 +53,16 @@ If you'd like to change color scheme, you can do so by modifying `app/globals.cs
 ### Changing resources
 
 If you'd like to change the resources, you can do so by adding new resources to the `public/` directory. In order to replace existing resources, you can simply replace the existing resources with the new ones in each of the respective directories, making sure to keep the same file name.
+
+## Contributors
+
+This project was developed as part of the `Software Project` course at the Faculty of Physical and Mathematical Sciences, University of Chile. The following students contributed to the project:
+
+| Name               | GitHub Profile                                    |
+|--------------------|---------------------------------------------------|
+| Diego Carmona      | [github.com/Diego-Carmona](https://github.com/Diego-Carmona) |
+| Nicolás Cárcamo    | [github.com/nicolascarcamo](https://github.com/nicolascarcamo) |
+| Luciano Providel   | [github.com/Lu-desu](https://github.com/Lu-desu) |
+| Pablo Skewes       | [github.com/pabloskewes](https://github.com/pabloskewes) |
+| Bastián Vera       | [github.com/bverab](https://github.com/bverab) |
+| Franz Widerstrom   | [github.com/Franzo1](https://github.com/Franzo1) |
