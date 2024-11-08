@@ -37,6 +37,7 @@ export const contentManagementClient = axios.create({
 });
 
 function getFullImageUrl(imageUrl: string) {
+  const sanitizedImageUrl = imageUrl.replace(/^\/+/, "");
   return `http://${host}:${port}/${imageUrl}`;
 }
 
@@ -107,15 +108,16 @@ class almaClient {
     return response.data.script;
   }
 
-  async generateDownloadScriptFromString(dataItems: Set<string>): Promise<string> {
+  async generateDownloadScriptFromString(
+    dataItems: Set<string>
+  ): Promise<string> {
     const stringArray = Array.from(dataItems);
-    console.log(stringArray)
+    console.log(stringArray);
     const response = await dataClient.post("/generate-script/", {
-      links: stringArray.map((item) => item.split('--').pop()),
+      links: stringArray.map((item) => item.split("--").pop()),
     });
     return response.data.script_url;
   }
-
 }
 
 export default new almaClient();
