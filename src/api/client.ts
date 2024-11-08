@@ -38,7 +38,7 @@ export const contentManagementClient = axios.create({
 
 function getFullImageUrl(imageUrl: string) {
   const sanitizedImageUrl = imageUrl.replace(/^\/+/, "");
-  return `http://${host}:${port}/${imageUrl}`;
+  return `http://${host}:${port}/${sanitizedImageUrl}`;
 }
 
 class almaClient {
