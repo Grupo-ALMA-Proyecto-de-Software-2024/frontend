@@ -12,7 +12,7 @@ const Home: React.FC = () => {
       <div className={styles.content}>
         <div className={styles.leftContent}>
           <section className={styles.section}>
-            <h1>AGE-Pro</h1>
+            <h1>AGE-PRO</h1>
             <h2>&ldquo;The ALMA Survey of Gas Evolution in PROtoplanetary Disks&rdquo;</h2>
             <p>
               It&apos;s an LP more than 100 hours of observation that were awarded to an international collaboration of more than
