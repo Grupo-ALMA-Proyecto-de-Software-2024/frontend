@@ -1,4 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend - AGEPRO
+
+This is the frontend for the ALMA data repository related to AGEPRO large program. The frontend is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+### Prerequisitos
+
+- Node.js
+
+### Instalation
+
+To install dependecies, run the following command:
+
+```bash
+npm install
+```
 
 ## Getting Started
 
