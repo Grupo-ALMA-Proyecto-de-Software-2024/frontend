@@ -45,22 +45,18 @@ export interface DataDto {
 
 export interface MoleculeDto {
     name: string;
-    data: DataDto[];
 }
 
 export interface BandDto {
     name: string;
-    molecules: MoleculeDto[];
 }
 
 export interface DiskDto {
     name: string;
     features: { [key: string]: string };
-    bands: BandDto[];
 }
 
 export interface RegionDto {
     name: string;
     description: string | null;
-    disks: DiskDto[];
 }
