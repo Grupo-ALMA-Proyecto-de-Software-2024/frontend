@@ -6,8 +6,8 @@ const Footer = () => {
         <div className={styles.container}>
             <div className={styles.logo}>
                 <Image 
-                  src="/logos/logo.png" 
-                  alt="AGE-Pro Icon" 
+                  src="/logos/AGE-PRO-white-transparent.png" 
+                  alt="AGE-PRO Icon" 
                   width={75} 
                   height={75} 
                   className={styles.mainImage}
@@ -52,7 +52,7 @@ const Footer = () => {
                 </a>
             </div>
             <div className={styles.text}>
-                Age-PRO Large Program from ALMA © All Rights Are Reserved.
+                AGE-PRO - The ALMA Survey of Gas Evolution in PROtoplanetary Disks
             </div>
         </div>
     );

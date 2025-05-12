@@ -19,7 +19,7 @@ const useCarouselImages = () => {
             } catch (err) {
                 setError('Failed to fetch carousel images');
                 setCarouselImages([
-                    { imageUrl: '/protoplanetDisk.jpg', title: 'Placeholder', description: 'Failed to load image' }
+                    { imageUrl: '/logos/AGE-PRO-white-transparent.png', title: 'Placeholder', description: 'Failed to load image' }
                 ]);
             } finally {
                 setIsLoading(false);

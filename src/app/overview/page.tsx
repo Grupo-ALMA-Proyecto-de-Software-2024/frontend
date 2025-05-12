@@ -11,12 +11,11 @@ const Overview = () => {
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>
-                Overview
+                Motivation
             </h1>
             <div className={styles.line}></div>
             <h2 className={styles.subtitle}>
-            Planets form and obtain their compositions in disks around young stars, 
-            and the outcome of this process is intimately linked to the disk chemistry and structure.
+            AGE-PRO aims to systematically trace the evolution of gas disk mass and size throughout the lifetime of protoplanetary disks.
             </h2>
             <p className={styles.description}>
             &apos;Molecules with ALMA at Planet-forming Scales&apos; (MAPS) is an ALMA Large Program (2018.1.01055.L) 

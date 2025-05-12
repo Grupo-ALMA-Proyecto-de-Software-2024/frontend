@@ -3,10 +3,11 @@
 @tailwind utilities;
 TailWind no es muy bonito para aplicaciones grandes */
 :root {
-  --bg1: #000723;
+  --bg1: #381b76;
   --bg2: #E7EFEF;
-  --text: black;
-  --textSoft: white;
+/*  --text: #347374;*/
+  --text: #357476;
+  --textSoft: rgb(214, 252, 230);
   --alma-blue: #0078A8;
   --alma-light-blue: #8AC6E9;
   --soft-gray: #C4C4C4;
@@ -25,7 +26,7 @@ body{
 }
 
 a{
-  text-decoration: none;
+/*  text-decoration: none;*/
   color: inherit;
 }
 

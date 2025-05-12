@@ -11,7 +11,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 800px; /* width for carousel */
+    width: 550px; /* width for carousel */
     height: 500px; /* height of carousel */
     position: relative;
     overflow: hidden;
