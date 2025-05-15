@@ -6,16 +6,27 @@ import styles from "./home.module.css";
 const Home: React.FC = () => {
   return (
     <main>
-      <div className={styles.carouselContainer}>
+      {/* <div className={styles.carouselContainer}>
         <CarouselContainer />
-      </div>
+      </div> */}
       <div className={styles.content}>
+      <div className={styles.rightContent}>
+          <Image
+            src="/logos/AGE-PRO-white-transparent.png"
+            alt="Earth"
+            width={700}
+            height={700}
+            className={styles.gifImage}
+            unoptimized
+          />
+        </div>
+        
         <div className={styles.leftContent}>
           <section className={styles.section}>
-            <h1>AGE-Pro</h1>
-            <h2>&ldquo;The ALMA Survey of Gas Evolution in PROtoplanetary Disks&rdquo;</h2>
+            <h1>AGE-PRO: </h1>
+            <h2>The ALMA Survey of Gas Evolution in PROtoplanetary Disks</h2>
             <p>
-              It&apos;s an LP more than 100 hours of observation that were awarded to an international collaboration of more than
+              AGE-PRO is an ALMA Large Program with more than 100 hours of observation that were awarded to an international collaboration of more than
               20 astronomers, who seek to understand the evolution of gaseous material in disks
               protoplanetary organisms, and at the same time understand what physical mechanisms impact their evolution.
               Once we achieve this goal, the collaboration will publish these results in a wave of
@@ -35,16 +46,7 @@ const Home: React.FC = () => {
           </section>
         </div>
 
-        <div className={styles.rightContent}>
-          <Image
-            src="/giphy.gif"
-            alt="Earth"
-            width={500}
-            height={500}
-            className={styles.gifImage}
-            unoptimized
-          />
-        </div>
+       
       </div>
 
       <Cards />

@@ -11,7 +11,6 @@
   margin-right: 20px;
 }
 .publicationImage {
-
   margin-top: 10px;
   width: 100%; /* Adjust size as needed */
   max-height: 500px;
@@ -23,8 +22,9 @@
 }
 
 .publicationTitle {
+  color: #381b76; 
   margin-top: 10px;
-  font-size: 25px;
+  font-size: 22px;
 }
 
 .publicationInfo {
@@ -32,13 +32,15 @@
   display: flex;
   row-gap: 10px;
   flex-direction: column;
+  color: #666; 
 }
 
 .publicationAuthors {
   margin-top: -10px;
   margin-bottom: -5px;
-  font-size: 12px;
-}
+  font-size: 14px;
+  color: #357476; 
+  }
 
 .publicationDetails {
   font-size: 12px;
@@ -51,7 +53,7 @@
 
 .link {
   text-decoration: none;
-  background-color: #337ab7;
-  border-color: #2e6da4;
+  background-color: #381b76;
+  border-color: #381b76;
   color: white; /* Example color */
 }

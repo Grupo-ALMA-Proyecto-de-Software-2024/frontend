@@ -16,13 +16,18 @@ const Team = () => {
         <div className={styles.teamContainer}>
             <div className={styles.teamDescription}>
                 <h1>Our Team</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <h2>Institutions & Funding</h2>
+                <p>We are a diverse group of researchers, from different institutions worldwide.</p>
+                <h2>Our research has been funded by:</h2>
+                <h2>-- Here we need logos of funding agencies</h2>
+                <h2>   </h2>
+
+                <h2>Institutions</h2>
+                <Image src="/institutions/wisconsinlogo.png" alt="Institution 17" width={250} height={150} />
                 <Image src="/institutions/uchilelogo.jpg" alt="Institution 1" width={250} height={100} />
                 <Image src="/institutions/ulondonlogo.png" alt="Institution 2" width={250} height={120} />
                 <Image src="/institutions/uarizonalogo.png" alt="Institution 3" width={250} height={150} />
-                <Image src="/institutions/astrologo.png" alt="Institution 3" width={250} height={100} />
                 <Image src="/institutions/almajoint.png" alt="Institution 4" width={80} height={100} />
+                <Image src="/institutions/astrologo.png" alt="Institution 3" width={250} height={100} />
                 <Image src="/institutions/amsterdamlogo.png" alt="Institution 5" width={250} height={100} />
                 <Image src="/institutions/cnrslogo.gif" alt="Institution 6" width={100} height={100} />  
                 <Image src="/institutions/deglistudilogo.png" alt="Institution 7" width={250} height={50} />
@@ -35,7 +40,6 @@ const Team = () => {
                 <Image src="/institutions/uconnlogo.png" alt="Institution 14" width={200} height={80} />  
                 <Image src="/institutions/udplogo.jpg" alt="Institution 15" width={150} height={150} />
                 <Image src="/institutions/usachlogo.png" alt="Institution 16" width={220} height={100} />
-                <Image src="/institutions/wisconsinlogo.png" alt="Institution 17" width={250} height={150} />
                     
             </div>
             <div className={styles.memberGrid}>
@@ -59,8 +63,8 @@ const Team = () => {
                             showArrow={false}
                         >
                             <div className={styles.memberInfo}>
-                                {member.cityCountry !== "nan" && <p><strong>City, Country:</strong> {member.cityCountry}</p>}
-                                {member.team !== "nan" && <p><strong>Team:</strong> {member.team}</p>}
+                                {member.cityCountry !== "nan" && <p><strong>Location:</strong> {member.cityCountry}</p>}
+                                {member.team !== "nan" && <p><strong>AGE-PRO Team:</strong> {member.team}</p>}
                                 {member.personalWebsite !== "nan" && <p><strong>Personal Website:</strong> <a href={member.personalWebsite}>{member.personalWebsite}</a></p>}
                                 {member.email !== "nan" && <p><strong>Email:</strong> <a href={`mailto:${member.email}`}>{member.email}</a></p>}
                                 {member.expertise !== "nan" && <p><strong>Expertise:</strong> {member.expertise}</p>}

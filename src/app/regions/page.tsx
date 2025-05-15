@@ -62,7 +62,7 @@ const RegionsPage: NextPage = () => {
 
   return (
       <div className={styles.container}>
-          <h1 className={styles.header}>Regions</h1>
+          <h1 className={styles.title}>Regions</h1>
           <Divider />
           {isLoading ? (
               <div className={styles.loading}>Loading...</div>

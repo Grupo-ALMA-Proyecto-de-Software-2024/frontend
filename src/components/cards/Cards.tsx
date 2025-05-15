@@ -13,54 +13,54 @@ interface CardProps {
 
 const cardsData: CardProps[] = [
   {
-    imageSrc: '/cards/OverviewIcon.png',
-    imageAlt: 'Overview Card',
-    title: 'Overview',
-    description: 'Learn about the AGE-Pro project and its goals.',
+    imageSrc: '/cards/motivation.png',
+    imageAlt: 'Motivation for AGE-PRO',
+    title: 'Motivation',
+    description: 'Why do we need AGE-PRO?',
     link: '/overview',
   },
   {
-    imageSrc: '/cards/RegionsIcon.png',
-    imageAlt: 'Regions Card',
-    title: 'Regions',
-    description: 'Explore the different regions studied by AGE-Pro.',
-    link: '/regions',
-  },
-  {
-    imageSrc: '/cards/PublicationsIcon.png',
+    imageSrc: '/cards/publications.png',
     imageAlt: 'Publications Card',
     title: 'Publications',
-    description: 'Browse through our scientific publications.',
+    description: 'Browse our scientific publications.',
     link: '/publications',
   },
   {
-    imageSrc: '/cards/PressIcon.png',
+    imageSrc: '/cards/Theory.png',
+    imageAlt: 'Theory Card',
+    title: 'Theory',
+    description: 'Learn about our models to interpret AGE-PRO observations.',
+    link: '/scripts_page',
+  },
+  {
+    imageSrc: '/cards/targets.png',
+    imageAlt: 'Targets Card',
+    title: 'Targets',
+    description: 'Explore the targets in the different star-forming regions studied by AGE-PRO.',
+    link: '/regions',
+  },
+  {
+    imageSrc: '/cards/data.png',
+    imageAlt: 'Data Card',
+    title: 'AGE-PRO Data',
+    description: 'Access our calibrated datasets and value-added data products.',
+    link: '/data_page',
+  },
+  {
+    imageSrc: '/cards/press.png',
     imageAlt: 'Press Card',
     title: 'Press',
-    description: 'Check out our press releases and media coverage.',
+    description: 'Read about the media coverage of AGE-PRO.',
     link: '/press',
   },
   {
-    imageSrc: '/cards/TeamIcon.png',
+    imageSrc: '/cards/team.png',
     imageAlt: 'Team Card',
     title: 'Team',
-    description: 'Meet the members of the AGE-Pro team.',
+    description: 'Meet the members of the AGE-PRO collaboration.',
     link: '/team',
-  },
-  {
-    imageSrc: '/cards/DataIcon.png',
-    imageAlt: 'Data Card',
-    title: 'Data',
-    description: 'Access and analyze our collected data.',
-    link: '/data_page',
-  }/*,
-  {
-    imageSrc: '/cards/ScriptsIcon.png',
-    imageAlt: 'Scripts Card',
-    title: 'Scripts',
-    description: 'Find scripts and tools for data analysis.',
-    link: '/scripts_page',
-  },*/
+  }
 ];
 
 const Cards: FC = () => {

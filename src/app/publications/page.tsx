@@ -36,11 +36,9 @@ const PublicationsPage: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.header}>Publications</h1>
-      <Divider />
-      <p className={styles.paragraph}>
-        A list of publications that have been produced using the data from the Age-PRO project. 
-        
+      <h1 className={styles.title}>Publications from the AGE-PRO collaboration</h1>
+      <div className={styles.line}></div>
+      <p className={styles.subtitle}>
         For any questions, please contact the authors of the respective publication.
       </p>
       <div>

@@ -18,33 +18,33 @@ const links: LinkItem[] = [
         path: "/",
     },
     {
-        title: "Overview",
+        title: "Motivation",
         path: "/overview",
-    },
-    {
-        title: "Regions",
-        path: "/regions",
     },
     {
         title: "Publications",
         path: "/publications",
     },
     {
-        title: "Press",
-        path: "/press",
+        title: "Theory",
+        path: "/scripts_page"
+    },
+    {
+        title: "Targets",
+        path: "/regions",
     },
     {
         title: "Team",
         path: "/team",
     },
     {
-        title: "Data",
-        path: "/data_page",
-    }/*,
+        title: "Press",
+        path: "/press",
+    },
     {
-        title: "Scripts",
-        path: "/scripts_page",
-    },*/
+        title: "AGE-PRO Data",
+        path: "/data_page",
+    },
 ];
 
 const Links = () => {
