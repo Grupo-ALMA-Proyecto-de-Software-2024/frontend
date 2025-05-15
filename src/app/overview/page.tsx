@@ -18,13 +18,25 @@ const Overview = () => {
             AGE-PRO aims to systematically trace the evolution of gas disk mass and size throughout the lifetime of protoplanetary disks.
             </h2>
             <p className={styles.description}>
-            &apos;Molecules with ALMA at Planet-forming Scales&apos; (MAPS) is an ALMA Large Program (2018.1.01055.L) 
-            designed to expand our understanding of the chemistry of planet formation by exploring protoplanetary 
-            disk chemical structures down to 10 au scales.
+            The ALMA Survey of Gas Evolution of PROtoplanetary Disks, AGE-PRO, is a Large Program of the Atacama Large 
+            Millimeter/submillimeter Array (ALMA) designed to measure gas disk masses and sizes at three 
+            evolutionary phases: the embedded disk phase, the middle age, and the end of the gas-rich phase. 
 
-            Together these observations provide constraints on a range of disk properties related to planet formation. In particular, MAPS was designed to answer the following key questions...
+            The first phase sets the conditions of early planet formation, as observations have suggested that giant 
+            planet formation may be already underway within the first Myr of disk formation. The middle and end phases 
+            are crucial to test evolutionary processes, as different mechanisms predict disk properties diverging at 
+            these phases.
+
+            We selected the AGE-PRO disk sample from three nearby (140-160 pc) star-forming regions of different ages: 
+            Ophiuchus (embedded disks, 0.5-1 Myr), Lupus (middle age, 1-3 Myr), and Upper Sco 
+            (the end of gas disk lifetime, 2-6 Myr), that have been characterized in previous ALMA shallow surveys 
+            in CO and dust emission.
+            
+            For AGE-PRO, we carefully selected a sample of 30 disks around M3-K6 stars
+
             </p>
-            <ul className={styles.list}>
+
+            {/* <ul className={styles.list}>
                 <li>How are dust and chemical substructures linked?</li>
                 <li>Where do molecules reside vertically in the disks?</li>
                 <li>What are the main organic reservoirs, C/N/O/S, and D/H ratios in the planet-forming disk regions?</li>
@@ -86,7 +98,7 @@ const Overview = () => {
             <p className={styles.description}>
             In addition to the MAPS publications, 
             all data products and analysis scripts are publicly available from our dedicated download page.
-            </p>
+            </p> */}
         </div>
     );
 };

@@ -26,8 +26,13 @@ body{
 }
 
 a{
-/*  text-decoration: none;*/
+  text-decoration: none;
   color: inherit;
+}
+
+a.underline { 
+  color: inherit;
+  text-decoration: underline;
 }
 
 .navbar{
