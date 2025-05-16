@@ -4,7 +4,8 @@
   border-radius: 5px;
   background-color: var(--bg1);
   padding: 2px;
-  height: 400px;
+  min-height: 100px;
+  max-height: 400px;
   overflow-y: auto;
 }
 
@@ -69,6 +70,7 @@
   justify-content: center;
   align-items: center;
   margin: 10px 0;
+  background-color: var(--bg1);
 }
 
 /* New styles for disk separation */
