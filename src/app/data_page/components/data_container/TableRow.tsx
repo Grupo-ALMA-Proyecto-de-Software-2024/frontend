@@ -27,6 +27,14 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
     let bandRowSpan = 0;
     let moleculeRowSpan = 0;
 
+    // Estilos comunes para las celdas para hacer las filas más pequeñas
+    const cellStyle = {
+      padding: '2px 8px',
+      height: '24px',
+      fontSize: '0.9rem',
+      lineHeight: 1.1
+    };
+
     data.forEach((dataItem, index) => {
       const itemKey = `${dataItem.disk}--${dataItem.band}--${dataItem.molecule}--${dataItem.name}--${index}--${dataItem.filepath}`; // Ensure unique key
       const isSelected = selectedItems.has(itemKey);
@@ -53,24 +61,46 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
       }
 
       rows.push(
-        <MuiTableRow key={itemKey} className={`${styles.tableRow} ${isSelected ? styles.selected : ''} ${isNewDisk ? styles.newDiskRow : ''}`}>
-          {isNewDisk && <TableCell rowSpan={diskRowSpan}>{dataItem.disk}</TableCell>}
-          {isNewBand && <TableCell rowSpan={bandRowSpan}>{dataItem.band}</TableCell>}
-          {isNewMolecule && <TableCell rowSpan={moleculeRowSpan}>{dataItem.molecule}</TableCell>}
-          <TableCell>
-            <div className={styles.checkbox}>
-              {dataItem.imageLink ? (
-                <span className={styles.dataItem} onClick={() => onOpenImage(dataItem.imageLink!)}>{dataItem.name}</span>
-              ) : (
-                <span>{dataItem.name}</span>
-              )}
-              {dataItem.imageLink && (
-                <Button variant="outlined" onClick={() => onOpenImage(dataItem.imageLink!)} className={styles.imageButton}>View</Button>
-              )}
-              <Checkbox
-                checked={isSelected}
-                onChange={() => handleSelectItem(itemKey)}
-              />
+        <MuiTableRow 
+          key={itemKey} 
+          className={`${styles.tableRow} ${isSelected ? styles.selected : ''} ${isNewDisk ? styles.newDiskRow : ''}`}
+          sx={{ height: '24px' }} // Altura reducida para la fila
+        >
+          {isNewDisk && <TableCell rowSpan={diskRowSpan} sx={cellStyle}>{dataItem.disk}</TableCell>}
+          {isNewBand && <TableCell rowSpan={bandRowSpan} sx={cellStyle}>{dataItem.band}</TableCell>}
+          {isNewMolecule && <TableCell rowSpan={moleculeRowSpan} sx={cellStyle}>{dataItem.molecule}</TableCell>}
+          <TableCell sx={cellStyle}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div>
+                {dataItem.imageLink ? (
+                  <span onClick={() => onOpenImage(dataItem.imageLink!)}>{dataItem.name}</span>
+                ) : (
+                  <span>{dataItem.name}</span>
+                )}
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                {dataItem.imageLink && (
+                  <Button 
+                    variant="outlined" 
+                    onClick={() => onOpenImage(dataItem.imageLink!)} 
+                    size="small"
+                    sx={{ 
+                      padding: '0px 6px', 
+                      minHeight: '22px', 
+                      fontSize: '0.75rem',
+                      marginRight: '8px'
+                    }}
+                  >
+                    VIEW
+                  </Button>
+                )}
+                <Checkbox
+                  checked={isSelected}
+                  onChange={() => handleSelectItem(itemKey)}
+                  sx={{ padding: '0px' }}
+                  size="small"
+                />
+              </div>
             </div>
           </TableCell>
         </MuiTableRow>

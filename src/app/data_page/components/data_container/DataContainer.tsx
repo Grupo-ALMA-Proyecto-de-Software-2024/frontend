@@ -34,7 +34,7 @@ interface DataContainerProps {
  */
 const DataContainer: React.FC<DataContainerProps> = ({ data, onOpenImage, selectedItems, setSelectedItems }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 15; // Show 15 items per page
+  const itemsPerPage = 30; // Mostrar más elementos por página
   const [paginatedItems, setPaginatedItems] = useState<FlattenedDataItem[]>([]);
 
   useEffect(() => {
@@ -106,30 +106,41 @@ const DataContainer: React.FC<DataContainerProps> = ({ data, onOpenImage, select
             data={paginatedItems}
             selectedItems={selectedItems}
             handleSelectItem={handleSelectItem}
-            onOpenImage={onOpenImage} // Pass onOpenImage to TableRow
+            onOpenImage={onOpenImage} 
           />
         </tbody>
       </table>
-      <Stack spacing={2} className={styles.pagination}>
-        <Pagination 
-          count={totalPages} 
-          page={currentPage} 
-          onChange={handlePageChange} 
-          size="medium" // Size Change
-          sx={{
-            '& .MuiPaginationItem-root': {
-              color: 'var(--textSoft)', // Change color font
-            },
-            '& .Mui-selected': {
-              backgroundColor: 'var(--alma-light-blue)',
-              color: 'var(--alma-blue)',
-            },
-            '& .MuiPaginationItem-root:hover': {
-              backgroundColor: 'rgba(138, 198, 233, 0.4)',
-            },
-          }}
-        />
-      </Stack>
+      {/* Solo mostrar paginaciu00f3n si hay mu00e1s de una pu00e1gina */}
+      {totalPages > 1 && (
+        <Stack 
+          spacing={1} 
+          className={styles.pagination}
+          sx={{ backgroundColor: 'var(--bg1)', borderRadius: '0 0 5px 5px' }}
+        >
+          <Pagination 
+            count={totalPages} 
+            page={currentPage} 
+            onChange={handlePageChange} 
+            size="small"
+            siblingCount={0}
+            sx={{
+              '& .MuiPaginationItem-root': {
+                color: 'var(--textSoft)',
+                padding: '0px',
+                minWidth: '22px',
+                height: '22px',
+              },
+              '& .Mui-selected': {
+                backgroundColor: 'var(--alma-light-blue)',
+                color: 'var(--alma-blue)',
+              },
+              '& .MuiPaginationItem-root:hover': {
+                backgroundColor: 'rgba(138, 198, 233, 0.4)',
+              },
+            }}
+          />
+        </Stack>
+      )}
     </div>
   );
 };
