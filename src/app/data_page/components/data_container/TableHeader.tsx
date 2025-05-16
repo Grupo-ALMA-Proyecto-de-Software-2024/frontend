@@ -16,20 +16,13 @@ interface TableHeaderProps {
  * @param {TableHeaderProps} props - The props for the component.
  */
 const TableHeader: React.FC<TableHeaderProps> = ({ handleSelectAll, isSelectedAll }) => {
-  // Estilos para hacer los encabezados más delgados
-  const headerCellStyle = {
-    padding: '4px 6px',
-    height: '32px',
-    lineHeight: 1.2
-  };
-
   return (
     <thead>
-      <tr style={{ height: '32px' }}>
-        <th style={headerCellStyle}>Disk</th>
-        <th style={headerCellStyle}>Band</th>
-        <th style={headerCellStyle}>Molecule</th>
-        <th style={headerCellStyle}>
+      <tr>
+        <th>Disk</th>
+        <th>Band</th>
+        <th>Molecule</th>
+        <th>
           <div className={styles.checkboxHeader}>
             <span className={styles.headerText}>Data Item</span>
             <Tooltip title="Select All" placement="top">
@@ -37,8 +30,6 @@ const TableHeader: React.FC<TableHeaderProps> = ({ handleSelectAll, isSelectedAl
                 onChange={handleSelectAll}
                 checked={isSelectedAll}
                 className={styles.headerCheckbox}
-                size="small"
-                sx={{ padding: '0px' }}
               />
             </Tooltip>
           </div>
