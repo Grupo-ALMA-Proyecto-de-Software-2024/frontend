@@ -76,8 +76,11 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title, onOpenImage,
         if (selectedMolecules.length > 0) {
             filtered = filtered.filter(d => selectedMolecules.includes(d.molecule));
         }
+        if (selectedData.length > 0) {
+            filtered = filtered.filter(d => selectedData.includes(d.name));
+        }
         setFilteredData(filtered);
-    }, [data, selectedDisks, selectedBands, selectedMolecules]);
+    }, [data, selectedDisks, selectedBands, selectedMolecules, selectedData]);
 
     /**
      * Convert DataDto array to DiskDto array for displaying in DataContainer.
