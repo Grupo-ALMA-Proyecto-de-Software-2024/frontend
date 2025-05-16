@@ -46,14 +46,28 @@ const DownloadButton: FC<DownloadButtonProps> = ({ allSelections }) => {
       downloadFile(await url, 'script.sh', 'text/x-shellscript');
     };
   
-    return <Button sx={{ position: 'fixed', 
-                        bottom: 128, 
-                        right: 96,
-                        backgroundColor: 'white',
-                        '&:hover': {
-                          backgroundColor: '#ADD8E6'
-                        } }} 
-                  variant="outlined" onClick={handleDownload} >Download {<DownloadIcon />}</Button>;
+    return (
+      <Button 
+        sx={{ 
+          position: 'fixed', 
+          bottom: 20, 
+          right: 20,
+          backgroundColor: 'white',
+          boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
+          borderRadius: '4px',
+          padding: '8px 16px',
+          zIndex: 1000,
+          '&:hover': {
+            backgroundColor: '#ADD8E6'
+          }
+        }} 
+        variant="outlined" 
+        onClick={handleDownload}
+        endIcon={<DownloadIcon />}
+      >
+        DOWNLOAD
+      </Button>
+    );
 };
   
 export default DownloadButton;
