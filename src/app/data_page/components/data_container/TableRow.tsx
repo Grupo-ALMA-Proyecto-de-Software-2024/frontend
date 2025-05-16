@@ -27,6 +27,13 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
     let bandRowSpan = 0;
     let moleculeRowSpan = 0;
 
+    // Estilos personalizados para las celdas
+    const cellStyle = {
+      padding: '2px 6px',
+      height: '30px',
+      lineHeight: 1.2
+    };
+
     data.forEach((dataItem, index) => {
       const itemKey = `${dataItem.disk}--${dataItem.band}--${dataItem.molecule}--${dataItem.name}--${index}--${dataItem.filepath}`; // Ensure unique key
       const isSelected = selectedItems.has(itemKey);
@@ -53,11 +60,15 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
       }
 
       rows.push(
-        <MuiTableRow key={itemKey} className={`${styles.tableRow} ${isSelected ? styles.selected : ''} ${isNewDisk ? styles.newDiskRow : ''}`}>
-          {isNewDisk && <TableCell rowSpan={diskRowSpan}>{dataItem.disk}</TableCell>}
-          {isNewBand && <TableCell rowSpan={bandRowSpan}>{dataItem.band}</TableCell>}
-          {isNewMolecule && <TableCell rowSpan={moleculeRowSpan}>{dataItem.molecule}</TableCell>}
-          <TableCell>
+        <MuiTableRow 
+          key={itemKey} 
+          className={`${styles.tableRow} ${isSelected ? styles.selected : ''} ${isNewDisk ? styles.newDiskRow : ''}`}
+          sx={{ height: '30px' }}
+        >
+          {isNewDisk && <TableCell rowSpan={diskRowSpan} sx={cellStyle}>{dataItem.disk}</TableCell>}
+          {isNewBand && <TableCell rowSpan={bandRowSpan} sx={cellStyle}>{dataItem.band}</TableCell>}
+          {isNewMolecule && <TableCell rowSpan={moleculeRowSpan} sx={cellStyle}>{dataItem.molecule}</TableCell>}
+          <TableCell sx={cellStyle}>
             <div className={styles.checkbox}>
               {dataItem.imageLink ? (
                 <span className={styles.dataItem} onClick={() => onOpenImage(dataItem.imageLink!)}>{dataItem.name}</span>
@@ -65,11 +76,21 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
                 <span>{dataItem.name}</span>
               )}
               {dataItem.imageLink && (
-                <Button variant="outlined" onClick={() => onOpenImage(dataItem.imageLink!)} className={styles.imageButton}>View</Button>
+                <Button 
+                  variant="outlined" 
+                  onClick={() => onOpenImage(dataItem.imageLink!)} 
+                  className={styles.imageButton}
+                  size="small"
+                  sx={{ padding: '0px 6px', fontSize: '0.75rem', minWidth: '40px' }}
+                >
+                  View
+                </Button>
               )}
               <Checkbox
                 checked={isSelected}
                 onChange={() => handleSelectItem(itemKey)}
+                size="small"
+                sx={{ padding: '0px' }}
               />
             </div>
           </TableCell>
