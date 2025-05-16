@@ -70,34 +70,37 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
           {isNewBand && <TableCell rowSpan={bandRowSpan} sx={cellStyle}>{dataItem.band}</TableCell>}
           {isNewMolecule && <TableCell rowSpan={moleculeRowSpan} sx={cellStyle}>{dataItem.molecule}</TableCell>}
           <TableCell sx={cellStyle}>
-            <div className={styles.checkbox}>
-              {dataItem.imageLink ? (
-                <span onClick={() => onOpenImage(dataItem.imageLink!)}>{dataItem.name}</span>
-              ) : (
-                <span>{dataItem.name}</span>
-              )}
-              {dataItem.imageLink && (
-                <Button 
-                  variant="outlined" 
-                  onClick={() => onOpenImage(dataItem.imageLink!)} 
-                  className={styles.imageButton}
-                  sx={{ 
-                    padding: '0px 6px', 
-                    minHeight: '22px', 
-                    fontSize: '0.75rem',
-                    marginLeft: '4px'
-                  }}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div>
+                {dataItem.imageLink ? (
+                  <span onClick={() => onOpenImage(dataItem.imageLink!)}>{dataItem.name}</span>
+                ) : (
+                  <span>{dataItem.name}</span>
+                )}
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                {dataItem.imageLink && (
+                  <Button 
+                    variant="outlined" 
+                    onClick={() => onOpenImage(dataItem.imageLink!)} 
+                    size="small"
+                    sx={{ 
+                      padding: '0px 6px', 
+                      minHeight: '22px', 
+                      fontSize: '0.75rem',
+                      marginRight: '8px'
+                    }}
+                  >
+                    VIEW
+                  </Button>
+                )}
+                <Checkbox
+                  checked={isSelected}
+                  onChange={() => handleSelectItem(itemKey)}
+                  sx={{ padding: '0px' }}
                   size="small"
-                >
-                  View
-                </Button>
-              )}
-              <Checkbox
-                checked={isSelected}
-                onChange={() => handleSelectItem(itemKey)}
-                sx={{ padding: '0px' }}
-                size="small"
-              />
+                />
+              </div>
             </div>
           </TableCell>
         </MuiTableRow>
