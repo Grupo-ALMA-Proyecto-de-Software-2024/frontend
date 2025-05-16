@@ -34,7 +34,7 @@ interface DataContainerProps {
  */
 const DataContainer: React.FC<DataContainerProps> = ({ data, onOpenImage, selectedItems, setSelectedItems }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 15; // Show 15 items per page
+  const itemsPerPage = 30; // Mostrar más elementos por página
   const [paginatedItems, setPaginatedItems] = useState<FlattenedDataItem[]>([]);
 
   useEffect(() => {
