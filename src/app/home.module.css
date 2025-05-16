@@ -18,19 +18,20 @@
 }
   
 .section {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .section h1 {
     font-size: 24px;
     margin-bottom: 10px;
+    margin-top: 0px;
     color: #381b76; 
 }
 
 .section h2 {
     font-size: 20px;
     font-style: italic; 
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: #357476; 
     font-weight: 420;
 }
@@ -49,13 +50,12 @@
 }
   
 .gifImage {
-    width: 50%; 
+    width: 90%; 
     height: auto; 
-    border-radius: 10px;
+    border-radius: 8px;
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
     background-color: #381b76;
-
 }
 
 .divCarga {
@@ -66,9 +66,9 @@
     background-color: #000;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1700px) {
     .content{
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
     .carouselContainer{

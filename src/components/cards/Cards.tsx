@@ -82,7 +82,7 @@ export default memo(Cards);
 const Card: FC<CardProps> = memo(({ imageSrc, imageAlt, title, description }) => (
   <div className={styles.card}>
     <div className={styles.cardImage}>
-      <Image src={imageSrc} alt={imageAlt} width={150} height={150} style={{ objectFit: 'cover' }} />
+      <Image src={imageSrc} alt={imageAlt} width={120} height={120} style={{ objectFit: 'cover' }} />
     </div>
     <h3>{title}</h3>
     <p>{description}</p>
