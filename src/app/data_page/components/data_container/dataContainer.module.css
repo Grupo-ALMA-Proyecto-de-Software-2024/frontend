@@ -11,22 +11,27 @@
 .table {
   width: 100%;
   border-collapse: collapse;
+  font-size: 14px;
 }
 
 .table th,
 .table td {
   border: 1px solid #ccc;
-  padding: 8px;
+  padding: 2px 8px;
   text-align: center;
+  vertical-align: middle;
 }
 
 .table th {
   background-color: #f7f7f7;
   cursor: pointer;
+  height: 32px;
 }
 
 .table td {
   background-color: #fff;
+  height: 28px;
+  max-height: 28px;
 }
 
 .icon {
@@ -34,7 +39,7 @@
 }
 
 .tableHeader th {
-  padding: 10px;
+  padding: 3px 8px;
   text-align: left;
 }
 
@@ -55,12 +60,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
 }
 
 .checkboxHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+/* Make the checkbox a bit smaller */
+.checkbox :global(.MuiCheckbox-root) {
+  padding: 2px;
+}
+
+.checkboxHeader :global(.MuiCheckbox-root) {
+  padding: 2px;
 }
 
 /* Pagination Styles */
@@ -79,6 +94,15 @@
 
 .newDiskRow td {
   border-top: 2px solid var(--bg1);
+}
+
+/* Make button smaller */
+.imageButton {
+  font-size: 0.75rem !important;
+  padding: 2px 8px !important;
+  min-width: 45px !important;
+  min-height: 24px !important;
+  margin-left: 4px !important;
 }
 
 @media (max-width: 768px) {
