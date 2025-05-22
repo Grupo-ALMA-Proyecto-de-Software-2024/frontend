@@ -18,9 +18,8 @@ import {
   GetDataParams,
 } from "./filterParams";
 
-const host = "localhost";
-const port = 8000;
-const baseUrl = `http://${host}:${port}`;
+// Usar variables de entorno para la URL de la API
+const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 export const dataClient = axios.create({
   baseURL: `${baseUrl}/api`,
@@ -38,7 +37,7 @@ export const contentManagementClient = axios.create({
 
 function getFullImageUrl(imageUrl: string) {
   const sanitizedImageUrl = imageUrl.replace(/^\/+/, "");
-  return `http://${host}:${port}/${sanitizedImageUrl}`;
+  return `${baseUrl}/${sanitizedImageUrl}`;
 }
 
 class almaClient {
