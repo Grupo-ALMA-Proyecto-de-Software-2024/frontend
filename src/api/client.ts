@@ -18,8 +18,13 @@ import {
   GetDataParams,
 } from "./filterParams";
 
-// Usar variables de entorno para la URL de la API
-const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+// Determine if we're in a browser environment or server environment
+const isBrowser = typeof window !== "undefined";
+
+// Use window.location.origin in browser, fallback to environment variable in server
+const baseUrl = isBrowser
+  ? window.location.origin // This will be http://localhost when running locally
+  : process.env.NEXT_PUBLIC_API_URL || "http://backend:8000";
 
 export const dataClient = axios.create({
   baseURL: `${baseUrl}/api`,
