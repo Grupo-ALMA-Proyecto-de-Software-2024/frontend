@@ -21,10 +21,20 @@ import {
 // Determine if we're in a browser environment or server environment
 const isBrowser = typeof window !== "undefined";
 
-// Use window.location.origin in browser, fallback to environment variable in server
-const baseUrl = isBrowser
-  ? window.location.origin // This will be http://localhost when running locally
-  : process.env.NEXT_PUBLIC_API_URL || "http://backend:8000";
+// For development and debugging
+const getApiBaseUrl = () => {
+  // In browser environments
+  if (isBrowser) {
+    // For direct backend access during local development
+    return "http://localhost:8000";
+  }
+
+  // In server-side rendering (within Docker network)
+  return process.env.NEXT_PUBLIC_API_URL || "http://backend:8000";
+};
+
+const baseUrl = getApiBaseUrl();
+console.log("API Base URL:", baseUrl);
 
 export const dataClient = axios.create({
   baseURL: `${baseUrl}/api`,
