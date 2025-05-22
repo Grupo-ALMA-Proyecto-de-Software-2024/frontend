@@ -18,9 +18,23 @@ import {
   GetDataParams,
 } from "./filterParams";
 
-const host = "localhost";
-const port = 8000;
-const baseUrl = `http://${host}:${port}`;
+// Determine if we're in a browser environment or server environment
+const isBrowser = typeof window !== "undefined";
+
+// For development and debugging
+const getApiBaseUrl = () => {
+  // In browser environments
+  if (isBrowser) {
+    // For direct backend access during local development
+    return "http://localhost:8000";
+  }
+
+  // In server-side rendering (within Docker network)
+  return process.env.NEXT_PUBLIC_API_URL || "http://backend:8000";
+};
+
+const baseUrl = getApiBaseUrl();
+console.log("API Base URL:", baseUrl);
 
 export const dataClient = axios.create({
   baseURL: `${baseUrl}/api`,
@@ -38,7 +52,7 @@ export const contentManagementClient = axios.create({
 
 function getFullImageUrl(imageUrl: string) {
   const sanitizedImageUrl = imageUrl.replace(/^\/+/, "");
-  return `http://${host}:${port}/${sanitizedImageUrl}`;
+  return `${baseUrl}/${sanitizedImageUrl}`;
 }
 
 class almaClient {
