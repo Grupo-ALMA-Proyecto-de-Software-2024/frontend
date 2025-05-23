@@ -2,13 +2,14 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy everything and install all dependencies
-COPY . .
+# Copy the package.json and package-lock.json
+COPY package.json package-lock.json ./
+
+# Install dependencies
 RUN npm install
 
-# Set proper environment variables
-ENV NEXT_PUBLIC_API_URL=http://backend:8000
-ENV NODE_ENV=production
+# Copy the rest of the application
+COPY . .
 
 # Build the app
 RUN npm run build

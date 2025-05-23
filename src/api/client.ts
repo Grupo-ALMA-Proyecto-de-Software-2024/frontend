@@ -23,13 +23,11 @@ const isBrowser = typeof window !== "undefined";
 
 // For development and debugging
 const getApiBaseUrl = () => {
-  // In browser environments
   if (isBrowser) {
-    // For direct backend access during local development
-    return "http://localhost:8000";
+    // En el navegador, usa la variable de entorno o localhost
+    return process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
   }
-
-  // In server-side rendering (within Docker network)
+  // En SSR o Docker
   return process.env.NEXT_PUBLIC_API_URL || "http://backend:8000";
 };
 
