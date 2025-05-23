@@ -20,7 +20,7 @@ describe("AlmaClient with a single filter parameter for category", () => {
     it("fetches regions correctly", async () => {
       const mockData = { regions: [{ name: "North", disks: [] }] };
       const params = { region: ["North"] };
-      dataMock.onGet("/regions", { params }).reply(200, mockData);
+      dataMock.onGet("/regions/", { params }).reply(200, mockData);
       const response = await almaClient.getRegions(params);
       expect(response).toEqual(mockData.regions);
     });
@@ -32,7 +32,7 @@ describe("AlmaClient with a single filter parameter for category", () => {
         disks: [{ name: "Disk1", regionName: "North", bands: [] }],
       };
       const params = { region: ["North"], disk: ["Disk1"] };
-      dataMock.onGet("/disks", { params }).reply(200, mockData);
+      dataMock.onGet("/disks/", { params }).reply(200, mockData);
       const response = await almaClient.getDisks(params);
       expect(response).toEqual(mockData.disks);
     });
@@ -51,7 +51,7 @@ describe("AlmaClient with a single filter parameter for category", () => {
         ],
       };
       const params = { region: ["North"], disk: ["Disk1"], band: ["Band1"] };
-      dataMock.onGet("/bands", { params }).reply(200, mockData);
+      dataMock.onGet("/bands/", { params }).reply(200, mockData);
       const response = await almaClient.getBands(params);
       expect(response).toEqual(mockData.bands);
     });
@@ -76,7 +76,7 @@ describe("AlmaClient with a single filter parameter for category", () => {
         band: ["Band1"],
         molecule: ["Molecule1"],
       };
-      dataMock.onGet("/molecules", { params }).reply(200, mockData);
+      dataMock.onGet("/molecules/", { params }).reply(200, mockData);
       const response = await almaClient.getMolecules(params);
       expect(response).toEqual(mockData.molecules);
     });
@@ -106,7 +106,7 @@ describe("AlmaClient with a single filter parameter for category", () => {
         molecule: ["Molecule1"],
         data: ["Data1"],
       };
-      dataMock.onGet("/data", { params }).reply(200, mockData);
+      dataMock.onGet("/data/", { params }).reply(200, mockData);
       const response = await almaClient.getData(params);
       expect(response).toEqual(mockData.data);
     });
@@ -141,9 +141,11 @@ describe("AlmaClient with a single filter parameter for category", () => {
           sizeInMb: null,
         },
       ];
-      dataMock.onPost("/generate-download-script", {
-        links: dataItems.map((item) => item.filepath),
-      }).reply(200, mockData);
+      dataMock
+        .onPost("/generate-download-script/", {
+          links: dataItems.map((item) => item.filepath),
+        })
+        .reply(200, mockData);
       const response = await almaClient.generateDownloadScript(dataItems);
       expect(response).toEqual(mockData.script);
     });
@@ -151,7 +153,7 @@ describe("AlmaClient with a single filter parameter for category", () => {
 
   describe("Error Handling", () => {
     it("handles network errors for getRegions", async () => {
-      dataMock.onGet("/regions").networkError();
+      dataMock.onGet("/regions/").networkError();
       await expect(almaClient.getRegions({})).rejects.toThrow("Network Error");
     });
   });
@@ -180,13 +182,13 @@ describe("AlmaClient with multiple filter parameters for category", () => {
         ],
       };
       const params = { region: ["North", "South"] };
-      dataMock.onGet("/regions", { params }).reply(200, mockData);
+      dataMock.onGet("/regions/", { params }).reply(200, mockData);
       const response = await almaClient.getRegions(params);
       expect(response).toEqual(mockData.regions);
 
       const params2 = { region: ["North", "East"] };
       dataMock
-        .onGet("/regions", { params: params2 })
+        .onGet("/regions/", { params: params2 })
         .reply(200, { regions: [{ name: "North", disks: [] }] });
       const response2 = await almaClient.getRegions(params2);
       expect(response2).toEqual([{ name: "North", disks: [] }]);
@@ -202,16 +204,14 @@ describe("AlmaClient with multiple filter parameters for category", () => {
         ],
       };
       const params = { region: ["North"], disk: ["Disk1", "Disk2"] };
-      dataMock.onGet("/disks", { params }).reply(200, mockData);
+      dataMock.onGet("/disks/", { params }).reply(200, mockData);
       const response = await almaClient.getDisks(params);
       expect(response).toEqual(mockData.disks);
 
       const params2 = { region: ["North"], disk: ["Disk1", "Disk3"] };
-      dataMock
-        .onGet("/disks", { params: params2 })
-        .reply(200, {
-          disks: [{ name: "Disk1", regionName: "North", bands: [] }],
-        });
+      dataMock.onGet("/disks/", { params: params2 }).reply(200, {
+        disks: [{ name: "Disk1", regionName: "North", bands: [] }],
+      });
       const response2 = await almaClient.getDisks(params2);
       expect(response2).toEqual([
         { name: "Disk1", regionName: "North", bands: [] },
@@ -242,7 +242,7 @@ describe("AlmaClient with multiple filter parameters for category", () => {
         disk: ["Disk1"],
         band: ["Band1", "Band2"],
       };
-      dataMock.onGet("/bands", { params }).reply(200, mockData);
+      dataMock.onGet("/bands/", { params }).reply(200, mockData);
       const response = await almaClient.getBands(params);
       expect(response).toEqual(mockData.bands);
 
@@ -251,18 +251,16 @@ describe("AlmaClient with multiple filter parameters for category", () => {
         disk: ["Disk1"],
         band: ["Band1", "Band3"],
       };
-      dataMock
-        .onGet("/bands", { params: params2 })
-        .reply(200, {
-          bands: [
-            {
-              name: "Band1",
-              diskName: "Disk1",
-              regionName: "North",
-              molecules: [],
-            },
-          ],
-        });
+      dataMock.onGet("/bands/", { params: params2 }).reply(200, {
+        bands: [
+          {
+            name: "Band1",
+            diskName: "Disk1",
+            regionName: "North",
+            molecules: [],
+          },
+        ],
+      });
       const response2 = await almaClient.getBands(params2);
       expect(response2).toEqual([
         {
@@ -301,7 +299,7 @@ describe("AlmaClient with multiple filter parameters for category", () => {
         band: ["Band1"],
         molecule: ["Molecule1", "Molecule2"],
       };
-      dataMock.onGet("/molecules", { params }).reply(200, mockData);
+      dataMock.onGet("/molecules/", { params }).reply(200, mockData);
       const response = await almaClient.getMolecules(params);
       expect(response).toEqual(mockData.molecules);
 
@@ -311,19 +309,17 @@ describe("AlmaClient with multiple filter parameters for category", () => {
         band: ["Band1"],
         molecule: ["Molecule1", "Molecule3"],
       };
-      dataMock
-        .onGet("/molecules", { params: params2 })
-        .reply(200, {
-          molecules: [
-            {
-              name: "Molecule1",
-              bandName: "Band1",
-              diskName: "Disk1",
-              regionName: "North",
-              data: [],
-            },
-          ],
-        });
+      dataMock.onGet("/molecules/", { params: params2 }).reply(200, {
+        molecules: [
+          {
+            name: "Molecule1",
+            bandName: "Band1",
+            diskName: "Disk1",
+            regionName: "North",
+            data: [],
+          },
+        ],
+      });
       const response2 = await almaClient.getMolecules(params2);
       expect(response2).toEqual([
         {
@@ -372,10 +368,10 @@ describe("AlmaClient with multiple filter parameters for category", () => {
         molecule: ["Molecule1"],
         data: ["Data1", "Data2"],
       };
-      dataMock.onGet("/data", { params }).reply(200, mockData);
+      dataMock.onGet("/data/", { params }).reply(200, mockData);
       const response = await almaClient.getData(params);
       expect(response).toEqual(mockData.data);
-  
+
       const params2 = {
         region: ["North"],
         disk: ["Disk1"],
@@ -383,7 +379,7 @@ describe("AlmaClient with multiple filter parameters for category", () => {
         molecule: ["Molecule1"],
         data: ["Data1", "Data3"],
       };
-      dataMock.onGet("/data", { params: params2 }).reply(200, {
+      dataMock.onGet("/data/", { params: params2 }).reply(200, {
         data: [
           {
             region: "North",
@@ -414,5 +410,4 @@ describe("AlmaClient with multiple filter parameters for category", () => {
       ]);
     });
   });
-  
 });

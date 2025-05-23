@@ -55,7 +55,7 @@ function getFullImageUrl(imageUrl: string) {
 
 class almaClient {
   async getCarouselImages(): Promise<CarouselImageDto[]> {
-    const response = await contentManagementClient.get("/carousel");
+    const response = await contentManagementClient.get("/carousel/");
     return response.data.carousel_images.map((item: any) => ({
       imageUrl: getFullImageUrl(item.image),
       title: item.title,
@@ -64,7 +64,7 @@ class almaClient {
   }
 
   async getPublications(): Promise<PublicationDto[]> {
-    const response = await contentManagementClient.get("/publications");
+    const response = await contentManagementClient.get("/publications/");
     return response.data.publications.map((item: any) => ({
       title: item.title,
       authors: item.authors,
@@ -80,7 +80,7 @@ class almaClient {
   }
 
   async getPressNews(): Promise<PressNewsDto[]> {
-    const response = await contentManagementClient.get("/press-news");
+    const response = await contentManagementClient.get("/press-news/");
     return response.data.press_news.map((item: any) => ({
       content: item.content,
       newsType: item.news_type,
@@ -89,32 +89,32 @@ class almaClient {
   }
 
   async getRegions(params?: GetRegionsParams): Promise<RegionDto[]> {
-    const response = await dataClient.get("/regions", { params });
+    const response = await dataClient.get("/regions/", { params });
     return response.data.regions;
   }
 
   async getDisks(params?: GetDisksParams): Promise<DiskDto[]> {
-    const response = await dataClient.get("/disks", { params });
+    const response = await dataClient.get("/disks/", { params });
     return response.data.disks;
   }
 
   async getBands(params?: GetBandsParams): Promise<BandDto[]> {
-    const response = await dataClient.get("/bands", { params });
+    const response = await dataClient.get("/bands/", { params });
     return response.data.bands;
   }
 
   async getMolecules(params?: GetMoleculesParams): Promise<MoleculeDto[]> {
-    const response = await dataClient.get("/molecules", { params });
+    const response = await dataClient.get("/molecules/", { params });
     return response.data.molecules;
   }
 
   async getData(params?: GetDataParams): Promise<DataDto[]> {
-    const response = await dataClient.get("/data", { params });
+    const response = await dataClient.get("/data/", { params });
     return response.data.data;
   }
 
   async generateDownloadScript(dataItems: DataDto[]): Promise<string> {
-    const response = await dataClient.post("/generate-download-script", {
+    const response = await dataClient.post("/generate-download-script/", {
       links: dataItems.map((item) => item.filepath),
     });
     return response.data.script;
