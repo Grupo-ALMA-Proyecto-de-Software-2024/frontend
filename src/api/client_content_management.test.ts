@@ -42,7 +42,7 @@ describe("AlmaClient Content Management Methods", () => {
           },
         ],
       };
-      contentMock.onGet("/carousel").reply(200, mockData);
+      contentMock.onGet("/carousel/").reply(200, mockData);
       const response = await almaClient.getCarouselImages();
       expect(response).toEqual([
         {
@@ -59,7 +59,7 @@ describe("AlmaClient Content Management Methods", () => {
     });
 
     it("handles network errors for getCarouselImages", async () => {
-      contentMock.onGet("/carousel").networkError();
+      contentMock.onGet("/carousel/").networkError();
       await expect(almaClient.getCarouselImages()).rejects.toThrow(
         "Network Error"
       );
@@ -96,7 +96,7 @@ describe("AlmaClient Content Management Methods", () => {
           },
         ],
       };
-      contentMock.onGet("/publications").reply(200, mockData);
+      contentMock.onGet("/publications/").reply(200, mockData);
       const response = await almaClient.getPublications();
       expect(response).toEqual([
         {
@@ -127,7 +127,7 @@ describe("AlmaClient Content Management Methods", () => {
     });
 
     it("handles network errors for getPublications", async () => {
-      contentMock.onGet("/publications").networkError();
+      contentMock.onGet("/publications/").networkError();
       await expect(almaClient.getPublications()).rejects.toThrow(
         "Network Error"
       );
@@ -150,7 +150,7 @@ describe("AlmaClient Content Management Methods", () => {
           },
         ],
       };
-      contentMock.onGet("/press-news").reply(200, mockData);
+      contentMock.onGet("/press-news/").reply(200, mockData);
       const response = await almaClient.getPressNews();
       expect(response).toEqual([
         {
@@ -167,7 +167,7 @@ describe("AlmaClient Content Management Methods", () => {
     });
 
     it("handles network errors for getPressNews", async () => {
-      contentMock.onGet("/press-news").networkError();
+      contentMock.onGet("/press-news/").networkError();
       await expect(almaClient.getPressNews()).rejects.toThrow("Network Error");
     });
   });
