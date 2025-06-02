@@ -42,20 +42,23 @@ const Home: React.FC = () => {
 
           <section className={styles.section}>
             <p>
-              Our AGE-PRO team is an international collaboration of more than 20 astronomers (meet us here!), 
+              Our AGE-PRO team is an international collaboration of more than 20 astronomers 
+              (<a href="/team" className="underline">meet us here!</a>), 
               and our results have been recently published in a wave of scientific publications 
-              (AGE-PRO I through XII). 
+              (<a href="/publications" className="underline">AGE-PRO I through XII</a>). 
               All of the datasets employed in this publication are now released to the community, in our 
-              dedicated AGE-PRO Data page. 
-              Upcoming publications and/or data releases from our collaboraton will be announced here.
+              dedicated <a href="/data_page" className="underline">AGE-PRO Data page</a>. 
+              Upcoming publications and/or data releases from our collaboration will be announced below.
             </p>
           </section>
 
           <section className={styles.section}>
             <h1>Latest news</h1>
             <p>
-              &#10025; May 2025: First wave of publications (ApJ Focus issue) and  AGE-PRO calibrated datasets
-              from ALMA Bands 6 and 7 are now public!
+              &#10025; June 2025: First wave of publications (ApJ Focus issue) and press release
+            </p>
+            <p>              
+              &#10025; June 2025: AGE-PRO calibrated datasets from ALMA Bands 6 and 7 are now public!
             </p>
           </section>
         </div>
