@@ -31,9 +31,8 @@ ENV NODE_ENV=production
 COPY --from=builder /app/.next ./.next
 COPY --from=base /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
-# Most Next.js applications have a 'public' directory for static assets.
-# If your application has one, uncomment the following line.
-# COPY --from=builder /app/public ./public
+
+COPY --from=builder /app/public ./public
 
 EXPOSE 3000
 CMD ["npm", "start"]
