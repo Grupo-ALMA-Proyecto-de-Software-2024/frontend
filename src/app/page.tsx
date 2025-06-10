@@ -26,29 +26,27 @@ const Home: React.FC = () => {
             <h1>AGE-PRO: </h1>
             <h2>The ALMA Survey of Gas Evolution in PROtoplanetary Disks</h2>
             <p>
-              We are the first ALMA Large Program designed to systematically trace the gas evolution 
-              in protoplanetary disks. AGE-PRO collected deep molecular line observations of 30 disks 
-              throughout the typical disk lifetime. 
+              AGE-PRO is the first ALMA Large Program specifically designed to systematically trace the evolution of gas 
+              in protoplanetary disks. Through deep molecular line observations of 30 disks spanning the typical gas disk 
+              lifetime, AGE-PRO provides an unprecedented view into how the gas content in disks evolves over time.
             </p>
           </section>
           <section className={styles.section}>
             <p>
-              By combining AGE-PRO observations and state-of-the-art 
-              thermo-chemical models, we provide accurate measurements of disk gas mass and size for our 
-              30 disks sample. These results are then compared with predictions from two leading 
-              theories of disk evolution: turbulent viscosity and magneto-hydrodynamical disk winds. 
+              By combining these observations with advanced thermo-chemical modeling, we deliver robust measurements of 
+              disk gas mass and size for our 30-disk sample. These findings are compared against key theoretical 
+              frameworks of disk evolution, including turbulent viscosity and magneto-hydrodynamical disk winds.
             </p>
           </section>
 
           <section className={styles.section}>
             <p>
-              Our AGE-PRO team is an international collaboration of more than 20 astronomers 
-              (<a href="/team" className="underline">meet us here!</a>), 
-              and our results have been recently published in a wave of scientific publications 
-              (<a href="/publications" className="underline">AGE-PRO I through XII</a>). 
-              All of the datasets employed in this publication are now released to the community, in our 
-              dedicated <a href="/data_page" className="underline">AGE-PRO Data page</a>. 
-              Upcoming publications and/or data releases from our collaboration will be announced below.
+              AGE-PRO is a collaboration of more than 20 astronomers across multiple institutions 
+              (<a href="/team" className="underline">meet us here!</a>). Our results have been published in a 
+              coordinated set of scientific papers (<a href="/publications" className="underline">AGE-PRO I through XII</a>), 
+              and all associated datasets are now publicly available through our dedicated 
+              <a href="/data_page" className="underline">AGE-PRO Data page</a>. Additional publications and 
+              data releases will be announced on this site.
             </p>
           </section>
 
