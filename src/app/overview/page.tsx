@@ -18,7 +18,7 @@ const Overview = () => {
             AGE-PRO aims to systematically trace the evolution of gas disk mass and size throughout the lifetime of protoplanetary disks.
             </h2>
             <p className={styles.description}>
-            HOLA! The ALMA Survey of Gas Evolution of PROtoplanetary Disks, AGE-PRO, is a Large Program of the Atacama Large 
+            The ALMA Survey of Gas Evolution of PROtoplanetary Disks, AGE-PRO, is a Large Program of the Atacama Large 
             Millimeter/submillimeter Array (ALMA) designed to measure gas disk masses and sizes at three 
             evolutionary phases: the embedded disk phase, the middle age, and the end of the gas-rich phase. 
 

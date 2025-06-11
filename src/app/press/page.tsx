@@ -32,9 +32,11 @@ const Press = () => {
 
     return (
       <div className={styles.container}>
-        <h1 className={styles.header}>Press</h1>
+        <h1 className={styles.header}>Press coverage</h1>
+        <div className={styles.line}></div>
+
         <p className={styles.description}>
-          The MAPS project has been covered extensively in the international press. See below for a collection of these articles.
+          The results from AGE-PRO being covered in the press can be found here.
         </p>
   
         <section>
@@ -48,11 +50,10 @@ const Press = () => {
               </ul>
             </div>
             <div className={styles.pressImage}>
-              <Image src="/Protoplanetary_disk.jpg" alt="Press Releases" width={550} height={300} />
+              <Image src="/ALMA Age Pro Protoplanetary Disk 2025.png" alt="Press Releases" width={397} height={300} />
               <p className={styles.imageDescription}>
-                Proto-planetary disks are the birthplaces of planets. They are made up of gas and dust that surround young stars. 
-                These disks are the remnants of the star formation process and are where planets form. 
-                The study of proto-planetary disks is crucial to understanding the formation and evolution of planetary systems.
+                Artist illustration of a protoplanetary disk, like the thirty studied for the ALMA AGE-PRO survey. 
+                The lifetime of the gas within the disk determines the timescale for planetary growth. Image credit: NSF/AUI/NSF NRAO/S.Dagnello. 
               </p>
             </div>
           </div>
@@ -73,7 +74,7 @@ const Press = () => {
           <h2 className={styles.subHeader}>Contact Us</h2>
           <div className={styles.contactUs}>
             <p className={styles.contactDescription}>
-              For any inquiries or further information, please contact us at agepro@alma.edu.
+              For any inquiries or further information, please contact our <a href="/team" className="underline">team members</a>.
             </p>
           </div>
         </section>

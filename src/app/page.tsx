@@ -42,21 +42,23 @@ const Home: React.FC = () => {
           <section className={styles.section}>
             <p>
               AGE-PRO is a collaboration of more than 20 astronomers across multiple institutions 
-              (<a href="/team" className="underline">meet us here!</a>). Our results have been published in a 
-              coordinated set of scientific papers (<a href="/publications" className="underline">AGE-PRO I through XII</a>), 
-              and all associated datasets are now publicly available through our dedicated 
-              <a href="/data_page" className="underline">AGE-PRO Data page</a>. Additional publications and 
+              (<a href="/team" className="underline">meet the team here!</a>). Our results have been published in a 
+              coordinated set of scientific publications (<a href="/publications" className="underline">AGE-PRO I through XII</a>), 
+              and all associated datasets are now publicly available through our dedicated <a href="/data_page" className="underline">AGE-PRO Data</a> page. Additional publications and 
               data releases will be announced on this site.
             </p>
           </section>
 
           <section className={styles.section}>
             <h1>Latest news</h1>
+            {/* <p>              
+              &#10025; July 2025: ApJ Focus Issue is now available!
+            </p> */}
             <p>
-              &#10025; June 2025: First wave of publications (ApJ Focus issue) and press release
+              &#10025; June 13, 2025: First wave of <a href="/publications" className="underline"> AGE-PRO publications</a> and <a href="/press" className="underline">press releases</a>.
             </p>
             <p>              
-              &#10025; June 2025: AGE-PRO calibrated datasets from ALMA Bands 6 and 7 are now public!
+              &#10025; June 13, 2025: AGE-PRO calibrated datasets from ALMA Bands 6 and 7 are available, see <a href="/data_page" className="underline">AGE-PRO Data</a>.
             </p>
           </section>
         </div>

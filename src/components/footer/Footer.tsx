@@ -7,7 +7,7 @@ const Footer = () => {
             <div className={styles.logo}>
                 <Image 
                   src="/logos/AGE-PRO-white-transparent.png" 
-                  alt="AGE-PRO Icon" 
+                  alt="AGE-PRO Logo" 
                   width={75} 
                   height={75} 
                   className={styles.mainImage}

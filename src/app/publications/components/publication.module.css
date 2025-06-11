@@ -13,8 +13,11 @@
 .publicationImage {
   margin-top: 10px;
   width: 100%; /* Adjust size as needed */
-  max-height: 500px;
+  max-height: 420px;
   transition: filter 0.3s ease;
+  display: flex;
+  justify-content: center;  
+  align-items: center;
 }
 
 .publicationImage:hover {

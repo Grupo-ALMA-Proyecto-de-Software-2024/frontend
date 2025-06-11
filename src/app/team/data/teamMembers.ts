@@ -18,10 +18,10 @@ const teamMembers: TeamMember[] = [
         institution: "University of Wisconsin-Madison",
         cityCountry: "Madison, USA",
         role: "PI",
-        team: "N2H+",
+        team: "N₂H⁺",
         personalWebsite: "http://user.astro.wisc.edu/~kezhang/",
         email: "ke.zhang@wisc.edu",
-        expertise: "Protoplanetary disk, Planet formation, Astrochemistry",
+        expertise: "Protoplanetary disks, Planet formation, Astrochemistry",
         photographLink: "https://www.astro.wisc.edu/wp-content/uploads/sites/1730/2021/11/KZ_photo_187_231_cy_100.jpg"
     },
     
@@ -45,7 +45,7 @@ const teamMembers: TeamMember[] = [
         team: "Theory",
         personalWebsite: "https://paola-pinilla.com/",
         email: "p.pinilla@ucl.ac.uk",
-        expertise: "Observations and models of protoplanetary disks ",
+        expertise: "Observations and models of protoplanetary disks",
         photographLink: "https://www.dropbox.com/scl/fi/uln72deqjs7h3zoh2918x/Pinilla_Paola.jpg?rlkey=9aj5k53sc70d187q3nknsz0dq&dl=0"
     },
 
@@ -57,7 +57,7 @@ const teamMembers: TeamMember[] = [
         team: "Lupus",
         personalWebsite: "https://ilariapascucci.com/",
         email: "pascucci@arizona.edu",
-        expertise: "protoplanetary disks, planet formation, spectroscopy from optical through to mm, exoplanet demographics",
+        expertise: "Protoplanetary disks, planet formation, spectroscopy from optical through to mm, exoplanet demographics",
         photographLink: "https://i0.wp.com/distantearths.com/Ilaria/wp-content/uploads/2014/10/LR-800px-5943_BW.jpg"
     },
     {
@@ -65,17 +65,17 @@ const teamMembers: TeamMember[] = [
         institution: "University of Wisconsin-Madison",
         cityCountry: "Madison, USA",
         role: "Co-I & Data delegee",
-        team: "N2H^+ & Theory",
+        team: "N₂H⁺ & Theory",
         personalWebsite: "nan",
         email: "ltrapman@wisc.edu",
-        expertise: "protoplanetary disks, thermochemical modeling, astrochemistry",
+        expertise: "Protoplanetary disks, thermochemical modeling, astrochemistry",
         photographLink: ""
     },
 
     {
         fullName: "Dary Ruiz-Rodriguez",
         institution: "NRAO/Joint ALMA Observatory",
-        cityCountry: "Santiago, Chile",
+        cityCountry: "Charlottesville, USA",
         role: "Co-I & Data delegee",
         team: "Ophiuchus",
         personalWebsite: "nan",
@@ -92,7 +92,7 @@ const teamMembers: TeamMember[] = [
         team: "Lupus",
         personalWebsite: "nan",
         email: "dingshandeng@arizona.edu",
-        expertise: "protoplanetary disks, planet formation",
+        expertise: "Protoplanetary disks, planet formation",
         photographLink: "https://drive.google.com/file/d/1C4cihIFpcK5138elg1JUOm0VMqcTZZKY/view?usp=sharing"
     }, 
 
@@ -104,7 +104,7 @@ const teamMembers: TeamMember[] = [
         team: "Upper Sco",
         personalWebsite: "https://das.uchile.cl/integrantes/carolina-belen-agurto-gangas/",
         email: "cagurto@das.uchile.cl",
-        expertise: "mm-observations, multiwavelegnth analysis, young disks, radiative transfer modeling",
+        expertise: "Young disks, mm-observations, multiwavelength analysis, radiative transfer modeling",
         photographLink: ""
     },
     
@@ -113,9 +113,9 @@ const teamMembers: TeamMember[] = [
         institution: "MPE",
         cityCountry: "Garching, Germany",
         role: "Co-I",
-        team: "N2H+",
-        personalWebsite: "",
-        email: "",
+        team: "N₂H⁺ & Theory",
+        personalWebsite: "nan",
+        email: "nan",
         expertise: "Protoplanetary disks, mm-wave interferometry",
         photographLink: ""
     },
@@ -189,7 +189,7 @@ const teamMembers: TeamMember[] = [
         team: "Ophiuchus",
         personalWebsite: "https://astronomia.udp.cl/es/researcher/camilo-gonzalez-ruilova/",
         email: "camilo.gonzalez3@mail.udp.cl",
-        expertise: "Protoplanetary disks around substellar and  low mass  YSOs. Outflows and Envelopes around YSOs.",
+        expertise: "Protoplanetary disks around substellar and low-mass YSOs, outflows and envelopes around YSOs",
         photographLink: "https://astronomia.udp.cl/wp-content/uploads/2023/09/017A2678UDP-scaled.jpg"
     },
         
@@ -225,7 +225,7 @@ const teamMembers: TeamMember[] = [
         team: "Theory",
         personalWebsite: "https://giovannirosotti.com/",
         email: "giovanni.rosotti@unimi.it",
-        expertise: "Proto-planetary discs, accretion disc evolution and angular momentum transfer, disc-planet interaction, (sub)mm interferometry",
+        expertise: "Protoplanetary discs, accretion disc evolution and angular momentum transfer, disc-planet interaction, (sub)mm interferometry",
         photographLink: "https://giovannirosotti.com/wp-content/uploads/2021/11/img_6141-e1637924475137.jpg?w=685"
     },
  
@@ -237,19 +237,19 @@ const teamMembers: TeamMember[] = [
         team: "Theory",
         personalWebsite: "https://kamberschwarz.com/",
         email: "schwarz@mpia.de",
-        expertise: "protoplanetary disks, mm-wave interferometry, infrared spectroscopy, thermochemcial modeling, astrochemistry",
+        expertise: "Protoplanetary disks, mm-wave interferometry, infrared spectroscopy, thermochemical modeling, astrochemistry",
         photographLink: "https://www.mpia.de/employee_images/114580-1660728272?t=eyJ3aWR0aCI6NDI2LCJoZWlnaHQiOjU0OCwiZml0IjoiY3JvcCIsImZpbGVfZXh0ZW5zaW9uIjoid2VicCJ9--27646ab4f30e7fedcf3f03ebd360565617825a1c"
     },
 
     {
         fullName: "Aleksandra Kuznetsova",
-        institution: "Flatiron Institute; University of Connecticut (from Aug 2024)",
-        cityCountry: "NYC, USA; Storrs, CT, USA",
+        institution: "University of Connecticut",
+        cityCountry: "Storrs, CT, USA",
         role: "Co-I",
         team: "Theory",
         personalWebsite: "https://www.astrokuznetsova.com/",
         email: "astro.kuznetsova@gmail.com",
-        expertise: "nan",
+        expertise: "Protoplanetary disks theory",
         photographLink: ""
     },
 
@@ -258,7 +258,7 @@ const teamMembers: TeamMember[] = [
         institution: "University of Wisconsin-Madison",
         cityCountry: "Madison, USA",
         role: "Co-I",
-        team: "Lupus & UppSco",
+        team: "nan",
         personalWebsite: "nan",
         email: "torresvillan@wisc.edu",
         expertise: "Protoplanetary disks, planet formation, astrochemistry",
@@ -273,7 +273,7 @@ const teamMembers: TeamMember[] = [
         team: "nan",
         personalWebsite: "https://www.universiteitleiden.nl/en/staffmembers/michiel-hogerheijde",
         email: "michiel@strw.leidenuniv.nl",
-        expertise: "Protoplanetary disks, planet formation, interferometry at mm and ir wavelengths",
+        expertise: "Protoplanetary disks, planet formation, interferometry at mm and IR wavelengths",
         photographLink: "https://www.universiteitleiden.nl/binaries/content/gallery/ul2/portraits/science/h/m.-hogerheijde-strw-200.jpg/m.-hogerheijde-strw-200.jpg/d200x250"
     }
         

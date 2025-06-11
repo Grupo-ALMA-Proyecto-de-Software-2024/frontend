@@ -17,11 +17,25 @@ const Team = () => {
             <div className={styles.teamDescription}>
                 <h1>Our Team</h1>
                 <p>We are a diverse group of researchers, from different institutions worldwide.</p>
-                <h2>Our research has been funded by:</h2>
-                <h2>-- Here we need logos of funding agencies</h2>
-                <h2>   </h2>
+                <h2>We acknowledge funding from:</h2>
+                <p>(In alphabetical order)</p>
+                <p>&#10025; Agencia Nacional de Investigación, <a href="https://anid.cl/" className="underline">ANID</a></p>
+                <p>&#10025; <a href="https://www.humboldt-foundation.de/en/" className="underline">Alexander von Humboldt Foundation</a></p>
+                <p>&#10025; Centro de Astrofísica y Tecnologías Afines, <a href="https://cata.cl/" className="underline">CATA</a></p>
+                <p>&#10025; European Research Council, <a href="https://erc.europa.eu/homepage" className="underline">ERC</a></p>
+                <p>&#10025; <a href="https://www.fondazionecariplo.it/en/index.html" className="underline">Fondazione Cariplo</a></p>
+                <p>&#10025; Millennium Nucleus on Young Exoplanets and their Moons, <a href="https://youngexoplanets.github.io/" className="underline">YEMS</a></p>
+                <p>&#10025; National Science Foundation, <a href="https://www.nsf.gov/" className="underline">NSF</a></p>
+                <p>&#10025; UK Research and Innovation, <a href="https://www.ukri.org/" className="underline">UKRI</a></p>
 
-                <h2>Institutions</h2>
+                <h2>We thank the U.Chile student team that created this site:</h2>
+                <p>&#10025; Pablo Skewes</p>
+                <p>&#10025; Diego Carmona</p>
+                <p>&#10025; Nicolás Cárcamo</p>
+                <p>&#10025; Luciano Providel</p>
+                <p>&#10025; Bastián Vera</p>
+                <p>&#10025; Franz Widerstrom</p>
+                {/* <h2>Institutions</h2>
                 <Image src="/institutions/wisconsinlogo.png" alt="Institution 17" width={250} height={150} />
                 <Image src="/institutions/uchilelogo.jpg" alt="Institution 1" width={250} height={100} />
                 <Image src="/institutions/ulondonlogo.png" alt="Institution 2" width={250} height={120} />
@@ -39,7 +53,7 @@ const Team = () => {
                 <Image src="/institutions/parissaclaylogo.png" alt="Institution 13" width={250} height={100} />
                 <Image src="/institutions/uconnlogo.png" alt="Institution 14" width={200} height={80} />  
                 <Image src="/institutions/udplogo.jpg" alt="Institution 15" width={150} height={150} />
-                <Image src="/institutions/usachlogo.png" alt="Institution 16" width={220} height={100} />
+                <Image src="/institutions/usachlogo.png" alt="Institution 16" width={220} height={100} /> */}
                     
             </div>
             <div className={styles.memberGrid}>
@@ -55,8 +69,8 @@ const Team = () => {
                                         className={styles.memberImage}
                                     />
                                     <div className={styles.memberName}>{member.fullName}</div>
-                                    <div className={styles.memberName}>{member.role}</div>
-                                    <div className={styles.memberRole}>{member.institution}</div>
+                                    <div className={styles.memberRole}>{member.role}</div>
+                                    <div className={styles.memberInstitution}>{member.institution}</div>
                                 </div>
                             }
                             key={member.fullName}
