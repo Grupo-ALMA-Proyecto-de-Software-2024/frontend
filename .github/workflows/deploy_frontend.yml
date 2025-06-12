@@ -1,0 +1,57 @@
+name: Deploy Frontend
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "**"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Deploy Frontend to Server
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          PROJECT_ROOT_ON_SERVER: ${{ secrets.PROJECT_ROOT_ON_SERVER }}
+        run: |
+          set -e
+
+          echo "Connecting to $SSH_USER@$SSH_HOST:$SSH_PORT"
+          # The heredoc marker is now without quotes to allow variable expansion
+          ssh -o StrictHostKeyChecking=no -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" << EOF
+            set -e
+
+            # Export environment variables within the SSH session
+            export PROJECT_ROOT_ON_SERVER="${PROJECT_ROOT_ON_SERVER}" 
+
+            echo "Navigating to frontend repository: ${PROJECT_ROOT_ON_SERVER}/frontend"
+            cd "${PROJECT_ROOT_ON_SERVER}/frontend" || { echo "ERROR: No se pudo navegar a ${PROJECT_ROOT_ON_SERVER}/frontend"; exit 1; }
+            echo "Current directory: $(pwd)"
+
+            echo "Pulling latest frontend code..."
+            git pull || { echo "ERROR: Falló git pull en el frontend"; exit 1; }
+
+            echo "Navigating back to docker-compose root: ${PROJECT_ROOT_ON_SERVER}"
+            cd "${PROJECT_ROOT_ON_SERVER}" || { echo "ERROR: No se pudo navegar a ${PROJECT_ROOT_ON_SERVER}"; exit 1; }
+            echo "Current directory: $(pwd)"
+
+            echo "Building frontend image..."
+            docker compose build frontend || { echo "ERROR: Falló la construcción de la imagen de frontend"; exit 1; }
+
+            echo "Restarting frontend service..."
+            docker compose up -d frontend || { echo "ERROR: Falló el reinicio del servicio de frontend"; exit 1; }
+
+            echo "Frontend deployment complete."
+          EOF
