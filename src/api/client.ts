@@ -125,8 +125,10 @@ class almaClient {
   ): Promise<string> {
     const stringArray = Array.from(dataItems);
     console.log(stringArray);
+    const use_https = isBrowser && window.location.protocol === "https:";
     const response = await dataClient.post("/generate-script/", {
       links: stringArray.map((item) => item.split("--").pop()),
+      use_https: use_https,
     });
     return response.data.script_url;
   }
