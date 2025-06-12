@@ -3,7 +3,7 @@ name: Deploy Frontend
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - "**"
   workflow_dispatch:
@@ -29,25 +29,29 @@ jobs:
           set -e
 
           echo "Connecting to $SSH_USER@$SSH_HOST:$SSH_PORT"
-          ssh -o StrictHostKeyChecking=no -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" << 'EOF'
+          # The heredoc marker is now without quotes to allow variable expansion
+          ssh -o StrictHostKeyChecking=no -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" << EOF
             set -e
 
-            echo "Navigating to frontend repository: $PROJECT_ROOT_ON_SERVER/frontend"
-            cd "$PROJECT_ROOT_ON_SERVER/frontend" || { echo "ERROR: No se pudo navegar a $PROJECT_ROOT_ON_SERVER/frontend"; exit 1; }
+            # Export environment variables within the SSH session
+            export PROJECT_ROOT_ON_SERVER="${PROJECT_ROOT_ON_SERVER}" 
+
+            echo "Navigating to frontend repository: ${PROJECT_ROOT_ON_SERVER}/frontend"
+            cd "${PROJECT_ROOT_ON_SERVER}/frontend" || { echo "ERROR: No se pudo navegar a ${PROJECT_ROOT_ON_SERVER}/frontend"; exit 1; }
             echo "Current directory: $(pwd)"
 
             echo "Pulling latest frontend code..."
             git pull || { echo "ERROR: Falló git pull en el frontend"; exit 1; }
 
-            echo "Navigating back to docker-compose root: $PROJECT_ROOT_ON_SERVER"
-            cd "$PROJECT_ROOT_ON_SERVER" || { echo "ERROR: No se pudo navegar a $PROJECT_ROOT_ON_SERVER"; exit 1; }
+            echo "Navigating back to docker-compose root: ${PROJECT_ROOT_ON_SERVER}"
+            cd "${PROJECT_ROOT_ON_SERVER}" || { echo "ERROR: No se pudo navegar a ${PROJECT_ROOT_ON_SERVER}"; exit 1; }
             echo "Current directory: $(pwd)"
 
-            echo "Building Frontend image..."
-            docker compose build frontend || { echo "ERROR: Falló la construcción de la imagen de Frontend"; exit 1; }
+            echo "Building frontend image..."
+            docker compose build frontend || { echo "ERROR: Falló la construcción de la imagen de frontend"; exit 1; }
 
-            echo "Restarting Frontend service..."
-            docker compose up -d frontend || { echo "ERROR: Falló el reinicio del servicio de Frontend"; exit 1; }
+            echo "Restarting frontend service..."
+            docker compose up -d frontend || { echo "ERROR: Falló el reinicio del servicio de frontend"; exit 1; }
 
             echo "Frontend deployment complete."
           EOF
