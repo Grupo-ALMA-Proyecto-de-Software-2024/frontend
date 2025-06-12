@@ -12,7 +12,7 @@ const Home: React.FC = () => {
       <div className={styles.content}>
       <div className={styles.rightContent}>
           <Image
-            src="AGEPRO_press_release.png"//src="/logos/AGE-PRO-white-transparent.png"
+            src="AGEPRO_PR_V2.png"
             alt="AGEPRO Press Release Image"
             width={0}
             height={0}

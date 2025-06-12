@@ -32,7 +32,7 @@ const ScriptsPage = () => {
             For the AGE-PRO analysis, the models incorporate CO isotope-selective chemistry and photodissociation to improve accuracy 
             in interpreting CO isotopologue emission. The predicted line fluxes from the model grid, along with the MCMC fitting routine 
             used to compare the models with observations, are available 
-            <a href="https://drive.google.com/file/d/1ke9fGwWq-fURmFIzrOnfaLkjCWjpwxwV/view?usp=sharing" className="underline"> here</a>.
+            <a href="https://zenodo.org/records/15148628" className="underline">here</a>.
             </p>
 
             <p className={styles.description}>
