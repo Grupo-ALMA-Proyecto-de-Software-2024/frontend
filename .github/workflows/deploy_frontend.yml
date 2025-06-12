@@ -1,0 +1,48 @@
+name: Deploy Frontend
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Deploy Frontend to Server
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          PROJECT_ROOT_ON_SERVER: ${{ secrets.PROJECT_ROOT_ON_SERVER }}
+        run: |
+          echo "Connecting to $SSH_USER@$SSH_HOST:$SSH_PORT"
+          ssh -o StrictHostKeyChecking=no -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" << 'EOF'
+            set -e
+
+            echo "Navigating to frontend repository: $PROJECT_ROOT_ON_SERVER/frontend"
+            cd "$PROJECT_ROOT_ON_SERVER/frontend"
+
+            echo "Pulling latest frontend code..."
+            git pull
+
+            echo "Navigating back to docker-compose root: $PROJECT_ROOT_ON_SERVER"
+            cd "$PROJECT_ROOT_ON_SERVER"
+
+            echo "Building Frontend image..."
+            docker compose build frontend
+
+            echo "Restarting Frontend service..."
+            docker compose up -d frontend
+
+            echo "Frontend deployment complete."
+          EOF
