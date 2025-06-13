@@ -8,6 +8,12 @@ import { fetchPressNews } from './data/press';
 import { NewsType, PressNewsDto } from '@/api/dto';
 import { marked } from 'marked';
 
+
+const metadata: Metadata = {
+    title: "AGE-PRO - Press",
+    description: "Read about the media coverage of AGE-PRO",
+  };
+
 const Press = () => {
     const [pressReleases, setPressReleases] = useState<PressNewsDto[]>([]);
     const [newsArticles, setNewsArticles] = useState<PressNewsDto[]>([]);

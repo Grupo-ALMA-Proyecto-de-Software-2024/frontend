@@ -6,6 +6,7 @@ import { RegionDto, DiskDto } from '@/api/dto';
 import almaClient from "@/api/client";
 import styles from './regions.module.css'; // Importa el archivo CSS module
 
+
 const fetchRegions = async (): Promise<RegionDto[]> => {
     try {
         const regions = await almaClient.getRegions();
