@@ -76,9 +76,9 @@ const RegionsPage: NextPage = () => {
                               <h2>{region.name}</h2>
                               {region.description && <p className={styles.description}>{region.description}</p>}
                           </div>
-                          <div className={styles.regionImage}>
+                          {/* <div className={styles.regionImage}>
                               <img src={`/regions/${region.name}.jpg`} alt={region.name} className={styles.image} />
-                          </div>
+                          </div> */}
                       </div>
                       <div className={styles.tableWrapper}>
                           <table className={styles.table}>

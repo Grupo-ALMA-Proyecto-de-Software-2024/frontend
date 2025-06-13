@@ -24,17 +24,18 @@ const Team = () => {
                 <p>&#10025; Centro de Astrofísica y Tecnologías Afines, <a href="https://cata.cl/" className="underline">CATA</a></p>
                 <p>&#10025; European Research Council, <a href="https://erc.europa.eu/homepage" className="underline">ERC</a></p>
                 <p>&#10025; <a href="https://www.fondazionecariplo.it/en/index.html" className="underline">Fondazione Cariplo</a></p>
+                <p>&#10025; National Radio Astronomy Observatory, <a href="https://public.nrao.edu/" className="underline">NRAO</a></p>
                 <p>&#10025; Millennium Nucleus on Young Exoplanets and their Moons, <a href="https://youngexoplanets.github.io/" className="underline">YEMS</a></p>
                 <p>&#10025; National Science Foundation, <a href="https://www.nsf.gov/" className="underline">NSF</a></p>
                 <p>&#10025; UK Research and Innovation, <a href="https://www.ukri.org/" className="underline">UKRI</a></p>
 
                 <h2>We thank the U.Chile student team that created this site:</h2>
-                <p>&#10025; Pablo Skewes</p>
-                <p>&#10025; Diego Carmona</p>
-                <p>&#10025; Nicolás Cárcamo</p>
-                <p>&#10025; Luciano Providel</p>
-                <p>&#10025; Bastián Vera</p>
-                <p>&#10025; Franz Widerstrom</p>
+                <p>&#10025; <a href="https://github.com/pabloskewes" className="underline">Pablo Skewes</a></p>
+                <p>&#10025; <a href="https://github.com/Diego-Carmona" className="underline">Diego Carmona</a></p>
+                <p>&#10025; <a href="https://github.com/nicolascarcamo" className="underline">Nicolás Cárcamo</a></p>
+                <p>&#10025; <a href="https://github.com/Lu-desu" className="underline">Luciano Provide</a>l</p>
+                <p>&#10025; <a href="https://github.com/bverab" className="underline">Bastián Vera</a></p>
+                <p>&#10025; <a href="https://github.com/Franzo1" className="underline">Franz Widerstrom</a></p>
                 {/* <h2>Institutions</h2>
                 <Image src="/institutions/wisconsinlogo.png" alt="Institution 17" width={250} height={150} />
                 <Image src="/institutions/uchilelogo.jpg" alt="Institution 1" width={250} height={100} />
