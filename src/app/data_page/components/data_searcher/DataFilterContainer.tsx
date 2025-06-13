@@ -137,7 +137,7 @@ const DataFilterContainer: FC<DataFilterContainerProps> = ({ title, onOpenImage,
                     <MultiSelect title="Disks" values={[...new Set(disks.map(disk => disk.name))]} onChange={setSelectedDisks} />
                     <MultiSelect title="Bands" values={[...new Set(bands.map(band => band.name))]} onChange={setSelectedBands} />
                     <MultiSelect title="Molecules" values={[...new Set(molecules.map(molecule => molecule.name))]} onChange={setSelectedMolecules} />
-                    <MultiSelect title="Data" values={[...new Set(data.map(d => d.name))]} onChange={setSelectedData} />
+                    <MultiSelect title="Data Type" values={[...new Set(data.map(d => d.name))]} onChange={setSelectedData} />
                 </div>
                 <DataContainer data={convertToDisks(filteredData)} onOpenImage={onOpenImage} selectedItems={selectedItems} setSelectedItems={setSelectedItems} />
             </Container>
