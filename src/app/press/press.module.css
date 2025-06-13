@@ -9,7 +9,7 @@
   align-items: center;
   margin-bottom: 2rem;
   display: flex; 
-  justify-content: space-between; /* Space items evenly */  
+  justify-content: space-evenly; /* Space items evenly */  
   border: 1px solid #dee2e6; /* Add borders to sections */
   padding: 15px;
   margin-bottom: 2rem;
@@ -30,7 +30,7 @@
 }
 .description {
   margin-top: 5px;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal; 
   font-weight: 300;
   margin-bottom: 10px;
@@ -46,12 +46,13 @@
 
 .pressList {
   padding: 0;
-  width: 50%;
+  width: 70%;
 }
 
 .pressList li {
   margin-bottom: 0.5rem;
   margin-left: 2rem;
+  color: #666; 
   /* Add more styles here */
 }
 .pressImage {

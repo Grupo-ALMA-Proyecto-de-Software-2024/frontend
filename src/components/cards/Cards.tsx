@@ -27,7 +27,7 @@ const cardsData: CardProps[] = [
     link: '/publications',
   },
   {
-    imageSrc: '/cards/Theory.png',
+    imageSrc: '/cards/theory.png',
     imageAlt: 'Theory Card',
     title: 'Theory',
     description: 'Learn about our models to interpret AGE-PRO observations.',

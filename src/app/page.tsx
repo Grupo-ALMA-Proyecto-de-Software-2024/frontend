@@ -23,7 +23,7 @@ const Home: React.FC = () => {
         
         <div className={styles.leftContent}>
           <section className={styles.section}>
-            <h1>AGE-PRO: </h1>
+            <h1>AGE-PRO</h1>
             <h2>The ALMA Survey of Gas Evolution in PROtoplanetary Disks</h2>
             <p>
               AGE-PRO is the first ALMA Large Program specifically designed to systematically trace the evolution of gas 

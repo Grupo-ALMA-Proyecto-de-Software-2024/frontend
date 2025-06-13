@@ -32,7 +32,7 @@ const Overview = () => {
             (the end of gas disk lifetime, 2-6 Myr), that have been characterized in previous ALMA shallow surveys 
             in CO and dust emission.
             
-            For AGE-PRO, we carefully selected a sample of 30 disks around M3-K6 stars
+            {/* For AGE-PRO, we carefully selected a sample of 30 disks around M3-K6 stars */}
 
             </p>
 

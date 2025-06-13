@@ -62,7 +62,7 @@ const RegionsPage: NextPage = () => {
 
   return (
       <div className={styles.container}>
-          <h1 className={styles.title}>Regions</h1>
+          <h1 className={styles.title}>Disks Targeted on Each Region</h1>
           <Divider />
           {isLoading ? (
               <div className={styles.loading}>Loading...</div>
@@ -84,7 +84,7 @@ const RegionsPage: NextPage = () => {
                           <table className={styles.table}>
                               <thead>
                                   <tr>
-                                      <th className={styles.th}>Full Name</th> {/* Columna para Disk Name */}
+                                      <th className={styles.th}>AGE-PRO ID</th> {/* Columna para Disk Name */}
                                       {getAllFeatures().map((feature, index) => (
                                           <th key={index} className={styles.th}>{feature}</th>
                                       ))}

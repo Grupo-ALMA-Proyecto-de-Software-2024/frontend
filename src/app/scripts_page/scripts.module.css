@@ -41,3 +41,24 @@
 a.underline { 
   text-decoration: underline;
 }
+
+.disk_schematicContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* width for carousel */
+    height: 400px; /* height of carousel */
+    position: relative;
+    overflow: hidden;
+}
+
+.diskSchematicImage{
+    object-fit: contain;
+}
+
+
+.figcaption{
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 5px;
+}

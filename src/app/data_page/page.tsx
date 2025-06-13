@@ -4,33 +4,26 @@ import DataSearcher from "./components/data_searcher/DataSearcher"
 const DataHeader = () => {
     return (
         <div>
-            <h1 className={styles.header}>Data</h1>
+            <h1 className={styles.header}>AGE-PRO Data</h1>
+            <div className={styles.line}></div>
+
             <p className={styles.paragraph}>
-                The datasets, images, models, and data products needed to reproduce the results of MAPS I - 
-                XX are publicly available via the download presets below. In addition to these products, we provide: 
+                As part of our program, we provide the following calibrated data products in ALMA Bands 6 and 7: 
             </p>
             <ul className={styles.datalist}>
-                <li>Self-calibrated measurement sets of all spectral windows covered by MAPS (see MAPS I)</li>
-                <li>
-                    Image cubes at three angular resolutions for the Band 3 lines (0”.3 and 0”.5 circularized beams, 
-                    and Briggs robust=0.5 non-circularized), and three angular resolutions for the Band 6 lines 
-                    (0”.15, 0”.2, and 0”.3 circularized, and robust=0.5 non-circularized), as well as the associated 
-                    Keplerian CLEAN masks, CLEAN models, and python scripts. The 0.3” and robust=0.5 cubes are imaged 
-                    both with and without continuum subtraction. All image cubes are delivered with and without primary 
-                    beam correction, and with and without the so called JvM correction applied (Jorsater, S., & van Moorsel, 
-                    G. A. 1995, AJ, 110, 2037) (see MAPS II)
-                </li>
-                <li>
-                    Value added products for each line and spatial resolution: moment maps, rotational maps, 
-                    peak intensity maps, and radial profiles (see MAPS III) 
-                </li>
-                <li>Emission surfaces for the strongest lines (see MAPS IV)</li>
-                <li>Continuum images for the four spectral settings (see MAPS XIV)</li>
+                <li> Images, measurement sets (MS files), and radial profiles of continuum emission</li>
+                <li> Image cubes (.fits format) of all lines targeted</li>
+                <li> Moment zero maps (M0) and their uncertainty (dM0) for CO and its isotopologues</li>
+                <li> Radial Profile of emission for CO isotopologues</li>
+                <li> MS files of the ¹²CO line for all regions</li>
+                <li> MS files of the C¹⁷O line for Ophiuchus</li>
+                <li> MS files of the N₂H⁺ line for Lupus and Upper Sco</li>
             </ul>
             <p className={styles.paragraph}>
-                The interface below will allow you to directly search and select any of these products, in addition to the 
-                available download presets. The download button will generate a bash shell script to download the files you 
-                have selected. A bibtex file is also generated with all of the citations for the specific data that you have requested to download. 
+               To retrieve specific data, first select one or more regions and filter by your desired Disk,
+               ALMA Band, Molecules of interest, and/or Data types. Finally, select your datasets of 
+               interest and press <strong>DOWNLOAD</strong>. This creates a bash download script with your 
+               selection, to be run from the command line.
             </p>
         </div>
     )

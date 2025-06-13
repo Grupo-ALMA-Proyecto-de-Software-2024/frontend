@@ -58,7 +58,7 @@ const Press = () => {
             </div>
           </div>
         </section>
-        <section>
+        {/* <section>
           <h2 className={styles.subHeader}>AGE-PRO in the News</h2>
           <div className={styles.newsArticles}>
             <div className={styles.pressList}>
@@ -69,7 +69,7 @@ const Press = () => {
                 </ul>
             </div>
           </div>
-        </section>
+        </section> */}
         <section>
           <h2 className={styles.subHeader}>Contact Us</h2>
           <div className={styles.contactUs}>

@@ -19,7 +19,6 @@ const ScriptsPage = () => {
             There are several types of models involved in the AGE-PRO collaboration in order to compare disk evolution
              simulations with the AGE-PRO data. This includes: thermochemical models, disk population models, 
              dust evolution and radiative transfer simulations.
-             
             </h2>
             <p className={styles.description}>
             &#10025; Trapman et al. (AGE-PRO V) constrain gas disk masses by comparing observed line fluxes of 
@@ -31,9 +30,17 @@ const ScriptsPage = () => {
             populations and line emission. 
             For the AGE-PRO analysis, the models incorporate CO isotope-selective chemistry and photodissociation to improve accuracy 
             in interpreting CO isotopologue emission. The predicted line fluxes from the model grid, along with the MCMC fitting routine 
-            used to compare the models with observations, are available 
-            <a href="https://zenodo.org/records/15148628" className="underline">in zenodo</a>.
+            used to compare the models with observations, are available in 
+            <a href="https://zenodo.org/records/15148628" className="underline">zenodo</a>.
             </p>
+            
+            <figure className={styles.disk_schematicContainer}>
+                <Image src="/theory/Theory_1.png" alt="AGE-PRO V Figure" fill className={styles.diskSchematicImage}></Image>
+            </figure>
+            <figcaption className={styles.figcaption}>
+            Figure from Trapman et al. (AGE-PRO V). Comparison between the line luminosities for the AGE-PRO sources in 
+            Lupus and Upper Sco and the results from the thermochemical disk models.
+            </figcaption>
 
             <p className={styles.description}>
             &#10025; Kurtovic et al. (AGE-PRO VI) and Anania et al. (AGE-PRO VIII) use Dustpy, which is a gas and dust 
@@ -56,7 +63,15 @@ const ScriptsPage = () => {
             To access the scripts used to run the Dustpy, RADMC-3D, or optool calculations used in the 
             AGE-PRO collaboration, please contact <a href="mailto:kurtovic@mpe.mpg.de" className="underline">Dr. Nicolas Kurtovic</a>.
             </p>
-            
+
+            <figure className={styles.disk_schematicContainer}>
+                <Image src="/theory/Theory_2.png" alt="AGE-PRO VI Figure" fill className={styles.diskSchematicImage}></Image>
+            </figure>
+            <figcaption className={styles.figcaption}>
+            Figure from Kurtovic et al. (AGE-PRO VI), showing an example of the radial (left panel) and vertical (middle and right panels) 
+            dust density distribution assuming three dust traps in the disk.
+            </figcaption>
+
             <p className={styles.description}>
             In Anania et al. (AGE-PRO VIII) both gas and dust evolution models of smooth discs were performed 
             using the grid-based code DustPy presented 
@@ -71,6 +86,14 @@ const ScriptsPage = () => {
             in Dustpy is available <a href="https://github.com/Rossella4712/External_Photoevaporation_FRIEDv2_module_dustpy" className="underline">here</a>.
             </p>
 
+            <figure className={styles.disk_schematicContainer}>
+                <Image src="/theory/Theory_3.png" alt="AGE-PRO VIII Figure" fill className={styles.diskSchematicImage}></Image>
+            </figure>
+            <figcaption className={styles.figcaption}>
+            Figure from Anania et al.(AGE-PRO VIII) showing an example of the gas density evolution when external photoevaporation is 
+            included (G₀=10) in the models (color lines) in comparison with only viscous evolution models (grey lines).
+            </figcaption>
+
             <p className={styles.description}>
             &#10025; In Tabone et al. (AGE-PRO VII) the gas evolution of protoplanetary disks is modelled either using 
             viscous evolution or MHD wind-driven evolution as analytically implemented in 
@@ -83,6 +106,16 @@ const ScriptsPage = () => {
             To request access to the scripts use in Tabone et al. (AGE-PRO VII), please 
             contact <a href="mailto:benoit.tabone@cnrs.fr" className="underline">Dr. Benoî Tabone</a>.
             </p>
+
+            <figure className={styles.disk_schematicContainer}>
+                <Image src="/theory/Theory_4.png" alt="AGE-PRO VII Figure" fill className={styles.diskSchematicImage}></Image>
+            </figure>
+            <figcaption className={styles.figcaption}>
+            Figures from Tabone et al. (AGE-PRO VII) comparing different disk observables to population synthesis MWD wind models (left) 
+            to viscous plus internal photoevaporation models (right).
+            </figcaption>
+
+
        </div>
     );
 };
