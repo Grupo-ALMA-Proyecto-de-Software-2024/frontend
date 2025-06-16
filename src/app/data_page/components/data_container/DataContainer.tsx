@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from "./dataContainer.module.css";
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
@@ -37,8 +37,9 @@ const DataContainer: React.FC<DataContainerProps> = ({ data, onOpenImage, select
   const itemsPerPage = 30; // Mostrar más elementos por página
   const [paginatedItems, setPaginatedItems] = useState<FlattenedDataItem[]>([]);
 
-  const flatData: FlattenedDataItem[] = useMemo(() => {
-    return data.flatMap(disk =>
+  useEffect(() => {
+    // Flatten the data structure for pagination
+    const flatData: FlattenedDataItem[] = data.flatMap(disk =>
       disk.bands.flatMap(band =>
         band.molecules.flatMap(molecule =>
           molecule.data.map((dataItem) => ({
@@ -51,23 +52,21 @@ const DataContainer: React.FC<DataContainerProps> = ({ data, onOpenImage, select
         )
       )
     );
-  }, [data]);
 
-  useEffect(() => {
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     setPaginatedItems(flatData.slice(start, end));
-  }, [currentPage, flatData]);
+  }, [currentPage, data]);
 
   /**
    * Handle selecting all items in the table.
    */
   const handleSelectAll = () => {
-    if (selectedItems.size === flatData.length) {
+    if (selectedItems.size === paginatedItems.length) {
       setSelectedItems(new Set());
     } else {
       const allItems = new Set(
-        flatData.map(dataItem => `${dataItem.disk}--${dataItem.band}--${dataItem.molecule}--${dataItem.name}--${flatData.indexOf(dataItem)}--${dataItem.filepath}`)
+        paginatedItems.map(dataItem => `${dataItem.disk}--${dataItem.band}--${dataItem.molecule}--${dataItem.name}--${paginatedItems.indexOf(dataItem)}--${dataItem.filepath}`)
       );
       setSelectedItems(allItems);
     }
@@ -95,16 +94,12 @@ const DataContainer: React.FC<DataContainerProps> = ({ data, onOpenImage, select
     setCurrentPage(page);
   };
 
-  const allItemsSelected = useMemo(() => {
-    return selectedItems.size === flatData.length && flatData.length > 0;
-  }, [selectedItems, flatData]);
-
   return (
     <div className={styles.tableContainer}>
       <table className={styles.table}>
         <TableHeader
           handleSelectAll={handleSelectAll}
-          isSelectedAll={allItemsSelected}
+          isSelectedAll={selectedItems.size === paginatedItems.length && selectedItems.size > 0}
         />
         <tbody>
           <TableRow
