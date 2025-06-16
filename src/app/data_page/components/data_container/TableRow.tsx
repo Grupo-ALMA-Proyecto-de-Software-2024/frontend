@@ -15,9 +15,11 @@ interface TableRowProps {
   selectedItems: Set<string>;
   handleSelectItem: (itemKey: string) => void;
   onOpenImage: (url: string) => void;
+  currentPage: number;
+  itemsPerPage: number;
 }
 
-const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectItem, onOpenImage }) => {
+const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectItem, onOpenImage, currentPage, itemsPerPage }) => {
   const renderRows = () => {
     const rows: React.ReactNode[] = [];
     let currentDisk = '';
@@ -36,7 +38,8 @@ const TableRow: React.FC<TableRowProps> = ({ data, selectedItems, handleSelectIt
     };
 
     data.forEach((dataItem, index) => {
-      const itemKey = `${dataItem.disk}--${dataItem.band}--${dataItem.molecule}--${dataItem.name}--${index}--${dataItem.filepath}`; // Ensure unique key
+      const globalIndex = (currentPage - 1) * itemsPerPage + index;
+      const itemKey = `${dataItem.disk}--${dataItem.band}--${dataItem.molecule}--${dataItem.name}--${globalIndex}--${dataItem.filepath}`; // Ensure unique key
       const isSelected = selectedItems.has(itemKey);
 
       const isNewDisk = dataItem.disk !== currentDisk;
