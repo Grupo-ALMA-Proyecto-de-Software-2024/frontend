@@ -95,16 +95,12 @@ const DataContainer: React.FC<DataContainerProps> = ({ data, onOpenImage, select
     setCurrentPage(page);
   };
 
-  const allItemsSelected = useMemo(() => {
-    return selectedItems.size === flatData.length && flatData.length > 0;
-  }, [selectedItems, flatData]);
-
   return (
     <div className={styles.tableContainer}>
       <table className={styles.table}>
         <TableHeader
           handleSelectAll={handleSelectAll}
-          isSelectedAll={allItemsSelected}
+          isSelectedAll={selectedItems.size === flatData.length && flatData.length > 0}
         />
         <tbody>
           <TableRow
