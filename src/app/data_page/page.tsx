@@ -1,5 +1,4 @@
 import styles from "./data.module.css";
-import DataSearcher from "./components/data_searcher/DataSearcher"
 
 const DataHeader = () => {
     return (
@@ -39,12 +38,16 @@ const DataHeader = () => {
                 <li> MS files of the C¹⁷O line for Ophiuchus</li>
                 <li> MS files of the N₂H⁺ line for Lupus and Upper Sco</li>
             </ul>
-            <p className={styles.paragraph}>
-               &rArr; To retrieve specific data, first select one or more regions and filter by your desired Disk,
-               ALMA Band, Molecules of interest, and/or Data types. Finally, select your datasets of 
-               interest and press <strong>DOWNLOAD</strong>. This creates a bash download script with your 
-               selection, to be run from the command line.
-            </p>
+            <div className={styles.ctaRow}>
+                <a
+                    href="https://ke-coco-zhang.github.io/agepro-website/"
+                    className={styles.ctaButton}
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    Visit the AGE-PRO Database
+                </a>
+            </div>
         </div>
     )
 }
@@ -53,7 +56,6 @@ const DataPage = () => {
     return (
         <div className={styles.container}>
             <DataHeader />
-            <DataSearcher />
         </div>
     );
 };
